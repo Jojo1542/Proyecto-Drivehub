@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Configuración de la clave secreta para la generación de tokens JWT."
+    }
+  ]
+}

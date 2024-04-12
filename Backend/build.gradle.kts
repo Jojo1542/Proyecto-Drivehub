@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.2.3"
+	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -22,16 +22,39 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	// Spring Boot packs
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
+
+	// Spring Boot DevTools
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	// Spring Security
+	implementation("org.springframework.security:spring-security-core")
+	implementation("org.springframework.security:spring-security-crypto")
+	implementation("org.springframework.security:spring-security-config")
+	implementation("org.springframework.security:spring-security-web")
+
+	// Spring Actuator
+	implementation("org.springframework:spring-jcl")
+
+	// Jackson JSON Processor
+	implementation("com.fasterxml.jackson.core:jackson-core:2.17.0")
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+
+	// JWT
+	implementation("io.jsonwebtoken:jjwt-api:0.12.3")
+	implementation("io.jsonwebtoken:jjwt-impl:0.12.3")
+	implementation("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
+	// Lombok
+	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
+
+	// Database drivers
+	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
 }
 
 tasks.withType<Test> {
