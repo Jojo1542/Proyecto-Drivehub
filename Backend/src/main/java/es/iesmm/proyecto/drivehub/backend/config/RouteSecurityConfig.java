@@ -2,6 +2,8 @@ package es.iesmm.proyecto.drivehub.backend.config;
 
 import es.iesmm.proyecto.drivehub.backend.util.jwt.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
+//import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -38,4 +40,10 @@ public class RouteSecurityConfig {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+
+    /*@Bean
+    public HttpExchangeRepository httpTraceRepository() {
+        return new InMemoryHttpExchangeRepository();
+    }*/
+
 }

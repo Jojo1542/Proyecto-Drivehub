@@ -11,7 +11,7 @@ public interface UserService extends UserDetailsService {
 
     default UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    };
+    }
 
     UserModel save(UserModel userModel);
 

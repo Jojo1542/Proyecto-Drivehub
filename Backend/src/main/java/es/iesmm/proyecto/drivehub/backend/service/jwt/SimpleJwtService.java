@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -74,5 +75,26 @@ public class SimpleJwtService implements JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    @Override
+    public String refreshToken(String token) {
+        return null;
+    }
+
+    @Override
+    public boolean canRefresh(String token) {
+        return false;
+    }
+
+    @Override
+    public String extractTokenFromHeader(String bearerToken) {
+        String result = null;
+
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            result = bearerToken.substring(7);
+        }
+
+        return result;
     }
 }

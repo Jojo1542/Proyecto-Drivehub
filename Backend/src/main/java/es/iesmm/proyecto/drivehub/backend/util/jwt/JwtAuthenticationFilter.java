@@ -2,6 +2,7 @@ package es.iesmm.proyecto.drivehub.backend.util.jwt;
 
 import es.iesmm.proyecto.drivehub.backend.service.jwt.JwtService;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,45 +28,42 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        String token = extractToken(request);
+        String token = jwtService.extractTokenFromRequest(request);
 
         if (token != null) {
-            Long userId = jwtService.extractUserId(token);
+            try {
+                Long userId = jwtService.extractUserId(token);
 
-            logger.info("User ID: " + userId);
+                if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    userService
+                            .findById(userId)
+                            .filter(user -> jwtService.isValid(token, user))
+                            .ifPresent(user -> {
+                                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                                        user,
+                                        null,
+                                        user.getAuthorities()
+                                );
 
-            if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                userService
-                        .findById(userId)
-                        .filter(user -> jwtService.isValid(token, user))
-                        .ifPresent(user -> {
-                            logger.info("User found: " + user.getEmail());
+                                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                                    user,
-                                    null,
-                                    user.getAuthorities()
-                            );
+                                SecurityContextHolder.getContext().setAuthentication(authentication);
+                            });
+                }
+            } catch (ExpiredJwtException e) {
+                // Se ha expirado el token, en este caso solamente se ignora.
+                // Se registra por pantalla solamente en modo debug.
+                logger.debug("Token " + token + " expirado", e);
+            } catch (Exception e) {
+                // Se avisa por consola siempre de que hubo un error y el mensaje de error.
+                logger.error("Error al procesar el token " + token + " enviado por " + request.getRemoteAddr()
+                        + " -> " + e.getMessage());
 
-                            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                            logger.info("User authenticated: " + user.getEmail())   ;
-
-                            SecurityContextHolder.getContext().setAuthentication(authentication);
-                        });
+                // En modo debug se muestra el stacktrace del error.
+                logger.debug("Error al procesar el token", e);
             }
         }
 
         filterChain.doFilter(request, response);
-    }
-
-    private String extractToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-
-        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7);
-        }
-
-        return null;
     }
 }

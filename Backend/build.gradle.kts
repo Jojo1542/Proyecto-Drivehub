@@ -26,8 +26,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
+    //implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-	// Spring Boot DevTools
+    // Spring Boot DevTools
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
@@ -38,7 +39,7 @@ dependencies {
 	implementation("org.springframework.security:spring-security-web")
 
 	// Spring Actuator
-	implementation("org.springframework:spring-jcl")
+	//implementation("org.springframework:spring-jcl")
 
 	// Jackson JSON Processor
 	implementation("com.fasterxml.jackson.core:jackson-core:2.17.0")
