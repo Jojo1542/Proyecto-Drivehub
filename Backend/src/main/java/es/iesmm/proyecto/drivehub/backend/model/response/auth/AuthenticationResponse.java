@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AuthenticationResponse {
 	
-	@JsonProperty
-	private final String accessToken;
+	@JsonProperty private final String accessToken;
 
 	public AuthenticationResponse(String token) {
 		this.accessToken = token;
