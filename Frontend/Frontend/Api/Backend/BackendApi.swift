@@ -8,6 +8,9 @@
 import Foundation
 
 final class BackendApi: BackendDomain {
-    /*@Post("/auth/Register")
-    var register: (FindArtistRequest) async throws -> FindArtistResponse*/
+    @Post("/auth/register")
+    var register: (AuthRegisterRequest) async throws -> Empty
+    
+    @Post("/auth/login")
+    var login: (AuthLoginRequest) async throws -> AuthLoginResponse
 }

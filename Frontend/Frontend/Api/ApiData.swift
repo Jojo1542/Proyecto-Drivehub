@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+@Observable
+class ApiData {
+    var backendApi: BackendApi = BackendApi(transport: UrlSessionTransport())
+}

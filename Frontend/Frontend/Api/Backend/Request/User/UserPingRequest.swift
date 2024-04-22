@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RetroSwift
+
+struct UserPingRequest {
+    @Header("Authorization") var authorization: String = "Bearer "
+}

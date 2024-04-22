@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RetroSwift
+
+struct AuthLoginRequest {
+    @Header("Authorization") var authorization: String = "Basic "
+}

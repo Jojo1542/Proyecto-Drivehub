@@ -7,18 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */; };
 		09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */; };
 		09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCD912BC9B6F600456D29 /* ContentView.swift */; };
 		09EFCD942BC9B6F800456D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09EFCD932BC9B6F800456D29 /* Assets.xcassets */; };
 		09EFCD972BC9B6F800456D29 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09EFCD962BC9B6F800456D29 /* Preview Assets.xcassets */; };
+		09EFCDC12BC9C0A500456D29 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDC02BC9C0A500456D29 /* AuthViewModel.swift */; };
+		09EFCDC32BC9C0D200456D29 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDC22BC9C0D200456D29 /* UserModel.swift */; };
+		09EFCDC72BC9C1AB00456D29 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDC62BC9C1AB00456D29 /* LoginView.swift */; };
+		09EFCDC92BC9C1B700456D29 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDC82BC9C1B700456D29 /* RegisterView.swift */; };
+		09EFCDCC2BC9C1F700456D29 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDCB2BC9C1F700456D29 /* InputFieldView.swift */; };
+		09EFCDCF2BC9DCAD00456D29 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDCE2BC9DCAD00456D29 /* MainAppView.swift */; };
+		09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDDA2BCA74AC00456D29 /* Callback.swift */; };
+		09EFCDEE2BCC562100456D29 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 09EFCDED2BCC562100456D29 /* Alamofire */; };
+		09EFCDF72BCC649B00456D29 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDF62BCC649B00456D29 /* LoginResponse.swift */; };
+		09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDF82BCC669300456D29 /* EmailUtils.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		09EFCDDD2BCA7A1800456D29 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09EFCD8C2BC9B6F600456D29 /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendApp.swift; sourceTree = "<group>"; };
 		09EFCD912BC9B6F600456D29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		09EFCD932BC9B6F800456D29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09EFCD962BC9B6F800456D29 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		09EFCDC02BC9C0A500456D29 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		09EFCDC22BC9C0D200456D29 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		09EFCDC62BC9C1AB00456D29 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		09EFCDC82BC9C1B700456D29 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		09EFCDCB2BC9C1F700456D29 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		09EFCDCE2BC9DCAD00456D29 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		09EFCDDA2BCA74AC00456D29 /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
+		09EFCDDF2BCA7AB500456D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		09EFCDF62BCC649B00456D29 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		09EFCDF82BCC669300456D29 /* EmailUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09EFCDEE2BCC562100456D29 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +73,7 @@
 			children = (
 				09EFCD8E2BC9B6F600456D29 /* Frontend */,
 				09EFCD8D2BC9B6F600456D29 /* Products */,
+				09EFCDDE2BCA7A5B00456D29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +88,11 @@
 		09EFCD8E2BC9B6F600456D29 /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
+				09EFCDDF2BCA7AB500456D29 /* Info.plist */,
+				09EFCDD92BCA74A100456D29 /* Utils */,
+				09EFCDA12BC9BA5400456D29 /* Views */,
+				09EFCDA02BC9BA4C00456D29 /* Models */,
 				09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */,
-				09EFCD912BC9B6F600456D29 /* ContentView.swift */,
 				09EFCD932BC9B6F800456D29 /* Assets.xcassets */,
 				09EFCD952BC9B6F800456D29 /* Preview Content */,
 			);
@@ -67,6 +107,109 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		09EFCDA02BC9BA4C00456D29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDF42BCC648800456D29 /* Response */,
+				09EFCDC22BC9C0D200456D29 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09EFCDA12BC9BA5400456D29 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDCD2BC9DC9B00456D29 /* MainApp */,
+				09EFCDBA2BC9C05800456D29 /* Auth */,
+				09EFCD912BC9B6F600456D29 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		09EFCDBA2BC9C05800456D29 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDBC2BC9C06F00456D29 /* Login */,
+				09EFCDBD2BC9C07B00456D29 /* Register */,
+				09EFCDBB2BC9C06200456D29 /* Model */,
+				09EFCDCA2BC9C1CE00456D29 /* Util */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		09EFCDBB2BC9C06200456D29 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDC02BC9C0A500456D29 /* AuthViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09EFCDBC2BC9C06F00456D29 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDC62BC9C1AB00456D29 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		09EFCDBD2BC9C07B00456D29 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDC82BC9C1B700456D29 /* RegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		09EFCDCA2BC9C1CE00456D29 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDCB2BC9C1F700456D29 /* InputFieldView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		09EFCDCD2BC9DC9B00456D29 /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDCE2BC9DCAD00456D29 /* MainAppView.swift */,
+				09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		09EFCDD92BCA74A100456D29 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDDA2BCA74AC00456D29 /* Callback.swift */,
+				09EFCDF82BCC669300456D29 /* EmailUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		09EFCDDE2BCA7A5B00456D29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		09EFCDF42BCC648800456D29 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDF52BCC648F00456D29 /* Auth */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		09EFCDF52BCC648F00456D29 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				09EFCDF62BCC649B00456D29 /* LoginResponse.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,12 +220,16 @@
 				09EFCD882BC9B6F600456D29 /* Sources */,
 				09EFCD892BC9B6F600456D29 /* Frameworks */,
 				09EFCD8A2BC9B6F600456D29 /* Resources */,
+				09EFCDDD2BCA7A1800456D29 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Frontend;
+			packageProductDependencies = (
+				09EFCDED2BCC562100456D29 /* Alamofire */,
+			);
 			productName = Frontend;
 			productReference = 09EFCD8C2BC9B6F600456D29 /* Frontend.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +258,9 @@
 				Base,
 			);
 			mainGroup = 09EFCD832BC9B6F600456D29;
+			packageReferences = (
+				09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 09EFCD8D2BC9B6F600456D29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +287,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09EFCDCC2BC9C1F700456D29 /* InputFieldView.swift in Sources */,
+				09EFCDCF2BC9DCAD00456D29 /* MainAppView.swift in Sources */,
+				09EFCDC12BC9C0A500456D29 /* AuthViewModel.swift in Sources */,
 				09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */,
+				09EFCDF72BCC649B00456D29 /* LoginResponse.swift in Sources */,
+				09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */,
+				09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */,
+				09EFCDC92BC9C1B700456D29 /* RegisterView.swift in Sources */,
+				09EFCDC72BC9C1AB00456D29 /* LoginView.swift in Sources */,
+				09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */,
 				09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */,
+				09EFCDC32BC9C0D200456D29 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,17 +429,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Frontend/Preview Content\"";
 				DEVELOPMENT_TEAM = KZX8AFRF93;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Frontend/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DriveHub;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,17 +463,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Frontend/Preview Content\"";
 				DEVELOPMENT_TEAM = KZX8AFRF93;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Frontend/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DriveHub;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +514,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09EFCDED2BCC562100456D29 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09EFCD842BC9B6F600456D29 /* Project object */;
 }

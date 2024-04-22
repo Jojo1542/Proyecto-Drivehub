@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum Callback<U, T> {
+    case success(data: U? = nil)
+    case failure(data: T? = nil)
+}

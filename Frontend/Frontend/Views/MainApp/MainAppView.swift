@@ -8,8 +8,45 @@
 import SwiftUI
 
 struct MainAppView: View {
+    
+    @EnvironmentObject var authViewModel: AuthViewModel;
+    
+    @ViewBuilder
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("")
+                
+                Spacer()
+                
+                Button(action: {
+                    authViewModel.logout()
+                }, label: {
+                    Image(systemName: "power")
+                })
+            }
+            .padding()
+            
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Inicio")
+                    }
+                
+                Text("Mis Favoritos")
+                    .tabItem {
+                        Image(systemName: "star")
+                        Text("Favoritos")
+                    }
+                
+                Text("Mi Perfil")
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Perfil")
+                    }
+            }
+        }
     }
 }
 

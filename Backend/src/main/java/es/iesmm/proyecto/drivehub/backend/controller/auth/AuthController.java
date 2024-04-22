@@ -23,7 +23,7 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 	
-	@PostMapping("register")
+	@PostMapping(path)
 	@ResponseBody
 	public ResponseEntity<String> register(@RequestParam String email, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName) {
 		if (authService.registerUser(email, password, firstName, lastName)) {

@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import RetroSwift
+
+struct AuthRegisterRequest {
+    @Query("email") var email: String = ""
+    @Query("password") var password: String = ""
+    @Query("firstName") var firstName: String = ""
+    @Query("lastName") var lastName: String = ""
+}

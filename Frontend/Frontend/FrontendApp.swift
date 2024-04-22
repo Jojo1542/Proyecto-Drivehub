@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FrontendApp: App {
+    
+    @State private var authViewModel = AuthViewModel();
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authViewModel)
         }
     }
 }

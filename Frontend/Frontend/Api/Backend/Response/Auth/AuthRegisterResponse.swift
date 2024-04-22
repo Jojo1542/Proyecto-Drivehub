@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct AuthErrorResponse: Decodable {}
+
+struct AuthRegisterErrorResponse: Error, Decodable {}
