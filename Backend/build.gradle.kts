@@ -41,6 +41,9 @@ dependencies {
 	// Spring Actuator
 	//implementation("org.springframework:spring-jcl")
 
+	// Addons de Hibernate
+	implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+
 	// Jackson JSON Processor
 	implementation("com.fasterxml.jackson.core:jackson-core:2.17.0")
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")

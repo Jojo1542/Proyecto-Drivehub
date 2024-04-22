@@ -5,7 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 public enum UserRoles {
 
     USER,
-    ADMIN;
+    ADMIN,
+    DRIVER_FLEET,
+    DRIVER_CHAUFFEUR;
 
     public String getAuthorityName() {
         return "ROLE_" + name();
