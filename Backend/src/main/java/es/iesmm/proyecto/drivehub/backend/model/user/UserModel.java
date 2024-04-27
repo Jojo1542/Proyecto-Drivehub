@@ -10,10 +10,12 @@ import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.util.converter.RoleListConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Table(
 		name = "USUARIOS",
@@ -60,6 +63,7 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	 */
 	private Date birthDate;
 	private double saldo;
+	private String phone;
 
 	// Validar DNI con un patrón
 	@Pattern(regexp = "^[0-9]{8}[A-Z]$")
@@ -83,10 +87,15 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.phone = "";
 		this.roles = List.of(UserRoles.USER);
 	}
 
 	public UserModel() {}
+
+	public void setEmail(String email) {
+		this.email = email.toLowerCase(); // Se guarda el email en minúsculas para evitar problemas de mayúsculas y minúsculas
+	}
 
 	/*
 	 * Metodo de control de los roles de los usuarios y sus datos asociados.
@@ -129,7 +138,16 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@Override
 	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return roles.stream().map(UserRoles::getGrantedAuthority).toList();
+		Collection<GrantedAuthority> grantedAuthorities = roles.stream().map(UserRoles::getGrantedAuthority).collect(Collectors.toList());
+
+		// Si el usuario es administrador, añadimos los permisos de administrador a sus permisos para poder controlarlos
+		if (adminData != null) {
+			grantedAuthorities.addAll(adminData.getAuthorities());
+		}
+
+		System.out.println(grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
+
+		return grantedAuthorities;
 	}
 
 	@Override

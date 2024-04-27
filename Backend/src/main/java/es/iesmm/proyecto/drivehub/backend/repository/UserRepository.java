@@ -10,10 +10,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 	
-	@Query("SELECT u FROM UserModel u WHERE email = :email")
-	UserModel getUserInfoByEmail(String email);
-	
-	@Query("SELECT u FROM UserModel u WHERE id = :id")
-	UserModel getUserInfoById(Long id);
+	@Query("SELECT u FROM UserModel u WHERE email = LOWER(:email)")
+	UserModel findByEmail(String email);
+
+	@Query("SELECT u FROM UserModel u WHERE DNI = :dni")
+	UserModel findByDNI(String dni);
 
 }

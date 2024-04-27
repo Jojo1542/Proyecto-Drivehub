@@ -14,6 +14,8 @@ struct InputFieldView: View {
     var placeholder: String;
     var isPassword = false;
     var validator: ((Bool) -> Void) = { _ in };
+    var type: UITextContentType? = .none;
+    var keyboard: UIKeyboardType = .default;
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -24,9 +26,16 @@ struct InputFieldView: View {
                     if isPassword {
                         SecureField(placeholder, text: $text)
                             .font(.system(size: 18))
+                            .textContentType(.password)
                     } else {
                         TextField(placeholder, text: $text, onEditingChanged: validator)
                             .font(.system(size: 18))
+                            // Ajustes del teclado
+                            .autocorrectionDisabled(false)
+                            .disableAutocorrection(true)
+                            .textContentType(type)
+                            .keyboardType(keyboard)
+                            .textInputAutocapitalization((type == .emailAddress) ? .none : .sentences)
                     }
                 }
                 .padding(11)

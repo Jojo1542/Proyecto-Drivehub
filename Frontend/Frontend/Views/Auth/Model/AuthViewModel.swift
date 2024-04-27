@@ -10,82 +10,64 @@ import Alamofire
 
 class AuthViewModel: ObservableObject {
     
-    // Base url de la API
-    let baseUrl = "http://192.168.1.49:8080";
-    
     @Published var sessionToken: String?
     @Published var currentUser: UserModel?
     
     func createAccount(email: String, password: String, firstName: String, lastName: String, callback: @escaping (Callback<Void, String>) -> ()) {
-        AF.request("\(baseUrl)/auth/register", method: .post, parameters:
-                    ["email": email, "password": password, "firstName": firstName, "lastName": lastName]
-        ).validate(statusCode: 200..<300)
-        .validate(contentType: ["application/json"])
-        .cURLDescription { description in
-            print("Register request: " + description)
-        }
-        .response { response in
-            switch response.result {
-                case .success:
+        RegisterRequest.createAccount(email: email, password: password, firstName: firstName, lastName: lastName, completion: { response in
+            switch response {
+                case .success(_):
                     callback(.success())
                 case let .failure(error):
-                    if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
-                        callback(.failure(data: errorString))
+                    if (error == 409) {
+                        callback(.failure(data: String(localized: "El correo electrónico introducido ya está registrado.")))
                     } else {
-                        callback(.failure(data: error.failureReason ?? "Error desconocido"))
+                        debugPrint("Hay un error desconocido registrando el usuario con status \(error ?? -1)")
+                        callback(.failure(data: String(localized: "Ha ocurrido un error desconocido creando la cuenta. Contacte con un Administrador.")))
                     }
             }
-        }
+        })
     }
     
     func login(email: String, password: String, callback: @escaping (Callback<Void, String>) -> ()) {
-        AF.request("\(baseUrl)/auth/login", method: .post, headers: [.authorization(username: email, password: password)])
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .cURLDescription { description in
-                print("Login request: " + description)
-            }.responseDecodable(of: LoginResponse.self) { response in
-                switch response.result {
-                    case .success(let loginResponse):
-                        self.sessionToken = loginResponse.accessToken // Token de inicio de sesión
-                        self.updateUser() // Actualizar el usuario
-                        callback(.success())
-                    case let .failure(error):
-                        if let data = response.data, let errorString = String(data: data, encoding: .utf8) {
-                            callback(.failure(data: errorString))
-                        } else {
-                            // Manejo genérico de errores de red u otro
-                            callback(.failure(data: error.failureReason ?? "Error desconocido"))
-                        }
-                }
+        LoginRequest.login(email: email, password: password, completion: { response in
+            switch response {
+                case let .success(response):
+                    self.sessionToken = response?.accessToken;
+                    self.updateUser();
+                    callback(.success());
+                case let .failure(error):
+                    if (error == 401) {
+                        callback(.failure(data: String(localized: "El usuario y/o contraseña son incorrecos.")))
+                    } else {
+                        debugPrint("Hay un error desconocido iniciando sesión con status \(error ?? -1)")
+                        callback(.failure(data: String(localized: "Ha ocurrido un error desconocido iniciando sesión. Contacte con un Administrador.")))
+                    }
             }
+        })
     }
     
     func logout() {
         sessionToken = nil;
-        currentUser = nil;
         
         // TODO: Hacer una petición al servidor para cerrar la sesión
     }
 
     func updateUser() {
         if (sessionToken != nil) {
-            AF.request("\(baseUrl)/user/me", headers: [.authorization(bearerToken: sessionToken!)])
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .cURLDescription { description in
-                    print("Update user request: " + description)
-                }.responseDecodable(of: UserModel.self) { response in
-                    switch response.result {
-                        case .success(let user):
-                            self.currentUser = user
-                        case let .failure(error):
-                            print("Error updating user: \(error)")
-                    }
+            UserMeRequest.getUserInfo(sessionToken: sessionToken!) { response in
+                switch response {
+                    case let .success(userModel):
+                        self.currentUser = userModel;
+                        print("User \(userModel!.id) with email \(userModel!.email) loaded. Roles. \(userModel!.roles)")
+                    case let .failure(error):
+                        debugPrint("Hay un error desconocido cargando el usuario, status \(error ?? -1)")
+                        self.currentUser = nil;
                 }
-            
+            }
         } else {
-            print("Updating while not logged in, ignoring...")
+            debugPrint("Updating while not logged in, removing current user...")
+            self.currentUser = nil;
         }
     }
 }

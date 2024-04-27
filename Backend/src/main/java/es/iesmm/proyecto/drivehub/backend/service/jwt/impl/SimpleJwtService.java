@@ -1,6 +1,7 @@
-package es.iesmm.proyecto.drivehub.backend.service.jwt;
+package es.iesmm.proyecto.drivehub.backend.service.jwt.impl;
 
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.service.jwt.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

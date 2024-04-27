@@ -9,14 +9,28 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var isEmailValid = false
-    @State private var textEmail =  ""
+    /*
+     Variables de entorno / Compartidas
+     */
+    @EnvironmentObject var authViewModel: AuthViewModel;
+    
+    /*
+     Variables de control de formularios
+     */
+    @State private var email = "";
     @State private var password = "";
     
+    /*
+     Variables de control de alertas
+     */
     @State private var isShowingAlert = false;
     @State private var alertMessage = "";
+    @State private var alertTitle = "";
     
-    @EnvironmentObject var authViewModel: AuthViewModel;
+    /*
+     Estado del botón de login y si se está iniciando sesion
+     */
+    @State private var loading = false;
     
     var body: some View {
         NavigationStack {
@@ -27,65 +41,48 @@ struct LoginView: View {
                     .scaledToFill()
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 250)
                     .padding(.vertical, 20)
-                
-                // Espaciado
-                //Spacer()
 
-                // Campos
+                // Campos a rellenar
                 VStack(spacing: 10, content: {
                     InputFieldView(
-                        text: $textEmail,
+                        text: $email,
                         icon: "envelope.fill",
                         placeholder: "hello@example.com",
-                        validator: {(changed) in
-                            if (!changed) {
-                                if textFieldValidatorEmail(self.textEmail) {
-                                    self.isEmailValid = true
-                                } else {
-                                    self.isEmailValid = false
-                                    self.textEmail = ""
-                                    
-                                    alertMessage = "El email no es válido. Por favor, inténtelo de nuevo."
-                                    isShowingAlert = true
-                                }
-                            }
-                        }
-                    ).autocapitalization(.none)
-                    .alert(isPresented: $isShowingAlert) {
-                        Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                    }
+                        type: .emailAddress,
+                        keyboard: .emailAddress
+                    )
                     
                     InputFieldView(
                         text: $password,
                         icon: "key.fill",
-                        placeholder: "Contraseña",
+                        placeholder: String(localized: "Contraseña"),
                         isPassword: true
-                    ).autocapitalization(.none)
+                    )
                 })
                 
-                // Botón
+                // Botón de inicio de sesión
                 Button {
-                    withAnimation(.spring) {
-                        authViewModel.login(email: textEmail, password: password) { callback in
-                            switch (callback) {
-                                case let .success(_empty):
-                                    debugPrint("Inicio de sesión correcto")
-                                case let .failure(_errorCode):
-                                    alertMessage = "Correo electronico o contraseña incorrectos. Intentelo de nuevo."
-                                    isShowingAlert = true
-                            }
-                        }
+                    // Se especifica que todos los cambios hechos dentro de este botón tendrán animaciones cuando se apliquen cambios
+                    withAnimation(.bouncy) {
+                        realizeLogin();
                     }
                 } label: {
-                    HStack {
-                        Text("Iniciar sesión").fontWeight(.bold)
-                        Image("arrowshape.forward.circle")
+                    if (!loading) {
+                        HStack {
+                            Text("Iniciar sesión").fontWeight(.bold)
+                            Image(systemName: "arrow.forward.circle")
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                    } else {
+                        ProgressView()
+                            .frame(width: UIScreen.main.bounds.width - 300, height: 48)
+                            .progressViewStyle(CircularProgressViewStyle(tint: Color.white))
                     }
-                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
                 }
                 .alert(isPresented: $isShowingAlert) {
-                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .cancel(Text("OK")))
                 }
+                .disabled(loading)
                 .foregroundColor(.white)
                 .background(Color.accentColor)
                 .cornerRadius(10)
@@ -103,8 +100,48 @@ struct LoginView: View {
                     }
                     .font(.system(size: 18))
                     .foregroundColor(.accentColor)
+                    .padding(.bottom, 20)
                 }
             }
+        }
+    }
+    
+    /*
+     Muestra una alerta en pantalla con los datos enviados
+     */
+    func showAlert(title: String, description: String) {
+        alertTitle = title
+        alertMessage = description
+        isShowingAlert = true
+    }
+    
+    /*
+     Realiza el proceso de login del botón y tira error en caso necesario.
+     */
+    func realizeLogin() {
+        // Se comprueba si todos los campos están rellenos, si no, tira error
+        if (!email.isEmpty && !password.isEmpty) {
+            
+            // Se comprueba que el e-mail es válido, si no, tira error
+            if (textFieldValidatorEmail(self.email)) {
+                loading = true;
+                
+                authViewModel.login(email: email, password: password) { callback in
+                    switch (callback) {
+                        case .success(_):
+                            debugPrint("Inicio de sesión correcto")
+                        case let .failure(errorMsg):
+                            // Mostramos el error lanzado por la aplicación y devuelto por el controlador. IMPORTANTE, los errores son devueltos ya traducidos.
+                            showAlert(title: "Error", description: errorMsg!)
+                    }
+                 
+                    loading = false;
+                 }
+            } else {
+                showAlert(title: "Error", description: String(localized: "No se ha introducido un E-Mail válido, comprueba de nuevo."))
+            }
+        } else {
+            showAlert(title: "Error", description: String(localized: "Algúno de los campos no se encuentra relleno, comprueba e intentalo de nuevo."))
         }
     }
 }

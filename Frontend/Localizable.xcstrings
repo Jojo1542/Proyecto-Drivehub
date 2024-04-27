@@ -1,0 +1,359 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "" : {
+
+    },
+    "¡Bienvenido %@ %@!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome%1$@ %2$@!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "¡Bienvenido %1$@ %2$@!"
+          }
+        }
+      }
+    },
+    "¡Bienvenido a DriveHub!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to DriveHub!"
+          }
+        }
+      }
+    },
+    "¡Crea una ahora!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account."
+          }
+        }
+      }
+    },
+    "¿No tienes cuenta?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not registered?"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "Acerca de" : {
+
+    },
+    "Administración" : {
+
+    },
+    "Ajustes de notificaciones" : {
+
+    },
+    "Algúno de los campos no se encuentra relleno, comprueba e intentalo de nuevo." : {
+
+    },
+    "Alquilar" : {
+
+    },
+    "Apellidos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last name"
+          }
+        }
+      }
+    },
+    "Bienvenido a la plataforma donde todo lo relacionado con la carretera se une. Para poder empezar necesitamos algunos datos para comprobar que eres humano y que eres mayor de edad." : {
+
+    },
+    "Cambiar Contraseña" : {
+
+    },
+    "Cambio de contraseña" : {
+
+    },
+    "Cerrar" : {
+
+    },
+    "Cerrar sesión" : {
+
+    },
+    "Conductor" : {
+
+    },
+    "Confirmar Cambio" : {
+
+    },
+    "Confirmar Contraseña" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm password"
+          }
+        }
+      }
+    },
+    "Contraseña" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        }
+      }
+    },
+    "Crea tu cuenta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your account"
+          }
+        }
+      }
+    },
+    "Crear cuenta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Register"
+          }
+        }
+      }
+    },
+    "Datos Personales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal data"
+          }
+        }
+      }
+    },
+    "Detalles del perfil" : {
+
+    },
+    "DNI:" : {
+
+    },
+    "El correo electrónico introducido ya está registrado." : {
+
+    },
+    "El usuario y/o contraseña son incorrecos." : {
+
+    },
+    "Envios" : {
+
+    },
+    "Error" : {
+
+    },
+    "Es recomendable que la nueva contraseña contenga al menos 8 caracteres, un numero, una letra mayuscula y una minuscula." : {
+
+    },
+    "Favoritos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
+    },
+    "Fecha de nacimiento:" : {
+
+    },
+    "Guardar cambios" : {
+
+    },
+    "Ha ocurrido un error desconocido creando la cuenta. Contacte con un Administrador." : {
+
+    },
+    "Ha ocurrido un error desconocido iniciando sesión. Contacte con un Administrador." : {
+
+    },
+    "Hello, Chaffeur!" : {
+
+    },
+    "Hello, Fleet Driver!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Hola mundo" : {
+
+    },
+    "Iniciar sesión" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        }
+      }
+    },
+    "Inicio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
+    },
+    "La contraseña se ha cambiado correctamente." : {
+
+    },
+    "Las contraseñas introducidas deben ser iguales." : {
+
+    },
+    "Las contraseñas no coinciden." : {
+
+    },
+    "Mi Perfil" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Profile"
+          }
+        }
+      }
+    },
+    "Mi saldo" : {
+
+    },
+    "Mis documentos" : {
+
+    },
+    "Mis Favoritos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Favourites"
+          }
+        }
+      }
+    },
+    "Mis trayectos" : {
+
+    },
+    "No se ha introducido un E-Mail válido, comprueba de nuevo." : {
+
+    },
+    "No se ha podido cambiar la contraseña, por favor intentalo de nuevo más tarde." : {
+
+    },
+    "Nombre" : {
+
+    },
+    "Nueva contraseña" : {
+
+    },
+    "OK" : {
+
+    },
+    "Perfil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        }
+      }
+    },
+    "Política de privacidad" : {
+
+    },
+    "Repetir nueva contraseña" : {
+
+    },
+    "Se debe rellenar la contraseña y la confirmación de la contraseña." : {
+
+    },
+    "Términos y condiciones" : {
+
+    },
+    "test" : {
+
+    },
+    "Test" : {
+
+    },
+    "Trayectos" : {
+
+    },
+    "Tu cuenta ha sido registrada, vuelve al la pantalla anterior para iniciar sesión" : {
+
+    },
+    "Tu DNI es %@ y tu fecha de nacimiento %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your DNI is %@ and your birthdate %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tu DNI es %1$@ y tu fecha de nacimiento %2$@"
+          }
+        }
+      }
+    },
+    "Tu email es: %@ y tu id es %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your mail is %@ and your id %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tu email es: %1$@ y tu id es %2$lld"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
