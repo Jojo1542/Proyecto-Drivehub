@@ -29,6 +29,9 @@ public class SimpleJwtService implements JwtService {
         secretKey = Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String createToken(UserModel userModel) {
         return Jwts.builder()
@@ -42,6 +45,9 @@ public class SimpleJwtService implements JwtService {
                 .compact();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isValid(String token, UserModel userModel) {
         return !isExpired(token)
@@ -49,26 +55,41 @@ public class SimpleJwtService implements JwtService {
                 && extractEmail(token).equals(userModel.getEmail());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String extractEmail(String token) {
         return extractClaims(token).get("email", String.class);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Long extractUserId(String token) {
         return extractClaims(token).get("userId", Long.class);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Date extractExpiration(String token) {
         return extractClaims(token).getExpiration();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Claims extractClaims(String token) {
         return Jwts.parser()
@@ -78,16 +99,25 @@ public class SimpleJwtService implements JwtService {
                 .getBody();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String refreshToken(String token) {
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean canRefresh(String token) {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String extractTokenFromHeader(String bearerToken) {
         String result = null;
