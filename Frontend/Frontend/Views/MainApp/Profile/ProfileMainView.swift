@@ -39,9 +39,13 @@ struct ProfileMainView: View {
                 
                 
                 Section(header: ListSectionHeader(title: "Información general", icon: "person.fill")) {
-                    NavigationLink(destination: EmptyView(), label: { Label("Mis trayectos", systemImage: "car.fill") });
+                    NavigationLink(destination: TripListView(trips: [
+                        PreviewHelper.finishedTrip,
+                        PreviewHelper.pendingTrip,
+                        PreviewHelper.acceptedTrip,
+                    ]), label: { Label("Mis trayectos", systemImage: "car.fill") });
                     NavigationLink(destination: EmptyView(), label: { Label("Mis documentos", systemImage: "person.text.rectangle.fill") });
-                    NavigationLink(destination: EmptyView(), label: { Label("Mi saldo", systemImage: "creditcard.fill") });
+                    NavigationLink(destination: BalanceDetailsView(), label: { Label("Mi saldo", systemImage: "creditcard.fill") });
                 }
                 
                 Section(header: ListSectionHeader(title: "Ajustes", icon: "gear")) {

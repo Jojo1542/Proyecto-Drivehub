@@ -50,12 +50,25 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@ - %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@ - %3$@"
           }
         }
       }
@@ -86,6 +99,9 @@
       }
     },
     "Bienvenido a la plataforma donde todo lo relacionado con la carretera se une. Para poder empezar necesitamos algunos datos para comprobar que eres humano y que eres mayor de edad." : {
+
+    },
+    "Borrar cuenta" : {
 
     },
     "Cambiar Contraseña" : {
@@ -156,7 +172,10 @@
         }
       }
     },
-    "Detalles del perfil" : {
+    "Destino" : {
+
+    },
+    "DNI" : {
 
     },
     "DNI:" : {
@@ -166,6 +185,9 @@
 
     },
     "El usuario y/o contraseña son incorrecos." : {
+
+    },
+    "Email" : {
 
     },
     "Envios" : {
@@ -187,6 +209,9 @@
           }
         }
       }
+    },
+    "Fecha de nacimiento" : {
+
     },
     "Fecha de nacimiento:" : {
 
@@ -210,6 +235,12 @@
 
     },
     "Hola mundo" : {
+
+    },
+    "Información de desarrollador" : {
+
+    },
+    "Información personal" : {
 
     },
     "Iniciar sesión" : {
@@ -304,7 +335,22 @@
     "Repetir nueva contraseña" : {
 
     },
+    "Rol" : {
+
+    },
+    "Roles" : {
+
+    },
+    "Saldo" : {
+
+    },
+    "Salida" : {
+
+    },
     "Se debe rellenar la contraseña y la confirmación de la contraseña." : {
+
+    },
+    "Teléfono" : {
 
     },
     "Términos y condiciones" : {
@@ -314,6 +360,9 @@
 
     },
     "Test" : {
+
+    },
+    "Tratamiento de datos" : {
 
     },
     "Trayectos" : {
@@ -353,6 +402,9 @@
           }
         }
       }
+    },
+    "Viajes" : {
+
     }
   },
   "version" : "1.0"

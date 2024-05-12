@@ -27,6 +27,7 @@ struct ContentView: View {
                 appViewModel = AppViewModel(authViewModel: authViewModel);
             }
         }
+        //TripListView()
     }
 }
 

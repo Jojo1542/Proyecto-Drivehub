@@ -19,6 +19,11 @@
 		0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */; };
 		09A236E12BDC430700D54E4C /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A236E02BDC430700D54E4C /* ChangePasswordView.swift */; };
 		09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */; };
+		09D0E3412BE0425D00C87631 /* ListSectionTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3402BE0425D00C87631 /* ListSectionTextItem.swift */; };
+		09D0E3432BE044A400C87631 /* BalanceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */; };
+		09D0E3452BE0456000C87631 /* MapIndicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3442BE0456000C87631 /* MapIndicationsView.swift */; };
+		09D0E3472BE04DDD00C87631 /* MapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3462BE04DDD00C87631 /* MapUtils.swift */; };
+		09D0E3492BE04EA000C87631 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3482BE04EA000C87631 /* TripListView.swift */; };
 		09D556B62BD8EBE2005411D0 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556B52BD8EBE2005411D0 /* AppNavigationView.swift */; };
 		09D556BA2BD8ECC2005411D0 /* RequieredFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556B92BD8ECC2005411D0 /* RequieredFieldsView.swift */; };
 		09D556BC2BD8F0EE005411D0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 09D556BB2BD8F0EE005411D0 /* Localizable.xcstrings */; };
@@ -29,6 +34,9 @@
 		09D556CA2BD91151005411D0 /* FleetDriverMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556C92BD91151005411D0 /* FleetDriverMainView.swift */; };
 		09D556CC2BD9126D005411D0 /* DriverMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556CB2BD9126D005411D0 /* DriverMainView.swift */; };
 		09D556D22BD921DE005411D0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556D12BD921DE005411D0 /* MapView.swift */; };
+		09EB70842BE1081E00D15F6A /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70832BE1081E00D15F6A /* TripCardView.swift */; };
+		09EB70862BE1083300D15F6A /* TripDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70852BE1083300D15F6A /* TripDetailsView.swift */; };
+		09EB70882BE10AD500D15F6A /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70872BE10AD500D15F6A /* TripModel.swift */; };
 		09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */; };
 		09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCD912BC9B6F600456D29 /* ContentView.swift */; };
 		09EFCD942BC9B6F800456D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09EFCD932BC9B6F800456D29 /* Assets.xcassets */; };
@@ -69,6 +77,11 @@
 		0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
 		09A236E02BDC430700D54E4C /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		09D0E3402BE0425D00C87631 /* ListSectionTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionTextItem.swift; sourceTree = "<group>"; };
+		09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailsView.swift; sourceTree = "<group>"; };
+		09D0E3442BE0456000C87631 /* MapIndicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIndicationsView.swift; sourceTree = "<group>"; };
+		09D0E3462BE04DDD00C87631 /* MapUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUtils.swift; sourceTree = "<group>"; };
+		09D0E3482BE04EA000C87631 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
 		09D556B52BD8EBE2005411D0 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
 		09D556B92BD8ECC2005411D0 /* RequieredFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequieredFieldsView.swift; sourceTree = "<group>"; };
 		09D556BB2BD8F0EE005411D0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -79,6 +92,9 @@
 		09D556C92BD91151005411D0 /* FleetDriverMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverMainView.swift; sourceTree = "<group>"; };
 		09D556CB2BD9126D005411D0 /* DriverMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMainView.swift; sourceTree = "<group>"; };
 		09D556D12BD921DE005411D0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		09EB70832BE1081E00D15F6A /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		09EB70852BE1083300D15F6A /* TripDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsView.swift; sourceTree = "<group>"; };
+		09EB70872BE10AD500D15F6A /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		09EFCD8C2BC9B6F600456D29 /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendApp.swift; sourceTree = "<group>"; };
 		09EFCD912BC9B6F600456D29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				093E47262BDAE8C300C124A4 /* ListSectionHeader.swift */,
+				09D0E3402BE0425D00C87631 /* ListSectionTextItem.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -189,6 +206,8 @@
 		09A236E22BDC43DC00D54E4C /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				09EB70822BE1080000D15F6A /* Trip */,
+				09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -258,8 +277,19 @@
 			isa = PBXGroup;
 			children = (
 				09D556D12BD921DE005411D0 /* MapView.swift */,
+				09D0E3442BE0456000C87631 /* MapIndicationsView.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		09EB70822BE1080000D15F6A /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				09D0E3482BE04EA000C87631 /* TripListView.swift */,
+				09EB70832BE1081E00D15F6A /* TripCardView.swift */,
+				09EB70852BE1083300D15F6A /* TripDetailsView.swift */,
+			);
+			path = Trip;
 			sourceTree = "<group>";
 		};
 		09EFCD832BC9B6F600456D29 = {
@@ -298,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				09EFCDC22BC9C0D200456D29 /* UserModel.swift */,
+				09EB70872BE10AD500D15F6A /* TripModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,6 +407,7 @@
 				09EFCDF82BCC669300456D29 /* EmailUtils.swift */,
 				09D556C12BD8FE90005411D0 /* DNIValidator.swift */,
 				093E47242BDAE13D00C124A4 /* PreviewHelper.swift */,
+				09D0E3462BE04DDD00C87631 /* MapUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -465,12 +497,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09EB70862BE1083300D15F6A /* TripDetailsView.swift in Sources */,
 				093E47322BDAFF7300C124A4 /* LoginRequest.swift in Sources */,
 				09EFCDCC2BC9C1F700456D29 /* InputFieldView.swift in Sources */,
 				093E472C2BDAFEB900C124A4 /* NetworkConfiguration.swift in Sources */,
 				09EFCDCF2BC9DCAD00456D29 /* MainAppView.swift in Sources */,
 				09EFCDC12BC9C0A500456D29 /* AuthViewModel.swift in Sources */,
 				09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */,
+				09EB70842BE1081E00D15F6A /* TripCardView.swift in Sources */,
 				093E47302BDAFF6B00C124A4 /* RegisterRequest.swift in Sources */,
 				09D556B62BD8EBE2005411D0 /* AppNavigationView.swift in Sources */,
 				09D556BA2BD8ECC2005411D0 /* RequieredFieldsView.swift in Sources */,
@@ -480,20 +514,26 @@
 				09D556BE2BD8F862005411D0 /* InputDatePickerView.swift in Sources */,
 				09D556C62BD91125005411D0 /* AdminMainView.swift in Sources */,
 				09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */,
+				09D0E3492BE04EA000C87631 /* TripListView.swift in Sources */,
 				0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */,
 				09D556CA2BD91151005411D0 /* FleetDriverMainView.swift in Sources */,
 				09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */,
 				093E47232BDADB9600C124A4 /* ProfileMainView.swift in Sources */,
 				09D556C82BD91147005411D0 /* ChauffeurDriverMainView.swift in Sources */,
+				09D0E3432BE044A400C87631 /* BalanceDetailsView.swift in Sources */,
 				093E47272BDAE8C300C124A4 /* ListSectionHeader.swift in Sources */,
 				0991C4142BDC11BD00BABE7F /* ProfileDetailsView.swift in Sources */,
+				09EB70882BE10AD500D15F6A /* TripModel.swift in Sources */,
+				09D0E3472BE04DDD00C87631 /* MapUtils.swift in Sources */,
 				09A236E12BDC430700D54E4C /* ChangePasswordView.swift in Sources */,
 				093E47342BDB0B8C00C124A4 /* UserMeRequest.swift in Sources */,
 				09EFCDC92BC9C1B700456D29 /* RegisterView.swift in Sources */,
+				09D0E3412BE0425D00C87631 /* ListSectionTextItem.swift in Sources */,
 				09EFCDC72BC9C1AB00456D29 /* LoginView.swift in Sources */,
 				09D556CC2BD9126D005411D0 /* DriverMainView.swift in Sources */,
 				09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */,
 				09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */,
+				09D0E3452BE0456000C87631 /* MapIndicationsView.swift in Sources */,
 				09D556C22BD8FE90005411D0 /* DNIValidator.swift in Sources */,
 				09EFCDC32BC9C0D200456D29 /* UserModel.swift in Sources */,
 			);
@@ -627,6 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -650,6 +691,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.iesmm.proyecto.drivehub.Frontend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -662,6 +704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -685,6 +728,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.iesmm.proyecto.drivehub.Frontend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
