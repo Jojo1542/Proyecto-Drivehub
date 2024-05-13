@@ -49,9 +49,15 @@ public class RentCar extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonIgnore
-    private Set<UserRent> userRent;
+    private Set<UserRent> userRent = Set.of();
 
     public boolean isAvailable() {
         return userRent.stream().noneMatch(UserRent::isActive);
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean isNew() {
+        return super.isNew();
     }
 }

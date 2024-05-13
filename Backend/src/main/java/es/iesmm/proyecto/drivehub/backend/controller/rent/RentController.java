@@ -67,12 +67,6 @@ public class RentController {
     /*
     Metodos que requieren de un rol
      */
-    @GetMapping("/all")
-    @ResponseBody
-    @PreAuthorize("hasRole('ADMIN') and hasAuthority('LIST_ALL_VEHICLES')")
-    public List<RentCar> listRentedVehicles() {
-        return vehicleService.findAll();
-    }
 
     @GetMapping("/allRents")
     @ResponseBody

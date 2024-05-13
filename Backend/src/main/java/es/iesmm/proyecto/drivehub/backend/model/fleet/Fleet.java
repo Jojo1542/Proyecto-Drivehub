@@ -1,12 +1,14 @@
 package es.iesmm.proyecto.drivehub.backend.model.fleet;
 
 import es.iesmm.proyecto.drivehub.backend.model.fleet.vehicle.VehicleType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.contract.DriverContract;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import java.util.List;
 
 @Table(
         name = "FLOTA_VEHICULOS"
@@ -25,5 +27,9 @@ public class Fleet extends AbstractPersistable<Long> {
     // Convert to String
     @Enumerated(EnumType.STRING)
     private VehicleType vehicleType;
+
+    // One fleet can have multiple drivers
+    @OneToMany(mappedBy = "fleet", fetch = FetchType.EAGER)
+    private List<FleetDriverModelData> drivers;
 
 }

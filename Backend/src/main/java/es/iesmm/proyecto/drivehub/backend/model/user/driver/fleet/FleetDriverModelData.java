@@ -1,10 +1,8 @@
 package es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet;
 
+import es.iesmm.proyecto.drivehub.backend.model.fleet.Fleet;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +21,9 @@ public class FleetDriverModelData extends DriverModelData {
     @Column(name = "max_tonnage")
     @ColumnDefault("10")
     public double maxTonnage;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fleet_id")
+    private Fleet fleet;
 
 }

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.sql.Date;
 import java.util.Set;
 
 @Table(name = "CONDUCTORES")
@@ -55,4 +56,11 @@ public abstract class DriverModelData {
         }
     }
 
+    public DriverContract getActualContract() {
+        // Contrato actual
+        // Ordenamos de más reciente a más antiguo
+        return driverContracts.stream()
+                .min((c1, c2) -> c2.getStartDate().compareTo(c1.getStartDate())) // Ordenamos de más reciente a más antiguo y cogemos el primero
+                .orElse(null);
+    }
 }

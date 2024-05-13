@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.service.vehicle.impl;
 
+import com.google.common.base.Preconditions;
 import es.iesmm.proyecto.drivehub.backend.model.rent.vehicle.RentCar;
 import es.iesmm.proyecto.drivehub.backend.repository.VehicleRepository;
 import es.iesmm.proyecto.drivehub.backend.service.vehicle.VehicleService;
@@ -28,5 +29,35 @@ public class SimpleVehicleService implements VehicleService {
     @Override
     public Optional<RentCar> findById(Long vehicleId) {
         return vehicleRepository.findById(vehicleId);
+    }
+
+    @Override
+    public Optional<RentCar> findByPlate(String plate) {
+        return vehicleRepository.findByPlate(plate);
+    }
+
+    @Override
+    public Optional<RentCar> findByNumBastidor(String numBastidor) {
+        return vehicleRepository.findByNumBastidor(numBastidor);
+    }
+
+    @Override
+    public RentCar save(RentCar vehicle) {
+        // Control de errores y validaciones de los datos
+        Preconditions.checkNotNull(vehicle, "The vehicle cannot be null");
+        Preconditions.checkNotNull(vehicle.getId(), "The id cannot be null");
+        Preconditions.checkState(findByPlate(vehicle.getPlate()).isEmpty(), "The vehicle with plate " + vehicle.getPlate() + " already exists");
+        Preconditions.checkState(findByNumBastidor(vehicle.getNumBastidor()).isEmpty(), "The vehicle with numBastidor " + vehicle.getNumBastidor() + " already exists");
+
+        return vehicleRepository.save(vehicle);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        // Control de errores y validaciones de los datos
+        Preconditions.checkNotNull(id, "The id cannot be null");
+        Preconditions.checkArgument(vehicleRepository.existsById(id), "The vehicle with id " + id + " does not exist");
+
+        vehicleRepository.deleteById(id);
     }
 }

@@ -11,4 +11,12 @@ public interface VehicleService {
     List<RentCar> findAll();
 
     Optional<RentCar> findById(Long vehicleId);
+
+    RentCar save(RentCar vehicle);
+
+    Optional<RentCar> findByPlate(String plate);
+
+    Optional<RentCar> findByNumBastidor(String numBastidor);
+
+    void deleteById(Long id);
 }

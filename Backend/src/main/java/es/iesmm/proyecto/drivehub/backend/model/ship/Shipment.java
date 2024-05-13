@@ -11,6 +11,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 
 @Table(name = "ENVIO")
@@ -59,6 +60,14 @@ public class Shipment extends AbstractPersistable<Long> {
                     .description("Su envio ha sido registrado y está pendiente de recogida en la dirección de origen.")
                     .build());
         }
+    }
+
+    public ShipmentStatusType getActualStatus() {
+        return hidden ? ShipmentStatusType.HIDDEN : actualStatus;
+    }
+
+    public List<ShipmentStatusUpdate> getStatusHistory() {
+        return hidden ? Collections.emptyList() : statusHistory;
     }
 
     @Override

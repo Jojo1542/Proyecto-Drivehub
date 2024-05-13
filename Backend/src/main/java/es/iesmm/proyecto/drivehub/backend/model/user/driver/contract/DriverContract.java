@@ -1,10 +1,10 @@
 package es.iesmm.proyecto.drivehub.backend.model.user.driver.contract;
 
+import es.iesmm.proyecto.drivehub.backend.model.fleet.Fleet;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import org.hibernate.validator.internal.util.Contracts;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.util.Date;
@@ -29,13 +29,18 @@ public class DriverContract extends AbstractPersistable<Long> {
     @NotEmpty
     private double salary;
 
-    /*@OneToOne(mappedBy = "previousContract")
-    private DriverContract previousContract;
+    // Next contract (renewal)
+    @OneToOne(fetch = FetchType.LAZY)
+    private DriverContract nextContract;
 
-    @OneToOne(mappedBy = "nextContract")
-    private DriverContract nextContract;*/
+    // Previous contract
+    @OneToOne(fetch = FetchType.LAZY)
+    private DriverContract previousContract;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private DriverModelData driver;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Fleet fleet;
 
 }
