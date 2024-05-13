@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.model.trip;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import es.iesmm.proyecto.drivehub.backend.model.trip.status.TripStatus;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import jakarta.persistence.*;
@@ -25,6 +26,8 @@ public class TripModel extends AbstractPersistable<Long> {
 
     @NotEmpty
     // Por defecto, un trayecto se crea en estado PENDING
+    @Enumerated(EnumType.STRING)
+    @Column(name = "trip_status")
     private TripStatus status = TripStatus.PENDING;
 
     @NotEmpty
@@ -52,8 +55,12 @@ public class TripModel extends AbstractPersistable<Long> {
     @NotEmpty
     private boolean sendPackage;
 
+    private String vehicleModel;
+    private String vehiclePlate;
+
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "id")
+    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone"})
     private UserModel driver;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)

@@ -2,6 +2,8 @@ package es.iesmm.proyecto.drivehub.backend.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
@@ -57,6 +59,10 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@Convert(converter = RoleListConverter.class)
 	@Column(name = "roles", nullable = false)
 	private List<UserRoles> roles;
+
+	@OneToMany(mappedBy = "user")
+	@JsonProperty("rents")
+	private List<UserRent> userRent;
 
 	/*
 	COLUMNAS OPCIONALES

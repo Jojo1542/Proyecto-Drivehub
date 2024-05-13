@@ -2,6 +2,7 @@ package es.iesmm.proyecto.drivehub.backend.model.user.admin;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.iesmm.proyecto.drivehub.backend.model.fleet.Fleet;
+import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.permisison.AdminPermission;
 import es.iesmm.proyecto.drivehub.backend.util.converter.AdminPermissionListConverter;
 import es.iesmm.proyecto.drivehub.backend.util.converter.LongListConverter;
@@ -35,8 +36,14 @@ public class AdminModelData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @JsonIgnore
     private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    @JsonIgnore
+    private UserModel userModel;
 
     @Column(name = "flotas_con_acceso")
     @Convert(converter = LongListConverter.class)
