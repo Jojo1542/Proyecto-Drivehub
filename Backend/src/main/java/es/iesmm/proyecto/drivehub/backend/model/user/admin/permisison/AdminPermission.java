@@ -8,7 +8,18 @@ public enum AdminPermission {
     GET_ALL_USERS,
     SEE_USER_DETAILS,
     UPDATE_USER,
-    DELETE_USER;
+    DELETE_USER,
+    CREATE_SHIPMENT,
+    UPDATE_SHIPMENT,
+    DELETE_SHIPMENT,
+    LIST_ALL_RENTS,
+    LIST_ALL_VEHICLES,
+    GET_VEHICLE,
+    CREATE_VEHICLE,
+    UPDATE_VEHICLE,
+    DELETE_VEHICLE,
+    CREATE_FLEET,
+    DELETE_FLEET;
 
     public String getAuthorityName() {
         return name();

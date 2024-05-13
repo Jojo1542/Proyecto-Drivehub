@@ -60,7 +60,7 @@ public class TripModel extends AbstractPersistable<Long> {
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "id")
-    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone"})
+    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData"})
     private UserModel driver;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)

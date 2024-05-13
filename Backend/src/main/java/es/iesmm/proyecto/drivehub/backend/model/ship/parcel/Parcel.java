@@ -20,6 +20,7 @@ public class Parcel extends AbstractPersistable<Long> {
 
     @ManyToOne
     @JoinColumn(name = "shipment_id", insertable = false, updatable = false)
+    @JsonIgnore
     private Shipment shipment;
 
     private String content;

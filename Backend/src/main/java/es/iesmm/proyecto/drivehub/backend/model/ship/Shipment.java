@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.sql.Date;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 @Table(name = "ENVIO")
@@ -35,15 +36,15 @@ public class Shipment extends AbstractPersistable<Long> {
     // Save the status history on the database
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "shipment_id")
-    private List<ShipmentStatusUpdate> statusHistory;
+    private List<ShipmentStatusUpdate> statusHistory = new LinkedList<>();
 
     // Save the parcels on the database
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "shipment_id")
-    private List<Parcel> parcels;
+    private List<Parcel> parcels = new LinkedList<>();
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone"})
+    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData"})
     private UserModel driver;
 
     @PrePersist
@@ -53,12 +54,20 @@ public class Shipment extends AbstractPersistable<Long> {
             actualStatus = ShipmentStatusType.PENDING_TO_PICK_UP;
         }
 
-        if (statusHistory.isEmpty()) {
+        // Añadir el historial si no hay historial
+        if (statusHistory == null || statusHistory.isEmpty()) {
+            statusHistory = new LinkedList<>();
+
             statusHistory.add(ShipmentStatusUpdate.builder()
                     .updateDate(new Date(System.currentTimeMillis()))
                     .status(actualStatus)
                     .description("Su envio ha sido registrado y está pendiente de recogida en la dirección de origen.")
                     .build());
+        }
+
+        // Si no hay paquetes, crear el array vacío
+        if (parcels == null) {
+            parcels = new LinkedList<>();
         }
     }
 
@@ -68,6 +77,16 @@ public class Shipment extends AbstractPersistable<Long> {
 
     public List<ShipmentStatusUpdate> getStatusHistory() {
         return hidden ? Collections.emptyList() : statusHistory;
+    }
+
+    public void setParcels(List<Parcel> parcels) {
+        // Limpiar los paquetes
+        this.parcels.clear();
+
+        if (parcels != null) {
+            // Añadir los paquetes
+            this.parcels.addAll(parcels);
+        }
     }
 
     @Override

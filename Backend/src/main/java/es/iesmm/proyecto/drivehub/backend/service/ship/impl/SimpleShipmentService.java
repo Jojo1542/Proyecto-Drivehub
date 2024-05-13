@@ -6,7 +6,9 @@ import es.iesmm.proyecto.drivehub.backend.model.http.request.ship.ShipmentStatus
 import es.iesmm.proyecto.drivehub.backend.model.ship.Shipment;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.repository.ShipmentRepository;
+import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.ship.ShipmentService;
+import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class SimpleShipmentService implements ShipmentService {
 
     private final ShipmentRepository shipmentRepository;
+    private final UserService userService;
 
     @Override
     public Optional<Shipment> findById(Long id) {
@@ -35,16 +38,23 @@ public class SimpleShipmentService implements ShipmentService {
         Preconditions.checkNotNull(request.parcels(), "The parcels cannot be null");
         Preconditions.checkArgument(request.shipmentDate().before(request.deliveryDate()), "The shipment date must be before the delivery date");
         Preconditions.checkArgument(!request.parcels().isEmpty(), "The parcels cannot be empty");
+        Preconditions.checkArgument(request.driverId() != null, "The driver id cannot be null");
 
         // Se convierte la petición en un envío y se guarda en la base de datos
         Shipment shipment = request.toShipment();
+
+        shipment.setDriver(
+                userService.findById(request.driverId())
+                        .orElseThrow(() -> new IllegalArgumentException("The driver with id " + request.driverId() + " does not exist"))
+        );
+
         shipment = shipmentRepository.save(shipment);
 
         return shipment;
     }
 
     @Override
-    public Shipment updateShipment(Shipment shipment, ShipmentStatusUpdateRequest request) {
+    public Shipment updateStatus(Shipment shipment, ShipmentStatusUpdateRequest request) {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(shipment, "The shipment cannot be null");
         Preconditions.checkNotNull(request, "The request cannot be null");
@@ -84,4 +94,23 @@ public class SimpleShipmentService implements ShipmentService {
 
         return shipmentRepository.save(shipment);
     }
+
+    @Override
+    public Shipment update(Shipment shipment, Shipment newDetails) {
+        // Control de errores y validaciones de los datos
+        Preconditions.checkNotNull(shipment, "The shipment cannot be null");
+        Preconditions.checkNotNull(newDetails, "The new details cannot be null");
+        Preconditions.checkArgument(newDetails.getId() != null && newDetails.getId().equals(shipment.getId()),
+                "The id of the new details must be the same as the id of the shipment");
+
+        // Se actualizan los detalles del envío
+        shipment.setSourceAddress(newDetails.getSourceAddress());
+        shipment.setDestinationAddress(newDetails.getDestinationAddress());
+        shipment.setDeliveryDate(newDetails.getDeliveryDate());
+        shipment.setParcels(newDetails.getParcels());
+
+        // Se guarda el envío en la base de datos
+        return shipmentRepository.save(shipment);
+    }
+
 }

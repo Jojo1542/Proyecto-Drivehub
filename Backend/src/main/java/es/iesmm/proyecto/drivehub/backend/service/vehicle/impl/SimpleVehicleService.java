@@ -45,11 +45,30 @@ public class SimpleVehicleService implements VehicleService {
     public RentCar save(RentCar vehicle) {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(vehicle, "The vehicle cannot be null");
-        Preconditions.checkNotNull(vehicle.getId(), "The id cannot be null");
         Preconditions.checkState(findByPlate(vehicle.getPlate()).isEmpty(), "The vehicle with plate " + vehicle.getPlate() + " already exists");
         Preconditions.checkState(findByNumBastidor(vehicle.getNumBastidor()).isEmpty(), "The vehicle with numBastidor " + vehicle.getNumBastidor() + " already exists");
 
         return vehicleRepository.save(vehicle);
+    }
+
+    @Override
+    public RentCar updateById(Long id, RentCar vehicle) {
+        Preconditions.checkNotNull(vehicle, "The vehicle cannot be null");
+
+        Optional<RentCar> vehicleOptional = findById(id);
+
+        Preconditions.checkState(vehicleOptional.isPresent(), "The vehicle with id " + id + " does not exist");
+
+        RentCar vehicleToUpdate = vehicleOptional.get();
+
+        vehicleToUpdate.setBrand(vehicle.getBrand());
+        vehicleToUpdate.setModel(vehicle.getModel());
+        vehicleToUpdate.setColor(vehicle.getColor());
+        vehicleToUpdate.setFechaMatriculacion(vehicle.getFechaMatriculacion());
+        vehicleToUpdate.setImageUrl(vehicle.getImageUrl());
+        vehicleToUpdate.setPrecioHora(vehicle.getPrecioHora());
+
+        return vehicleRepository.save(vehicleToUpdate);
     }
 
     @Override

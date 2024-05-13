@@ -14,11 +14,13 @@ public interface ShipmentService {
 
     Shipment createShipment(ShipmentCreationRequest request);
 
-    Shipment updateShipment(Shipment shipment, ShipmentStatusUpdateRequest request);
+    Shipment updateStatus(Shipment shipment, ShipmentStatusUpdateRequest request);
 
     void deleteById(Long id);
 
     List<Shipment> findByDriver(UserModel user);
 
     Shipment save(Shipment shipment);
+
+    Shipment update(Shipment shipment, Shipment newDetails);
 }

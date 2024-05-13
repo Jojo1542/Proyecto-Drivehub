@@ -44,7 +44,6 @@ public class RentCar extends AbstractPersistable<Long> {
 
     // check that price is not negative
     @Column(name = "price_per_hour")
-    @NotEmpty
     private double precioHora;
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.EAGER, orphanRemoval = true)

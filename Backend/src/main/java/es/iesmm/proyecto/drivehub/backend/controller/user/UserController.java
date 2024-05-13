@@ -95,4 +95,24 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN') and hasAuthority('DELETE_USER')")
+    public ResponseEntity<CommonResponse> deleteUser(@PathVariable Long id) {
+        try {
+            userService.deleteById(id);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
+
 }

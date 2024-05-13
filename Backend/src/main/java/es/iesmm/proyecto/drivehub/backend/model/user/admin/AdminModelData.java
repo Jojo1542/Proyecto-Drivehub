@@ -67,11 +67,11 @@ public class AdminModelData {
         }
 
         if (this.fleetPermissions == null) {
-            this.fleetPermissions = Collections.emptyList();
+            this.fleetPermissions = new LinkedList<>();
         }
 
         if (this.generalPermissions == null) {
-            this.generalPermissions = Collections.emptyList();
+            this.generalPermissions = new LinkedList<>();
         }
     }
 

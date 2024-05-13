@@ -18,5 +18,7 @@ public interface VehicleService {
 
     Optional<RentCar> findByNumBastidor(String numBastidor);
 
+    RentCar updateById(Long id, RentCar vehicle);
+
     void deleteById(Long id);
 }

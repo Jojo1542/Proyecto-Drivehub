@@ -4,6 +4,8 @@ import es.iesmm.proyecto.drivehub.backend.model.rent.vehicle.RentCar;
 import es.iesmm.proyecto.drivehub.backend.model.ship.Shipment;
 import es.iesmm.proyecto.drivehub.backend.service.vehicle.VehicleService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vehicle")
+@RequestMapping("/vehicles")
 @AllArgsConstructor
 public class VehicleController {
 
@@ -40,11 +42,9 @@ public class VehicleController {
         try {
             return ResponseEntity.ok(vehicleService.save(vehicle));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage())).build();
         } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).build();
-        } catch (NullPointerException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
 
@@ -53,7 +53,7 @@ public class VehicleController {
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('UPDATE_VEHICLE')")
     public ResponseEntity<RentCar> updateVehicle(@PathVariable Long id, @RequestBody RentCar vehicle) {
         return vehicleService.findById(id)
-                .map(v -> ResponseEntity.ok(vehicleService.save(vehicle)))
+                .map(v -> ResponseEntity.ok(vehicleService.updateById(id, vehicle)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -65,11 +65,9 @@ public class VehicleController {
             vehicleService.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).build();
-        } catch (NullPointerException e) {
             return ResponseEntity.notFound().build();
+        } catch (IllegalStateException e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
 
