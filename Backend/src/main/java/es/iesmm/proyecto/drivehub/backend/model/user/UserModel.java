@@ -1,8 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.model.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
@@ -60,8 +58,8 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@Column(name = "roles", nullable = false)
 	private List<UserRoles> roles;
 
-	@OneToMany(mappedBy = "user")
-	@JsonProperty("rents")
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@JsonIgnore
 	private List<UserRent> userRent;
 
 	/*
@@ -101,6 +99,10 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 
 	public void setEmail(String email) {
 		this.email = email.toLowerCase(); // Se guarda el email en minúsculas para evitar problemas de mayúsculas y minúsculas
+	}
+
+	public boolean hasRentActive() {
+		return userRent.stream().anyMatch(UserRent::isActive);
 	}
 
 	/*

@@ -1,5 +1,8 @@
 package es.iesmm.proyecto.drivehub.backend.model.rent.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -37,13 +40,19 @@ public class RentCar extends AbstractPersistable<Long> {
     private String model;
     private String color;
     private Date fechaMatriculacion;
+    private String imageUrl;
 
     // check that price is not negative
     @Column(name = "price_per_hour")
     @NotEmpty
     private double precioHora;
 
-    @OneToMany(mappedBy = "vehicle")
+    @OneToMany(mappedBy = "vehicle", fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonIgnore
     private Set<UserRent> userRent;
 
+    public boolean isAvailable() {
+        System.out.println("Checking availability of vehicle " + this.getId());
+        return userRent.stream().noneMatch(UserRent::isActive);
+    }
 }

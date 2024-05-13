@@ -48,17 +48,17 @@ public class AdminModelData {
     @Column(name = "flotas_con_acceso")
     @Convert(converter = LongListConverter.class)
     @ColumnDefault("''")
-    private List<Long> fleetPermissions;
+    private List<Long> fleetPermissions = new LinkedList<>();
 
     @Column(name = "general_permissions")
     @Convert(converter = AdminPermissionListConverter.class)
     @ColumnDefault("''")
-    private List<AdminPermission> generalPermissions;
+    private List<AdminPermission> generalPermissions = new LinkedList<>();
 
     @NotEmpty
     @Column(name = "horario")
     @ColumnDefault("'08:00-20:00'")
-    private String avaiableTime;
+    private String avaiableTime = "08:00-20:00";
 
     @PrePersist
     public void defaultValues() {
