@@ -52,7 +52,6 @@ public class RentCar extends AbstractPersistable<Long> {
     private Set<UserRent> userRent;
 
     public boolean isAvailable() {
-        System.out.println("Checking availability of vehicle " + this.getId());
         return userRent.stream().noneMatch(UserRent::isActive);
     }
 }
