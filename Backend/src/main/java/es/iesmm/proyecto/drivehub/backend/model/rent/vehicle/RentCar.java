@@ -10,6 +10,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Table(
@@ -48,7 +49,7 @@ public class RentCar extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonIgnore
-    private Set<UserRent> userRent = Set.of();
+    private Set<UserRent> userRent = new HashSet<>();
 
     public boolean isAvailable() {
         return userRent.stream().noneMatch(UserRent::isActive);

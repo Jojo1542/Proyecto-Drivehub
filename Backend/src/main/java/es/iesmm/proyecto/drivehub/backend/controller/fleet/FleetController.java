@@ -37,7 +37,7 @@ public class FleetController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Fleet> getFleetById(@PathVariable Long fleetId, @AuthenticationPrincipal UserDetails userDetails) {
         // Check if the user has the FLEET_fleetId role
-        if (userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("FLEET_" + fleetId))) {
+        if (userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("FLEET_" + fleetId) || a.getAuthority().equals("SUPER_ADMIN"))) {
             return fleetService.findById(fleetId)
                     .map(ResponseEntity::ok)
                     .orElse(ResponseEntity.notFound().build());
@@ -68,11 +68,12 @@ public class FleetController {
     public ResponseEntity<Fleet> createFleet(@RequestBody FleetCreationRequest request, @AuthenticationPrincipal UserDetails userDetails) {
         try {
             return ResponseEntity.ok(fleetService.createFleet((UserModel) userDetails, request));
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | NullPointerException e) {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage())).build();
         } catch (IllegalStateException e) {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage())).build();
         }
     }

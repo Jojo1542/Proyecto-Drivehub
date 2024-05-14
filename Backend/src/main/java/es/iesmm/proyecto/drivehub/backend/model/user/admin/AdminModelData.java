@@ -50,7 +50,7 @@ public class AdminModelData {
     @ColumnDefault("''")
     private List<Long> fleetPermissions = new LinkedList<>();
 
-    @Column(name = "general_permissions")
+    @Column(name = "general_permissions", length = 1500)
     @Convert(converter = AdminPermissionListConverter.class)
     @ColumnDefault("''")
     private List<AdminPermission> generalPermissions = new LinkedList<>();

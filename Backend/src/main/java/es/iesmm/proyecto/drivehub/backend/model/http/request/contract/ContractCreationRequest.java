@@ -10,10 +10,9 @@ public record ContractCreationRequest(
         Long driverId, Long fleetId, Date startDate, Date endDate, double salary
 ) {
 
-    public DriverContract toDriverContract(DriverModelData driverModelData, Fleet fleet) {
+    public DriverContract toDriverContract(DriverModelData driverModelData) {
         return DriverContract.builder()
                 .driver(driverModelData)
-                .fleet(fleet)
                 .startDate(startDate)
                 .endDate(endDate)
                 .salary(salary)

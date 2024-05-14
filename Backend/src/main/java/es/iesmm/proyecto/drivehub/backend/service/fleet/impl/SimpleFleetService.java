@@ -8,6 +8,7 @@ import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.permisison.AdminPermission;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.contract.DriverContract;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.repository.FleetRepository;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.fleet.FleetService;
@@ -40,10 +41,8 @@ public class SimpleFleetService implements FleetService {
         Optional<Fleet> fleet = Optional.empty();
 
         DriverModelData driver = user.getDriverData();
-        DriverContract contract = driver.getActualContract();
-
-        if (contract != null) {
-            fleet = Optional.of(contract.getFleet());
+        if (driver instanceof FleetDriverModelData fleetModelData) {
+            fleet = Optional.of(fleetModelData.getFleet());
         }
 
         return fleet;

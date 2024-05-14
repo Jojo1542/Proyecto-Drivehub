@@ -6,6 +6,7 @@ import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.util.converter.RoleListConverter;
 import jakarta.persistence.*;
@@ -20,9 +21,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Table(
@@ -55,7 +54,7 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	private String lastName;
 
 	@Convert(converter = RoleListConverter.class)
-	@Column(name = "roles", nullable = false)
+	@Column(name = "roles", nullable = false, length = 1500)
 	private List<UserRoles> roles;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
@@ -85,6 +84,10 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@PrimaryKeyJoinColumn(name = "id")
 	private DriverModelData driverData;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@JsonIgnoreProperties("user")
+	private Set<DriverLicense> driverLicense = new HashSet<>();
 	
 	public UserModel(String email, String password, String firstName, String lastName) {
 		this.email = email;

@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.model.fleet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.iesmm.proyecto.drivehub.backend.model.fleet.vehicle.VehicleType;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.contract.DriverContract;
@@ -32,4 +33,9 @@ public class Fleet extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "fleet", fetch = FetchType.EAGER)
     private List<FleetDriverModelData> drivers;
 
+    @JsonIgnore
+    @Override
+    public boolean isNew() {
+        return super.isNew();
+    }
 }

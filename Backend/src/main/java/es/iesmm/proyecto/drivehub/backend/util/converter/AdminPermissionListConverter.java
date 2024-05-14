@@ -6,6 +6,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,6 @@ public class AdminPermissionListConverter implements AttributeConverter<List<Adm
 
     @Override
     public List<AdminPermission> convertToEntityAttribute(String string) {
-        return string != null ? Arrays.stream(string.split(SPLIT_CHAR)).map(AdminPermission::valueOf).collect(Collectors.toList()) : emptyList();
+        return string != null ? Arrays.stream(string.split(SPLIT_CHAR)).map(AdminPermission::valueOf).collect(Collectors.toList()) : new LinkedList<>();
     }
 }

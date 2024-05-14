@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.model.user.driver.license;
 
+import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.type.DriverLicenseType;
 import jakarta.persistence.*;
@@ -31,6 +32,6 @@ public class DriverLicense {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private DriverModelData driver;
+    private UserModel user;
 
 }

@@ -19,7 +19,13 @@ public enum AdminPermission {
     UPDATE_VEHICLE,
     DELETE_VEHICLE,
     CREATE_FLEET,
-    DELETE_FLEET;
+    DELETE_FLEET,
+    CREATE_GENERAL_CONTRACT,
+    GET_GENERAL_CONTRACT,
+    UPDATE_GENERAL_CONTRACT,
+    DELETE_GENERAL_CONTRACT,
+
+    ;
 
     public String getAuthorityName() {
         return name();

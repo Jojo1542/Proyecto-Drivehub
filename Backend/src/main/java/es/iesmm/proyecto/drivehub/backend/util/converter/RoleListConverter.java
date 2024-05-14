@@ -6,6 +6,7 @@ import jakarta.persistence.Converter;
 
 import javax.management.relation.Role;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,6 @@ public class RoleListConverter implements AttributeConverter<List<UserRoles>, St
 
     @Override
     public List<UserRoles> convertToEntityAttribute(String string) {
-        return string != null ? Arrays.stream(string.split(SPLIT_CHAR)).map(UserRoles::valueOf).collect(Collectors.toList()) : emptyList();
+        return string != null ? Arrays.stream(string.split(SPLIT_CHAR)).map(UserRoles::valueOf).collect(Collectors.toList()) : new LinkedList<>();
     }
 }
