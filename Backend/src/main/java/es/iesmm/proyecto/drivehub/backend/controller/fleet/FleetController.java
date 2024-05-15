@@ -5,6 +5,8 @@ import es.iesmm.proyecto.drivehub.backend.model.http.request.fleet.FleetCreation
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.contract.DriverContract;
 import es.iesmm.proyecto.drivehub.backend.service.fleet.FleetService;
+import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
+import es.iesmm.proyecto.drivehub.backend.util.permission.PermissionUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -18,12 +20,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static es.iesmm.proyecto.drivehub.backend.util.permission.PermissionUtils.*;
+
 @RestController
 @RequestMapping("/fleet")
 @AllArgsConstructor
 public class FleetController {
 
     private final FleetService fleetService;
+    private final UserService userService;
 
     @GetMapping("/all")
     @ResponseBody
@@ -36,8 +41,9 @@ public class FleetController {
     @ResponseBody
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Fleet> getFleetById(@PathVariable Long fleetId, @AuthenticationPrincipal UserDetails userDetails) {
-        // Check if the user has the FLEET_fleetId role
-        if (userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("FLEET_" + fleetId) || a.getAuthority().equals("SUPER_ADMIN"))) {
+        UserModel user = (UserModel) userDetails;
+
+        if (hasFleetPermission(user, fleetId) || hasAdminPermission(user, "SUPER_ADMIN")) {
             return fleetService.findById(fleetId)
                     .map(ResponseEntity::ok)
                     .orElse(ResponseEntity.notFound().build());
@@ -83,7 +89,9 @@ public class FleetController {
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('UPDATE_FLEET')")
     public ResponseEntity<Fleet> updateFleet(@PathVariable Long fleetId, @RequestBody Fleet request, @AuthenticationPrincipal UserDetails userDetails) {
         // Check if the user has the FLEET_fleetId role
-        if (userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("FLEET_" + fleetId))) {
+        UserModel user = (UserModel) userDetails;
+
+        if (hasFleetPermission(user, fleetId) || hasAdminPermission(user, "SUPER_ADMIN")) {
             return fleetService.findById(fleetId)
                     .map(f -> ResponseEntity.ok(fleetService.updateById(fleetId, request)))
                     .orElse(ResponseEntity.notFound().build());
@@ -103,6 +111,19 @@ public class FleetController {
             return ResponseEntity.notFound().build();
         } catch (IllegalStateException e) {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/{fleetId}/drivers")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<UserModel> listDrivers(@PathVariable Long fleetId, @AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+
+        if (hasFleetPermission(user, fleetId) || hasAdminPermission(user, "SUPER_ADMIN")) {
+            return userService.findDriversByFleet(fleetId);
+        } else {
+            throw new AccessDeniedException("User does not have the required role");
         }
     }
 }

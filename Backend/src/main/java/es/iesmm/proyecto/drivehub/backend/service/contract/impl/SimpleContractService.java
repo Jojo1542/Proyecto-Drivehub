@@ -16,9 +16,7 @@ import es.iesmm.proyecto.drivehub.backend.service.contract.ContractService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -33,65 +31,88 @@ public class SimpleContractService implements ContractService {
         UserModel userModel = userRepository.findById(request.driverId())
                 .orElseThrow(() -> new NullPointerException("User not found"));
 
-        Fleet fleet = request.fleetId() != null ? fleetRepository.findById(request.fleetId()).orElse(null) : null;
+        // Se comprueba si el contrato es de flota o de chofer, si es de flota, se obtiene, si no se encuentra
+        // se lanza una excepción
+        Fleet fleet = request.fleetId() != null ? fleetRepository.findById(request.fleetId())
+                .orElseThrow(() -> new IllegalArgumentException("Fleet specified can not be found"))
+                : null;
 
-        // Si el usuario no tiene el rol de conductor de flota, se le asigna
-        if (!userModel.getRoles().contains(UserRoles.DRIVER_FLEET) || !userModel.getRoles().contains(UserRoles.DRIVER_CHAUFFEUR)) {
-
-            // Dependiendo de si el contrato es de flota o no, se le asigna el rol correspondiente
-            if (fleet != null) {
+        // Se comprueba si el usuario ya es conductor de flota o de chofer, si no lo es, se le añade el rol
+        if (fleet != null) {
+            if (!userModel.getRoles().contains(UserRoles.DRIVER_FLEET)) {
                 userModel.getRoles().add(UserRoles.DRIVER_FLEET);
+                userModel.getRoles().remove(UserRoles.DRIVER_CHAUFFEUR);
                 userModel.setDriverData(new FleetDriverModelData());
-
-                FleetDriverModelData driverData = (FleetDriverModelData) userModel.getDriverData();
-                driverData.setFleet(fleet);
-            } else {
+            }
+        } else {
+            if (!userModel.getRoles().contains(UserRoles.DRIVER_CHAUFFEUR)) {
                 userModel.getRoles().add(UserRoles.DRIVER_CHAUFFEUR);
+                userModel.getRoles().remove(UserRoles.DRIVER_FLEET);
                 userModel.setDriverData(new ChauffeurDriverModelData());
             }
         }
 
-        DriverContract prevContract = userModel.getDriverData().getActualContract();
-
-        DriverContract contract = request.toDriverContract(
-                userModel.getDriverData()
-        );
-
-        // Añadir el contrato al usuario
+        // Se añade el contrato al usuario y se guarda
         DriverModelData driverData = userModel.getDriverData();
-        driverData.getDriverContracts().add(contract);
-        userModel.setDriverData(driverData);
+        DriverContract contract = request.toDriverContract(userModel);
 
-        // Actualizar el usuario
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
-        userRepository.save(userModel);
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-        contractRepository.save(contract);
-        System.out.println("CCCCCCCCCCCCCCCCCCCCC");
+        // Si el contrato es de flota, se le asigna la flota correspondiente
+        if (fleet != null) {
+            contract.setFleet(fleet);
 
-        // Actualizar el contrato anterior
-        if (prevContract != null) {
-            prevContract.setNextContract(contract);
-            contractRepository.save(prevContract);
-
-            // Establecer en el contrato actual el contrato anterior para poder hacer la relación bidireccional
-            contract.setPreviousContract(prevContract);
+            // Se asigna la flota al usuario
+            FleetDriverModelData fleetDriverModelData = (FleetDriverModelData) driverData;
+            fleetDriverModelData.setFleet(fleet);
         }
 
-        return contract;
-    }
+        contractRepository.save(contract);
 
-    @Override
-    public DriverContract updateContract(Long contractId, DriverContract contract) {
-        Preconditions.checkNotNull(contractId, "The contract ID cannot be null");
-        Preconditions.checkNotNull(contract, "The contract cannot be null");
-        Preconditions.checkArgument(contractId.equals(contract.getId()), "The contract ID must be the same as the contract");
+        // Se obtiene el contrato actual del usuario
+        getActualContract(userModel)
+                // Se filtra para que no sea el mismo contrato por su ID
+                .filter(actualContract -> !Objects.equals(actualContract.getId(), contract.getId()))
+                .ifPresent(actualContract -> {
+                    // Se establece la fecha de fin del contrato anterior
+                    actualContract.setEndDate(contract.getStartDate());
+
+                    // Se establece este contrato como el actual
+                    actualContract.setNextContract(contract);
+
+                    // Se establece el contrato anterior como el anterior de este contrato
+                    contract.setPreviousContract(actualContract);
+
+                    // Se actualiza el contrato anterior en la base de datos
+                    contractRepository.save(actualContract);
+                });
+
+        // Se guarda el usuario en la base de datos
+        userRepository.save(userModel);
+
+        // Se guarda el contrato en la base de datos
         return contractRepository.save(contract);
     }
 
     @Override
-    public List<DriverContract> findAllByFleet(Long fleetId) {
-        return /*contractRepository.findAllByFleetId(fleetId);*/ Collections.emptyList();
+    public Optional<DriverContract> getActualContract(UserModel user) {
+        DriverModelData driverData = user.getDriverData();
+        if (driverData == null) {
+            return Optional.empty();
+        }
+        // Obtener el contrato con fecha de finalización mas reciente
+        return findByDriver(user)
+                .stream()
+                .filter(contract -> !contract.isExpired()) // Comprobar que no ha expirado
+                .filter(DriverContract::isActual) // Comprobar que es el contrato actual
+                .max(Comparator.comparing(DriverContract::getEndDate));
+    }
+
+    @Override
+    public List<DriverContract> findByDriver(UserModel user) {
+        DriverModelData driverData = user.getDriverData();
+        if (driverData == null) {
+            return Collections.emptyList();
+        }
+        return contractRepository.findByDriver(user.getId());
     }
 
     @Override
@@ -100,19 +121,55 @@ public class SimpleContractService implements ContractService {
     }
 
     @Override
+    public List<DriverContract> findAllGeneral() {
+        return contractRepository.findAllGeneral();
+    }
+
+    @Override
+    public List<DriverContract> findAllByFleet(Long fleetId) {
+        return contractRepository.findAllByFleet(fleetId);
+    }
+
+    @Override
     public Optional<DriverContract> findById(Long contractId) {
         return contractRepository.findById(contractId);
     }
 
     @Override
+    public Optional<DriverContract> findGeneralById(Long contractId) {
+        return contractRepository.findGeneralById(contractId);
+    }
+
+    @Override
+    public Optional<DriverContract> findContractByIdFleet(Long driverId, Long fleetId) {
+        return contractRepository.findContractByIdFleet(driverId, fleetId);
+    }
+
+    @Override
     public void deleteById(Long contractId) {
-        Preconditions.checkNotNull(contractId, "The contract ID cannot be null");
-        Preconditions.checkArgument(contractRepository.existsById(contractId), "The contract with ID " + contractId + " does not exist");
         contractRepository.deleteById(contractId);
     }
 
     @Override
-    public List<DriverContract> findAllByDriver(UserModel user) {
-        return contractRepository.findByDriverId(user.getId());
+    public void finalizeContract(Long contractId) {
+        DriverContract contract = contractRepository.findById(contractId)
+                .orElseThrow(() -> new IllegalArgumentException("Contract not found"));
+
+        // Check if contract is active
+        Preconditions.checkState(!contract.isExpired(), "Contract is already finalized");
+
+        // Actualizar la fecha de finalización del contrato
+        contract.setEndDate(new Date());
+
+        // Guardar el contrato en la base de datos
+        contractRepository.save(contract);
+
+        // Actualizar el usuario y eliminarle el rol de conductor
+        UserModel driver = contract.getDriver();
+        driver.getRoles().remove(UserRoles.DRIVER_FLEET);
+        driver.getRoles().remove(UserRoles.DRIVER_CHAUFFEUR);
+
+        // Guardar el usuario en la base de datos
+        userRepository.save(driver);
     }
 }

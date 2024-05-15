@@ -23,9 +23,7 @@ public enum AdminPermission {
     CREATE_GENERAL_CONTRACT,
     GET_GENERAL_CONTRACT,
     UPDATE_GENERAL_CONTRACT,
-    DELETE_GENERAL_CONTRACT,
-
-    ;
+    DELETE_GENERAL_CONTRACT;
 
     public String getAuthorityName() {
         return name();

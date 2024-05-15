@@ -44,4 +44,6 @@ public interface UserService extends UserDetailsService {
     long count();
 
     void createDefaultUser(String defaultAdminEmail, String password);
+
+    List<UserModel> findDriversByFleet(Long fleetId);
 }

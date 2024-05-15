@@ -76,13 +76,13 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	 * RELACIONES CON LA INFORMACIÓN DE LOS USUARIOS EN CASO DE TENERLA
 	 */
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@PrimaryKeyJoinColumn(name = "id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "admin_data_id", referencedColumnName = "id")
 	private AdminModelData adminData;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@PrimaryKeyJoinColumn(name = "id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "driver_data_id", referencedColumnName = "id")
 	private DriverModelData driverData;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
@@ -118,6 +118,7 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (roles.contains(UserRoles.ADMIN)) {
 			if (adminData == null) {
 				adminData = new AdminModelData();
+				adminData.setUserModel(this);
 			}
 		} else {
 			adminData = null;
@@ -126,10 +127,12 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (roles.contains(UserRoles.DRIVER_FLEET)) {
 			if (driverData == null || !(driverData instanceof FleetDriverModelData)) {
 				driverData = new FleetDriverModelData();
+				driverData.setUserModel(this);
 			}
 		} else if (roles.contains(UserRoles.DRIVER_CHAUFFEUR)) {
 			if (driverData == null || !(driverData instanceof ChauffeurDriverModelData)) {
 				driverData = new ChauffeurDriverModelData();
+				driverData.setUserModel(this);
 			}
 		} else {
 			driverData = null;
@@ -155,9 +158,6 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (adminData != null) {
 			grantedAuthorities.addAll(adminData.getAuthorities());
 		}
-
-		System.out.println(grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
-
 		return grantedAuthorities;
 	}
 

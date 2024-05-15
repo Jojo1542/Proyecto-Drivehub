@@ -11,16 +11,23 @@ public interface ContractService {
 
     DriverContract createContract(ContractCreationRequest request);
 
-    DriverContract updateContract(Long contractId, DriverContract contract);
+    Optional<DriverContract> getActualContract(UserModel user);
 
-
-    List<DriverContract> findAllByFleet(Long fleetId);
+    List<DriverContract> findByDriver(UserModel user);
 
     List<DriverContract> findAll();
 
+    List<DriverContract> findAllGeneral();
+
+    List<DriverContract> findAllByFleet(Long fleetId);
+
     Optional<DriverContract> findById(Long contractId);
+
+    Optional<DriverContract> findGeneralById(Long contractId);
+
+    Optional<DriverContract> findContractByIdFleet(Long driverId, Long fleetId);
 
     void deleteById(Long contractId);
 
-    List<DriverContract> findAllByDriver(UserModel user);
+    void finalizeContract(Long contractId);
 }

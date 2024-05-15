@@ -3,6 +3,7 @@ package es.iesmm.proyecto.drivehub.backend.service.user.impl;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
@@ -15,7 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -129,7 +132,20 @@ public class SimpleUserService implements UserService {
 
         // Establecer los datos de administrador
         userModel.setAdminData(adminData);
+        adminData.setUserModel(userModel);
 
         save(userModel); // Guardar el usuario en la base de datos
+    }
+
+    @Override
+    public List<UserModel> findDriversByFleet(Long fleetId) {
+        return userRepository.findAll().stream()
+                .filter(user -> user.getDriverData() != null)
+                .filter(user -> user.getDriverData() instanceof FleetDriverModelData)
+                .filter(user -> {
+                    FleetDriverModelData driverData = (FleetDriverModelData) user.getDriverData();
+                    return driverData.getFleet() != null && Objects.equals(driverData.getFleet().getId(), fleetId);
+                })
+                .collect(Collectors.toList());
     }
 }

@@ -37,14 +37,9 @@ public abstract class DriverModelData {
     @ColumnDefault("'08:00-20:00'")
     private String avaiableTime;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_usuario")
-    @JsonIgnoreProperties("driver")
+    @OneToOne(mappedBy = "driverData")
+    @JsonIgnore
     private UserModel userModel;
-
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("user")
-    private Set<DriverContract> driverContracts = new HashSet<>();
 
     @PrePersist
     public void defaultValues() {
@@ -53,12 +48,10 @@ public abstract class DriverModelData {
         }
     }
 
-    @JsonIgnore
-    public DriverContract getActualContract() {
-        // Contrato actual
-        // Ordenamos de más reciente a más antiguo
-        return driverContracts.stream()
-                .min((c1, c2) -> c2.getStartDate().compareTo(c1.getStartDate())) // Ordenamos de más reciente a más antiguo y cogemos el primero
-                .orElse(null);
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+        if (userModel.getDriverData() != this) {
+            userModel.setDriverData(this);
+        }
     }
 }

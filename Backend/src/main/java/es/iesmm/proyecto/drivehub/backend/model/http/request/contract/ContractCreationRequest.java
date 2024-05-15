@@ -1,6 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.model.http.request.contract;
 
-import es.iesmm.proyecto.drivehub.backend.model.fleet.Fleet;
+import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.contract.DriverContract;
 
@@ -10,9 +10,9 @@ public record ContractCreationRequest(
         Long driverId, Long fleetId, Date startDate, Date endDate, double salary
 ) {
 
-    public DriverContract toDriverContract(DriverModelData driverModelData) {
+    public DriverContract toDriverContract(UserModel userModel) {
         return DriverContract.builder()
-                .driver(driverModelData)
+                .driver(userModel)
                 .startDate(startDate)
                 .endDate(endDate)
                 .salary(salary)

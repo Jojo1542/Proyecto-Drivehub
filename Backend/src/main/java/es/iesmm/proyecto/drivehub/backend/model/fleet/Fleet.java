@@ -31,6 +31,7 @@ public class Fleet extends AbstractPersistable<Long> {
 
     // One fleet can have multiple drivers
     @OneToMany(mappedBy = "fleet", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<FleetDriverModelData> drivers;
 
     @JsonIgnore

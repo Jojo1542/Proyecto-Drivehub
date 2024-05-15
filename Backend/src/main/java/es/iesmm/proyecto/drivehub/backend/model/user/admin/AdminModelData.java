@@ -40,8 +40,7 @@ public class AdminModelData {
     @JsonIgnore
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
+    @OneToOne(mappedBy = "adminData", fetch = FetchType.EAGER)
     @JsonIgnore
     private UserModel userModel;
 
