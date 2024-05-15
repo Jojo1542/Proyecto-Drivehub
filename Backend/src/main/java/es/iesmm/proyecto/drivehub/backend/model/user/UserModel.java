@@ -113,6 +113,18 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		return driverLicense.stream().anyMatch(dl -> dl.getType().equals(type));
 	}
 
+	public boolean canAfford(double amount) {
+		return saldo >= amount;
+	}
+
+	public void charge(double amount) {
+		saldo += amount;
+	}
+
+	public void withdraw(double amount) {
+		saldo -= amount;
+	}
+
 	/*
 	 * Metodo de control de los roles de los usuarios y sus datos asociados.
 	 */

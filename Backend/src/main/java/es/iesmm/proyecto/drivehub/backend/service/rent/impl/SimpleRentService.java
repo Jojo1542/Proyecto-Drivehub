@@ -34,6 +34,7 @@ public class SimpleRentService implements RentService {
             DriverLicenseType.C,
             DriverLicenseType.CE
     );
+    private final UserRepository userRepository;
 
     @Override
     public List<UserRent> findRentedVehiclesBy(UserModel userDetails) {
@@ -48,8 +49,10 @@ public class SimpleRentService implements RentService {
         Preconditions.checkState(user.hasRentActive(), "User has an active rent");
         Preconditions.checkState(hasValidDriverLicense(user), "User does not have a valid driver license");
 
-        Optional<RentCar> optionalVehicle = vehicleService.findById(vehicleId);
-        RentCar vehicle = optionalVehicle.orElseThrow(() -> new NullPointerException("Vehicle not found"));
+        RentCar vehicle = vehicleService.findById(vehicleId).orElseThrow(() -> new NullPointerException("Vehicle not found"));
+
+        Preconditions.checkState(vehicle.isAvailable(), "Vehicle is not available");
+        Preconditions.checkState(user.canAfford(vehicle.getPrecioHora()), "User cannot afford the vehicle");
 
         UserRent userRent = UserRent
                 .builder()
@@ -96,6 +99,13 @@ public class SimpleRentService implements RentService {
 
         // Save the rent so the final price is updated
         rentRepository.save(userRent);
+
+        // Remover el saldo del alquiler del usuario
+        user.setSaldo(user.getSaldo() - userRent.getFinalPrice());
+
+        // Guardar el usuario para actualizar el saldo (El saldo puede ser negativo, en cuyo caso no se permitirá alquilar vehículos)
+        userRepository.save(user);
+
         return userRent;
     }
 
