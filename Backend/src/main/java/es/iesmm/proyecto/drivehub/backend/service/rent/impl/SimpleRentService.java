@@ -5,6 +5,7 @@ import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.rent.history.key.UserRentKey;
 import es.iesmm.proyecto.drivehub.backend.model.rent.vehicle.RentCar;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.type.DriverLicenseType;
 import es.iesmm.proyecto.drivehub.backend.repository.RentRepository;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.repository.VehicleRepository;
@@ -27,6 +28,13 @@ public class SimpleRentService implements RentService {
     private final VehicleService vehicleService;
     private final RentRepository rentRepository;
 
+    private final List<DriverLicenseType> validLicenseTypes = List.of(
+            DriverLicenseType.B,
+            DriverLicenseType.BE,
+            DriverLicenseType.C,
+            DriverLicenseType.CE
+    );
+
     @Override
     public List<UserRent> findRentedVehiclesBy(UserModel userDetails) {
         return userDetails.getUserRent() != null ? userDetails.getUserRent() : Collections.emptyList();
@@ -38,6 +46,7 @@ public class SimpleRentService implements RentService {
         Preconditions.checkNotNull(vehicleId, "Vehicle ID cannot be null");
         Preconditions.checkNotNull(user, "User cannot be null");
         Preconditions.checkState(user.hasRentActive(), "User has an active rent");
+        Preconditions.checkState(hasValidDriverLicense(user), "User does not have a valid driver license");
 
         Optional<RentCar> optionalVehicle = vehicleService.findById(vehicleId);
         RentCar vehicle = optionalVehicle.orElseThrow(() -> new NullPointerException("Vehicle not found"));
@@ -93,5 +102,9 @@ public class SimpleRentService implements RentService {
     @Override
     public List<UserRent> findAll() {
         return rentRepository.findAll();
+    }
+
+    private boolean hasValidDriverLicense(UserModel user) {
+        return user.getDriverLicense().stream().anyMatch(dl -> validLicenseTypes.contains(dl.getType()));
     }
 }

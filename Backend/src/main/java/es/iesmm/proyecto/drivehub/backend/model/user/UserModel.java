@@ -7,6 +7,7 @@ import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.type.DriverLicenseType;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.util.converter.RoleListConverter;
 import jakarta.persistence.*;
@@ -106,6 +107,10 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 
 	public boolean hasRentActive() {
 		return userRent.stream().anyMatch(UserRent::isActive);
+	}
+
+	public boolean hasRegisteredLicenseType(DriverLicenseType type) {
+		return driverLicense.stream().anyMatch(dl -> dl.getType().equals(type));
 	}
 
 	/*
