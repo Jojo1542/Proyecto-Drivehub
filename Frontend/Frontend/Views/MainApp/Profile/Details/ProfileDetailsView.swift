@@ -79,7 +79,7 @@ struct ProfileDetailsView: View {
             Section {
                 // Texto de como se tratan los datos (Politica de privacidad)
                 NavigationLink {
-                    EmptyView()
+                    PrivacyView()
                 } label: {
                     Text(String(localized: "Tratamiento de datos"))
                         .foregroundColor(.accentColor)

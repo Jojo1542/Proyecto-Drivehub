@@ -59,19 +59,23 @@ struct MainAppView: View {
 #Preview("Usuario") {
     MainAppView()
         .environmentObject(PreviewHelper.authModelUser)
+        .environmentObject(AppViewModel(authViewModel: PreviewHelper.authModelUser))
 }
 
 #Preview("Admin") {
     MainAppView()
         .environmentObject(PreviewHelper.authModelAdmin)
+        .environmentObject(AppViewModel(authViewModel: PreviewHelper.authModelAdmin))
 }
 
 #Preview("Chofer") {
     MainAppView()
-        .environmentObject(PreviewHelper.authModelFleetChaoffeur)
+        .environmentObject(PreviewHelper.authModelChaoffeur)
+        .environmentObject(AppViewModel(authViewModel: PreviewHelper.authModelChaoffeur))
 }
 
 #Preview("Flota") {
     MainAppView()
         .environmentObject(PreviewHelper.authModelFleetDriver)
+        .environmentObject(AppViewModel(authViewModel: PreviewHelper.authModelFleetDriver))
 }

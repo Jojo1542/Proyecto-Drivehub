@@ -13,7 +13,7 @@ class UserUpdateRequest {
     private static let url = "\(NetworkConfiguration.baseUrl)/user/update/main";
     
     static func updateUser(sessionToken: String, body: RequestBody, completion: @escaping (Callback<Void, ErrorType>) -> Void) {
-        AF.request(url, method: .post, parameters: body, encoder: JSONParameterEncoder.default, headers: [.authorization(bearerToken: sessionToken)])
+        AF.request(url, method: .post, parameters: body, encoder: JSONParameterEncoder(encoder: jsonEncoder), headers: [.authorization(bearerToken: sessionToken)])
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .cURLDescription { description in

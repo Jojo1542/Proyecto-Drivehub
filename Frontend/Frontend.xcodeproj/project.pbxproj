@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		093DE55C2BF4D512002E4272 /* ContractModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55B2BF4D512002E4272 /* ContractModel.swift */; };
+		093DE55E2BF4D537002E4272 /* FleetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55D2BF4D537002E4272 /* FleetModel.swift */; };
+		093DE5602BF4D571002E4272 /* RentCarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55F2BF4D571002E4272 /* RentCarModel.swift */; };
+		093DE5622BF4D5CE002E4272 /* UserRentHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5612BF4D5CE002E4272 /* UserRentHistoryModel.swift */; };
+		093DE5642BF4DACD002E4272 /* ShipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5632BF4DACD002E4272 /* ShipmentModel.swift */; };
+		093DE56A2BF6362A002E4272 /* RentMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5692BF6362A002E4272 /* RentMainView.swift */; };
+		093DE56D2BF6364A002E4272 /* ShipmentsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE56C2BF6364A002E4272 /* ShipmentsMainView.swift */; };
+		093DE5722BF636B8002E4272 /* AvaiableCarCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5712BF636B8002E4272 /* AvaiableCarCard.swift */; };
+		093DE5742BF636C6002E4272 /* ActualRentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5732BF636C6002E4272 /* ActualRentCard.swift */; };
+		093DE57B2BF77DCB002E4272 /* RentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE57A2BF77DCB002E4272 /* RentHeaderView.swift */; };
+		093DE57E2BF77E06002E4272 /* RentAvailableCarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE57D2BF77E06002E4272 /* RentAvailableCarsView.swift */; };
+		093DE5842BF7804B002E4272 /* RentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5832BF7804B002E4272 /* RentViewModel.swift */; };
+		093DE5872BF78160002E4272 /* VehicleRentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5862BF78160002E4272 /* VehicleRentRequest.swift */; };
+		093DE5892BF7816E002E4272 /* VehicleReturnRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5882BF7816E002E4272 /* VehicleReturnRequest.swift */; };
+		093DE58B2BF78181002E4272 /* GetActualRentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE58A2BF78181002E4272 /* GetActualRentRequest.swift */; };
+		093DE58D2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE58C2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift */; };
+		093DE5902BF781DF002E4272 /* GetRentHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE58F2BF781DF002E4272 /* GetRentHistoryRequest.swift */; };
+		093DE5922BF79DA6002E4272 /* NetworkUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5912BF79DA6002E4272 /* NetworkUtilities.swift */; };
+		093DE5962BF7AD14002E4272 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE5952BF7AD14002E4272 /* ViewUtils.swift */; };
 		093E47232BDADB9600C124A4 /* ProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47222BDADB9600C124A4 /* ProfileMainView.swift */; };
 		093E47252BDAE13D00C124A4 /* PreviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47242BDAE13D00C124A4 /* PreviewHelper.swift */; };
 		093E47272BDAE8C300C124A4 /* ListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47262BDAE8C300C124A4 /* ListSectionHeader.swift */; };
@@ -14,6 +33,25 @@
 		093E47302BDAFF6B00C124A4 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E472F2BDAFF6B00C124A4 /* RegisterRequest.swift */; };
 		093E47322BDAFF7300C124A4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47312BDAFF7300C124A4 /* LoginRequest.swift */; };
 		093E47342BDB0B8C00C124A4 /* UserMeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */; };
+		095A0B1F2BF7B806004F36B3 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B1E2BF7B806004F36B3 /* DocumentsView.swift */; };
+		095A0B222BF7B87C004F36B3 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B212BF7B87C004F36B3 /* AboutAppView.swift */; };
+		095A0B242BF7BEBF004F36B3 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B232BF7BEBF004F36B3 /* PrivacyView.swift */; };
+		095A0B262BF7BF1E004F36B3 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B252BF7BF1E004F36B3 /* TermsView.swift */; };
+		095A0B2A2BF7C05A004F36B3 /* LicensesSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B292BF7C05A004F36B3 /* LicensesSectionView.swift */; };
+		095A0B2C2BF7C065004F36B3 /* ContractsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B2B2BF7C065004F36B3 /* ContractsSectionView.swift */; };
+		095A0B2E2BF7C09E004F36B3 /* DriverLicenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B2D2BF7C09E004F36B3 /* DriverLicenseCard.swift */; };
+		095A0B302BF7D73D004F36B3 /* IconUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B2F2BF7D73D004F36B3 /* IconUtils.swift */; };
+		095A0B322BF7D9FC004F36B3 /* AddDriverLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B312BF7D9FC004F36B3 /* AddDriverLicenseView.swift */; };
+		095A0B352BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B342BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift */; };
+		095A0B372BF7DF4C004F36B3 /* RemoveDriverLicenseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B362BF7DF4C004F36B3 /* RemoveDriverLicenseRequest.swift */; };
+		095A0B3A2BFA4AF8004F36B3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B392BFA4AF8004F36B3 /* LocationService.swift */; };
+		095A0B3D2BFA4BFE004F36B3 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B3C2BFA4BFE004F36B3 /* DriverViewModel.swift */; };
+		095A0B402BFA5206004F36B3 /* FleetDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B3F2BFA5206004F36B3 /* FleetDriverViewModel.swift */; };
+		095A0B432BFA890D004F36B3 /* ShipmentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B422BFA890D004F36B3 /* ShipmentDetailsView.swift */; };
+		095A0B452BFA8D4C004F36B3 /* ShipmentDataCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */; };
+		095A0B4C2BFA8DF2004F36B3 /* ShipmentDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B4B2BFA8DF2004F36B3 /* ShipmentDataView.swift */; };
+		095A0B502BFA8E04004F36B3 /* ShipmentMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B4F2BFA8E04004F36B3 /* ShipmentMapView.swift */; };
+		095A0B552BFA959D004F36B3 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B542BFA959D004F36B3 /* CustomMapMarker.swift */; };
 		0991C4102BDC098200BABE7F /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C40F2BDC098200BABE7F /* AppViewModel.swift */; };
 		0991C4142BDC11BD00BABE7F /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C4132BDC11BD00BABE7F /* ProfileDetailsView.swift */; };
 		0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */; };
@@ -65,6 +103,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		093DE55B2BF4D512002E4272 /* ContractModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractModel.swift; sourceTree = "<group>"; };
+		093DE55D2BF4D537002E4272 /* FleetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetModel.swift; sourceTree = "<group>"; };
+		093DE55F2BF4D571002E4272 /* RentCarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentCarModel.swift; sourceTree = "<group>"; };
+		093DE5612BF4D5CE002E4272 /* UserRentHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRentHistoryModel.swift; sourceTree = "<group>"; };
+		093DE5632BF4DACD002E4272 /* ShipmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentModel.swift; sourceTree = "<group>"; };
+		093DE5692BF6362A002E4272 /* RentMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentMainView.swift; sourceTree = "<group>"; };
+		093DE56C2BF6364A002E4272 /* ShipmentsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentsMainView.swift; sourceTree = "<group>"; };
+		093DE5712BF636B8002E4272 /* AvaiableCarCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaiableCarCard.swift; sourceTree = "<group>"; };
+		093DE5732BF636C6002E4272 /* ActualRentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualRentCard.swift; sourceTree = "<group>"; };
+		093DE57A2BF77DCB002E4272 /* RentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentHeaderView.swift; sourceTree = "<group>"; };
+		093DE57D2BF77E06002E4272 /* RentAvailableCarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentAvailableCarsView.swift; sourceTree = "<group>"; };
+		093DE5832BF7804B002E4272 /* RentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewModel.swift; sourceTree = "<group>"; };
+		093DE5862BF78160002E4272 /* VehicleRentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRentRequest.swift; sourceTree = "<group>"; };
+		093DE5882BF7816E002E4272 /* VehicleReturnRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleReturnRequest.swift; sourceTree = "<group>"; };
+		093DE58A2BF78181002E4272 /* GetActualRentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActualRentRequest.swift; sourceTree = "<group>"; };
+		093DE58C2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAvailableVehiclesRequest.swift; sourceTree = "<group>"; };
+		093DE58F2BF781DF002E4272 /* GetRentHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRentHistoryRequest.swift; sourceTree = "<group>"; };
+		093DE5912BF79DA6002E4272 /* NetworkUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtilities.swift; sourceTree = "<group>"; };
+		093DE5952BF7AD14002E4272 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		093E47222BDADB9600C124A4 /* ProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainView.swift; sourceTree = "<group>"; };
 		093E47242BDAE13D00C124A4 /* PreviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelper.swift; sourceTree = "<group>"; };
 		093E47262BDAE8C300C124A4 /* ListSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionHeader.swift; sourceTree = "<group>"; };
@@ -72,6 +129,25 @@
 		093E472F2BDAFF6B00C124A4 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		093E47312BDAFF7300C124A4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMeRequest.swift; sourceTree = "<group>"; };
+		095A0B1E2BF7B806004F36B3 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
+		095A0B212BF7B87C004F36B3 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
+		095A0B232BF7BEBF004F36B3 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
+		095A0B252BF7BF1E004F36B3 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		095A0B292BF7C05A004F36B3 /* LicensesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesSectionView.swift; sourceTree = "<group>"; };
+		095A0B2B2BF7C065004F36B3 /* ContractsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsSectionView.swift; sourceTree = "<group>"; };
+		095A0B2D2BF7C09E004F36B3 /* DriverLicenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverLicenseCard.swift; sourceTree = "<group>"; };
+		095A0B2F2BF7D73D004F36B3 /* IconUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconUtils.swift; sourceTree = "<group>"; };
+		095A0B312BF7D9FC004F36B3 /* AddDriverLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriverLicenseView.swift; sourceTree = "<group>"; };
+		095A0B342BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriverLicenseRequest.swift; sourceTree = "<group>"; };
+		095A0B362BF7DF4C004F36B3 /* RemoveDriverLicenseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDriverLicenseRequest.swift; sourceTree = "<group>"; };
+		095A0B392BFA4AF8004F36B3 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		095A0B3C2BFA4BFE004F36B3 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
+		095A0B3F2BFA5206004F36B3 /* FleetDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverViewModel.swift; sourceTree = "<group>"; };
+		095A0B422BFA890D004F36B3 /* ShipmentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDetailsView.swift; sourceTree = "<group>"; };
+		095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDataCardView.swift; sourceTree = "<group>"; };
+		095A0B4B2BFA8DF2004F36B3 /* ShipmentDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDataView.swift; sourceTree = "<group>"; };
+		095A0B4F2BFA8E04004F36B3 /* ShipmentMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentMapView.swift; sourceTree = "<group>"; };
+		095A0B542BFA959D004F36B3 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
 		0991C40F2BDC098200BABE7F /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		0991C4132BDC11BD00BABE7F /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
@@ -122,6 +198,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		093DE5652BF635FF002E4272 /* Rent */ = {
+			isa = PBXGroup;
+			children = (
+				093DE57F2BF78024002E4272 /* Model */,
+				093DE5792BF77DC1002E4272 /* Body */,
+				093DE5782BF77DBA002E4272 /* Header */,
+				093DE56E2BF63692002E4272 /* Card */,
+				093DE5692BF6362A002E4272 /* RentMainView.swift */,
+			);
+			path = Rent;
+			sourceTree = "<group>";
+		};
+		093DE5662BF63609002E4272 /* Ship */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B412BFA8831004F36B3 /* Details */,
+				093DE56C2BF6364A002E4272 /* ShipmentsMainView.swift */,
+			);
+			path = Ship;
+			sourceTree = "<group>";
+		};
+		093DE56E2BF63692002E4272 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				093DE5712BF636B8002E4272 /* AvaiableCarCard.swift */,
+				093DE5732BF636C6002E4272 /* ActualRentCard.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		093DE5782BF77DBA002E4272 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				093DE57A2BF77DCB002E4272 /* RentHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		093DE5792BF77DC1002E4272 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				093DE57D2BF77E06002E4272 /* RentAvailableCarsView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		093DE57F2BF78024002E4272 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				093DE5832BF7804B002E4272 /* RentViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		093DE5852BF78150002E4272 /* Rent */ = {
+			isa = PBXGroup;
+			children = (
+				093DE5862BF78160002E4272 /* VehicleRentRequest.swift */,
+				093DE5882BF7816E002E4272 /* VehicleReturnRequest.swift */,
+				093DE58A2BF78181002E4272 /* GetActualRentRequest.swift */,
+				093DE58C2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift */,
+				093DE58F2BF781DF002E4272 /* GetRentHistoryRequest.swift */,
+			);
+			path = Rent;
+			sourceTree = "<group>";
+		};
 		093E47212BDADB7C00C124A4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +296,11 @@
 		093E472A2BDAFBB700C124A4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				093DE5852BF78150002E4272 /* Rent */,
 				093E472E2BDAFF6000C124A4 /* Authentication */,
 				093E472D2BDAFF5C00C124A4 /* User */,
 				093E472B2BDAFEB900C124A4 /* NetworkConfiguration.swift */,
+				093DE5912BF79DA6002E4272 /* NetworkUtilities.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -164,6 +308,7 @@
 		093E472D2BDAFF5C00C124A4 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				095A0B332BF7DE31004F36B3 /* License */,
 				093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */,
 				0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */,
 			);
@@ -177,6 +322,137 @@
 				093E47312BDAFF7300C124A4 /* LoginRequest.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		095A0B1D2BF7B7FA004F36B3 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B282BF7C051004F36B3 /* Contracts */,
+				095A0B272BF7C04B004F36B3 /* Licenses */,
+				095A0B1E2BF7B806004F36B3 /* DocumentsView.swift */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		095A0B202BF7B86F004F36B3 /* AppInfo */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B212BF7B87C004F36B3 /* AboutAppView.swift */,
+				095A0B232BF7BEBF004F36B3 /* PrivacyView.swift */,
+				095A0B252BF7BF1E004F36B3 /* TermsView.swift */,
+			);
+			path = AppInfo;
+			sourceTree = "<group>";
+		};
+		095A0B272BF7C04B004F36B3 /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B292BF7C05A004F36B3 /* LicensesSectionView.swift */,
+				095A0B2D2BF7C09E004F36B3 /* DriverLicenseCard.swift */,
+				095A0B312BF7D9FC004F36B3 /* AddDriverLicenseView.swift */,
+			);
+			path = Licenses;
+			sourceTree = "<group>";
+		};
+		095A0B282BF7C051004F36B3 /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B2B2BF7C065004F36B3 /* ContractsSectionView.swift */,
+			);
+			path = Contracts;
+			sourceTree = "<group>";
+		};
+		095A0B332BF7DE31004F36B3 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B342BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift */,
+				095A0B362BF7DF4C004F36B3 /* RemoveDriverLicenseRequest.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		095A0B382BFA4AEC004F36B3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B392BFA4AF8004F36B3 /* LocationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		095A0B3B2BFA4BF4004F36B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B3C2BFA4BFE004F36B3 /* DriverViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		095A0B3E2BFA51F0004F36B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B3F2BFA5206004F36B3 /* FleetDriverViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		095A0B412BFA8831004F36B3 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B492BFA8D70004F36B3 /* Driver */,
+				095A0B482BFA8D5E004F36B3 /* History */,
+				095A0B472BFA8D57004F36B3 /* Parcel */,
+				095A0B462BFA8D51004F36B3 /* Data */,
+				095A0B422BFA890D004F36B3 /* ShipmentDetailsView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		095A0B462BFA8D51004F36B3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B4B2BFA8DF2004F36B3 /* ShipmentDataView.swift */,
+				095A0B4F2BFA8E04004F36B3 /* ShipmentMapView.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		095A0B472BFA8D57004F36B3 /* Parcel */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */,
+			);
+			path = Parcel;
+			sourceTree = "<group>";
+		};
+		095A0B482BFA8D5E004F36B3 /* History */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		095A0B492BFA8D70004F36B3 /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		095A0B512BFA957C004F36B3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B522BFA958A004F36B3 /* Object */,
+				09D0E3462BE04DDD00C87631 /* MapUtils.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		095A0B522BFA958A004F36B3 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				095A0B542BFA959D004F36B3 /* CustomMapMarker.swift */,
+			);
+			path = Object;
 			sourceTree = "<group>";
 		};
 		0991C40E2BDC094D00BABE7F /* Model */ = {
@@ -206,6 +482,8 @@
 		09A236E22BDC43DC00D54E4C /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				095A0B202BF7B86F004F36B3 /* AppInfo */,
+				095A0B1D2BF7B7FA004F36B3 /* Documents */,
 				09EB70822BE1080000D15F6A /* Trip */,
 				09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */,
 			);
@@ -215,6 +493,8 @@
 		09D556B42BD8EBB9005411D0 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				093DE5662BF63609002E4272 /* Ship */,
+				093DE5652BF635FF002E4272 /* Rent */,
 				09D556C42BD910CC005411D0 /* Driver */,
 				09D556C32BD910C1005411D0 /* Admin */,
 				09D556B72BD8EC42005411D0 /* Home */,
@@ -250,6 +530,7 @@
 		09D556C42BD910CC005411D0 /* Driver */ = {
 			isa = PBXGroup;
 			children = (
+				095A0B3B2BFA4BF4004F36B3 /* Model */,
 				09D556CF2BD91327005411D0 /* Chauffeur */,
 				09D556CE2BD9131D005411D0 /* Fleet */,
 				09D556CB2BD9126D005411D0 /* DriverMainView.swift */,
@@ -260,6 +541,7 @@
 		09D556CE2BD9131D005411D0 /* Fleet */ = {
 			isa = PBXGroup;
 			children = (
+				095A0B3E2BFA51F0004F36B3 /* Model */,
 				09D556C92BD91151005411D0 /* FleetDriverMainView.swift */,
 			);
 			path = Fleet;
@@ -317,6 +599,7 @@
 				093E472A2BDAFBB700C124A4 /* Network */,
 				09EFCDA12BC9BA5400456D29 /* Views */,
 				09EFCDA02BC9BA4C00456D29 /* Models */,
+				095A0B382BFA4AEC004F36B3 /* Service */,
 				09EFCDD92BCA74A100456D29 /* Utils */,
 				09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */,
 				09EFCD932BC9B6F800456D29 /* Assets.xcassets */,
@@ -329,6 +612,11 @@
 			children = (
 				09EFCDC22BC9C0D200456D29 /* UserModel.swift */,
 				09EB70872BE10AD500D15F6A /* TripModel.swift */,
+				093DE55B2BF4D512002E4272 /* ContractModel.swift */,
+				093DE55D2BF4D537002E4272 /* FleetModel.swift */,
+				093DE55F2BF4D571002E4272 /* RentCarModel.swift */,
+				093DE5612BF4D5CE002E4272 /* UserRentHistoryModel.swift */,
+				093DE5632BF4DACD002E4272 /* ShipmentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,11 +691,13 @@
 		09EFCDD92BCA74A100456D29 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				095A0B512BFA957C004F36B3 /* Map */,
 				09EFCDDA2BCA74AC00456D29 /* Callback.swift */,
 				09EFCDF82BCC669300456D29 /* EmailUtils.swift */,
 				09D556C12BD8FE90005411D0 /* DNIValidator.swift */,
 				093E47242BDAE13D00C124A4 /* PreviewHelper.swift */,
-				09D0E3462BE04DDD00C87631 /* MapUtils.swift */,
+				093DE5952BF7AD14002E4272 /* ViewUtils.swift */,
+				095A0B2F2BF7D73D004F36B3 /* IconUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -451,7 +741,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					09EFCD8B2BC9B6F600456D29 = {
 						CreatedOnToolsVersion = 15.3;
@@ -464,7 +754,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				es,
 			);
 			mainGroup = 09EFCD832BC9B6F600456D29;
@@ -497,44 +786,82 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093DE5842BF7804B002E4272 /* RentViewModel.swift in Sources */,
 				09EB70862BE1083300D15F6A /* TripDetailsView.swift in Sources */,
 				093E47322BDAFF7300C124A4 /* LoginRequest.swift in Sources */,
 				09EFCDCC2BC9C1F700456D29 /* InputFieldView.swift in Sources */,
+				093DE55E2BF4D537002E4272 /* FleetModel.swift in Sources */,
 				093E472C2BDAFEB900C124A4 /* NetworkConfiguration.swift in Sources */,
 				09EFCDCF2BC9DCAD00456D29 /* MainAppView.swift in Sources */,
 				09EFCDC12BC9C0A500456D29 /* AuthViewModel.swift in Sources */,
+				093DE56D2BF6364A002E4272 /* ShipmentsMainView.swift in Sources */,
+				095A0B502BFA8E04004F36B3 /* ShipmentMapView.swift in Sources */,
 				09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */,
+				093DE5902BF781DF002E4272 /* GetRentHistoryRequest.swift in Sources */,
 				09EB70842BE1081E00D15F6A /* TripCardView.swift in Sources */,
 				093E47302BDAFF6B00C124A4 /* RegisterRequest.swift in Sources */,
 				09D556B62BD8EBE2005411D0 /* AppNavigationView.swift in Sources */,
+				095A0B432BFA890D004F36B3 /* ShipmentDetailsView.swift in Sources */,
+				093DE57E2BF77E06002E4272 /* RentAvailableCarsView.swift in Sources */,
 				09D556BA2BD8ECC2005411D0 /* RequieredFieldsView.swift in Sources */,
+				093DE5892BF7816E002E4272 /* VehicleReturnRequest.swift in Sources */,
 				09D556D22BD921DE005411D0 /* MapView.swift in Sources */,
 				093E47252BDAE13D00C124A4 /* PreviewHelper.swift in Sources */,
+				095A0B1F2BF7B806004F36B3 /* DocumentsView.swift in Sources */,
+				093DE55C2BF4D512002E4272 /* ContractModel.swift in Sources */,
 				0991C4102BDC098200BABE7F /* AppViewModel.swift in Sources */,
+				095A0B2C2BF7C065004F36B3 /* ContractsSectionView.swift in Sources */,
 				09D556BE2BD8F862005411D0 /* InputDatePickerView.swift in Sources */,
+				095A0B322BF7D9FC004F36B3 /* AddDriverLicenseView.swift in Sources */,
 				09D556C62BD91125005411D0 /* AdminMainView.swift in Sources */,
+				095A0B242BF7BEBF004F36B3 /* PrivacyView.swift in Sources */,
 				09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */,
+				093DE5642BF4DACD002E4272 /* ShipmentModel.swift in Sources */,
 				09D0E3492BE04EA000C87631 /* TripListView.swift in Sources */,
 				0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */,
 				09D556CA2BD91151005411D0 /* FleetDriverMainView.swift in Sources */,
 				09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */,
+				095A0B552BFA959D004F36B3 /* CustomMapMarker.swift in Sources */,
+				093DE5722BF636B8002E4272 /* AvaiableCarCard.swift in Sources */,
+				093DE56A2BF6362A002E4272 /* RentMainView.swift in Sources */,
 				093E47232BDADB9600C124A4 /* ProfileMainView.swift in Sources */,
+				093DE57B2BF77DCB002E4272 /* RentHeaderView.swift in Sources */,
+				093DE5742BF636C6002E4272 /* ActualRentCard.swift in Sources */,
+				095A0B3D2BFA4BFE004F36B3 /* DriverViewModel.swift in Sources */,
 				09D556C82BD91147005411D0 /* ChauffeurDriverMainView.swift in Sources */,
+				095A0B2E2BF7C09E004F36B3 /* DriverLicenseCard.swift in Sources */,
 				09D0E3432BE044A400C87631 /* BalanceDetailsView.swift in Sources */,
+				093DE58B2BF78181002E4272 /* GetActualRentRequest.swift in Sources */,
+				095A0B3A2BFA4AF8004F36B3 /* LocationService.swift in Sources */,
 				093E47272BDAE8C300C124A4 /* ListSectionHeader.swift in Sources */,
+				093DE5622BF4D5CE002E4272 /* UserRentHistoryModel.swift in Sources */,
 				0991C4142BDC11BD00BABE7F /* ProfileDetailsView.swift in Sources */,
+				093DE5872BF78160002E4272 /* VehicleRentRequest.swift in Sources */,
 				09EB70882BE10AD500D15F6A /* TripModel.swift in Sources */,
 				09D0E3472BE04DDD00C87631 /* MapUtils.swift in Sources */,
+				093DE58D2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift in Sources */,
+				095A0B2A2BF7C05A004F36B3 /* LicensesSectionView.swift in Sources */,
 				09A236E12BDC430700D54E4C /* ChangePasswordView.swift in Sources */,
+				093DE5602BF4D571002E4272 /* RentCarModel.swift in Sources */,
+				095A0B372BF7DF4C004F36B3 /* RemoveDriverLicenseRequest.swift in Sources */,
 				093E47342BDB0B8C00C124A4 /* UserMeRequest.swift in Sources */,
 				09EFCDC92BC9C1B700456D29 /* RegisterView.swift in Sources */,
 				09D0E3412BE0425D00C87631 /* ListSectionTextItem.swift in Sources */,
 				09EFCDC72BC9C1AB00456D29 /* LoginView.swift in Sources */,
 				09D556CC2BD9126D005411D0 /* DriverMainView.swift in Sources */,
 				09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */,
+				095A0B402BFA5206004F36B3 /* FleetDriverViewModel.swift in Sources */,
 				09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */,
 				09D0E3452BE0456000C87631 /* MapIndicationsView.swift in Sources */,
 				09D556C22BD8FE90005411D0 /* DNIValidator.swift in Sources */,
+				095A0B222BF7B87C004F36B3 /* AboutAppView.swift in Sources */,
+				093DE5922BF79DA6002E4272 /* NetworkUtilities.swift in Sources */,
+				093DE5962BF7AD14002E4272 /* ViewUtils.swift in Sources */,
+				095A0B262BF7BF1E004F36B3 /* TermsView.swift in Sources */,
+				095A0B452BFA8D4C004F36B3 /* ShipmentDataCardView.swift in Sources */,
+				095A0B352BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift in Sources */,
+				095A0B4C2BFA8DF2004F36B3 /* ShipmentDataView.swift in Sources */,
+				095A0B302BF7D73D004F36B3 /* IconUtils.swift in Sources */,
 				09EFCDC32BC9C0D200456D29 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +874,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -610,6 +938,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
