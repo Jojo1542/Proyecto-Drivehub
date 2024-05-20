@@ -3,6 +3,7 @@ package es.iesmm.proyecto.drivehub.backend.controller.user;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.response.common.CommonResponse;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -95,10 +96,73 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN') and hasAuthority('DELETE_USER')")
+    public ResponseEntity<CommonResponse> deleteUser(@PathVariable Long id) {
+        try {
+            userService.deleteById(id);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
 
+    /*
+     * Metodos de las licencias de conducir
+     */
+    @GetMapping("/licenses")
+    public List<DriverLicense> getDriverLicenses(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+        return userService.findDriverLicensesByDriver(user.getId());
+    }
 
+    @PostMapping("/licenses/add")
+    public ResponseEntity<CommonResponse> addDriverLicense(@AuthenticationPrincipal UserDetails userDetails, @RequestBody DriverLicense license) {
+        UserModel user = (UserModel) userDetails;
+        try {
+            userService.addDriverLicenseToDriver(user.getId(), license);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
 
-
-
+    @DeleteMapping("/licenses/remove/{licenseId}")
+    public ResponseEntity<CommonResponse> removeDriverLicense(@AuthenticationPrincipal UserDetails userDetails, @PathVariable String licenseId) {
+        UserModel user = (UserModel) userDetails;
+        try {
+            userService.removeDriverLicenseFromDriver(user.getId(), licenseId);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
 
 }

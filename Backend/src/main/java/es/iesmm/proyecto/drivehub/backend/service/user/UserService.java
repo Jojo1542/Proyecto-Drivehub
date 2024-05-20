@@ -2,6 +2,7 @@ package es.iesmm.proyecto.drivehub.backend.service.user;
 
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,4 +45,12 @@ public interface UserService extends UserDetailsService {
     long count();
 
     void createDefaultUser(String defaultAdminEmail, String password);
+
+    List<UserModel> findDriversByFleet(Long fleetId);
+
+    List<DriverLicense> findDriverLicensesByDriver(Long driverId);
+
+    void addDriverLicenseToDriver(Long driverId, DriverLicense license);
+
+    void removeDriverLicenseFromDriver(Long driverId, String licenseId);
 }

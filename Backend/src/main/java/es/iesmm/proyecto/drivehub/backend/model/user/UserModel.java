@@ -1,11 +1,13 @@
 package es.iesmm.proyecto.drivehub.backend.model.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.*;
+import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
+import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.type.DriverLicenseType;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.util.converter.RoleListConverter;
 import jakarta.persistence.*;
@@ -20,9 +22,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Table(
@@ -55,8 +55,12 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	private String lastName;
 
 	@Convert(converter = RoleListConverter.class)
-	@Column(name = "roles", nullable = false)
+	@Column(name = "roles", nullable = false, length = 1500)
 	private List<UserRoles> roles;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@JsonIgnore
+	private List<UserRent> userRent;
 
 	/*
 	COLUMNAS OPCIONALES
@@ -73,14 +77,18 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	 * RELACIONES CON LA INFORMACIÓN DE LOS USUARIOS EN CASO DE TENERLA
 	 */
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@PrimaryKeyJoinColumn(name = "id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "admin_data_id", referencedColumnName = "id")
 	private AdminModelData adminData;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@PrimaryKeyJoinColumn(name = "id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "driver_data_id", referencedColumnName = "id")
 	private DriverModelData driverData;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@JsonIgnoreProperties("user")
+	private Set<DriverLicense> driverLicense = new HashSet<>();
 	
 	public UserModel(String email, String password, String firstName, String lastName) {
 		this.email = email;
@@ -97,6 +105,26 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		this.email = email.toLowerCase(); // Se guarda el email en minúsculas para evitar problemas de mayúsculas y minúsculas
 	}
 
+	public boolean hasRentActive() {
+		return userRent.stream().anyMatch(UserRent::isActive);
+	}
+
+	public boolean hasRegisteredLicenseType(DriverLicenseType type) {
+		return driverLicense.stream().anyMatch(dl -> dl.getType().equals(type));
+	}
+
+	public boolean canAfford(double amount) {
+		return saldo >= amount;
+	}
+
+	public void charge(double amount) {
+		saldo += amount;
+	}
+
+	public void withdraw(double amount) {
+		saldo -= amount;
+	}
+
 	/*
 	 * Metodo de control de los roles de los usuarios y sus datos asociados.
 	 */
@@ -107,6 +135,7 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (roles.contains(UserRoles.ADMIN)) {
 			if (adminData == null) {
 				adminData = new AdminModelData();
+				adminData.setUserModel(this);
 			}
 		} else {
 			adminData = null;
@@ -115,10 +144,12 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (roles.contains(UserRoles.DRIVER_FLEET)) {
 			if (driverData == null || !(driverData instanceof FleetDriverModelData)) {
 				driverData = new FleetDriverModelData();
+				driverData.setUserModel(this);
 			}
 		} else if (roles.contains(UserRoles.DRIVER_CHAUFFEUR)) {
 			if (driverData == null || !(driverData instanceof ChauffeurDriverModelData)) {
 				driverData = new ChauffeurDriverModelData();
+				driverData.setUserModel(this);
 			}
 		} else {
 			driverData = null;
@@ -144,9 +175,6 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 		if (adminData != null) {
 			grantedAuthorities.addAll(adminData.getAuthorities());
 		}
-
-		System.out.println(grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
-
 		return grantedAuthorities;
 	}
 

@@ -4,6 +4,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.util.Collections.emptyList;
@@ -19,6 +20,6 @@ public class StringListConverter implements AttributeConverter<List<String>, Str
 
     @Override
     public List<String> convertToEntityAttribute(String string) {
-        return string != null ? Arrays.asList(string.split(SPLIT_CHAR)) : emptyList();
+        return string != null ? Arrays.asList(string.split(SPLIT_CHAR)) : new LinkedList<>();
     }
 }

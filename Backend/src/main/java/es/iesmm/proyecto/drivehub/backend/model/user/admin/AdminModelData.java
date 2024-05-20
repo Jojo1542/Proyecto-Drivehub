@@ -2,6 +2,7 @@ package es.iesmm.proyecto.drivehub.backend.model.user.admin;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.iesmm.proyecto.drivehub.backend.model.fleet.Fleet;
+import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.permisison.AdminPermission;
 import es.iesmm.proyecto.drivehub.backend.util.converter.AdminPermissionListConverter;
 import es.iesmm.proyecto.drivehub.backend.util.converter.LongListConverter;
@@ -35,23 +36,28 @@ public class AdminModelData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @JsonIgnore
     private Long id;
+
+    @OneToOne(mappedBy = "adminData", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private UserModel userModel;
 
     @Column(name = "flotas_con_acceso")
     @Convert(converter = LongListConverter.class)
     @ColumnDefault("''")
-    private List<Long> fleetPermissions;
+    private List<Long> fleetPermissions = new LinkedList<>();
 
-    @Column(name = "general_permissions")
+    @Column(name = "general_permissions", length = 1500)
     @Convert(converter = AdminPermissionListConverter.class)
     @ColumnDefault("''")
-    private List<AdminPermission> generalPermissions;
+    private List<AdminPermission> generalPermissions = new LinkedList<>();
 
     @NotEmpty
     @Column(name = "horario")
     @ColumnDefault("'08:00-20:00'")
-    private String avaiableTime;
+    private String avaiableTime = "08:00-20:00";
 
     @PrePersist
     public void defaultValues() {
@@ -60,11 +66,11 @@ public class AdminModelData {
         }
 
         if (this.fleetPermissions == null) {
-            this.fleetPermissions = Collections.emptyList();
+            this.fleetPermissions = new LinkedList<>();
         }
 
         if (this.generalPermissions == null) {
-            this.generalPermissions = Collections.emptyList();
+            this.generalPermissions = new LinkedList<>();
         }
     }
 
