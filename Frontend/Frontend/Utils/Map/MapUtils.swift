@@ -43,3 +43,18 @@ func lookUpCurrentLocation(coordinates: CLLocation, completionHandler: @escaping
         }
     })
 }
+
+func lookUpAddress(address: String, completionHandler: @escaping (CLPlacemark?) -> Void ) {
+    // Obtiene el geoencoder
+    let geocoder = CLGeocoder()
+        
+    // Comprueba las coordenadas de la localización
+    geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+        if (error == nil) {
+            let firstLocation = placemarks?[0]
+            completionHandler(firstLocation)
+        } else {
+            completionHandler(nil)
+        }
+    })
+}

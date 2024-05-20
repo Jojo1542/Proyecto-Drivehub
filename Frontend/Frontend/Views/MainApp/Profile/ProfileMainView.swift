@@ -44,7 +44,7 @@ struct ProfileMainView: View {
                         PreviewHelper.pendingTrip,
                         PreviewHelper.acceptedTrip,
                     ]), label: { Label("Mis trayectos", systemImage: "car.fill") });
-                    NavigationLink(destination: EmptyView(), label: { Label("Mis documentos", systemImage: "person.text.rectangle.fill") });
+                    NavigationLink(destination: DocumentsView(), label: { Label("Mis documentos", systemImage: "person.text.rectangle.fill") });
                     NavigationLink(destination: BalanceDetailsView(), label: { Label("Mi saldo", systemImage: "creditcard.fill") });
                 }
                 
@@ -54,9 +54,9 @@ struct ProfileMainView: View {
                 }
                 
                 Section(header: ListSectionHeader(title: "Sobre la aplicación", icon: "info.circle.fill")) {
-                    NavigationLink(destination: EmptyView(), label: { Label("Acerca de", systemImage: "info.circle.fill") });
-                    NavigationLink(destination: EmptyView(), label: { Label("Política de privacidad", systemImage: "shield.lefthalf.fill") });
-                    NavigationLink(destination: EmptyView(), label: { Label("Términos y condiciones", systemImage: "doc.text.fill") });
+                    NavigationLink(destination: AboutAppView(), label: { Label("Acerca de", systemImage: "info.circle.fill") });
+                    NavigationLink(destination: PrivacyView(), label: { Label("Política de privacidad", systemImage: "shield.lefthalf.fill") });
+                    NavigationLink(destination: TermsView(), label: { Label("Términos y condiciones", systemImage: "doc.text.fill") });
                 }
                 
                 Button(action: {
@@ -84,4 +84,5 @@ struct ProfileMainView: View {
 #Preview("Usuario") {
     ProfileMainView(isPresented: .constant(true))
         .environmentObject(PreviewHelper.authModelUser)
+        .environmentObject(AppViewModel(authViewModel: PreviewHelper.authModelUser))
 }

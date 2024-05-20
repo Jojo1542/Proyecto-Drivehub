@@ -18,7 +18,7 @@ class UserMeRequest {
             .validate(contentType: ["application/json"])
             .cURLDescription { description in
                 print("Me user request: \(description)")
-            }.responseDecodable(of: UserModel.self) { response in
+            }.responseDecodable(of: UserModel.self, decoder: jsonDecoder) { response in
                 switch response.result {
                     case .success(let user):
                         completion(.success(data: user))

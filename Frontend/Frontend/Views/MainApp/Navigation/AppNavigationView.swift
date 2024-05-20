@@ -10,6 +10,7 @@ import SwiftUI
 struct AppNavigationView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel;
+    @EnvironmentObject var appViewModel: AppViewModel;
     
     var body: some View {
         TabView {
@@ -20,13 +21,14 @@ struct AppNavigationView: View {
                     Text("Trayectos")
                 }
             
-            Text("Alquilar")
+            RentMainView()
+                .environmentObject(RentViewModel(appViewModel: appViewModel))
                 .tabItem {
                     Image(systemName: "car.2.fill")
                     Text("Alquilar")
                 }
             
-            Text("Envios")
+            ShipmentsMainView()
                 .tabItem {
                     Image(systemName: "truck.box.badge.clock.fill")
                     Text("Envios")
@@ -43,12 +45,12 @@ struct AppNavigationView: View {
             // Si el usuario es conductor de Flota o Chofer, se le muestra la pestaña de conductor, dentro de esta, ya dependiendo de su rol se le muestra de una forma u otra la pantalla de administrador
             if (authViewModel.currentUser!.roles.contains(UserModel.Role.FLEET) || authViewModel.currentUser!.roles.contains(UserModel.Role.CHAUFFEUR)) {
                 DriverMainView()
+                    .environmentObject(DriverViewModel(appModel: appViewModel))
                     .tabItem {
                         Image(systemName: "car.side")
                         Text("Conductor")
                     }
             }
-            
         }
     }
 }

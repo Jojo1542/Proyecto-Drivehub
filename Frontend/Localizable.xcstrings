@@ -40,6 +40,12 @@
         }
       }
     },
+    "¿Estás seguro de que deseas finalizar el alquiler?" : {
+
+    },
+    "¿Estás seguro?" : {
+
+    },
     "¿No tienes cuenta?" : {
       "localizations" : {
         "en" : {
@@ -49,6 +55,19 @@
           }
         }
       }
+    },
+    "¿Quieres alquilar el vehiculo %@ %@ por %.2f €/hora? Recuerda que las horas se cobran completas. Incluso si solo alquilas 1 minuto, se cobrará 1 hora completa." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "¿Quieres alquilar el vehiculo %1$@ %2$@ por %3$.2f €/hora? Recuerda que las horas se cobran completas. Incluso si solo alquilas 1 minuto, se cobrará 1 hora completa."
+          }
+        }
+      }
+    },
+    "%.2f €" : {
+
     },
     "%@" : {
 
@@ -73,6 +92,67 @@
         }
       }
     },
+    "%@ €" : {
+
+    },
+    "%@%@ €" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ €"
+          }
+        }
+      }
+    },
+    "1. ¿Qué datos recopilamos?" : {
+
+    },
+    "1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "2. ¿Para qué utilizamos tus datos?" : {
+
+    },
+    "2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "3. ¿Con quién compartimos tus datos?" : {
+
+    },
+    "3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "4. ¿Cómo protegemos tus datos?" : {
+
+    },
+    "4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "5. ¿Cómo puedes acceder a tus datos?" : {
+
+    },
+    "5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "6. ¿Cómo puedes contactar con nosotros?" : {
+
+    },
+    "6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "7. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "8. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "9. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
+    "10. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
+
+    },
     "Acerca de" : {
 
     },
@@ -88,6 +168,12 @@
     "Alquilar" : {
 
     },
+    "Añadir licencia" : {
+
+    },
+    "Añadir permiso de conducir" : {
+
+    },
     "Apellidos" : {
       "localizations" : {
         "en" : {
@@ -97,6 +183,12 @@
           }
         }
       }
+    },
+    "Asegurate que has entregado o dejado el vehículo en el lugar correspondiente o se te cobrará una penalización." : {
+
+    },
+    "Backend" : {
+
     },
     "Bienvenido a la plataforma donde todo lo relacionado con la carretera se une. Para poder empezar necesitamos algunos datos para comprobar que eres humano y que eres mayor de edad." : {
 
@@ -110,10 +202,19 @@
     "Cambio de contraseña" : {
 
     },
+    "Cancelar" : {
+
+    },
     "Cerrar" : {
 
     },
     "Cerrar sesión" : {
+
+    },
+    "Coches disponilbes" : {
+
+    },
+    "Color: %@" : {
 
     },
     "Conductor" : {
@@ -132,6 +233,9 @@
         }
       }
     },
+    "Contacto" : {
+
+    },
     "Contraseña" : {
       "localizations" : {
         "en" : {
@@ -141,6 +245,9 @@
           }
         }
       }
+    },
+    "Contratos de conductor" : {
+
     },
     "Crea tu cuenta" : {
       "localizations" : {
@@ -172,6 +279,9 @@
         }
       }
     },
+    "Desarrollador" : {
+
+    },
     "Destino" : {
 
     },
@@ -187,7 +297,22 @@
     "El usuario y/o contraseña son incorrecos." : {
 
     },
+    "El vehículo ha sido devuelto con éxito." : {
+
+    },
+    "El vehículo no está alquilado." : {
+
+    },
+    "El vehículo no ha sido encontrado." : {
+
+    },
+    "Eliminar" : {
+
+    },
     "Email" : {
+
+    },
+    "Emitido: %@" : {
 
     },
     "Envios" : {
@@ -197,6 +322,9 @@
 
     },
     "Es recomendable que la nueva contraseña contenga al menos 8 caracteres, un numero, una letra mayuscula y una minuscula." : {
+
+    },
+    "Expira: %@" : {
 
     },
     "Favoritos" : {
@@ -210,10 +338,28 @@
         }
       }
     },
+    "Fecha de caducidad" : {
+
+    },
+    "Fecha de compilación" : {
+
+    },
+    "Fecha de expedición" : {
+
+    },
     "Fecha de nacimiento" : {
 
     },
     "Fecha de nacimiento:" : {
+
+    },
+    "Finalizar" : {
+
+    },
+    "Finalizar alquiler" : {
+
+    },
+    "Gasto" : {
 
     },
     "Guardar cambios" : {
@@ -223,6 +369,9 @@
 
     },
     "Ha ocurrido un error desconocido iniciando sesión. Contacte con un Administrador." : {
+
+    },
+    "Ha ocurrido un error desconocido." : {
 
     },
     "Hello, Chaffeur!" : {
@@ -240,7 +389,13 @@
     "Información de desarrollador" : {
 
     },
+    "Información de la aplicación" : {
+
+    },
     "Información personal" : {
+
+    },
+    "Ingreso" : {
 
     },
     "Iniciar sesión" : {
@@ -264,13 +419,28 @@
         }
       }
     },
+    "Jose Antonio Ponce Piñero" : {
+
+    },
+    "jponpin0212@iesmartinezm.es" : {
+
+    },
     "La contraseña se ha cambiado correctamente." : {
+
+    },
+    "La privacidad de nuestros usuarios es muy importante para nosotros. Por ello, en esta sección te explicamos cómo tratamos tus datos personales." : {
 
     },
     "Las contraseñas introducidas deben ser iguales." : {
 
     },
     "Las contraseñas no coinciden." : {
+
+    },
+    "Matrícula" : {
+
+    },
+    "Matrícula: %@" : {
 
     },
     "Mi Perfil" : {
@@ -304,16 +474,37 @@
     "Mis trayectos" : {
 
     },
+    "No" : {
+
+    },
+    "No compartimos tus datos con terceros." : {
+
+    },
+    "No hay contratos de conductor" : {
+
+    },
+    "No hay movimientos" : {
+
+    },
     "No se ha introducido un E-Mail válido, comprueba de nuevo." : {
 
     },
     "No se ha podido cambiar la contraseña, por favor intentalo de nuevo más tarde." : {
 
     },
+    "No tienes ningún alquiler activo." : {
+
+    },
+    "No tienes viajes" : {
+
+    },
     "Nombre" : {
 
     },
     "Nueva contraseña" : {
+
+    },
+    "Número de permiso" : {
 
     },
     "OK" : {
@@ -329,7 +520,25 @@
         }
       }
     },
+    "Permisos de conducir" : {
+
+    },
     "Política de privacidad" : {
+
+    },
+    "Precio estimado" : {
+
+    },
+    "Precio/H: %.2f €" : {
+
+    },
+    "Puedes acceder a tus datos en la sección de perfil de la aplicación." : {
+
+    },
+    "Puedes contactar con nosotros en la dirección de correo electrónico contacto@drivehub.es" : {
+
+    },
+    "Recopilamos los datos que nos proporcionas al registrarte en la aplicación. Estos datos incluyen tu nombre, apellidos, correo electrónico y contraseña." : {
 
     },
     "Repetir nueva contraseña" : {
@@ -344,10 +553,22 @@
     "Saldo" : {
 
     },
+    "Saldo actual" : {
+
+    },
     "Salida" : {
 
     },
     "Se debe rellenar la contraseña y la confirmación de la contraseña." : {
+
+    },
+    "Sí" : {
+
+    },
+    "Start updating location" : {
+
+    },
+    "Stop updating location" : {
 
     },
     "Teléfono" : {
@@ -360,6 +581,15 @@
 
     },
     "Test" : {
+
+    },
+    "Tiempo transcurrido" : {
+
+    },
+    "Tipo de permiso" : {
+
+    },
+    "Tipo: %@" : {
 
     },
     "Tratamiento de datos" : {
@@ -399,6 +629,31 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Tu email es: %1$@ y tu id es %2$lld"
+          }
+        }
+      }
+    },
+    "Tus datos están protegidos mediante cifrado y medidas de seguridad." : {
+
+    },
+    "Últimos movimientos" : {
+
+    },
+    "Utilizamos tus datos para autenticarte en la aplicación y para proporcionarte un servicio personalizado." : {
+
+    },
+    "Vehiculos" : {
+
+    },
+    "Versión" : {
+
+    },
+    "Viaje desde %@ a %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Viaje desde %1$@ a %2$@"
           }
         }
       }

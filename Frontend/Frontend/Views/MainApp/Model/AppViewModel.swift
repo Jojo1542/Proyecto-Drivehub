@@ -42,7 +42,7 @@ class AppViewModel: ObservableObject {
         
         UserUpdateRequest.updateUser(sessionToken: getSessionToken(), body: request, completion: { response in
             switch response {
-            case .success(let user):
+            case .success(_):
                 self.authViewModel.updateUser(); // Actualiza el usuario en la aplicación
                 completion(.success())
             case .failure(let error):
@@ -50,6 +50,31 @@ class AppViewModel: ObservableObject {
             }
         });
     }
+    
+    public func addDriverLicense(driverLicense: UserModel.DriverLicense, completion: @escaping (Callback<Void, AddDriverLicenseRequest.ErrorType>) -> Void) {
+        AddDriverLicenseRequest.addDriverLicense(sessionToken: getSessionToken(), driverLicense: driverLicense, completion: { response in
+            switch response {
+                case .success(_):
+                    self.authViewModel.updateUser(); // Actualiza el usuario en la aplicación
+                    completion(.success())
+                case .failure(let error):
+                    completion(.failure(data: error))
+                }
+        });
+    }
+    
+    public func deleteDriverLicense(licenseId: String, completion: @escaping (Callback<Void, RemoveDriverLicenseRequest.ErrorType>) -> Void) {
+        RemoveDriverLicenseRequest.removeDriverLicense(sessionToken: getSessionToken(), driverLicenseId: licenseId, completion: { response in
+            switch response {
+                case .success(_):
+                    self.authViewModel.updateUser(); // Actualiza el usuario en la aplicación
+                    completion(.success())
+                case .failure(let error):
+                    completion(.failure(data: error))
+            }
+        });
+    }
+    
     
     public func getUser() -> UserModel {
         return authViewModel.currentUser!;

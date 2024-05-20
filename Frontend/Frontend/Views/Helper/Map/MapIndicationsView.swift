@@ -17,6 +17,7 @@ struct MapIndicationsView: View {
     
     var sourceCoordinate: CLLocationCoordinate2D;
     var destinationCoordinate: CLLocationCoordinate2D;
+    var customMarkers: [CustomMapMarker]? = [];
     
     var body: some View {
         Map() {
@@ -29,6 +30,12 @@ struct MapIndicationsView: View {
                     .stroke(Color.accentColor, lineWidth: 5)
             }
             
+            // Parcel location marker
+            if let customMarkers {
+                ForEach(customMarkers) { marker in
+                    Marker(marker.title, systemImage: marker.icon, coordinate: marker.coordinate)
+                }
+            }
         }.onAppear {
             // Calcular la ruta cuando se muestre el mapa
             getRoute();

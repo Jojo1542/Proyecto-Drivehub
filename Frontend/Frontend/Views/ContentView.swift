@@ -27,7 +27,6 @@ struct ContentView: View {
                 appViewModel = AppViewModel(authViewModel: authViewModel);
             }
         }
-        //TripListView()
     }
 }
 
@@ -53,7 +52,7 @@ struct ContentView: View {
 
 #Preview("Chofer") {
     ContentView()
-        .environmentObject(PreviewHelper.authModelFleetChaoffeur)
+        .environmentObject(PreviewHelper.authModelChaoffeur)
 }
 
 #Preview("Flota") {
