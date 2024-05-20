@@ -154,27 +154,28 @@ public class SimpleUserService implements UserService {
     public List<DriverLicense> findDriverLicensesByDriver(Long driverId) {
         UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
 
-        return user.getDriverLicense().stream().toList();
+        return user.getDriverLicenses().stream().toList();
     }
 
     @Override
     public void addDriverLicenseToDriver(Long driverId, DriverLicense license) {
-        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
+        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
-        user.getDriverLicense().add(license);
+        user.getDriverLicenses().add(license);
+
         save(user);
     }
 
     @Override
     public void removeDriverLicenseFromDriver(Long driverId, String licenseId) {
-        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
+        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
-        DriverLicense license = user.getDriverLicense().stream()
+        DriverLicense license = user.getDriverLicenses().stream()
                 .filter(dl -> dl.getLicenseNumber().equals(licenseId))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("El permiso de conducción no existe"));
+                .orElseThrow(() -> new IllegalStateException("LICENSE_NOT_FOUND"));
 
-        user.getDriverLicense().remove(license);
+        user.getDriverLicenses().remove(license);
         save(user);
     }
 }

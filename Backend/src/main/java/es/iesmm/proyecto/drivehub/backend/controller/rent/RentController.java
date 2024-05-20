@@ -4,8 +4,11 @@ import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.rent.vehicle.RentCar;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.service.rent.RentService;
+import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import es.iesmm.proyecto.drivehub.backend.service.vehicle.VehicleService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +24,7 @@ public class RentController {
 
     private final RentService rentService;
     private final VehicleService vehicleService;
+    private final UserService userService;
 
     @GetMapping("/available")
     @ResponseBody
@@ -28,10 +32,29 @@ public class RentController {
         return vehicleService.findAvailableVehicles();
     }
 
-    @GetMapping("/rentedByMe")
+    @GetMapping("/active")
+    @ResponseBody
+    public ResponseEntity<UserRent> getActiveRent(@AuthenticationPrincipal UserDetails userDetails) {
+        return rentService.findActiveRentBy((UserModel) userDetails)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
+    @GetMapping("/history")
     @ResponseBody
     public List<UserRent> listRentedVehiclesByMe(@AuthenticationPrincipal UserDetails userDetails) {
         return rentService.findRentedVehiclesBy((UserModel) userDetails);
+    }
+
+    @GetMapping("/history/{userId}")
+    @ResponseBody
+    @PreAuthorize("hasRole('ADMIN') and hasAuthority('LIST_RENTS_BY_USER')")
+    public ResponseEntity<List<UserRent>> listRentedVehiclesByUser(@PathVariable Long userId) {
+        return userService.findById(userId)
+                .map(rentService::findRentedVehiclesBy)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/take/{vehicleId}")
@@ -44,9 +67,9 @@ public class RentController {
         } catch (NullPointerException e) {
             return ResponseEntity.notFound().build();
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage())).build();
         } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
 
@@ -58,9 +81,9 @@ public class RentController {
                     rentService.returnVehicle(vehicleId, (UserModel) userDetails)
             );
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage())).build();
         } catch (IllegalStateException e) {
-            return ResponseEntity.status(406).build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
 
@@ -74,7 +97,6 @@ public class RentController {
     public List<UserRent> listAllRents() {
         return rentService.findAll();
     }
-
 
 
 }

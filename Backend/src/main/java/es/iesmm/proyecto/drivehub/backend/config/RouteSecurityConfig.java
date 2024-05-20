@@ -32,6 +32,7 @@ public class RouteSecurityConfig {
                 .authorizeHttpRequests(
                         authorizeRequests -> authorizeRequests
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/status/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 // Disable session management

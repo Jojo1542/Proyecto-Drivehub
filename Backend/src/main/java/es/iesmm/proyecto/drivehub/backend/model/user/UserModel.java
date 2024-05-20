@@ -86,9 +86,9 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@JoinColumn(name = "driver_data_id", referencedColumnName = "id")
 	private DriverModelData driverData;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("user")
-	private Set<DriverLicense> driverLicense = new HashSet<>();
+	private Set<DriverLicense> driverLicenses = new HashSet<>();
 	
 	public UserModel(String email, String password, String firstName, String lastName) {
 		this.email = email;
@@ -110,7 +110,7 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	}
 
 	public boolean hasRegisteredLicenseType(DriverLicenseType type) {
-		return driverLicense.stream().anyMatch(dl -> dl.getType().equals(type));
+		return driverLicenses.stream().anyMatch(dl -> dl.getType().equals(type));
 	}
 
 	public boolean canAfford(double amount) {

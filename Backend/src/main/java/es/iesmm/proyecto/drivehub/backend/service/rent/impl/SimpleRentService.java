@@ -27,6 +27,7 @@ public class SimpleRentService implements RentService {
 
     private final VehicleService vehicleService;
     private final RentRepository rentRepository;
+    private final UserRepository userRepository;
 
     private final List<DriverLicenseType> validLicenseTypes = List.of(
             DriverLicenseType.B,
@@ -34,7 +35,6 @@ public class SimpleRentService implements RentService {
             DriverLicenseType.C,
             DriverLicenseType.CE
     );
-    private final UserRepository userRepository;
 
     @Override
     public List<UserRent> findRentedVehiclesBy(UserModel userDetails) {
@@ -46,13 +46,13 @@ public class SimpleRentService implements RentService {
         // Comprobar que el vehículo existe, que el usuario existe y que el usuario no tiene un alquiler activo, si no, lanzar excepción
         Preconditions.checkNotNull(vehicleId, "Vehicle ID cannot be null");
         Preconditions.checkNotNull(user, "User cannot be null");
-        Preconditions.checkState(user.hasRentActive(), "User has an active rent");
-        Preconditions.checkState(hasValidDriverLicense(user), "User does not have a valid driver license");
+        Preconditions.checkState(!user.hasRentActive(), "USER_ALREADY_HAS_RENT");
+        Preconditions.checkState(!hasValidDriverLicense(user), "USER_DOES_NOT_HAVE_LICENSE");
 
-        RentCar vehicle = vehicleService.findById(vehicleId).orElseThrow(() -> new NullPointerException("Vehicle not found"));
+        RentCar vehicle = vehicleService.findById(vehicleId).orElseThrow(() -> new NullPointerException("VEHICLE_NOT_FOUND"));
 
-        Preconditions.checkState(vehicle.isAvailable(), "Vehicle is not available");
-        Preconditions.checkState(user.canAfford(vehicle.getPrecioHora()), "User cannot afford the vehicle");
+        Preconditions.checkState(vehicle.isAvailable(), "VEHICLE_NOT_AVAILABLE");
+        Preconditions.checkState(user.canAfford(vehicle.getPrecioHora()), "USER_CANT_AFFORD_RENT");
 
         UserRent userRent = UserRent
                 .builder()
@@ -78,17 +78,17 @@ public class SimpleRentService implements RentService {
         // Comprobar que el vehículo existe, que el usuario existe y que el usuario tiene un alquiler activo, si no, lanzar excepción
         Preconditions.checkNotNull(vehicleId, "Vehicle ID cannot be null");
         Preconditions.checkNotNull(user, "User cannot be null");
-        Preconditions.checkState(!user.hasRentActive(), "User does not have an active rent");
+        Preconditions.checkState(user.hasRentActive(), "USER_DOES_NOT_HAVE_ACTIVE_RENT");
 
         Optional<RentCar> optionalVehicle = vehicleService.findById(vehicleId);
-        RentCar vehicle = optionalVehicle.orElseThrow(() -> new NullPointerException("Vehicle not found"));
+        RentCar vehicle = optionalVehicle.orElseThrow(() -> new NullPointerException("VEHICLE_NOT_FOUND"));
 
         Collection<UserRent> userRents = user.getUserRent();
         // Obtiene el alquiler activo del usuario para el vehículo, si no lo encuentra, lanza una excepción
         UserRent userRent = userRents.stream()
                 .filter(ur -> ur.getVehicle().equals(vehicle) && ur.isActive())
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Vehicle not rented by user"));
+                .orElseThrow(() -> new IllegalArgumentException("VEHICLE_NOT_RENTED_BY_USER"));
 
         userRent.setActive(false);
         userRent.setEndTime(Timestamp.from(Instant.now()));
@@ -114,7 +114,14 @@ public class SimpleRentService implements RentService {
         return rentRepository.findAll();
     }
 
+    @Override
+    public Optional<UserRent> findActiveRentBy(UserModel userDetails) {
+        return userDetails.getUserRent().stream()
+                .filter(UserRent::isActive)
+                .findFirst();
+    }
+
     private boolean hasValidDriverLicense(UserModel user) {
-        return user.getDriverLicense().stream().anyMatch(dl -> validLicenseTypes.contains(dl.getType()));
+        return user.getDriverLicenses().stream().anyMatch(dl -> validLicenseTypes.contains(dl.getType()));
     }
 }
