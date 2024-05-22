@@ -45,8 +45,8 @@ public class SimpleVehicleService implements VehicleService {
     public RentCar save(RentCar vehicle) {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(vehicle, "The vehicle cannot be null");
-        Preconditions.checkState(findByPlate(vehicle.getPlate()).isEmpty(), "The vehicle with plate " + vehicle.getPlate() + " already exists");
-        Preconditions.checkState(findByNumBastidor(vehicle.getNumBastidor()).isEmpty(), "The vehicle with numBastidor " + vehicle.getNumBastidor() + " already exists");
+        Preconditions.checkState(findByPlate(vehicle.getPlate()).isEmpty(), "PLATE_ALREADY_EXISTS");
+        Preconditions.checkState(findByNumBastidor(vehicle.getNumBastidor()).isEmpty(), "BASTIDOR_ALREADY_EXISTS");
 
         return vehicleRepository.save(vehicle);
     }
@@ -57,7 +57,7 @@ public class SimpleVehicleService implements VehicleService {
 
         Optional<RentCar> vehicleOptional = findById(id);
 
-        Preconditions.checkState(vehicleOptional.isPresent(), "The vehicle with id " + id + " does not exist");
+        Preconditions.checkState(vehicleOptional.isPresent(), "VEHICLE_NOT_FOUND");
 
         RentCar vehicleToUpdate = vehicleOptional.get();
 
@@ -75,7 +75,7 @@ public class SimpleVehicleService implements VehicleService {
     public void deleteById(Long id) {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(id, "The id cannot be null");
-        Preconditions.checkArgument(vehicleRepository.existsById(id), "The vehicle with id " + id + " does not exist");
+        Preconditions.checkArgument(vehicleRepository.existsById(id), "VEHICLE_NOT_FOUND");
 
         vehicleRepository.deleteById(id);
     }

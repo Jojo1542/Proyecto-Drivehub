@@ -6,7 +6,6 @@ import es.iesmm.proyecto.drivehub.backend.model.http.request.ship.ShipmentStatus
 import es.iesmm.proyecto.drivehub.backend.model.ship.Shipment;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.repository.ShipmentRepository;
-import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.ship.ShipmentService;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import lombok.AllArgsConstructor;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -35,17 +35,16 @@ public class SimpleShipmentService implements ShipmentService {
         Preconditions.checkNotNull(request.destinationAddress(), "The destination address cannot be null");
         Preconditions.checkNotNull(request.shipmentDate(), "The shipment date cannot be null");
         Preconditions.checkNotNull(request.deliveryDate(), "The delivery date cannot be null");
-        Preconditions.checkNotNull(request.parcels(), "The parcels cannot be null");
-        Preconditions.checkArgument(request.shipmentDate().before(request.deliveryDate()), "The shipment date must be before the delivery date");
-        Preconditions.checkArgument(!request.parcels().isEmpty(), "The parcels cannot be empty");
-        Preconditions.checkArgument(request.driverId() != null, "The driver id cannot be null");
+        Preconditions.checkNotNull(request.parcels(), "PARCELS_CANNOT_BE_NULL");
+        Preconditions.checkArgument(request.shipmentDate().before(request.deliveryDate()), "INVALID_SHIPMENT_DATE");
+        Preconditions.checkArgument(!request.parcels().isEmpty(), "PARCELS_CANNOT_BE_EMPTY");
 
         // Se convierte la petición en un envío y se guarda en la base de datos
         Shipment shipment = request.toShipment();
 
         shipment.setDriver(
                 userService.findById(request.driverId())
-                        .orElseThrow(() -> new IllegalArgumentException("The driver with id " + request.driverId() + " does not exist"))
+                        .orElseThrow(() -> new IllegalArgumentException("DRIVER_NOT_FOUND"))
         );
 
         shipment = shipmentRepository.save(shipment);
@@ -83,7 +82,17 @@ public class SimpleShipmentService implements ShipmentService {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(user, "The user cannot be null");
 
-        return shipmentRepository.findByDriverId(user.getId());
+        return shipmentRepository.findByDriverId(user.getId()).stream().filter(Shipment::isNotCompleted).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Shipment> findByFleet(Long fleetId) {
+        List<UserModel> drivers = userService.findDriversByFleet(fleetId);
+
+        return drivers.stream()
+                .map(this::findByDriver)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -111,6 +120,11 @@ public class SimpleShipmentService implements ShipmentService {
 
         // Se guarda el envío en la base de datos
         return shipmentRepository.save(shipment);
+    }
+
+    @Override
+    public List<Shipment> findAll() {
+        return shipmentRepository.findAll();
     }
 
 }

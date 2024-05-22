@@ -63,6 +63,7 @@ public class VehicleController {
     @ResponseBody
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('DELETE_VEHICLE')")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
+
         try {
             vehicleService.deleteById(id);
             return ResponseEntity.ok().build();

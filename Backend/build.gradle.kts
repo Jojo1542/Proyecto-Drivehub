@@ -26,6 +26,7 @@ extra["sentryVersion"] = "7.3.0"
 dependencies {
 	// Spring Boot packs
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
     //implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -65,6 +66,7 @@ dependencies {
 	// Librerías utiles
 	implementation("org.apache.commons:commons-lang3:3.14.0")
 	implementation("com.google.guava:guava:33.1.0-jre")
+	implementation("com.google.maps:google-maps-services:2.2.0")
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

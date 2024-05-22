@@ -1,9 +1,11 @@
 package es.iesmm.proyecto.drivehub.backend.controller.user;
 
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserLocationUpdateRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.response.common.CommonResponse;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
+import es.iesmm.proyecto.drivehub.backend.service.location.LocationService;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final LocationService locationService;
 
     @GetMapping("/me")
     @ResponseBody
@@ -165,4 +168,25 @@ public class UserController {
         }
     }
 
+    @PostMapping("/location")
+    @PreAuthorize("hasRole('DRIVER_FLEET') or hasRole('DRIVER_CHAUFFEUR')")
+    public ResponseEntity<CommonResponse> updateLocation(@AuthenticationPrincipal UserDetails userDetails, @RequestBody UserLocationUpdateRequest request) {
+        UserModel user = (UserModel) userDetails;
+        try {
+            System.out.println(request);
+            locationService.save(user, request);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
 }

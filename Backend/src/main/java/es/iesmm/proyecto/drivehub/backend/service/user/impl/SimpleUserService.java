@@ -161,6 +161,7 @@ public class SimpleUserService implements UserService {
     public void addDriverLicenseToDriver(Long driverId, DriverLicense license) {
         UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
+        license.setUser(user);
         user.getDriverLicenses().add(license);
 
         save(user);

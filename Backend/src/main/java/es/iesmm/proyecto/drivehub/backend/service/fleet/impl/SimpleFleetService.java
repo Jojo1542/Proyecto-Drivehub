@@ -52,7 +52,7 @@ public class SimpleFleetService implements FleetService {
     public Fleet createFleet(UserModel userDetails, FleetCreationRequest request) {
         Preconditions.checkNotNull(userDetails, "User cannot be null");
         Preconditions.checkNotNull(request, "Request cannot be null");
-        Preconditions.checkArgument(findByCIF(request.CIF()).isEmpty(), "Fleet with CIF already exists");
+        Preconditions.checkArgument(findByCIF(request.CIF()).isEmpty(), "CIF_ALREADY_EXISTS");
 
         Fleet fleet = fleetRepository.save(request.toFleet());
 

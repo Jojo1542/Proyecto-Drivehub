@@ -4,11 +4,14 @@ import es.iesmm.proyecto.drivehub.backend.model.http.request.ship.ShipmentCreati
 import es.iesmm.proyecto.drivehub.backend.model.http.request.ship.ShipmentStatusUpdateRequest;
 import es.iesmm.proyecto.drivehub.backend.model.ship.Shipment;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.location.UserLocation;
+import es.iesmm.proyecto.drivehub.backend.service.location.LocationService;
 import es.iesmm.proyecto.drivehub.backend.service.ship.ShipmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,12 +20,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static es.iesmm.proyecto.drivehub.backend.util.permission.PermissionUtils.hasAdminPermission;
+import static es.iesmm.proyecto.drivehub.backend.util.permission.PermissionUtils.hasFleetPermission;
+
 @RestController
 @RequestMapping("/ship")
 @AllArgsConstructor
 public class ShipmentController {
 
     private final ShipmentService shipmentService;
+    private final LocationService locationService;
 
     @GetMapping("/{id}")
     @ResponseBody
@@ -32,11 +39,41 @@ public class ShipmentController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/location")
+    @ResponseBody
+    public ResponseEntity<UserLocation> getShipmentLocationById(@PathVariable Long id) {
+        return shipmentService.findById(id)
+                .map(shipment -> locationService.findLatestLocation(shipment.getDriver().getId())
+                        .map(ResponseEntity::ok)
+                        .orElse(ResponseEntity.notFound().build()))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/all")
+    @ResponseBody
+    @PreAuthorize("hasRole('ADMIN') and (hasAuthority('LIST_ALL_SHIPMENTS') or hasAuthority('SUPER_ADMIN'))")
+    public List<Shipment> listAllShipments() {
+        return shipmentService.findAll();
+    }
+
     @GetMapping("/listOwn")
     @ResponseBody
     @PreAuthorize("hasRole('DRIVER_FLEET')")
     public ResponseEntity<List<Shipment>> listOwnShipments(@AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(shipmentService.findByDriver((UserModel) userDetails));
+    }
+
+    @GetMapping("/list/fleet/{fleetId}")
+    @ResponseBody
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Shipment>> listFleetShipments(@PathVariable Long fleetId, @AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+
+        if (hasFleetPermission(user, fleetId) || hasAdminPermission(user, "SUPER_ADMIN")) {
+            return ResponseEntity.ok(shipmentService.findByFleet(fleetId));
+        } else {
+            throw new AccessDeniedException("User does not have the required role");
+        }
     }
 
     @PostMapping("/create")

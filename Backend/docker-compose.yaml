@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  oracle:
+    image: "gvenzl/oracle-xe"
+    restart: "always"
+    ports:
+      - "1521:1521/tcp"
+    environment:
+      - ORACLE_SID=XE
+      - ORACLE_PASSWORD=1c89m27389127c38172c83mcas9di8jcas89cdum8912738127c3
+  redis:
+    image: "redis:alpine"
+    restart: "always"
+    ports:
+      - "6379:6379/tcp"
+  backend:
+    image: "jojo1542/drivehub-backend"
+    restart: "unless-stopped"
+    pull_policy: build
+    volumes:
+      - "oracle-volume:/opt/oracle/oradata"
+    depends_on:
+      - redis
+      - oracle
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+      - 8.8.8.8
+      - 8.8.4.4
+    build:
+      context: "."
+
+volumes:
+  oracle-volume:

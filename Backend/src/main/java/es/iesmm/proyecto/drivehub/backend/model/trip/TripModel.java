@@ -32,7 +32,7 @@ public class TripModel extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Column(name = "trip_date")
-    private String date;
+    private Date date;
 
     @NotEmpty
     private String startTime;
@@ -46,13 +46,10 @@ public class TripModel extends AbstractPersistable<Long> {
     @NotEmpty
     private String destination;
 
-    // Puede ser null hasta que llegue a su destino
     private double price;
 
-    // Puede ser null hasta que llegue a su destino
     private double distance;
 
-    @NotEmpty
     private boolean sendPackage;
 
     private String vehicleModel;
