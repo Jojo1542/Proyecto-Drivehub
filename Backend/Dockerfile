@@ -3,7 +3,7 @@ FROM gradle:8.4.0-jdk17-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 
-RUN gradle spotlessApply build --no-daemon
+RUN gradle bootJar --no-daemon
 
 FROM eclipse-temurin:17-jre-focal
 
@@ -12,8 +12,7 @@ EXPOSE 8443
 
 RUN mkdir /app
 
-COPY --from=build /home/gradle/src/bot/build/libs/*.jar /app/application.jar
-COPY --from=build /home/gradle/src/bot/src/main/resources /app/data
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/application.jar
 
 # As we need to get the data from the bot, we need to set the working directory to /app
 WORKDIR /app
