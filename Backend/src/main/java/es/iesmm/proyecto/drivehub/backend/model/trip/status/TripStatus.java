@@ -4,7 +4,6 @@ public enum TripStatus {
 
     PENDING,
     ACCEPTED,
-    REJECTED,
     CANCELLED,
     FINISHED
 

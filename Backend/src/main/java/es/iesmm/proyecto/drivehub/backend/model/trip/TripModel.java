@@ -1,14 +1,12 @@
 package es.iesmm.proyecto.drivehub.backend.model.trip;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import es.iesmm.proyecto.drivehub.backend.model.trip.status.TripStatus;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.sql.Time;
@@ -22,6 +20,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class TripModel extends AbstractPersistable<Long> {
 
     @NotEmpty
@@ -35,10 +34,10 @@ public class TripModel extends AbstractPersistable<Long> {
     private Date date;
 
     @NotEmpty
-    private String startTime;
+    private Date startTime;
 
     // Puede ser null hasta que llegue a su destino
-    private String endTime;
+    private Date endTime;
 
     @NotEmpty
     private String origin;
@@ -54,8 +53,9 @@ public class TripModel extends AbstractPersistable<Long> {
 
     private String vehicleModel;
     private String vehiclePlate;
+    private String vehicleColor;
 
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "id")
     @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData"})
     private UserModel driver;
@@ -63,4 +63,9 @@ public class TripModel extends AbstractPersistable<Long> {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "id")
     private UserModel passenger;
+
+    @JsonIgnore
+    public boolean isActive() {
+        return status == TripStatus.ACCEPTED || status == TripStatus.PENDING;
+    }
 }

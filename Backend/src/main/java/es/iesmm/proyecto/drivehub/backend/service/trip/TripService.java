@@ -13,7 +13,11 @@ public interface TripService {
 
     Optional<TripDraftModel> getDraft(String draftId);
 
-    void createTrip(UserModel user, TripDraftModel tripDraftModel);
+    default void createTrip(UserModel user, TripDraftModel tripDraftModel) {
+        createTrip(user, tripDraftModel, false);
+    }
+
+    void createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage);
 
     void assignDriver(UserModel driver, TripModel tripModel);
 
@@ -31,4 +35,5 @@ public interface TripService {
 
     List<TripModel> findUserHistory(Long userId);
 
+    Optional<TripModel> findActiveByPassenger(Long passengerId);
 }
