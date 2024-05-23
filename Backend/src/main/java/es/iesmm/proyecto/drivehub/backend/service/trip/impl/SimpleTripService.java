@@ -122,6 +122,7 @@ public class SimpleTripService implements TripService {
         tripRepository.save(tripModel);
 
         // TODO: Avisar al usuario de la actualización de su trayecto mediante el websocket
+        // A la hora de buscar conductores, avisar solo a los que tengan una preferencia de KM de distancia menor o igual a la distancia del trayecto
     }
 
     @Override

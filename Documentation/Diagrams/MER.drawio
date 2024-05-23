@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-13T18:36:59.688Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="GsGAQpEqWzAkltlD6gkL" version="24.4.0" type="google">
+<mxfile host="app.diagrams.net" modified="2024-05-23T10:54:33.097Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="oGK9e7aHftQQlxm97diI" version="24.2.7" type="google">
   <diagram name="Página-1" id="yMJpfwep5vK8i44Nv-QK">
     <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -31,7 +31,7 @@
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-4" value="PERMISO&lt;br&gt;CONDUCCION" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-453" y="-128" width="111" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-5" value="&lt;b&gt;id_permiso&lt;/b&gt;&lt;div&gt;tipo&lt;/div&gt;&lt;div&gt;&lt;div&gt;fecha_validez&lt;/div&gt;&lt;div&gt;fecha_expedicion&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-5" value="&lt;b&gt;numeroPermiso&lt;/b&gt;&lt;br&gt;&lt;div&gt;tipo&lt;/div&gt;&lt;div&gt;&lt;div&gt;fecha_validez&lt;/div&gt;&lt;div&gt;fecha_expedicion&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-564" y="-132" width="111" height="70" as="geometry" />
         </mxCell>
         <mxCell id="Enspnp0s0IM4FP3xSgeI-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="5o3Ht3gXM4AKcb__C2Ck-6" target="Enspnp0s0IM4FP3xSgeI-4">
@@ -43,8 +43,8 @@
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-7" value="ADMINISTRADOR" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="320.5" y="179" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-12" value="&lt;div&gt;preferencia_kms&lt;/div&gt;&lt;div&gt;recibeTrayectos&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="42" y="383" width="107" height="41" as="geometry" />
+        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-12" value="&lt;div&gt;preferencia_kms&lt;/div&gt;&lt;div&gt;recibeTrayectos&lt;/div&gt;&lt;div&gt;modeloVehiculo&lt;div&gt;matriculaVehiculo&lt;/div&gt;&lt;div&gt;colorVehiculo&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="37" y="361" width="112" height="84" as="geometry" />
         </mxCell>
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-13" value="&lt;div&gt;toneladas_maximas&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-114" y="388" width="125" height="26" as="geometry" />
@@ -55,8 +55,8 @@
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-16" value="TRAYECTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="549" y="-58" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-17" value="&lt;b&gt;id_trayecto&lt;/b&gt;&lt;div&gt;estado&lt;/div&gt;&lt;div&gt;fecha&lt;br&gt;&lt;div&gt;hora_inicio&lt;/div&gt;&lt;div&gt;hora_fin&lt;/div&gt;&lt;div&gt;recogida&lt;/div&gt;&lt;/div&gt;&lt;div&gt;destino&lt;/div&gt;&lt;div&gt;precio&lt;/div&gt;&lt;div&gt;enviaPaquete&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="679" y="-107" width="91" height="156" as="geometry" />
+        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-17" value="&lt;b&gt;id_trayecto&lt;/b&gt;&lt;div&gt;estado&lt;/div&gt;&lt;div&gt;fecha&lt;br&gt;&lt;div&gt;inicio&lt;/div&gt;&lt;div&gt;fin&lt;/div&gt;&lt;div&gt;direccion_recogida&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;direccion_&lt;/span&gt;destino&lt;/div&gt;&lt;div&gt;precio&lt;/div&gt;&lt;div&gt;distancia&lt;/div&gt;&lt;div&gt;enviaPaquete&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="669" y="-113" width="119" height="170" as="geometry" />
         </mxCell>
         <mxCell id="2bUomrszHpW-_mkfDbby-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5o3Ht3gXM4AKcb__C2Ck-18" target="2bUomrszHpW-_mkfDbby-3">
           <mxGeometry relative="1" as="geometry">
@@ -74,8 +74,8 @@
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-20" value="VEHICULO_ALQUILER" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-302.5" y="-283" width="142" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-22" value="&lt;b&gt;id_vehiculo&lt;/b&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;matricula&lt;/span&gt;&lt;/div&gt;&lt;div&gt;numBastidor&lt;/div&gt;&lt;div&gt;marca&lt;/div&gt;&lt;div&gt;modelo&lt;/div&gt;&lt;div&gt;anyo_matriculacion&lt;/div&gt;&lt;div&gt;precio_por_hora&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-423.5" y="-312" width="121" height="113" as="geometry" />
+        <mxCell id="5o3Ht3gXM4AKcb__C2Ck-22" value="&lt;b&gt;id_vehiculo&lt;/b&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;matricula&lt;/span&gt;&lt;/div&gt;&lt;div&gt;numBastidor&lt;/div&gt;&lt;div&gt;marca&lt;/div&gt;&lt;div&gt;modelo&lt;/div&gt;&lt;div&gt;color&lt;/div&gt;&lt;div&gt;fechaMatriculacion&lt;/div&gt;&lt;div&gt;precio_por_hora&lt;br&gt;&lt;/div&gt;&lt;div&gt;imagen&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-420.5" y="-324" width="118" height="142" as="geometry" />
         </mxCell>
         <mxCell id="5o3Ht3gXM4AKcb__C2Ck-25" value="&lt;b&gt;id_paquete&lt;/b&gt;&lt;div&gt;contenido&lt;/div&gt;&lt;div&gt;cantidad&lt;/div&gt;&lt;div&gt;peso&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="269" y="614" width="81" height="84" as="geometry" />
@@ -258,8 +258,8 @@
         <mxCell id="Enspnp0s0IM4FP3xSgeI-33" value="ALQUILA" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="105.5" y="-293" width="151" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Enspnp0s0IM4FP3xSgeI-37" value="activo&lt;div&gt;fecha_inicio&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="256.5" y="-273.5" width="81" height="41" as="geometry" />
+        <mxCell id="Enspnp0s0IM4FP3xSgeI-37" value="activo&lt;div&gt;inicio&lt;/div&gt;&lt;div&gt;fin&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270.5" y="-277" width="49" height="55" as="geometry" />
         </mxCell>
         <mxCell id="Enspnp0s0IM4FP3xSgeI-38" value="N:M" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="162" y="-319" width="40" height="26" as="geometry" />
@@ -294,8 +294,8 @@
         <mxCell id="WwiZSO7Kz6DAJF-cnK9X-8" value="&lt;b&gt;id_flota&lt;/b&gt;&lt;div&gt;nombre&lt;br&gt;&lt;/div&gt;&lt;div&gt;CIF&lt;/div&gt;&lt;div&gt;tipo_vehiculo&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-811" y="370" width="88" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="_jR_gZGjYJo5vnJzclTE-2" value="modeloVehiculo&lt;div&gt;matriculaVehiculo&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="557" y="443" width="112" height="41" as="geometry" />
+        <mxCell id="_jR_gZGjYJo5vnJzclTE-2" value="modeloVehiculo&lt;div&gt;matriculaVehiculo&lt;/div&gt;&lt;div&gt;colorVehiculo&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="553.5" y="440" width="112" height="55" as="geometry" />
         </mxCell>
         <mxCell id="2bUomrszHpW-_mkfDbby-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="2bUomrszHpW-_mkfDbby-3" target="2bUomrszHpW-_mkfDbby-4">
           <mxGeometry relative="1" as="geometry" />
