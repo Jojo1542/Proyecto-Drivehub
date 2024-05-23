@@ -11,13 +11,13 @@ public interface TripService {
 
     TripDraftModel createDraft(UserModel user, String origin, String destination);
 
-    Optional<TripDraftModel> getDraft(String draftId);
+    Optional<TripDraftModel> findDraft(String draftId);
 
     default void createTrip(UserModel user, TripDraftModel tripDraftModel) {
         createTrip(user, tripDraftModel, false);
     }
 
-    void createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage);
+    TripModel createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage);
 
     void assignDriver(UserModel driver, TripModel tripModel);
 

@@ -62,7 +62,7 @@ public class SimpleTripService implements TripService {
     }
 
     @Override
-    public Optional<TripDraftModel> getDraft(String draftId) {
+    public Optional<TripDraftModel> findDraft(String draftId) {
         return Optional.ofNullable(redisRepository.opsForValue().get(KEY_PREFIX + draftId));
     }
 
@@ -71,10 +71,10 @@ public class SimpleTripService implements TripService {
      */
 
     @Override
-    public void createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage) {
+    public TripModel createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage) {
+        Preconditions.checkArgument(tripDraftModel.getDistance() > 0, "INVALID_DISTANCE_BETWEEN");
+        Preconditions.checkArgument(tripDraftModel.getPrice() > 0, "INVALID_PRICE");
         Preconditions.checkState(user.canAfford(tripDraftModel.getPrice()), "INSUFFICIENT_FUNDS");
-        Preconditions.checkState(tripDraftModel.getDistance() > 0, "INVALID_DISTANCE_BETWEEN");
-        Preconditions.checkState(tripDraftModel.getPrice() > 0, "INVALID_PRICE");
         Preconditions.checkState(findActiveByPassenger(user.getId()).isEmpty(), "ACTIVE_TRIP_EXISTS");
 
         // Crear el trayecto con el estado PENDING y los datos del borrador
@@ -95,10 +95,12 @@ public class SimpleTripService implements TripService {
 
         // Actualizar el usuario para guardar su saldo y guardar el trayecto
         userRepository.save(user);
-        tripRepository.save(trip);
+        trip = tripRepository.save(trip);
 
 
         // TODO: Avisar a los conductores más cercanos para que puedan aceptar el trayecto mediante el websocket
+
+        return trip;
     }
 
     @Override
