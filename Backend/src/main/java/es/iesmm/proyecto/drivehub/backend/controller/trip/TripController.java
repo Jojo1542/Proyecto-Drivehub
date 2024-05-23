@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -59,5 +60,56 @@ public class TripController {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
+
+    @GetMapping("/active")
+    @ResponseBody
+    public ResponseEntity<TripModel> getActiveTrip(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+        return tripService.findActiveByPassenger(user.getId())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/active/cancel")
+    @ResponseBody
+    public ResponseEntity<Object> cancelActiveTrip(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+        return tripService.findActiveByPassenger(user.getId())
+                .map(tripModel -> {
+                    tripService.cancelTrip(tripModel);
+                    return ResponseEntity.ok().build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/driver/active")
+    @ResponseBody
+    @PreAuthorize("hasRole('DRIVER_CHAUFFEUR')")
+    public ResponseEntity<TripModel> getActiveTripForDriver(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+        return tripService.findActiveByDriver(user.getId())
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/driver/active/finish")
+    @ResponseBody
+    @PreAuthorize("hasRole('DRIVER_CHAUFFEUR')")
+    public ResponseEntity<Object> finishActiveTripForDriver(@AuthenticationPrincipal UserDetails userDetails, @RequestParam(required = false, defaultValue = "false") boolean cancel) {
+        UserModel user = (UserModel) userDetails;
+        return tripService.findActiveByDriver(user.getId())
+                .map(tripModel -> {
+                    if (cancel) { // Cancelled trips are not paid
+                        tripService.cancelTrip(tripModel);
+                    } else {
+                        tripService.finishTrip(tripModel);
+                    }
+                    return ResponseEntity.ok().build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
+
 
 }
