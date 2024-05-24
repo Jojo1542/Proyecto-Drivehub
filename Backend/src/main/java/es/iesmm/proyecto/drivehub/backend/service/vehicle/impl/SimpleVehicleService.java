@@ -46,7 +46,6 @@ public class SimpleVehicleService implements VehicleService {
         // Control de errores y validaciones de los datos
         Preconditions.checkNotNull(vehicle, "The vehicle cannot be null");
         Preconditions.checkState(findByPlate(vehicle.getPlate()).isEmpty(), "PLATE_ALREADY_EXISTS");
-        Preconditions.checkState(findByNumBastidor(vehicle.getNumBastidor()).isEmpty(), "BASTIDOR_ALREADY_EXISTS");
 
         return vehicleRepository.save(vehicle);
     }

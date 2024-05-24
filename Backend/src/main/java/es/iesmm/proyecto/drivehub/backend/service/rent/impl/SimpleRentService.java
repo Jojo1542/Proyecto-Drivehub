@@ -47,7 +47,7 @@ public class SimpleRentService implements RentService {
         Preconditions.checkNotNull(vehicleId, "Vehicle ID cannot be null");
         Preconditions.checkNotNull(user, "User cannot be null");
         Preconditions.checkState(!user.hasRentActive(), "USER_ALREADY_HAS_RENT");
-        Preconditions.checkState(!hasValidDriverLicense(user), "USER_DOES_NOT_HAVE_LICENSE");
+        Preconditions.checkState(hasValidDriverLicense(user), "USER_DOES_NOT_HAVE_LICENSE");
 
         RentCar vehicle = vehicleService.findById(vehicleId).orElseThrow(() -> new NullPointerException("VEHICLE_NOT_FOUND"));
 
@@ -93,15 +93,15 @@ public class SimpleRentService implements RentService {
         userRent.setActive(false);
         userRent.setEndTime(Timestamp.from(Instant.now()));
 
-        // Get the hours the vehicle was rented (rounded up)
-        long hours = (int) Math.ceil((userRent.getEndTime().getTime() - userRent.getStartTime().getTime()) / 3600000.0);
+        // Get the hours the vehicle was rented
+        double hours = Math.ceil((userRent.getEndTime().getTime() - userRent.getStartTime().getTime()) / 3600000.0);
         userRent.setFinalPrice(vehicle.getPrecioHora() * hours);
 
         // Save the rent so the final price is updated
         rentRepository.save(userRent);
 
         // Remover el saldo del alquiler del usuario
-        user.setSaldo(user.getSaldo() - userRent.getFinalPrice());
+        user.withdraw(userRent.getFinalPrice());
 
         // Guardar el usuario para actualizar el saldo (El saldo puede ser negativo, en cuyo caso no se permitirá alquilar vehículos)
         userRepository.save(user);
