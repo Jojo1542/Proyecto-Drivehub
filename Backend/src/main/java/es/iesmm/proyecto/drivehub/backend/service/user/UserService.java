@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.service.user;
 
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
@@ -53,4 +54,6 @@ public interface UserService extends UserDetailsService {
     void addDriverLicenseToDriver(Long driverId, DriverLicense license);
 
     void removeDriverLicenseFromDriver(Long driverId, String licenseId);
+
+    void updateDriverByRequest(UserModel user, DriverModificationRequest request);
 }

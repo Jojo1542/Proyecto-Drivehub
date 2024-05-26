@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Optional;
 
@@ -109,7 +110,42 @@ public class TripController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    /*
+     * Actualizar el estado del viaje en el fronend, cuando hay un cambio en el estado
+     * Los estados que se van a actualizar son los siguientes: cuando el conductor acepta el viaje
+     * y cuando el conductor llega al destino.
+     */
+    @PostMapping("/stream/status")
+    public ResponseEntity<SseEmitter> streamTripStatus(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
 
+        return tripService.findActiveByPassenger(user.getId())
+                .map(trip -> ResponseEntity.ok(tripService.streamTripStatus(trip)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
+    /*
+     * Actualizar la ubicación del conductor en el frontend, cuando el conductor se mueve para mostrarlo
+     * en el mapa.
+     */
+    @PostMapping("/stream/location")
+    public ResponseEntity<SseEmitter> streamLocationTrips(@AuthenticationPrincipal UserDetails userDetails) {
+        UserModel user = (UserModel) userDetails;
+
+        return tripService.findActiveByDriver(user.getId())
+                .map(trip -> ResponseEntity.ok(tripService.streamTripLocation(trip)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    /*
+     * Los conductores se subscriben a este endpoint para recibir notificaciones de nuevos viajes que
+     * se han creado y que están disponibles para ser aceptados, cuando se subscriben se toman como
+     * disponibles para aceptar viajes. Cuando cierran la conexión, se toman como no disponibles.
+     */
+    @PostMapping("/stream/duty")
+    @PreAuthorize("hasRole('DRIVER_CHAUFFEUR')")
+    public SseEmitter streamDuty(@AuthenticationPrincipal UserDetails userDetails) {
+        return tripService.streamDuty((UserModel) userDetails);
+    }
 
 }

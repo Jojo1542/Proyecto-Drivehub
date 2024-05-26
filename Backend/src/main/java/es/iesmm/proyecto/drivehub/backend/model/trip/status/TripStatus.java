@@ -5,6 +5,7 @@ public enum TripStatus {
     PENDING,
     ACCEPTED,
     CANCELLED,
-    FINISHED
+    FINISHED,
+    CANCELLED_DUE_TO_NO_DRIVER
 
 }

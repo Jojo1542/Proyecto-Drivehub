@@ -1,8 +1,10 @@
 package es.iesmm.proyecto.drivehub.backend.service.user.impl;
 
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.admin.permisison.AdminPermission;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
@@ -111,6 +113,12 @@ public class SimpleUserService implements UserService {
         } else {
             throw new IllegalArgumentException("El email ya esta en uso - EMAIL_ALREADY_IN_USE");
         }
+    }
+
+    @Override
+    public void updateDriverByRequest(UserModel user, DriverModificationRequest request) {
+        request.applyToUser(user);
+        save(user);
     }
 
     @Override

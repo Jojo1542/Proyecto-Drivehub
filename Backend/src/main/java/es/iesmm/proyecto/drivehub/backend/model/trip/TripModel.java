@@ -23,17 +23,14 @@ import java.util.Date;
 @Builder
 public class TripModel extends AbstractPersistable<Long> {
 
-    @NotEmpty
     // Por defecto, un trayecto se crea en estado PENDING
     @Enumerated(EnumType.STRING)
     @Column(name = "trip_status")
     private TripStatus status = TripStatus.PENDING;
 
-    @NotEmpty
     @Column(name = "trip_date")
     private Date date;
 
-    @NotEmpty
     private Date startTime;
 
     // Puede ser null hasta que llegue a su destino
@@ -45,6 +42,12 @@ public class TripModel extends AbstractPersistable<Long> {
     @NotEmpty
     private String destination;
 
+    @NotEmpty
+    private String originAddress;
+
+    @NotEmpty
+    private String destinationAddress;
+
     private double price;
 
     private double distance;
@@ -55,13 +58,13 @@ public class TripModel extends AbstractPersistable<Long> {
     private String vehiclePlate;
     private String vehicleColor;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name = "id")
+    @ManyToOne
     @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData"})
+    @JoinColumn(name = "driver_id")
     private UserModel driver;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "passenger_id", nullable = false)
     private UserModel passenger;
 
     @JsonIgnore

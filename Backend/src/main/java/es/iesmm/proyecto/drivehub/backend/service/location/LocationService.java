@@ -3,6 +3,7 @@ package es.iesmm.proyecto.drivehub.backend.service.location;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserLocationUpdateRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.location.UserLocation;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Optional;
 
@@ -19,4 +20,7 @@ public interface LocationService {
 
     Optional<UserLocation> findLatestLocation(Long userId);
 
+    void addLocationEmitter(Long driverId, Long tripId, SseEmitter emitter);
+
+    void removeLocationEmitter(Long tripId);
 }

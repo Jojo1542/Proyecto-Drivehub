@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.controller.user;
 
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserLocationUpdateRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.response.common.CommonResponse;
@@ -159,6 +160,28 @@ public class UserController {
                             .build()
             );
         } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                    CommonResponse.builder()
+                            .success(false)
+                            .errorMessage(e.getMessage())
+                            .build()
+            );
+        }
+    }
+
+    @PostMapping("/update/driver")
+    @PreAuthorize("hasRole('DRIVER_CHAUFFEUR') or hasRole('DRIVER_FLEET')")
+    public ResponseEntity<CommonResponse> updateDriverChauffeur(@AuthenticationPrincipal UserDetails userDetails, @RequestBody DriverModificationRequest request) {
+        UserModel user = (UserModel) userDetails;
+        try {
+            userService.updateDriverByRequest(user, request);
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            // Si algún campo no es válido, se tirará esta excepción que tendrá el mensaje de error en el campo
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                     CommonResponse.builder()
                             .success(false)

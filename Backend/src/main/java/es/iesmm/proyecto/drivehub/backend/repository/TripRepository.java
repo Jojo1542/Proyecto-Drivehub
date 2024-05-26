@@ -15,22 +15,22 @@ public interface TripRepository extends JpaRepository<TripModel, Long> {
     List<TripModel> findByStatus(String status);
 
     // Find By Driver
-    @Query("SELECT t FROM TripModel t WHERE driver = :driver_id")
+    @Query("SELECT t FROM TripModel t WHERE driver.id = :driver_id")
     List<TripModel> findByDriver(Long driver_id);
 
     // Find By Passenger
-    @Query("SELECT t FROM TripModel t WHERE passenger = :passenger_id")
+    @Query("SELECT t FROM TripModel t WHERE passenger.id = :passenger_id")
     List<TripModel> findByPassenger(Long passenger_id);
 
-    @Query("SELECT t FROM TripModel t WHERE driver = :driverId")
+    @Query("SELECT t FROM TripModel t WHERE driver.id = :driverId")
     List<TripModel> findByDriverId(Long driverId);
 
-    @Query("SELECT t FROM TripModel t WHERE passenger = :passengerId")
+    @Query("SELECT t FROM TripModel t WHERE passenger.id = :passengerId")
     List<TripModel> findByPassengerId(Long passengerId);
 
-    @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED') AND driver = :driverId")
+    @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED') AND driver.id = :driverId")
     Optional<TripModel> findActiveByDriverId(Long driverId);
 
-    @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED') AND passenger = :passengerId")
+    @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED') AND passenger.id = :passengerId")
     Optional<TripModel> findActiveByPassengerId(Long passengerId);
 }

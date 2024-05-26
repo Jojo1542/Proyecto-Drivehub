@@ -19,11 +19,7 @@ public class ChauffeurDriverModelData extends DriverModelData {
 
     @Column(name = "prefered_distance")
     @ColumnDefault("10")
-    private int preferedDistance;
-
-    @Column(name = "take_passengers")
-    @ColumnDefault("0")
-    private boolean canTakePassengers;
+    private double preferedDistance;
 
     @Column(name = "vehicle_model")
     private String vehicleModel;

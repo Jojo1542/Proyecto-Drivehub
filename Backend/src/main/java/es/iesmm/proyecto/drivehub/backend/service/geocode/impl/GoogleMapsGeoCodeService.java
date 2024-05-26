@@ -4,6 +4,7 @@ import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
+import com.google.maps.errors.ZeroResultsException;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
@@ -49,8 +50,10 @@ public class GoogleMapsGeoCodeService implements GeoCodeService {
 
                 distance = result.routes[0].legs[0].distance.inMeters; // Obtenemos la distancia en metros
                 distance = unit.fromMeters(distance); // Convertimos a la unidad deseada
+            } catch (ZeroResultsException e) {
+                logger.info("No results found for " + origin + " and " + destination);
             } catch (Exception e) {
-                logger.severe("Error calculating distance between "
+                logger.severe("Unknown error calculating distance between "
                         + origin + " and " + destination + ": " + e.getMessage());
             }
         }

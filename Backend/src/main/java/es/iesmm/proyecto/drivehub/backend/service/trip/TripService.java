@@ -3,6 +3,7 @@ package es.iesmm.proyecto.drivehub.backend.service.trip;
 import es.iesmm.proyecto.drivehub.backend.model.trip.TripModel;
 import es.iesmm.proyecto.drivehub.backend.model.trip.draft.TripDraftModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,4 +37,10 @@ public interface TripService {
     List<TripModel> findUserHistory(Long userId);
 
     Optional<TripModel> findActiveByPassenger(Long passengerId);
+
+    SseEmitter streamTripStatus(TripModel tripModel);
+
+    SseEmitter streamTripLocation(TripModel tripModel);
+
+    SseEmitter streamDuty(UserModel userDetails);
 }

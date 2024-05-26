@@ -1,41 +1,59 @@
 package es.iesmm.proyecto.drivehub.backend.service.trip.impl;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.MapMaker;
+import com.google.maps.model.LatLng;
 import es.iesmm.proyecto.drivehub.backend.model.trip.TripModel;
 import es.iesmm.proyecto.drivehub.backend.model.trip.draft.TripDraftModel;
 import es.iesmm.proyecto.drivehub.backend.model.trip.status.TripStatus;
+import es.iesmm.proyecto.drivehub.backend.model.trip.status.TripStatusUpdateMessage;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.location.UserLocation;
 import es.iesmm.proyecto.drivehub.backend.repository.TripRepository;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.geocode.GeoCodeService;
+import es.iesmm.proyecto.drivehub.backend.service.location.LocationService;
+import es.iesmm.proyecto.drivehub.backend.service.location.impl.RedisLocationService;
 import es.iesmm.proyecto.drivehub.backend.service.trip.TripService;
 import es.iesmm.proyecto.drivehub.backend.util.distance.DistanceUnit;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import net.bytebuddy.utility.RandomString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class SimpleTripService implements TripService {
 
+    private static final Logger log = LoggerFactory.getLogger(SimpleTripService.class);
     private final String KEY_PREFIX = "trip:draft:";
 
     private final RedisTemplate<String, TripDraftModel> redisRepository;
     private final GeoCodeService geoCodeService;
     private final UserRepository userRepository;
+    private final LocationService locationService;
 
     @Value("${price.per.km}")
     private final double PRICE_PER_KM = 0.5;
     private final TripRepository tripRepository;
 
+    private final Map<Long, SseEmitter> tripStatusEmitters = new MapMaker().makeMap();
+    private final Map<Long, SseEmitter> dutyEmitters = new ConcurrentHashMap<>();
+
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Override
     public TripDraftModel createDraft(UserModel user, String origin, String destination) {
@@ -45,13 +63,17 @@ public class SimpleTripService implements TripService {
 
         String randomId = RandomString.make(10);
 
+        double price = distance * PRICE_PER_KM;
+        double roundedPrice = Math.round(price * 100.0) / 100.0;
+
         // Creamos el borrador del trayecto con los datos proporcionados
         TripDraftModel tripDraft = TripDraftModel.builder()
                 .id(randomId)
                 .origin(origin)
                 .destination(destination)
                 .distance(distance)
-                .price(distance * PRICE_PER_KM)
+                .destinationCoordinates(new LatLng())
+                .price(roundedPrice)
                 .build();
 
         // Guardar en redis el borrador del trayecto por 10 minutos para que el usuario pueda completar la compra
@@ -77,13 +99,19 @@ public class SimpleTripService implements TripService {
         Preconditions.checkState(user.canAfford(tripDraftModel.getPrice()), "INSUFFICIENT_FUNDS");
         Preconditions.checkState(findActiveByPassenger(user.getId()).isEmpty(), "ACTIVE_TRIP_EXISTS");
 
+        // Convertir las coordenadas a String
+        String originCoordinates = tripDraftModel.getOriginCoordinates().toString();
+        String destinationCoordinates = tripDraftModel.getDestinationCoordinates().toString();
+
         // Crear el trayecto con el estado PENDING y los datos del borrador
         TripModel trip = TripModel.builder()
                 .status(TripStatus.PENDING)
                 .date(new Date())
                 .startTime(new Date())
-                .origin(tripDraftModel.getOrigin())
-                .destination(tripDraftModel.getDestination())
+                .origin(originCoordinates)
+                .destination(destinationCoordinates)
+                .originAddress(tripDraftModel.getOrigin())
+                .destinationAddress(tripDraftModel.getDestination())
                 .price(tripDraftModel.getPrice())
                 .distance(tripDraftModel.getDistance())
                 .sendPackage(sendPackage)
@@ -95,12 +123,12 @@ public class SimpleTripService implements TripService {
 
         // Actualizar el usuario para guardar su saldo y guardar el trayecto
         userRepository.save(user);
-        trip = tripRepository.save(trip);
+        TripModel savedTrip = tripRepository.save(trip);
 
+        // Se busca a un conductor en otro hilo para no retrasar la respuesta, se le pasa el trayecto
+        executorService.execute(() -> findDriverToAssign(savedTrip));
 
-        // TODO: Avisar a los conductores más cercanos para que puedan aceptar el trayecto mediante el websocket
-
-        return trip;
+        return savedTrip;
     }
 
     @Override
@@ -123,8 +151,8 @@ public class SimpleTripService implements TripService {
         // Guardar el trayecto actualizado
         tripRepository.save(tripModel);
 
-        // TODO: Avisar al usuario de la actualización de su trayecto mediante el websocket
-        // A la hora de buscar conductores, avisar solo a los que tengan una preferencia de KM de distancia menor o igual a la distancia del trayecto
+        // Avisar por el emitter de que el trayecto ha sido aceptado
+        broadcastTripStatus(tripModel);
     }
 
     @Override
@@ -139,7 +167,8 @@ public class SimpleTripService implements TripService {
         tripRepository.save(tripModel);
         userRepository.save(tripModel.getPassenger());
 
-        // TODO: Avisar al usuario de la cancelación de su trayecto mediante el websocket
+        broadcastTripStatus(tripModel);
+        Optional.ofNullable(dutyEmitters.get(tripModel.getDriver().getId())).ifPresent(SseEmitter::complete);
     }
 
     @Override
@@ -148,11 +177,15 @@ public class SimpleTripService implements TripService {
 
         // Finalizar el trayecto
         tripModel.setStatus(TripStatus.FINISHED);
+        tripModel.setEndTime(new Date());
 
         // Guardar el trayecto actualizado
         tripRepository.save(tripModel);
 
-        // TODO: Avisar al usuario de la cancelación de su trayecto mediante el websocket
+        // Avisar por el emitter de la localización del conductor que el trayecto ha finalizado
+        locationService.removeLocationEmitter(tripModel.getId());
+        broadcastTripStatus(tripModel);
+        Optional.ofNullable(dutyEmitters.get(tripModel.getDriver().getId())).ifPresent(SseEmitter::complete);
     }
 
     @Override
@@ -183,5 +216,168 @@ public class SimpleTripService implements TripService {
     @Override
     public Optional<TripModel> findActiveByPassenger(Long passengerId) {
         return tripRepository.findActiveByPassengerId(passengerId);
+    }
+
+    private void broadcastTripStatus(TripModel tripModel) {
+        if (tripStatusEmitters.containsKey(tripModel.getId())) {
+            SseEmitter emitter = tripStatusEmitters.get(tripModel.getId());
+
+            try {
+                //noinspection DataFlowIssue
+                emitter.send(new TripStatusUpdateMessage(tripModel.getId(), tripModel.getStatus()));
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+                tripStatusEmitters.remove(tripModel.getId());
+            }
+        }
+    }
+
+    private void findDriverToAssign(TripModel tripModel) {
+        Preconditions.checkState(tripModel.getStatus() == TripStatus.PENDING, "TRIP_NOT_PENDING");
+        Preconditions.checkState(tripModel.getDriver() == null, "TRIP_ALREADY_ASSIGNED");
+        Preconditions.checkState(tripModel.getId() == null, "TRIP_NOT_SAVED");
+
+        // Espera 4 segundos por si el usuario cancela el trayecto o simplemente para que inicie la conexión al emisor
+        try {
+            Thread.sleep(TimeUnit.SECONDS.toMillis(4));
+        } catch (InterruptedException e) {
+            log.error("Error while waiting for driver to accept the trip", e);
+        }
+
+        // Comprobar si el trayecto ha sido cancelado en esos segundos
+        if (findById(tripModel.getId()).map(TripModel::getStatus).orElse(null) != TripStatus.PENDING) {
+            return;
+        }
+
+        // Obtener los conductores en duty
+        Queue<UserModel> drivers = dutyEmitters.keySet().stream()
+                // Obtener los conductores por ID y filtra que existan
+                .map(userRepository::findById)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                // Filtrar por los conductores que no tienen un trayecto activo
+                .filter(driver -> findActiveByDriver(driver.getId()).isEmpty())
+                // Calcula la distancia de cada conductor al origen del trayecto y los mete en un mapa <Conductor, Distancia>
+                .map(driver -> new AbstractMap.SimpleEntry<>(driver, calculateDistanceToOrigin(driver, tripModel)))
+                // Filtra los conductores que no tienen una distancia valida o que no esten dentro de su rango de preferencia
+                .filter(entry -> entry.getValue() < Double.MAX_VALUE)
+                // Ordena por la distancia
+                .sorted(Comparator.comparingDouble(AbstractMap.SimpleEntry::getValue))
+                // Devuelve solo los conductores, no necesito la distancia
+                .map(Map.Entry::getKey)
+                // Los mete dentro de un linked list para poder hacer un poll
+                .collect(Collectors.toCollection(LinkedList::new));
+
+        // Hace la oferta a los conductores mas cercanos en orden, se hace la oferta, pero se espera 30 segundos a que acepten,
+        // si no se acepta se sigue con el siguiente
+        boolean driverAssigned = false;
+
+        while (!drivers.isEmpty() && !driverAssigned) {
+            UserModel driver = drivers.poll();
+
+            SseEmitter emitter = dutyEmitters.get(driver.getId());
+
+            // Si el conductor no tiene un emisor, se salta al siguiente ya que posiblemente se ya no esté en servicio
+            if (emitter != null) {
+                try {
+                    emitter.send(tripModel);
+                } catch (Exception e) {
+                    emitter.completeWithError(e);
+                    dutyEmitters.remove(driver.getId());
+                }
+
+                try {
+                    // Esperar 30 segundos a que el conductor acepte el trayecto
+                    //noinspection BusyWait
+                    Thread.sleep(TimeUnit.SECONDS.toMillis(30));
+                } catch (InterruptedException e) {
+                    log.error("Error while waiting for driver to accept the trip", e);
+                }
+            }
+
+            TripStatus status = tripRepository.findById(tripModel.getId()).map(TripModel::getStatus).orElse(null);
+
+            if (status != TripStatus.PENDING) {
+                driverAssigned = true;
+            }
+        }
+
+        if (!driverAssigned) {
+            // Cambiamos el estado del trayecto a CANCELADO por no tener conductor
+            // y avisamos al emisor del estado del trayecto
+            tripModel.setStatus(TripStatus.CANCELLED_DUE_TO_NO_DRIVER);
+            broadcastTripStatus(tripModel);
+
+            // Lo guardamos como cancelado
+            tripModel.setStatus(TripStatus.CANCELLED);
+            tripRepository.save(tripModel);
+        }
+    }
+
+    @Override
+    public SseEmitter streamTripStatus(TripModel tripModel) {
+        SseEmitter emitter = new SseEmitter();
+
+        emitter.onTimeout(() -> tripStatusEmitters.remove(tripModel.getId()));
+        emitter.onCompletion(() -> tripStatusEmitters.remove(tripModel.getId()));
+
+        // Si ya existe un emisor para el trayecto, lo eliminamos y lo reemplazamos
+        if (tripStatusEmitters.containsKey(tripModel.getId())) {
+            tripStatusEmitters.get(tripModel.getId()).complete();
+        }
+
+        tripStatusEmitters.put(tripModel.getId(), emitter);
+        return emitter;
+    }
+
+    @Override
+    public SseEmitter streamTripLocation(TripModel tripModel) {
+        SseEmitter emitter = new SseEmitter();
+
+        emitter.onCompletion(() -> locationService.removeLocationEmitter(tripModel.getId()));
+        emitter.onTimeout(() -> locationService.removeLocationEmitter(tripModel.getId()));
+
+        locationService.addLocationEmitter(tripModel.getDriver().getId(), tripModel.getId(), emitter);
+        return emitter;
+    }
+
+    @Override
+    public SseEmitter streamDuty(UserModel userDetails) {
+        SseEmitter emitter = new SseEmitter();
+
+        emitter.onTimeout(() -> dutyEmitters.remove(userDetails.getId()));
+        emitter.onCompletion(() -> dutyEmitters.remove(userDetails.getId()));
+
+        // Si ya existe un emisor para el usuario, lo eliminamos y lo reemplazamos
+        if (dutyEmitters.containsKey(userDetails.getId())) {
+            dutyEmitters.get(userDetails.getId()).complete();
+        }
+
+        dutyEmitters.put(userDetails.getId(), emitter);
+
+        return emitter;
+    }
+
+    private double calculateDistanceToOrigin(UserModel driver, TripModel tripModel) {
+        Optional<UserLocation> driverLocation = locationService.findLatestLocation(driver.getId());
+
+        double distance = Double.MAX_VALUE;
+
+        if (driverLocation.isPresent()) {
+            String driverAddress = geoCodeService.getAddressFromCoordinates(
+                    driverLocation.get().latitude(),
+                    driverLocation.get().longitude()
+            );
+
+            distance = geoCodeService.calculateDistance(driverAddress, tripModel.getOriginAddress(), DistanceUnit.KILOMETERS);
+
+            ChauffeurDriverModelData driverData = (ChauffeurDriverModelData) driver.getDriverData();
+
+            if (distance > driverData.getPreferedDistance()) {
+                distance = Double.MAX_VALUE;
+            }
+        }
+
+        return distance;
     }
 }
