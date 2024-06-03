@@ -80,4 +80,24 @@ public class GoogleMapsGeoCodeService implements GeoCodeService {
 
         return result;
     }
+
+    @Override
+    public LatLng getCoordinatesFromAddress(String address) {
+        LatLng result = null;
+
+        try {
+            GeocodingResult[] geocodingResults = GeocodingApi.geocode(
+                    apiContext, address
+            ).await();
+
+            // Comprobar que hay resultados, y obtener las coordenadas
+            if (geocodingResults != null && geocodingResults.length > 0) {
+                result = geocodingResults[0].geometry.location;
+            }
+        } catch (IOException | InterruptedException | ApiException e) {
+            logger.severe("Error getting coordinates from " + address + ": " + e.getMessage());
+        }
+
+        return result;
+    }
 }

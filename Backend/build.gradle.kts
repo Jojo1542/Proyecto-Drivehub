@@ -41,8 +41,9 @@ dependencies {
 	implementation("org.springframework.security:spring-security-config")
 	implementation("org.springframework.security:spring-security-web")
 
-	// Spring Actuator
+	// Spring Addons de Spring
 	//implementation("org.springframework:spring-jcl")
+	implementation("org.springframework:spring-context")
 
 	// Addons de Hibernate
 	implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")

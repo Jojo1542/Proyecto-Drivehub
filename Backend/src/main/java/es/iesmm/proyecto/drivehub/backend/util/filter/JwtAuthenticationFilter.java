@@ -1,4 +1,4 @@
-package es.iesmm.proyecto.drivehub.backend.util.jwt;
+package es.iesmm.proyecto.drivehub.backend.util.filter;
 
 import es.iesmm.proyecto.drivehub.backend.service.jwt.JwtService;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -70,10 +69,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
-    }
-
-    @Override
-    protected void handleSpringSecurityException(HttpServletRequest request, HttpServletResponse response, FilterChain chain, RuntimeException exception) throws IOException, ServletException {
-        super.handleSpringSecurityException(request, response, chain, exception);
     }
 }

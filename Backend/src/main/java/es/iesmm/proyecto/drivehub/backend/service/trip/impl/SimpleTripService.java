@@ -2,7 +2,6 @@ package es.iesmm.proyecto.drivehub.backend.service.trip.impl;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.MapMaker;
-import com.google.maps.model.LatLng;
 import es.iesmm.proyecto.drivehub.backend.model.trip.TripModel;
 import es.iesmm.proyecto.drivehub.backend.model.trip.draft.TripDraftModel;
 import es.iesmm.proyecto.drivehub.backend.model.trip.status.TripStatus;
@@ -14,16 +13,15 @@ import es.iesmm.proyecto.drivehub.backend.repository.TripRepository;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.geocode.GeoCodeService;
 import es.iesmm.proyecto.drivehub.backend.service.location.LocationService;
-import es.iesmm.proyecto.drivehub.backend.service.location.impl.RedisLocationService;
 import es.iesmm.proyecto.drivehub.backend.service.trip.TripService;
 import es.iesmm.proyecto.drivehub.backend.util.distance.DistanceUnit;
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import net.bytebuddy.utility.RandomString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -47,7 +45,7 @@ public class SimpleTripService implements TripService {
     private final LocationService locationService;
 
     @Value("${price.per.km}")
-    private final double PRICE_PER_KM = 0.5;
+    private final double PRICE_PER_KM = 1.5;
     private final TripRepository tripRepository;
 
     private final Map<Long, SseEmitter> tripStatusEmitters = new MapMaker().makeMap();
@@ -72,7 +70,8 @@ public class SimpleTripService implements TripService {
                 .origin(origin)
                 .destination(destination)
                 .distance(distance)
-                .destinationCoordinates(new LatLng())
+                .destinationCoordinates(geoCodeService.getCoordinatesFromAddress(destination))
+                .originCoordinates(geoCodeService.getCoordinatesFromAddress(origin))
                 .price(roundedPrice)
                 .build();
 
@@ -100,8 +99,8 @@ public class SimpleTripService implements TripService {
         Preconditions.checkState(findActiveByPassenger(user.getId()).isEmpty(), "ACTIVE_TRIP_EXISTS");
 
         // Convertir las coordenadas a String
-        String originCoordinates = tripDraftModel.getOriginCoordinates().toString();
-        String destinationCoordinates = tripDraftModel.getDestinationCoordinates().toString();
+        String originCoordinates = tripDraftModel.getOriginCoordinates().lat + ";" + tripDraftModel.getOriginCoordinates().lng;
+        String destinationCoordinates = tripDraftModel.getDestinationCoordinates().lat + ";" + tripDraftModel.getDestinationCoordinates().lng;
 
         // Crear el trayecto con el estado PENDING y los datos del borrador
         TripModel trip = TripModel.builder()
@@ -161,14 +160,16 @@ public class SimpleTripService implements TripService {
 
         // Cancelar el trayecto y devolver el saldo al usuario
         tripModel.setStatus(TripStatus.CANCELLED);
-        tripModel.getPassenger().charge(tripModel.getPrice());
+        tripModel.getPassenger().deposit(tripModel.getPrice());
 
         // Guardar el trayecto actualizado y el usuario actualizado
         tripRepository.save(tripModel);
-        userRepository.save(tripModel.getPassenger());
+        userRepository.saveAndFlush(tripModel.getPassenger()); // Guardar y forzar la actualización del usuario
 
         broadcastTripStatus(tripModel);
-        Optional.ofNullable(dutyEmitters.get(tripModel.getDriver().getId())).ifPresent(SseEmitter::complete);
+        if (tripModel.getDriver() != null) {
+            Optional.ofNullable(dutyEmitters.get(tripModel.getDriver().getId())).ifPresent(SseEmitter::complete);
+        }
     }
 
     @Override
@@ -199,6 +200,11 @@ public class SimpleTripService implements TripService {
     }
 
     @Override
+    public List<TripModel> findActiveTrips() {
+        return tripRepository.findActiveTrips();
+    }
+
+    @Override
     public List<TripModel> findByDriver(Long driverId) {
         return tripRepository.findByDriverId(driverId);
     }
@@ -214,6 +220,11 @@ public class SimpleTripService implements TripService {
     }
 
     @Override
+    public List<TripModel> findDriverHistory(Long id) {
+        return tripRepository.findByDriverId(id);
+    }
+
+    @Override
     public Optional<TripModel> findActiveByPassenger(Long passengerId) {
         return tripRepository.findActiveByPassengerId(passengerId);
     }
@@ -224,9 +235,10 @@ public class SimpleTripService implements TripService {
 
             try {
                 //noinspection DataFlowIssue
+                log.info("Sending trip status update for trip {}", tripModel.getId());
                 emitter.send(new TripStatusUpdateMessage(tripModel.getId(), tripModel.getStatus()));
             } catch (Exception e) {
-                emitter.completeWithError(e);
+                emitter.complete();
                 tripStatusEmitters.remove(tripModel.getId());
             }
         }
@@ -235,17 +247,18 @@ public class SimpleTripService implements TripService {
     private void findDriverToAssign(TripModel tripModel) {
         Preconditions.checkState(tripModel.getStatus() == TripStatus.PENDING, "TRIP_NOT_PENDING");
         Preconditions.checkState(tripModel.getDriver() == null, "TRIP_ALREADY_ASSIGNED");
-        Preconditions.checkState(tripModel.getId() == null, "TRIP_NOT_SAVED");
+        Preconditions.checkState(tripModel.getId() != null, "TRIP_NOT_SAVED");
 
-        // Espera 4 segundos por si el usuario cancela el trayecto o simplemente para que inicie la conexión al emisor
+        // Espera 5 segundos por si el usuario cancela el trayecto o simplemente para que inicie la conexión al emisor
         try {
-            Thread.sleep(TimeUnit.SECONDS.toMillis(4));
+            Thread.sleep(TimeUnit.SECONDS.toMillis(5));
         } catch (InterruptedException e) {
             log.error("Error while waiting for driver to accept the trip", e);
         }
 
         // Comprobar si el trayecto ha sido cancelado en esos segundos
         if (findById(tripModel.getId()).map(TripModel::getStatus).orElse(null) != TripStatus.PENDING) {
+            log.info("Trip {} was cancelled while waiting for a driver", tripModel.getId());
             return;
         }
 
@@ -282,7 +295,7 @@ public class SimpleTripService implements TripService {
                 try {
                     emitter.send(tripModel);
                 } catch (Exception e) {
-                    emitter.completeWithError(e);
+                    emitter.complete();
                     dutyEmitters.remove(driver.getId());
                 }
 
@@ -293,12 +306,12 @@ public class SimpleTripService implements TripService {
                 } catch (InterruptedException e) {
                     log.error("Error while waiting for driver to accept the trip", e);
                 }
-            }
 
-            TripStatus status = tripRepository.findById(tripModel.getId()).map(TripModel::getStatus).orElse(null);
+                TripStatus status = tripRepository.findById(tripModel.getId()).map(TripModel::getStatus).orElse(null);
 
-            if (status != TripStatus.PENDING) {
-                driverAssigned = true;
+                if (status != TripStatus.PENDING) {
+                    driverAssigned = true;
+                }
             }
         }
 
@@ -311,15 +324,27 @@ public class SimpleTripService implements TripService {
             // Lo guardamos como cancelado
             tripModel.setStatus(TripStatus.CANCELLED);
             tripRepository.save(tripModel);
+
+            // Añadir al usuario el saldo del trayecto
+            tripModel.getPassenger().deposit(tripModel.getPrice());
+            userRepository.save(tripModel.getPassenger());
+
+            log.info("Trip {} was cancelled due to no driver available", tripModel.getId());
+            Optional.ofNullable(tripStatusEmitters.get(tripModel.getId())).ifPresent(SseEmitter::complete);
         }
     }
 
     @Override
     public SseEmitter streamTripStatus(TripModel tripModel) {
-        SseEmitter emitter = new SseEmitter();
+        // Se crea el emitter y se le asigna un tiempo de vida de 30 minutos (Si dura mas, el cliente deberá reconectar)
+        SseEmitter emitter = new SseEmitter(TimeUnit.MINUTES.toMillis(30));
 
         emitter.onTimeout(() -> tripStatusEmitters.remove(tripModel.getId()));
         emitter.onCompletion(() -> tripStatusEmitters.remove(tripModel.getId()));
+        emitter.onError((e) -> {
+            log.error("Error while streaming trip status", e);
+            tripStatusEmitters.remove(tripModel.getId());
+        });
 
         // Si ya existe un emisor para el trayecto, lo eliminamos y lo reemplazamos
         if (tripStatusEmitters.containsKey(tripModel.getId())) {
@@ -327,26 +352,47 @@ public class SimpleTripService implements TripService {
         }
 
         tripStatusEmitters.put(tripModel.getId(), emitter);
+
+        // Envia un mensaje con la información del estado actual del trayecto
+        try {
+            //noinspection DataFlowIssue
+            emitter.send(new TripStatusUpdateMessage(tripModel.getId(), tripModel.getStatus()));
+        } catch (Exception e) {
+            emitter.complete();
+            tripStatusEmitters.remove(tripModel.getId());
+        }
+
         return emitter;
     }
 
     @Override
     public SseEmitter streamTripLocation(TripModel tripModel) {
-        SseEmitter emitter = new SseEmitter();
+        // Se crea el emitter y se le asigna un tiempo de vida de 30 minutos (Si dura mas, el cliente deberá reconectar)
+        SseEmitter emitter = new SseEmitter(TimeUnit.MINUTES.toMillis(30));
 
         emitter.onCompletion(() -> locationService.removeLocationEmitter(tripModel.getId()));
         emitter.onTimeout(() -> locationService.removeLocationEmitter(tripModel.getId()));
+        emitter.onError((e) -> {
+            log.error("Error while streaming trip location", e);
+            tripStatusEmitters.remove(tripModel.getId());
+        });
 
+        System.out.println("Adding location emitter for trip " + tripModel.getId());
         locationService.addLocationEmitter(tripModel.getDriver().getId(), tripModel.getId(), emitter);
         return emitter;
     }
 
     @Override
     public SseEmitter streamDuty(UserModel userDetails) {
-        SseEmitter emitter = new SseEmitter();
+        // Se crea el emitter y se le asigna un tiempo de vida de 8 horas (Si dura mas, el cliente deberá reconectar)
+        // (No creo que dure jaja)
+        SseEmitter emitter = new SseEmitter(TimeUnit.HOURS.toMillis(8));
 
         emitter.onTimeout(() -> dutyEmitters.remove(userDetails.getId()));
         emitter.onCompletion(() -> dutyEmitters.remove(userDetails.getId()));
+        emitter.onError((e) -> {
+            tripStatusEmitters.remove(userDetails.getId());
+        });
 
         // Si ya existe un emisor para el usuario, lo eliminamos y lo reemplazamos
         if (dutyEmitters.containsKey(userDetails.getId())) {
@@ -379,5 +425,30 @@ public class SimpleTripService implements TripService {
         }
 
         return distance;
+    }
+
+    // Enviar un evento de keepalive a los emisores cada 10 segundos
+    @Scheduled(fixedRate = 10_000)
+    public void sendKeepAliveToEmitters() {
+        tripStatusEmitters.forEach((id, emitter) -> {
+            try {
+                // Enviar un evento de keepalive para mantener la conexión abierta
+                emitter.send(SseEmitter.event().name("keep-alive").data("keepalive"));
+            } catch (Exception e) {
+                emitter.complete();
+                tripStatusEmitters.remove(id);
+                log.error("Error sending keepalive to trip emitter", e);
+            }
+        });
+
+        dutyEmitters.forEach((id, emitter) -> {
+            try {
+                // Enviar un evento de keepalive para mantener la conexión abierta
+                emitter.send(SseEmitter.event().name("keep-alive").data("keepalive"));
+            } catch (Exception e) {
+                emitter.complete();
+                dutyEmitters.remove(id);
+            }
+        });
     }
 }

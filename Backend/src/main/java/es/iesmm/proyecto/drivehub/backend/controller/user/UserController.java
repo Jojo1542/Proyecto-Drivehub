@@ -1,8 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.controller.user;
 
-import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
-import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserLocationUpdateRequest;
-import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.*;
 import es.iesmm.proyecto.drivehub.backend.model.http.response.common.CommonResponse;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
@@ -12,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -65,14 +64,6 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("/list")
-    @PreAuthorize("hasRole('ADMIN') and hasAuthority('GET_ALL_USERS')")
-    public Page<UserModel> listAllUsersPaged(@RequestParam("page") int page,
-                                             @RequestParam("size") int size,
-                                             Pageable pageable) {
-        return userService.findAllPaged(pageable);
-    }
-
     @GetMapping("/get/{id}")
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('SEE_USER_DETAILS')")
     public UserModel getUser(@PathVariable Long id) {
@@ -100,6 +91,23 @@ public class UserController {
         }
     }
 
+    @PostMapping("/update/balance/{id}")
+    @PreAuthorize("hasRole('ADMIN') and hasAuthority('UPDATE_USER')")
+    public ResponseEntity<CommonResponse> updateBalance(@PathVariable Long id, @RequestBody UserBalanceModificationRequest request) {
+        try {
+            userService.updateUserBalance(id, request.amount(), request.type());
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage())).build();
+        } catch (IllegalStateException e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.PRECONDITION_FAILED, e.getMessage())).build();
+        }
+    }
+
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('DELETE_USER')")
     public ResponseEntity<CommonResponse> deleteUser(@PathVariable Long id) {
@@ -117,6 +125,27 @@ public class UserController {
                             .errorMessage(e.getMessage())
                             .build()
             );
+        }
+    }
+
+    /*
+     * Metodos para modificar un administrador
+     */
+    @PostMapping("/update/admin/permissions/{id}")
+    @PreAuthorize("hasRole('ADMIN') and hasAuthority('SUPER_ADMIN')")
+    public ResponseEntity<CommonResponse> updateAdminPermissions(@PathVariable Long id, @RequestBody AdminPermissionModificationRequest request) {
+        try {
+            System.out.println(request.permissions());
+            userService.updateAdminPermissions(id, request.permissions());
+            return ResponseEntity.ok(
+                    CommonResponse.builder()
+                            .success(true)
+                            .build()
+            );
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage())).build();
+        }  catch (IllegalStateException e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.PRECONDITION_FAILED, e.getMessage())).build();
         }
     }
 

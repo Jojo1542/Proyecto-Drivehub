@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class StatusController {
 
+    // Metodo para comprobar si el servidor esta activo
     @RequestMapping("/ping")
     public String ping() {
         return "pong";

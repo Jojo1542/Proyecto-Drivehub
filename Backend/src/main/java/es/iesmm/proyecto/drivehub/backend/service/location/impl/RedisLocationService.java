@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -46,13 +47,18 @@ public class RedisLocationService implements LocationService {
     }
 
     private void broadcastLocation(Long userId, UserLocation location) {
+        System.out.println("Broadcasting location for user " + userId + " to " + locationEmitters.size() + " emitters");
         locationEmitters.stream()
-                .filter(emitter -> emitter.driverId().equals(userId))
+                .filter(emitter -> {
+                    System.out.println("Checking emitter " + emitter.driverId() + " for user " + userId);
+                    return emitter.driverId().equals(userId);
+                })
                 .forEach(emitter -> {
                     try {
+                        System.out.println("Sending location to emitter " + emitter.driverId());
                         emitter.emitter().send(location);
                     } catch (Exception e) {
-                        emitter.emitter().completeWithError(e);
+                        emitter.emitter().complete();
                         locationEmitters.remove(emitter);
                         log.error("Error sending location to emitter", e);
                     }
@@ -75,10 +81,12 @@ public class RedisLocationService implements LocationService {
     public void addLocationEmitter(Long driverId, Long tripId, SseEmitter emitter) {
         // Si ya existe un emisor para el trayecto, lo eliminamos
         findEmitterByTrip(tripId).ifPresent(oldData -> {
+            System.out.println("Removing old emitter for trip " + tripId + " and driver " + oldData.driverId());
             oldData.emitter().complete();
             locationEmitters.remove(oldData);
         });
 
+        System.out.println("Adding new emitter for trip " + tripId + " and driver " + driverId);
         // Añadimos el nuevo emisor
         locationEmitters.add(new TripLocationEmitterRow(tripId, driverId, emitter));
     }
@@ -88,6 +96,22 @@ public class RedisLocationService implements LocationService {
         findEmitterByDriver(tripId).ifPresent(emitter -> {
             emitter.emitter().complete();
             locationEmitters.remove(emitter);
+        });
+    }
+
+    // Enviar un evento de keepalive a los emisores cada 10 segundos
+    @Scheduled(fixedRate = 10_000)
+    public void sendKeepAliveToEmitters() {
+        locationEmitters.forEach(emitter -> {
+            try {
+                // Enviar un evento de keepalive para mantener la conexión abierta
+                emitter.emitter().send(SseEmitter.event().name("keep-alive").data("keepalive"));
+            } catch (Exception e) {
+                // Completa el emisor si hay un error y lo elimina de la lista
+                emitter.emitter().complete();
+                locationEmitters.remove(emitter);
+                log.error("Error sending keepalive to location emitter", e);
+            }
         });
     }
 

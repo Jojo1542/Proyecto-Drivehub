@@ -1,5 +1,6 @@
 package es.iesmm.proyecto.drivehub.backend.service.geocode;
 
+import com.google.maps.model.LatLng;
 import es.iesmm.proyecto.drivehub.backend.util.distance.DistanceUnit;
 
 public interface GeoCodeService {
@@ -27,5 +28,7 @@ public interface GeoCodeService {
     }
 
     String getAddressFromCoordinates(double latitude, double longitude);
+
+    LatLng getCoordinatesFromAddress(String address);
 
 }

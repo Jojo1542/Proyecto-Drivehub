@@ -25,7 +25,8 @@ public enum AdminPermission {
     GET_GENERAL_CONTRACT,
     UPDATE_GENERAL_CONTRACT,
     DELETE_GENERAL_CONTRACT,
-    LIST_RENTS_BY_USER,;
+    LIST_RENTS_BY_USER,
+    LIST_ALL_TRIPS;
 
     public String getAuthorityName() {
         return name();

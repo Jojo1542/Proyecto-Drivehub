@@ -3,6 +3,7 @@ package es.iesmm.proyecto.drivehub.backend.service.user;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
+import es.iesmm.proyecto.drivehub.backend.model.user.balance.type.BalanceChangeType;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,6 +42,8 @@ public interface UserService extends UserDetailsService {
 
     void updateUserByRequest(UserModel user, UserModificationRequest request);
 
+    void updateUserBalance(Long id, double amount, BalanceChangeType type);
+
     void updateUserByAdmin(Long ip, UserModel request);
 
     long count();
@@ -56,4 +59,6 @@ public interface UserService extends UserDetailsService {
     void removeDriverLicenseFromDriver(Long driverId, String licenseId);
 
     void updateDriverByRequest(UserModel user, DriverModificationRequest request);
+
+    void updateAdminPermissions(Long id, List<String> permissions);
 }

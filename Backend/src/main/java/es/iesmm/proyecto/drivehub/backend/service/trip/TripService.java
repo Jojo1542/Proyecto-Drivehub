@@ -30,11 +30,15 @@ public interface TripService {
 
     List<TripModel> findAll();
 
+    List<TripModel> findActiveTrips();
+
     List<TripModel> findByDriver(Long driverId);
 
     Optional<TripModel> findActiveByDriver(Long driverId);
 
     List<TripModel> findUserHistory(Long userId);
+
+    List<TripModel> findDriverHistory(Long id);
 
     Optional<TripModel> findActiveByPassenger(Long passengerId);
 

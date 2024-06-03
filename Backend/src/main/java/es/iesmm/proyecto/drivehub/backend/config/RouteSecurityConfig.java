@@ -1,10 +1,8 @@
 package es.iesmm.proyecto.drivehub.backend.config;
 
-import es.iesmm.proyecto.drivehub.backend.util.jwt.JwtAuthenticationFilter;
+import es.iesmm.proyecto.drivehub.backend.util.filter.JwtAuthenticationFilter;
+import jakarta.servlet.DispatcherType;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
-//import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -12,8 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -27,10 +23,13 @@ public class RouteSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // Disable logout
         return http
                 .csrf(AbstractHttpConfigurer::disable)
+
                 .authorizeHttpRequests(
                         authorizeRequests -> authorizeRequests
+                                .dispatcherTypeMatchers(DispatcherType.ASYNC).permitAll()
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers("/status/**").permitAll()
                                 .anyRequest().authenticated()
@@ -41,6 +40,24 @@ public class RouteSecurityConfig {
                 .authenticationProvider(authProvider)
                 // Add JWT filter before UsernamePasswordAuthenticationFilter
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(
+                        exceptionHandling -> exceptionHandling
+                                .authenticationEntryPoint((request, response, authException) -> {
+                                    if (response.isCommitted()) {
+                                        return;
+                                    }
+
+                                    response.setStatus(401);
+                                })
+                                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                                    if (response.isCommitted()) {
+                                        return;
+                                    }
+
+                                    response.setStatus(403);
+                                })
+                )
+                .logout(AbstractHttpConfigurer::disable)
                 .build();
     }
 

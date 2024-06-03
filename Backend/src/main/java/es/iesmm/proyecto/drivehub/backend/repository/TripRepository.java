@@ -33,4 +33,7 @@ public interface TripRepository extends JpaRepository<TripModel, Long> {
 
     @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED') AND passenger.id = :passengerId")
     Optional<TripModel> findActiveByPassengerId(Long passengerId);
+
+    @Query("SELECT t FROM TripModel t WHERE (status = 'PENDING' OR status = 'ACCEPTED')")
+    List<TripModel> findActiveTrips();
 }

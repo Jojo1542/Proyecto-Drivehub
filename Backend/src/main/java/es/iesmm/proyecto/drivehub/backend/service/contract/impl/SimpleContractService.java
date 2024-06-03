@@ -65,21 +65,24 @@ public class SimpleContractService implements ContractService {
             fleetDriverModelData.setFleet(fleet);
         }
 
-        contractRepository.save(contract);
+        DriverContract savedContract = contractRepository.save(contract);
 
         // Se obtiene el contrato actual del usuario
-        getActualContract(userModel)
+        findByDriver(userModel)
+                .stream()
+                .filter(other -> !other.isExpired()) // Comprobar que no ha expirado
+                .filter(other -> !Objects.equals(other.getId(), savedContract.getId()))
+                .max(Comparator.comparing(DriverContract::getEndDate))
                 // Se filtra para que no sea el mismo contrato por su ID
-                .filter(actualContract -> !Objects.equals(actualContract.getId(), contract.getId()))
                 .ifPresent(actualContract -> {
                     // Se establece la fecha de fin del contrato anterior
-                    actualContract.setEndDate(contract.getStartDate());
+                    actualContract.setEndDate(savedContract.getStartDate());
 
                     // Se establece este contrato como el actual
-                    actualContract.setNextContract(contract);
+                    actualContract.setNextContract(savedContract);
 
                     // Se establece el contrato anterior como el anterior de este contrato
-                    contract.setPreviousContract(actualContract);
+                    savedContract.setPreviousContract(actualContract);
 
                     // Se actualiza el contrato anterior en la base de datos
                     contractRepository.save(actualContract);
@@ -89,7 +92,7 @@ public class SimpleContractService implements ContractService {
         userRepository.save(userModel);
 
         // Se guarda el contrato en la base de datos
-        return contractRepository.save(contract);
+        return contractRepository.save(savedContract);
     }
 
     @Override
@@ -102,7 +105,6 @@ public class SimpleContractService implements ContractService {
         return findByDriver(user)
                 .stream()
                 .filter(contract -> !contract.isExpired()) // Comprobar que no ha expirado
-                .filter(DriverContract::isActual) // Comprobar que es el contrato actual
                 .max(Comparator.comparing(DriverContract::getEndDate));
     }
 

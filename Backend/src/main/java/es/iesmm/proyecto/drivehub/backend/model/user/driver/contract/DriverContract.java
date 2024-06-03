@@ -56,12 +56,15 @@ public class DriverContract extends AbstractPersistable<Long> {
         return super.isNew();
     }
 
-    @JsonIgnore
-    public boolean isActual() {
-        return startDate.before(new Date()) && endDate.after(new Date());
+    public boolean isFleetContract() {
+        return fleet != null;
     }
 
     @JsonIgnore
+    public boolean isActual() {
+        return !isExpired();
+    }
+
     public boolean isExpired() {
         return endDate.before(new Date());
     }

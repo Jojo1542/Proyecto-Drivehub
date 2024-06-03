@@ -59,12 +59,13 @@ public class TripModel extends AbstractPersistable<Long> {
     private String vehicleColor;
 
     @ManyToOne
-    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData"})
+    @JsonIgnoreProperties({"email", "password", "roles", "saldo", "phone", "adminData", "driverData", "balanceHistory"})
     @JoinColumn(name = "driver_id")
     private UserModel driver;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "passenger_id", nullable = false)
+    @JsonIgnoreProperties({"balanceHistory"})
     private UserModel passenger;
 
     @JsonIgnore

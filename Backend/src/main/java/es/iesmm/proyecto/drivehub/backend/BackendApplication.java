@@ -10,11 +10,13 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.logging.Logger;
 
 @SpringBootApplication
 @AllArgsConstructor
+@EnableScheduling
 public class BackendApplication {
 
 	private static final String DEFAULT_ADMIN_EMAIL = "admin@jojo1542.es";
