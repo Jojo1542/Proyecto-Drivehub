@@ -1,13 +1,16 @@
 version: "3.9"
 services:
   oracle:
-    image: "gvenzl/oracle-xe"
+    image: "gvenzl/oracle-free"
     restart: "always"
+#    volumes:
+#      - "oracle-volume:/opt/oracle/oradata"
     ports:
       - "1521:1521/tcp"
     environment:
-      - ORACLE_SID=XE
-      - ORACLE_PASSWORD=1c89m27389127c38172c83mcas9di8jcas89cdum8912738127c3
+      - ORACLE_RANDOM_PASSWORD=true
+      - APP_USER=DriveHub
+      - APP_USER_PASSWORD=D3vE4vTLqGbBh6McLsaNU4wzFCMY2G
   redis:
     image: "redis:alpine"
     restart: "always"
@@ -17,8 +20,6 @@ services:
     image: "jojo1542/drivehub-backend"
     restart: "unless-stopped"
     pull_policy: build
-    volumes:
-      - "oracle-volume:/opt/oracle/oradata"
     depends_on:
       - redis
       - oracle

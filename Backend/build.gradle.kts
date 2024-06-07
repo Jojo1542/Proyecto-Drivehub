@@ -62,7 +62,7 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 
 	// Database drivers
-	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
+	runtimeOnly("com.oracle.database.jdbc:ojdbc11:23.4.0.24.05")
 
 	// Librerías utiles
 	implementation("org.apache.commons:commons-lang3:3.14.0")
