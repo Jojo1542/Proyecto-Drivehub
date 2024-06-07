@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oracle
+  template:
+    metadata:
+      labels:
+        app: oracle
+    spec:
+      volumes:
+        - name: oracle-storage
+          persistentVolumeClaim:
+            claimName: oracle-pvc
+      # Permisos para que oracle funcione, es el usuario oracle en oracle-linux
+      securityContext:
+        runAsUser: 54321
+        fsGroup: 54321
+      containers:
+        - name: oracle
+          image: gvenzl/oracle-free
+          env:
+            - name: ORACLE_RANDOM_PASSWORD
+              value: "true"
+            - name: APP_USER
+              value: "DriveHub"
+            - name: APP_USER_PASSWORD
+              value: "D3vE4vTLqGbBh6McLsaNU4wzFCMY2G"
+          volumeMounts:
+            - mountPath: /opt/oracle/oradata
+              name: oracle-storage
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2"
+            limits:
+              memory: "2Gi"
+              cpu: "2"

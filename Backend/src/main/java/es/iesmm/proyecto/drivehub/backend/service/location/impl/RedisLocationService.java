@@ -110,7 +110,6 @@ public class RedisLocationService implements LocationService {
                 // Completa el emisor si hay un error y lo elimina de la lista
                 emitter.emitter().complete();
                 locationEmitters.remove(emitter);
-                log.error("Error sending keepalive to location emitter", e);
             }
         });
     }

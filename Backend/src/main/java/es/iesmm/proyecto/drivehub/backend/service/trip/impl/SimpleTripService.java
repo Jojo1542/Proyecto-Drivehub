@@ -268,6 +268,8 @@ public class SimpleTripService implements TripService {
                 .map(userRepository::findById)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
+                // Confirmar que el usuario es un conductor de tipo Chauffeur si o si
+                .filter(driver -> driver.getDriverData() != null && driver.getDriverData() instanceof ChauffeurDriverModelData)
                 // Filtrar por los conductores que no tienen un trayecto activo
                 .filter(driver -> findActiveByDriver(driver.getId()).isEmpty())
                 // Calcula la distancia de cada conductor al origen del trayecto y los mete en un mapa <Conductor, Distancia>

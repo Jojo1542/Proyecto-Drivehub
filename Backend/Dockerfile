@@ -18,9 +18,8 @@ RUN mkdir /app
 
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/application.jar
 
-# As we need to get the data from the bot, we need to set the working directory to /app
 WORKDIR /app
 
-#ENTRYPOINT ["java", "-jar", "/app/application.jar"]
-ENTRYPOINT ["tail"]
-CMD ["-f","/dev/null"]
+ENTRYPOINT ["java", "-jar", "/app/application.jar"]
+#ENTRYPOINT ["tail"]
+#CMD ["-f","/dev/null"]

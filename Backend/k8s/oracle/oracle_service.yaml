@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle-service
+spec:
+  selector:
+    app: oracle
+  ports:
+    - protocol: TCP
+      port: 1521
+      targetPort: 1521
+  clusterIP: None
