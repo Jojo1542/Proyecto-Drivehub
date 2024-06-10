@@ -9,6 +9,8 @@ import Foundation
 
 class PreviewHelper {
     
+    private static var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWRtaW5Aam9qbzE1NDIuZXMiLCJpYXQiOjE3MTcwMTA3NzIsImV4cCI6MTcxNzA5NzE3Mn0.7XlTP8BopCycbqlIJGrVBfot-Iahe7KX-t8etKavBB8tw8pL6r8cErUUD3Dc8yEj1LNSR4W3meHaKX2Mha3cuQ";
+    
     static var activeUserRentHistoryModel: UserRentHistoryModel {
         return UserRentHistoryModel(
             user: authModelUser.currentUser!,
@@ -33,7 +35,7 @@ class PreviewHelper {
         let viewModel = AuthViewModel()
         
         //viewModel.sessionToken = "TEST.TEST.TEST";
-        viewModel.sessionToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWRtaW5Aam9qbzE1NDIuZXMiLCJpYXQiOjE3MTU5NTczMzEsImV4cCI6MTcxNTk2MDkzMX0.bBKBwByN5CD4Kc0zzddqdlIInM0gc6wI2K1vAjv3MDYuURPh9lJJvsW_bdRjt1pXlEiHKV3rvttLJToQd8eKtA";
+        viewModel.sessionToken = token;
         viewModel.currentUser = UserModel(
             id: 1,
             email: "test@drivehub.com",
@@ -41,7 +43,7 @@ class PreviewHelper {
             lastName: "Apellidos",
             dni: "99999999R",
             birthDate: Date(),
-            saldo: 9.99,
+            balance: 9.99,
             phone: "+34-666666666",
             roles: [UserModel.Role.USER],
             driverLicenses: [
@@ -73,7 +75,7 @@ class PreviewHelper {
             email: "test@drivehub.com",
             firstName: "Nombre",
             lastName: "Apellidos",
-            saldo: 9.99,
+            balance: 9.99,
             phone: "+34-666666666",
             roles: [UserModel.Role.USER],
             driverLicenses: []
@@ -85,7 +87,8 @@ class PreviewHelper {
     static var authModelAdmin: AuthViewModel {
         let viewModel = AuthViewModel()
         
-        viewModel.sessionToken = "TEST.TEST.TEST";
+        //viewModel.sessionToken = "TEST.TEST.TEST";
+        viewModel.sessionToken = token;
         viewModel.currentUser = UserModel(
             id: 1,
             email: "test@drivehub.com",
@@ -93,7 +96,7 @@ class PreviewHelper {
             lastName: "Apellidos",
             dni: "99999999R",
             birthDate: Date(),
-            saldo: 9.99,
+            balance: 9.99,
             phone: "+34-666666666",
             roles: [UserModel.Role.USER, UserModel.Role.ADMIN],
             adminData: UserModel.AdminData(
@@ -110,7 +113,8 @@ class PreviewHelper {
     static var authModelFleetDriver: AuthViewModel {
         let viewModel = AuthViewModel()
         
-        viewModel.sessionToken = "TEST.TEST.TEST";
+        //viewModel.sessionToken = "TEST.TEST.TEST";
+        viewModel.sessionToken = token;
         viewModel.currentUser = UserModel(
             id: 1,
             email: "test@drivehub.com",
@@ -118,7 +122,7 @@ class PreviewHelper {
             lastName: "Apellidos",
             dni: "99999999R",
             birthDate: Date(),
-            saldo: 9.99,
+            balance: 9.99,
             phone: "+34-666666666",
             roles: [UserModel.Role.USER, UserModel.Role.FLEET],
             driverData: UserModel.DriverData(
@@ -142,7 +146,8 @@ class PreviewHelper {
     static var authModelChaoffeur: AuthViewModel {
         let viewModel = AuthViewModel()
         
-        viewModel.sessionToken = "TEST.TEST.TEST";
+        //viewModel.sessionToken = "TEST.TEST.TEST";
+        viewModel.sessionToken = token;
         viewModel.currentUser = UserModel(
             id: 1,
             email: "test@drivehub.com",
@@ -150,9 +155,17 @@ class PreviewHelper {
             lastName: "Apellidos",
             dni: "99999999R",
             birthDate: Date(),
-            saldo: 9.99,
+            balance: 9.99,
             phone: "+34-666666666",
             roles: [UserModel.Role.USER, UserModel.Role.CHAUFFEUR],
+            driverData: UserModel.DriverData(
+                avaiableTime: "08:00-20:00",
+                preferedDistance: 10.0,
+                canTakePassengers: false,
+                vehicleModel: "Modelo",
+                vehiclePlate: "1234ABC",
+                vehicleColor: "Rojo"
+            ),
             driverLicenses: [
                 UserModel.DriverLicense(
                     licenseNumber: "AAAAA-1",
@@ -176,8 +189,8 @@ class PreviewHelper {
         return TripModel(
             id: 1,
             status: TripModel.Status.PENDING,
-            date: "25/04/2024",
-            startTime: "12:00",
+            date: Date(timeIntervalSince1970: 1672531200), // 25/04/2024
+            startTime: Date(timeIntervalSince1970: 1672531200), // 12:00
             endTime: nil,
             origin: "37.373469;-5.930973", // Coordenadas origen
             destination: "37.375939;-5.967745", // Coordenadas destino
@@ -193,16 +206,19 @@ class PreviewHelper {
         return TripModel(
             id: 2,
             status: TripModel.Status.FINISHED,
-            date: "25/04/2024",
-            startTime: "12:00",
-            endTime: "12:30",
+            date: Date(timeIntervalSince1970: 1672531200), // 25/04/2024
+            startTime: Date(timeIntervalSince1970: 1672531200), // 12:00
+            endTime: Date(timeIntervalSince1970: 1672533000), // 13:30
             origin: "37.373469;-5.930973", // Coordenadas origen
             destination: "37.375939;-5.967745", // Coordenadas destino
             price: 9.99,
             distance: 10.0,
             sendPackage: false,
-            driver: authModelFleetDriver.currentUser!,
-            passenger: authModelUser.currentUser!
+            driver: exampleDriverTrip,
+            passenger: authModelUser.currentUser!,
+            vehicleModel: "Toyota Corolla",
+            vehiclePlate: "1111AAA",
+            vehicleColor: "Rojo"
         )
     }
     
@@ -210,16 +226,19 @@ class PreviewHelper {
         return TripModel(
             id: 3,
             status: TripModel.Status.ACCEPTED,
-            date: "25/04/2024",
-            startTime: "12:00",
+            date: Date(timeIntervalSince1970: 1672531200), // 25/04/2024
+            startTime: Date(timeIntervalSince1970: 1672531200), // 12:00
             endTime: nil,
             origin: "37.373469;-5.930973", // Coordenadas origen
             destination: "37.375939;-5.967745", // Coordenadas destino
             price: 9.99,
             distance: 10.0,
             sendPackage: false,
-            driver: authModelFleetDriver.currentUser!,
-            passenger: authModelUser.currentUser!
+            driver: exampleDriverTrip,
+            passenger: authModelUser.currentUser!,
+            vehicleModel: "Toyota Corolla",
+            vehiclePlate: "1111AAA",
+            vehicleColor: "Rojo"
         )
     }
     
@@ -233,7 +252,8 @@ class PreviewHelper {
             color: "Rojo",
             fechaMatriculacion: Date.now.addingTimeInterval(-120000),
             imageUrl: "https://www.surmocion.com/wp-content/uploads/2023/04/SEAT-Ibiza-estática-frontal-1.jpg",
-            precioHora: 10.0
+            precioHora: 10.0,
+            available: true
         )
     }
     
@@ -270,7 +290,25 @@ class PreviewHelper {
                 ShipmentModel.Parcel(id: 1, content: "PS5", quantity: 1, weight: 5.0),
                 ShipmentModel.Parcel(id: 2, content: "Xbox Series X", quantity: 5, weight: 6.0),
                 ShipmentModel.Parcel(id: 3, content: "Nintendo Switch", quantity: 3, weight: 3.0)
-            ]
+            ],
+            driver: ShipmentModel.ShipmentDriver(
+                id: 1,
+                firstName: "José Antonio",
+                lastName: "Ponce Piñero",
+                birthDate: Date(timeIntervalSince1970: 1716146421),
+                dni: "12345678Z",
+                phone: "+34-666666666"
+            )
+        )
+    }
+    
+    static var exampleFleet: FleetModel {
+        return FleetModel(id: 1, name: "Fleet 1", cif: "12345678A", vehicleType: .VAN);
+    }
+    
+    static var exampleDriverTrip: TripModel.DriverInfo {
+        return TripModel.DriverInfo(
+            id: 1, firstName: "Nombre", lastName: "Apellidos", dni: "30280812R", birthDate: Date(timeIntervalSince1970: 1716146421)
         )
     }
     

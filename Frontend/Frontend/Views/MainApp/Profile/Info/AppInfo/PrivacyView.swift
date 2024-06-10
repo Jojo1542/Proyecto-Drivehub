@@ -60,6 +60,8 @@ struct PrivacyView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Política de privacidad")
     }
 }
 

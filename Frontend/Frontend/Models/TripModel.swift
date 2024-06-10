@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreLocation
+import SwiftUI
 
 struct TripModel: Hashable, Decodable, Identifiable {
     
@@ -15,21 +17,56 @@ struct TripModel: Hashable, Decodable, Identifiable {
     enum Status: String, CaseIterable, Codable, Hashable {
         case PENDING = "PENDING"
         case ACCEPTED = "ACCEPTED"
-        case REJECTED = "REJECTED"
         case CANCELLED = "CANCELLED"
         case FINISHED = "FINISHED"
+        case CANCELLED_DUE_TO_NO_DRIVER = "CANCELLED_DUE_TO_NO_DRIVER"
+        
+        // User friendly name
+        var userFriendlyName: String {
+            switch self {
+            case .PENDING:
+                return "Pendiente"
+            case .ACCEPTED:
+                return "En progreso"
+            case .CANCELLED:
+                return "Cancelado"
+            case .CANCELLED_DUE_TO_NO_DRIVER:
+                return "Cancelado"
+            case .FINISHED:
+                return "Finalizado"
+            }
+        }
+        
+        var color: Color {
+            switch self {
+            case .PENDING:
+                return Color.yellow
+            case .ACCEPTED:
+                return Color.green
+            case .CANCELLED:
+                return Color.red
+            case .CANCELLED_DUE_TO_NO_DRIVER:
+                return Color.red
+            case .FINISHED:
+                return Color.primary
+            }
+        }
     }
     
-    var date: String
-    var startTime: String
-    var endTime: String?
+    var date: Date
+    var startTime: Date
+    var endTime: Date?
     var origin: String
     var destination: String
     var price: Double?
     var distance: Double?
     var sendPackage: Bool
-    var driver: UserModel?
+    var driver: DriverInfo?
     var passenger: UserModel
+    
+    var vehicleModel: String?
+    var vehiclePlate: String?
+    var vehicleColor: String?
     
     /*
      Variables calculadas
@@ -84,17 +121,35 @@ struct TripModel: Hashable, Decodable, Identifiable {
     
     var timeElapsed: String {
         get {
-            let dateFormatter = DateFormatter()
-            
-            dateFormatter.dateFormat = "HH:mm"
-            
-            let start = dateFormatter.date(from: startTime)!
-            let end = dateFormatter.date(from: endTime!)!
-            let interval = end.timeIntervalSince(start)
+            let interval = endTime!.timeIntervalSince(startTime)
             let hours = Int(interval) / 3600
             let minutes = Int(interval) / 60 % 60
             
             return String(format: "%02d:%02d", hours, minutes)
+        }
+    }
+    
+    var sourcePoint: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: originLat, longitude: originLon)
+    }
+    
+    var destinationPoint: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: destLat, longitude: destLon)
+    }
+    
+    struct DriverInfo: Hashable, Decodable, Identifiable {
+        var id: Int
+        var firstName: String
+        var lastName: String
+        var dni: String
+        var birthDate: Date
+        
+        func calculateYears() -> Int {
+            return Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year!
+        }
+        
+        var fullName: String {
+            return "\(firstName) \(lastName)"
         }
     }
 }

@@ -18,12 +18,31 @@ struct DriverMainView: View {
                 .environmentObject(FleetDriverViewModel(driverModel: driverModel))
         } else {
             ChauffeurDriverMainView()
+                .environmentObject(ChauffeurDriverViewModel(driverModel: driverModel))
         }
     }
 }
 
 #Preview("Chofer") {
     let authModel = PreviewHelper.authModelChaoffeur;
+    let appModel = AppViewModel(authViewModel: authModel);
+    
+    return DriverMainView()
+        .environmentObject(DriverViewModel(appModel: appModel))
+        .environmentObject(authModel)
+        .environmentObject(appModel)
+}
+
+#Preview("Chofer (Sin vehiculo)") {
+    let authModel = PreviewHelper.authModelChaoffeur;
+    var userModel = authModel.currentUser!;
+    
+    userModel.driverData!.vehicleColor = nil;
+    userModel.driverData!.vehicleModel = nil;
+    userModel.driverData!.vehiclePlate = nil;
+    
+    authModel.currentUser = userModel;
+    
     let appModel = AppViewModel(authViewModel: authModel);
     
     return DriverMainView()

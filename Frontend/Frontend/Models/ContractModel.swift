@@ -9,14 +9,16 @@ import Foundation
 
 class ContractModel: Hashable, Decodable, Identifiable {
     
-    var id: Int64
+    var id: Int
     var startDate: Date
     var endDate: Date
     var salary: Double
-    var nextContract: ContractModel?
-    var previousContract: ContractModel?
+    var nextContract: Int?
+    var previousContract: Int?
     var fleet: FleetModel?
     var driver: Int64
+    var expired: Bool = false
+    var driverData: UserModel? = nil
     
     /*
      Metodos necesarios al tener una clase y no una estructura de datos

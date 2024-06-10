@@ -48,8 +48,10 @@ struct DriverLicenseCard: View {
                     switch error {
                         case .LICENSE_NOT_FOUND:
                             showDialog(title: "Error", description: "No se ha encontrado la licencia en el sistema, refresca la lista de licencias.")
+                            break;
                         default:
                             showDialog(title: "Error", description: "Ha ocurrido un error desconocido, por favor, inténtalo de nuevo.")
+                        
                     }
             }
         }

@@ -10,6 +10,7 @@ import Alamofire
 
 struct NetworkConfiguration {
     static let baseUrl = "http://192.168.1.51:8080"
+    //static let baseUrl = "https://drivehub.jojo1542.es"
 }
 
 // Configurar Alamofire para que los JSON tengan la fecha en formato unix

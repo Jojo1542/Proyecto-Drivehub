@@ -25,6 +25,8 @@ struct TermsView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Terminos y condiciones")
     }
 }
 

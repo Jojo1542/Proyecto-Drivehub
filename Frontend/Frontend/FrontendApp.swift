@@ -12,6 +12,14 @@ struct FrontendApp: App {
     
     @State private var authViewModel = AuthViewModel();
     
+    // Test User 1:
+    // admin@jojo1542.es
+    // KwY3kfF1c5
+    
+    // Test User 2:
+    // migue@prueba.com
+    // 1234
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

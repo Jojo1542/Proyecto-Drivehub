@@ -23,12 +23,12 @@ struct ShipmentMapView: View {
                     estimatedTime: .constant(0),
                     estimatedDistance: .constant(0),
                     sourceCoordinate: CLLocationCoordinate2D(
-                        latitude: destinationLocation!.coordinate.latitude,
-                        longitude: destinationLocation!.coordinate.longitude
-                    ),
-                    destinationCoordinate: CLLocationCoordinate2D(
                         latitude: sourceLocation!.coordinate.latitude,
                         longitude: sourceLocation!.coordinate.longitude
+                    ),
+                    destinationCoordinate: CLLocationCoordinate2D(
+                        latitude: destinationLocation!.coordinate.latitude,
+                        longitude: destinationLocation!.coordinate.longitude
                     ),
                     customMarkers: [
                         CustomMapMarker(

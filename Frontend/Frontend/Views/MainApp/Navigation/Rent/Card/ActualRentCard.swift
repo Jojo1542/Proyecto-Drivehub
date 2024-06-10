@@ -134,12 +134,16 @@ struct ActualRentCard: View {
                 switch error {
                 case .USER_DOES_NOT_HAVE_ACTIVE_RENT:
                     showDialog(title: "Error", description: String(localized: "No tienes ningún alquiler activo."))
+                    break;
                 case .VEHICLE_NOT_FOUND:
                     showDialog(title: "Error", description: String(localized: "El vehículo no ha sido encontrado."))
+                    break;
                 case .VEHICLE_NOT_RENTED_BY_USER:
                     showDialog(title: "Error", description: String(localized: "El vehículo no está alquilado."))
+                    break;
                 default:
                     showDialog(title: "Error", description: String(localized: "Ha ocurrido un error desconocido."))
+                    break;
                 }
             }
         }

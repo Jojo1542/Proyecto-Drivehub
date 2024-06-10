@@ -14,6 +14,7 @@ class GetActualRentRequest {
       
     static func getActualRent(sessionToken: String, completion: @escaping (Callback<UserRentHistoryModel, Int>) -> Void) {
         AF.request(url, headers: [.authorization(bearerToken: sessionToken)])
+            // Allow 2xx and 404 response codes
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .cURLDescription { description in
@@ -23,7 +24,6 @@ class GetActualRentRequest {
                     case .success(let result):
                         completion(.success(data: result))
                     case let .failure(error):
-                        print("Me user request failed with error \(error) and response code \(error.responseCode ?? -1)")
                         completion(.failure(data: error.responseCode))
                 }
             }

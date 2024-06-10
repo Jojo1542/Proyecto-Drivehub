@@ -20,9 +20,6 @@ struct MapView: View {
         // en las coordenadas de la variable de abajo, en esta se define el
         // las coordenadas y el zoom
         
-        //Map(initialPosition: .region(region))
-        // Se coloca constante para evitar tener en cuenta si alguien mueve el mapa interactuando con este
-        //Map(position: .constant(.region(region)))
         if (followUser) {
             Map(
                 coordinateRegion: .constant(region),

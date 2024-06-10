@@ -10,11 +10,12 @@ import SwiftUI
 struct LicensesSectionView: View {
     
     @EnvironmentObject var appViewModel: AppViewModel
+    @State var driverLicenses: [UserModel.DriverLicense] = []
     
     var body: some View {
         Section("Permisos de conducir") {
             // Button to add a new driver license
-            NavigationLink(destination: AddDriverLicenseView()) {
+            NavigationLink(destination: AddDriverLicenseView(driverLicenses: $driverLicenses)) {
                 HStack {
                     Image(systemName: "plus.circle")
                     Text("Añadir permiso de conducir")
@@ -22,9 +23,12 @@ struct LicensesSectionView: View {
                 .foregroundColor(.accentColor)
             }
             
-            ForEach(appViewModel.getUser().driverLicenses, id: \.self) { driverLicense in
+            ForEach(driverLicenses, id: \.self) { driverLicense in
                 DriverLicenseCard(driverLicense: driverLicense)
             }
+        }
+        .onAppear() {
+            driverLicenses = appViewModel.getUser().driverLicenses;
         }
     }
 }

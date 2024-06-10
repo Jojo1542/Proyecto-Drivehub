@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class DriverViewModel: ObservableObject {
     
@@ -14,20 +15,28 @@ class DriverViewModel: ObservableObject {
     
     init(appModel: AppViewModel) {
         self.appModel = appModel;
-        self.locationService = LocationService();
+        self.locationService = LocationService(background: true);
     }
     
     var user: UserModel {
         return self.appModel.getUser();
     }
     
+    var sessionToken: String {
+        return self.appModel.getSessionToken()
+    }
+    
     var driverData: UserModel.DriverData {
         return self.appModel.getUser().driverData!;
     }
     
+    var lastLocation: CLLocation {
+        return self.locationService.getLastLocation()!;
+    }
+    
     func startUpdatingLocation() {
-        self.locationService.startUpdatingLocation(callback: {location in
-            print("Location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+        self.locationService.startUpdatingLocation(callback: { location in
+            self.appModel.updateLocationToServer(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude);
         })
     }
     
@@ -37,6 +46,17 @@ class DriverViewModel: ObservableObject {
     
     func isUpdatingLocation() -> Bool {
         return self.locationService.isUpdatingLocation();
+    }
+    
+    func updateDriver(data: UserUpdateDriverRequest.RequestBody, completion: @escaping (Callback<Void, Int>) -> Void) {
+        UserUpdateDriverRequest.updateDriver(sessionToken: self.sessionToken, body: data, completion: { response in
+            switch response {
+                case .success(_):
+                    completion(.success())
+                case .failure(let error):
+                    completion(.failure(data: error))
+            }
+        });
     }
     
 }

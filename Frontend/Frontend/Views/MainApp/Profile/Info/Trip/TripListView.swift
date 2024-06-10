@@ -10,11 +10,11 @@ import CoreLocation
 
 struct TripListView: View {
     
-    var trips: [TripModel] = []
+    @EnvironmentObject var viewModel: AppViewModel;
     
     var body: some View {
         List {
-            if (trips.count == 0) {
+            if (viewModel.tripHistory.count == 0) {
                 VStack {
                     Text("No tienes viajes")
                         .font(.title)
@@ -22,9 +22,9 @@ struct TripListView: View {
                     Spacer()
                 }
             } else {
-                ForEach(trips) { trip in
+                ForEach(viewModel.tripHistory) { trip in
                     NavigationLink(destination: TripDetailsView(trip: trip)) {
-                        TripCardView(trip: trip)
+                        TripRow(trip: trip)
                     }
                 }
             }
@@ -32,21 +32,9 @@ struct TripListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Viajes")
         .refreshable {
-            print("Refreshing")
+            viewModel.fetchTripHistory()
+        }.onAppear() {
+            viewModel.fetchTripHistory()
         }
-    }
-}
-
-#Preview("Sin viajes") {
-    TripListView()
-}
-
-#Preview("Cpn viajes") {
-    NavigationView {
-        TripListView(trips: [
-            PreviewHelper.finishedTrip,
-            PreviewHelper.pendingTrip,
-            PreviewHelper.finishedTrip,
-        ])
     }
 }

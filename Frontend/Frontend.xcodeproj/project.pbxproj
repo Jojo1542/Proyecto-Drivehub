@@ -7,6 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0902A6222BFFA60F0063A8A1 /* CarPacman.json in Resources */ = {isa = PBXBuildFile; fileRef = 0902A61D2BFFA60F0063A8A1 /* CarPacman.json */; };
+		0902A6232BFFA60F0063A8A1 /* Car3D.json in Resources */ = {isa = PBXBuildFile; fileRef = 0902A61E2BFFA60F0063A8A1 /* Car3D.json */; };
+		0902A6242BFFA60F0063A8A1 /* CarFamily.json in Resources */ = {isa = PBXBuildFile; fileRef = 0902A61F2BFFA60F0063A8A1 /* CarFamily.json */; };
+		0902A6252BFFA60F0063A8A1 /* CarFast.json in Resources */ = {isa = PBXBuildFile; fileRef = 0902A6202BFFA60F0063A8A1 /* CarFast.json */; };
+		0902A6262BFFA60F0063A8A1 /* CarRotating.json in Resources */ = {isa = PBXBuildFile; fileRef = 0902A6212BFFA60F0063A8A1 /* CarRotating.json */; };
+		0902A6282C0118430063A8A1 /* DraftSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A6272C0118430063A8A1 /* DraftSheetView.swift */; };
+		0902A62D2C02385F0063A8A1 /* DriverVehicleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A62C2C02385F0063A8A1 /* DriverVehicleDetailsView.swift */; };
+		0902A62F2C023AA40063A8A1 /* DriverVehicleModificationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A62E2C023AA40063A8A1 /* DriverVehicleModificationFormView.swift */; };
+		0902A6322C023DB70063A8A1 /* ChauffeurDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A6312C023DB70063A8A1 /* ChauffeurDriverViewModel.swift */; };
+		0902A6342C023F450063A8A1 /* DriverNoVehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A6332C023F450063A8A1 /* DriverNoVehicleView.swift */; };
+		0902A6362C02444F0063A8A1 /* DriverPersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902A6352C02444F0063A8A1 /* DriverPersonalDetailsView.swift */; };
+		091D33F42BFD27D200FDE692 /* AdminShipmentModificationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D33F32BFD27D200FDE692 /* AdminShipmentModificationBarView.swift */; };
+		091D33F72BFDD2D100FDE692 /* ShipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D33F62BFDD2D100FDE692 /* ShipmentViewModel.swift */; };
+		091D33FC2BFDD99100FDE692 /* AdminFleetDriverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D33FB2BFDD99100FDE692 /* AdminFleetDriverListView.swift */; };
+		091D33FE2BFDD99A00FDE692 /* UserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091D33FD2BFDD99A00FDE692 /* UserRow.swift */; };
+		0931873D2BFFA05C008657AA /* SearchingDriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931873C2BFFA05C008657AA /* SearchingDriverView.swift */; };
+		093187402BFFA39E008657AA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0931873F2BFFA39E008657AA /* Lottie */; };
+		0934BB8B2BFBC2DD00040C0A /* ShipmentParcelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB8A2BFBC2DD00040C0A /* ShipmentParcelListView.swift */; };
+		0934BB8D2BFBC2E900040C0A /* ShipmentHistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB8C2BFBC2E900040C0A /* ShipmentHistoryListView.swift */; };
+		0934BB902BFBC30100040C0A /* ShipmentDriverInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB8F2BFBC30100040C0A /* ShipmentDriverInfoView.swift */; };
+		0934BB942BFBC3CD00040C0A /* ParcelRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB932BFBC3CD00040C0A /* ParcelRowView.swift */; };
+		0934BB9B2BFCAA4900040C0A /* AdminVehicleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB9A2BFCAA4900040C0A /* AdminVehicleListView.swift */; };
+		0934BB9D2BFCAA5900040C0A /* AdminVehicleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BB9C2BFCAA5900040C0A /* AdminVehicleRow.swift */; };
+		0934BBA22BFCAA7C00040C0A /* VehicleCreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBA12BFCAA7C00040C0A /* VehicleCreationFormView.swift */; };
+		0934BBA42BFCAAB400040C0A /* AdminVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBA32BFCAAB400040C0A /* AdminVehicleViewModel.swift */; };
+		0934BBA92BFCAC7E00040C0A /* GetAllVehiclesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBA82BFCAC7E00040C0A /* GetAllVehiclesRequest.swift */; };
+		0934BBAB2BFCAC9800040C0A /* CreateVehicleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBAA2BFCAC9800040C0A /* CreateVehicleRequest.swift */; };
+		0934BBAD2BFCACB500040C0A /* UpdateVehicleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBAC2BFCACB500040C0A /* UpdateVehicleRequest.swift */; };
+		0934BBAF2BFCACC300040C0A /* DeleteVehicleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBAE2BFCACC300040C0A /* DeleteVehicleRequest.swift */; };
+		0934BBB22BFCAD0200040C0A /* GetVehicleRentHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBB12BFCAD0200040C0A /* GetVehicleRentHistory.swift */; };
+		0934BBB52BFCAD2500040C0A /* GetAllFleetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBB42BFCAD2500040C0A /* GetAllFleetRequest.swift */; };
+		0934BBB72BFCAD4200040C0A /* GetFleetInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBB62BFCAD4200040C0A /* GetFleetInfoRequest.swift */; };
+		0934BBB92BFCAD4F00040C0A /* GetFleetDriversRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBB82BFCAD4F00040C0A /* GetFleetDriversRequest.swift */; };
+		0934BBBB2BFCAD6C00040C0A /* GetOwnFleetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBBA2BFCAD6C00040C0A /* GetOwnFleetRequest.swift */; };
+		0934BBBD2BFCAD7800040C0A /* GetAdminFleetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBBC2BFCAD7800040C0A /* GetAdminFleetsRequest.swift */; };
+		0934BBBF2BFCAD8400040C0A /* CreateFleetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBBE2BFCAD8400040C0A /* CreateFleetRequest.swift */; };
+		0934BBC22BFCAD9300040C0A /* UpdateFleetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBC12BFCAD9300040C0A /* UpdateFleetRequest.swift */; };
+		0934BBC42BFCADA100040C0A /* DeleteFleetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBC32BFCADA100040C0A /* DeleteFleetRequest.swift */; };
+		0934BBC72BFCADEE00040C0A /* GetShipmentDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBC62BFCADEE00040C0A /* GetShipmentDetailsRequest.swift */; };
+		0934BBCA2BFCAE3200040C0A /* GetAssignedShipmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBC92BFCAE3200040C0A /* GetAssignedShipmentRequest.swift */; };
+		0934BBCC2BFCAE4000040C0A /* CreateShipmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBCB2BFCAE4000040C0A /* CreateShipmentRequest.swift */; };
+		0934BBCE2BFCAE7100040C0A /* UpdateShipmentStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBCD2BFCAE7100040C0A /* UpdateShipmentStatusRequest.swift */; };
+		0934BBD02BFCAE8300040C0A /* UpdateShipmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBCF2BFCAE8300040C0A /* UpdateShipmentRequest.swift */; };
+		0934BBD22BFCAE9000040C0A /* DeleteShipmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBD12BFCAE9000040C0A /* DeleteShipmentRequest.swift */; };
+		0934BBD42BFCB35500040C0A /* GetAllShipmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBD32BFCB35500040C0A /* GetAllShipmentRequest.swift */; };
+		0934BBD62BFCC1C400040C0A /* AdminVehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBD52BFCC1C400040C0A /* AdminVehicleDetailView.swift */; };
+		0934BBD92BFCD6F900040C0A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0934BBD82BFCD6F900040C0A /* Toast */; };
+		0934BBDB2BFCDA0800040C0A /* AdminVehicleModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBDA2BFCDA0800040C0A /* AdminVehicleModifyView.swift */; };
+		0934BBE02BFCEE5700040C0A /* AdminShipmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBDF2BFCEE5700040C0A /* AdminShipmentViewModel.swift */; };
+		0934BBE22BFCEEFC00040C0A /* ShipmentCreationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBE12BFCEEFC00040C0A /* ShipmentCreationFormView.swift */; };
+		0934BBE42BFCF09D00040C0A /* AdminShipmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBE32BFCF09D00040C0A /* AdminShipmentListView.swift */; };
+		0934BBE72BFCF20200040C0A /* AdminShipmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBE62BFCF20200040C0A /* AdminShipmentDetailView.swift */; };
+		0934BBE92BFCF21A00040C0A /* ShipmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBE82BFCF21A00040C0A /* ShipmentRow.swift */; };
+		0934BBEC2BFCF7FD00040C0A /* FleetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBEB2BFCF7FD00040C0A /* FleetListView.swift */; };
+		0934BBEF2BFCF85600040C0A /* FleetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBEE2BFCF85600040C0A /* FleetSettingsView.swift */; };
+		0934BBF32BFCFCA100040C0A /* AdminFleetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBF22BFCFCA100040C0A /* AdminFleetViewModel.swift */; };
+		0934BBF52BFD00D000040C0A /* GetFleetShipmentsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBF42BFD00D000040C0A /* GetFleetShipmentsRequest.swift */; };
+		0934BBF72BFD038A00040C0A /* FleetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBF62BFD038A00040C0A /* FleetRow.swift */; };
+		0934BBF92BFD074000040C0A /* CreateFleetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934BBF82BFD074000040C0A /* CreateFleetFormView.swift */; };
 		093DE55C2BF4D512002E4272 /* ContractModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55B2BF4D512002E4272 /* ContractModel.swift */; };
 		093DE55E2BF4D537002E4272 /* FleetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55D2BF4D537002E4272 /* FleetModel.swift */; };
 		093DE5602BF4D571002E4272 /* RentCarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DE55F2BF4D571002E4272 /* RentCarModel.swift */; };
@@ -33,6 +92,30 @@
 		093E47302BDAFF6B00C124A4 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E472F2BDAFF6B00C124A4 /* RegisterRequest.swift */; };
 		093E47322BDAFF7300C124A4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47312BDAFF7300C124A4 /* LoginRequest.swift */; };
 		093E47342BDB0B8C00C124A4 /* UserMeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */; };
+		094861CC2C06026100A36102 /* AcceptTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861CB2C06026100A36102 /* AcceptTripRequest.swift */; };
+		094861D12C06499800A36102 /* CreateContractRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861D02C06499800A36102 /* CreateContractRequest.swift */; };
+		094861D32C0649BC00A36102 /* GetAllFleetContractsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861D22C0649BC00A36102 /* GetAllFleetContractsRequest.swift */; };
+		094861D52C0649C800A36102 /* GetAllGeneralContractsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861D42C0649C800A36102 /* GetAllGeneralContractsRequest.swift */; };
+		094861D72C064A0B00A36102 /* GetContractDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861D62C064A0B00A36102 /* GetContractDetailsRequest.swift */; };
+		094861DA2C064A1B00A36102 /* GetFleetContractDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861D92C064A1B00A36102 /* GetFleetContractDetailsRequest.swift */; };
+		094861DC2C064A2F00A36102 /* FinalizeGeneralContractRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861DB2C064A2F00A36102 /* FinalizeGeneralContractRequest.swift */; };
+		094861DE2C064A4300A36102 /* FinalizeFleetContractRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861DD2C064A4300A36102 /* FinalizeFleetContractRequest.swift */; };
+		094861E12C064ADA00A36102 /* GetOwnContractsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861E02C064ADA00A36102 /* GetOwnContractsRequest.swift */; };
+		094861E92C06514F00A36102 /* AdminGeneralContractListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861E82C06514F00A36102 /* AdminGeneralContractListView.swift */; };
+		094861EB2C06516300A36102 /* AdminGeneralContractCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861EA2C06516300A36102 /* AdminGeneralContractCreationView.swift */; };
+		094861F72C06533100A36102 /* UserSelectionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861F62C06533100A36102 /* UserSelectionSheetView.swift */; };
+		094861F92C0653B400A36102 /* AdminContractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861F82C0653B400A36102 /* AdminContractViewModel.swift */; };
+		094861FB2C06546900A36102 /* GetAllUsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861FA2C06546900A36102 /* GetAllUsersRequest.swift */; };
+		094861FD2C0659BA00A36102 /* AdminContractRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861FC2C0659BA00A36102 /* AdminContractRow.swift */; };
+		094861FF2C0659C600A36102 /* AdminGeneralContractDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094861FE2C0659C600A36102 /* AdminGeneralContractDetailView.swift */; };
+		094862042C0736C600A36102 /* FleetContractListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094862032C0736C600A36102 /* FleetContractListView.swift */; };
+		094862072C07372700A36102 /* FleetContractDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094862062C07372700A36102 /* FleetContractDetailView.swift */; };
+		094862092C07378A00A36102 /* FleetContractCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094862082C07378A00A36102 /* FleetContractCreationView.swift */; };
+		0948620C2C0737DE00A36102 /* FleetUserSelectionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948620B2C0737DE00A36102 /* FleetUserSelectionSheetView.swift */; };
+		0948620E2C07BE3300A36102 /* TripDriverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948620D2C07BE3300A36102 /* TripDriverCard.swift */; };
+		094862102C08B18500A36102 /* GetAllActiveTripsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948620F2C08B18500A36102 /* GetAllActiveTripsRequest.swift */; };
+		094862132C08B1EF00A36102 /* UserUpdateAdminPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094862122C08B1EF00A36102 /* UserUpdateAdminPermissionsRequest.swift */; };
+		094862152C08B25500A36102 /* UserUpdateBalanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094862142C08B25500A36102 /* UserUpdateBalanceRequest.swift */; };
 		095A0B1F2BF7B806004F36B3 /* DocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B1E2BF7B806004F36B3 /* DocumentsView.swift */; };
 		095A0B222BF7B87C004F36B3 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B212BF7B87C004F36B3 /* AboutAppView.swift */; };
 		095A0B242BF7BEBF004F36B3 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B232BF7BEBF004F36B3 /* PrivacyView.swift */; };
@@ -48,7 +131,6 @@
 		095A0B3D2BFA4BFE004F36B3 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B3C2BFA4BFE004F36B3 /* DriverViewModel.swift */; };
 		095A0B402BFA5206004F36B3 /* FleetDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B3F2BFA5206004F36B3 /* FleetDriverViewModel.swift */; };
 		095A0B432BFA890D004F36B3 /* ShipmentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B422BFA890D004F36B3 /* ShipmentDetailsView.swift */; };
-		095A0B452BFA8D4C004F36B3 /* ShipmentDataCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */; };
 		095A0B4C2BFA8DF2004F36B3 /* ShipmentDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B4B2BFA8DF2004F36B3 /* ShipmentDataView.swift */; };
 		095A0B502BFA8E04004F36B3 /* ShipmentMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B4F2BFA8E04004F36B3 /* ShipmentMapView.swift */; };
 		095A0B552BFA959D004F36B3 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095A0B542BFA959D004F36B3 /* CustomMapMarker.swift */; };
@@ -56,7 +138,30 @@
 		0991C4142BDC11BD00BABE7F /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C4132BDC11BD00BABE7F /* ProfileDetailsView.swift */; };
 		0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */; };
 		09A236E12BDC430700D54E4C /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A236E02BDC430700D54E4C /* ChangePasswordView.swift */; };
-		09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */; };
+		09AB69BD2C053F080065E698 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB69BC2C053F080065E698 /* CLLocationExtension.swift */; };
+		09AB69C12C05DB8F0065E698 /* AcceptedTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB69C02C05DB8F0065E698 /* AcceptedTripView.swift */; };
+		09BA4ACB2BCE8E97004A3C4B /* TripsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4ACA2BCE8E97004A3C4B /* TripsMainView.swift */; };
+		09BE9F322BFE0B340073AEED /* FleetDriverShipmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F312BFE0B340073AEED /* FleetDriverShipmentListView.swift */; };
+		09BE9F352BFE0E300073AEED /* FleetDriverShipmentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F342BFE0E300073AEED /* FleetDriverShipmentDetails.swift */; };
+		09BE9F372BFE0F2C0073AEED /* FleetDriverShipmentStatusUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F362BFE0F2C0073AEED /* FleetDriverShipmentStatusUpdateView.swift */; };
+		09BE9F3B2BFE11080073AEED /* FleetDriverShipmentButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F3A2BFE11080073AEED /* FleetDriverShipmentButtonsView.swift */; };
+		09BE9F3F2BFE2D170073AEED /* DriverFleetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F3E2BFE2D170073AEED /* DriverFleetInfoView.swift */; };
+		09BE9F422BFE2D810073AEED /* FleetDriverLocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F412BFE2D810073AEED /* FleetDriverLocationSettingsView.swift */; };
+		09BE9F442BFE33D50073AEED /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F432BFE33D50073AEED /* VisualEffectBlur.swift */; };
+		09BE9F472BFE37190073AEED /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F462BFE37190073AEED /* MenuSheetView.swift */; };
+		09BE9F4A2BFE417A0073AEED /* TripsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F492BFE417A0073AEED /* TripsMenuView.swift */; };
+		09BE9F4C2BFE5AC30073AEED /* UserUpdateLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F4B2BFE5AC30073AEED /* UserUpdateLocationRequest.swift */; };
+		09BE9F4E2BFE62B30073AEED /* UserLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F4D2BFE62B30073AEED /* UserLocationModel.swift */; };
+		09BE9F512BFF90650073AEED /* CreateTripDraftRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F502BFF90650073AEED /* CreateTripDraftRequest.swift */; };
+		09BE9F532BFF907D0073AEED /* CreateTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F522BFF907D0073AEED /* CreateTripRequest.swift */; };
+		09BE9F552BFF90E10073AEED /* TripDraftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F542BFF90E00073AEED /* TripDraftModel.swift */; };
+		09BE9F572BFF94160073AEED /* GetActiveTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F562BFF94160073AEED /* GetActiveTripRequest.swift */; };
+		09BE9F5B2BFF95090073AEED /* TripsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F5A2BFF95090073AEED /* TripsSearchView.swift */; };
+		09BE9F5E2BFF95780073AEED /* TripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F5D2BFF95780073AEED /* TripsViewModel.swift */; };
+		09BE9F602BFF97F00073AEED /* CancelTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F5F2BFF97F00073AEED /* CancelTripRequest.swift */; };
+		09BE9F622BFF98230073AEED /* FinishTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F612BFF98230073AEED /* FinishTripRequest.swift */; };
+		09BE9F642BFF98A80073AEED /* GetDriverActiveTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F632BFF98A80073AEED /* GetDriverActiveTripRequest.swift */; };
+		09BE9F6A2BFF9F1F0073AEED /* ActiveTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE9F692BFF9F1F0073AEED /* ActiveTripView.swift */; };
 		09D0E3412BE0425D00C87631 /* ListSectionTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3402BE0425D00C87631 /* ListSectionTextItem.swift */; };
 		09D0E3432BE044A400C87631 /* BalanceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */; };
 		09D0E3452BE0456000C87631 /* MapIndicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D0E3442BE0456000C87631 /* MapIndicationsView.swift */; };
@@ -72,7 +177,20 @@
 		09D556CA2BD91151005411D0 /* FleetDriverMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556C92BD91151005411D0 /* FleetDriverMainView.swift */; };
 		09D556CC2BD9126D005411D0 /* DriverMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556CB2BD9126D005411D0 /* DriverMainView.swift */; };
 		09D556D22BD921DE005411D0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D556D12BD921DE005411D0 /* MapView.swift */; };
-		09EB70842BE1081E00D15F6A /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70832BE1081E00D15F6A /* TripCardView.swift */; };
+		09DAC5112C037D37007C0F0B /* GetShipmentLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5102C037D37007C0F0B /* GetShipmentLocationRequest.swift */; };
+		09DAC5142C037E44007C0F0B /* UserUpdateDriverRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5132C037E44007C0F0B /* UserUpdateDriverRequest.swift */; };
+		09DAC5162C038327007C0F0B /* GetTripHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5152C038327007C0F0B /* GetTripHistoryRequest.swift */; };
+		09DAC5182C038332007C0F0B /* GetDriverTripHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5172C038332007C0F0B /* GetDriverTripHistoryRequest.swift */; };
+		09DAC51A2C03834D007C0F0B /* GetAllTripsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5192C03834D007C0F0B /* GetAllTripsRequest.swift */; };
+		09DAC51E2C038A21007C0F0B /* EventSource in Frameworks */ = {isa = PBXBuildFile; productRef = 09DAC51D2C038A21007C0F0B /* EventSource */; };
+		09DAC5222C038AD8007C0F0B /* SseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5212C038AD8007C0F0B /* SseService.swift */; };
+		09DAC5242C038F76007C0F0B /* NetworkListeners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5232C038F76007C0F0B /* NetworkListeners.swift */; };
+		09DAC5292C049253007C0F0B /* ChauffeurDutyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC5282C049253007C0F0B /* ChauffeurDutyView.swift */; };
+		09DAC52B2C049270007C0F0B /* ChauffeurAvailableDutyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC52A2C049270007C0F0B /* ChauffeurAvailableDutyView.swift */; };
+		09DAC52E2C049285007C0F0B /* ChauffeurTripDutyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DAC52D2C049285007C0F0B /* ChauffeurTripDutyView.swift */; };
+		09E03E592BFDF72D00CE2396 /* DriverSelectionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E03E582BFDF72D00CE2396 /* DriverSelectionSheetView.swift */; };
+		09E03E5B2BFDF7C100CE2396 /* ParcelCreationSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E03E5A2BFDF7C100CE2396 /* ParcelCreationSheetView.swift */; };
+		09EB70842BE1081E00D15F6A /* TripRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70832BE1081E00D15F6A /* TripRow.swift */; };
 		09EB70862BE1083300D15F6A /* TripDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70852BE1083300D15F6A /* TripDetailsView.swift */; };
 		09EB70882BE10AD500D15F6A /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB70872BE10AD500D15F6A /* TripModel.swift */; };
 		09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCD8F2BC9B6F600456D29 /* FrontendApp.swift */; };
@@ -87,6 +205,14 @@
 		09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDDA2BCA74AC00456D29 /* Callback.swift */; };
 		09EFCDEE2BCC562100456D29 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 09EFCDED2BCC562100456D29 /* Alamofire */; };
 		09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EFCDF82BCC669300456D29 /* EmailUtils.swift */; };
+		09FEB0A02C08CADD0013D151 /* UserUpdateByAdminRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB09F2C08CADD0013D151 /* UserUpdateByAdminRequest.swift */; };
+		09FEB0A22C08CDAC0013D151 /* TripAdminList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0A12C08CDAC0013D151 /* TripAdminList.swift */; };
+		09FEB0A52C08CDE20013D151 /* AdminTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0A42C08CDE20013D151 /* AdminTripViewModel.swift */; };
+		09FEB0A92C08CE020013D151 /* AdminUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0A82C08CE020013D151 /* AdminUserList.swift */; };
+		09FEB0AB2C08CE180013D151 /* AdminUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0AA2C08CE180013D151 /* AdminUserViewModel.swift */; };
+		09FEB0AE2C08D8730013D151 /* AdminUserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0AD2C08D8730013D151 /* AdminUserDetailsView.swift */; };
+		09FEB0B12C08DF560013D151 /* AdminPermissionSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0B02C08DF560013D151 /* AdminPermissionSelectionView.swift */; };
+		09FEB0B62C08E4460013D151 /* BalanceModificationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FEB0B52C08E4460013D151 /* BalanceModificationFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +229,63 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0902A61D2BFFA60F0063A8A1 /* CarPacman.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarPacman.json; sourceTree = "<group>"; };
+		0902A61E2BFFA60F0063A8A1 /* Car3D.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Car3D.json; sourceTree = "<group>"; };
+		0902A61F2BFFA60F0063A8A1 /* CarFamily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarFamily.json; sourceTree = "<group>"; };
+		0902A6202BFFA60F0063A8A1 /* CarFast.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarFast.json; sourceTree = "<group>"; };
+		0902A6212BFFA60F0063A8A1 /* CarRotating.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CarRotating.json; sourceTree = "<group>"; };
+		0902A6272C0118430063A8A1 /* DraftSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftSheetView.swift; sourceTree = "<group>"; };
+		0902A62C2C02385F0063A8A1 /* DriverVehicleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverVehicleDetailsView.swift; sourceTree = "<group>"; };
+		0902A62E2C023AA40063A8A1 /* DriverVehicleModificationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverVehicleModificationFormView.swift; sourceTree = "<group>"; };
+		0902A6312C023DB70063A8A1 /* ChauffeurDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChauffeurDriverViewModel.swift; sourceTree = "<group>"; };
+		0902A6332C023F450063A8A1 /* DriverNoVehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverNoVehicleView.swift; sourceTree = "<group>"; };
+		0902A6352C02444F0063A8A1 /* DriverPersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverPersonalDetailsView.swift; sourceTree = "<group>"; };
+		091D33F32BFD27D200FDE692 /* AdminShipmentModificationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminShipmentModificationBarView.swift; sourceTree = "<group>"; };
+		091D33F62BFDD2D100FDE692 /* ShipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentViewModel.swift; sourceTree = "<group>"; };
+		091D33FB2BFDD99100FDE692 /* AdminFleetDriverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFleetDriverListView.swift; sourceTree = "<group>"; };
+		091D33FD2BFDD99A00FDE692 /* UserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRow.swift; sourceTree = "<group>"; };
+		0931873C2BFFA05C008657AA /* SearchingDriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingDriverView.swift; sourceTree = "<group>"; };
+		0934BB8A2BFBC2DD00040C0A /* ShipmentParcelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentParcelListView.swift; sourceTree = "<group>"; };
+		0934BB8C2BFBC2E900040C0A /* ShipmentHistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentHistoryListView.swift; sourceTree = "<group>"; };
+		0934BB8F2BFBC30100040C0A /* ShipmentDriverInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDriverInfoView.swift; sourceTree = "<group>"; };
+		0934BB932BFBC3CD00040C0A /* ParcelRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelRowView.swift; sourceTree = "<group>"; };
+		0934BB9A2BFCAA4900040C0A /* AdminVehicleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVehicleListView.swift; sourceTree = "<group>"; };
+		0934BB9C2BFCAA5900040C0A /* AdminVehicleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVehicleRow.swift; sourceTree = "<group>"; };
+		0934BBA12BFCAA7C00040C0A /* VehicleCreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCreationFormView.swift; sourceTree = "<group>"; };
+		0934BBA32BFCAAB400040C0A /* AdminVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVehicleViewModel.swift; sourceTree = "<group>"; };
+		0934BBA82BFCAC7E00040C0A /* GetAllVehiclesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllVehiclesRequest.swift; sourceTree = "<group>"; };
+		0934BBAA2BFCAC9800040C0A /* CreateVehicleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVehicleRequest.swift; sourceTree = "<group>"; };
+		0934BBAC2BFCACB500040C0A /* UpdateVehicleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVehicleRequest.swift; sourceTree = "<group>"; };
+		0934BBAE2BFCACC300040C0A /* DeleteVehicleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteVehicleRequest.swift; sourceTree = "<group>"; };
+		0934BBB12BFCAD0200040C0A /* GetVehicleRentHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVehicleRentHistory.swift; sourceTree = "<group>"; };
+		0934BBB42BFCAD2500040C0A /* GetAllFleetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllFleetRequest.swift; sourceTree = "<group>"; };
+		0934BBB62BFCAD4200040C0A /* GetFleetInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFleetInfoRequest.swift; sourceTree = "<group>"; };
+		0934BBB82BFCAD4F00040C0A /* GetFleetDriversRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFleetDriversRequest.swift; sourceTree = "<group>"; };
+		0934BBBA2BFCAD6C00040C0A /* GetOwnFleetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnFleetRequest.swift; sourceTree = "<group>"; };
+		0934BBBC2BFCAD7800040C0A /* GetAdminFleetsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAdminFleetsRequest.swift; sourceTree = "<group>"; };
+		0934BBBE2BFCAD8400040C0A /* CreateFleetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFleetRequest.swift; sourceTree = "<group>"; };
+		0934BBC12BFCAD9300040C0A /* UpdateFleetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFleetRequest.swift; sourceTree = "<group>"; };
+		0934BBC32BFCADA100040C0A /* DeleteFleetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFleetRequest.swift; sourceTree = "<group>"; };
+		0934BBC62BFCADEE00040C0A /* GetShipmentDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShipmentDetailsRequest.swift; sourceTree = "<group>"; };
+		0934BBC92BFCAE3200040C0A /* GetAssignedShipmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAssignedShipmentRequest.swift; sourceTree = "<group>"; };
+		0934BBCB2BFCAE4000040C0A /* CreateShipmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateShipmentRequest.swift; sourceTree = "<group>"; };
+		0934BBCD2BFCAE7100040C0A /* UpdateShipmentStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateShipmentStatusRequest.swift; sourceTree = "<group>"; };
+		0934BBCF2BFCAE8300040C0A /* UpdateShipmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateShipmentRequest.swift; sourceTree = "<group>"; };
+		0934BBD12BFCAE9000040C0A /* DeleteShipmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteShipmentRequest.swift; sourceTree = "<group>"; };
+		0934BBD32BFCB35500040C0A /* GetAllShipmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllShipmentRequest.swift; sourceTree = "<group>"; };
+		0934BBD52BFCC1C400040C0A /* AdminVehicleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVehicleDetailView.swift; sourceTree = "<group>"; };
+		0934BBDA2BFCDA0800040C0A /* AdminVehicleModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVehicleModifyView.swift; sourceTree = "<group>"; };
+		0934BBDF2BFCEE5700040C0A /* AdminShipmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminShipmentViewModel.swift; sourceTree = "<group>"; };
+		0934BBE12BFCEEFC00040C0A /* ShipmentCreationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentCreationFormView.swift; sourceTree = "<group>"; };
+		0934BBE32BFCF09D00040C0A /* AdminShipmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminShipmentListView.swift; sourceTree = "<group>"; };
+		0934BBE62BFCF20200040C0A /* AdminShipmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminShipmentDetailView.swift; sourceTree = "<group>"; };
+		0934BBE82BFCF21A00040C0A /* ShipmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentRow.swift; sourceTree = "<group>"; };
+		0934BBEB2BFCF7FD00040C0A /* FleetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetListView.swift; sourceTree = "<group>"; };
+		0934BBEE2BFCF85600040C0A /* FleetSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetSettingsView.swift; sourceTree = "<group>"; };
+		0934BBF22BFCFCA100040C0A /* AdminFleetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFleetViewModel.swift; sourceTree = "<group>"; };
+		0934BBF42BFD00D000040C0A /* GetFleetShipmentsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFleetShipmentsRequest.swift; sourceTree = "<group>"; };
+		0934BBF62BFD038A00040C0A /* FleetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetRow.swift; sourceTree = "<group>"; };
+		0934BBF82BFD074000040C0A /* CreateFleetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFleetFormView.swift; sourceTree = "<group>"; };
 		093DE55B2BF4D512002E4272 /* ContractModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractModel.swift; sourceTree = "<group>"; };
 		093DE55D2BF4D537002E4272 /* FleetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetModel.swift; sourceTree = "<group>"; };
 		093DE55F2BF4D571002E4272 /* RentCarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentCarModel.swift; sourceTree = "<group>"; };
@@ -129,6 +312,30 @@
 		093E472F2BDAFF6B00C124A4 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		093E47312BDAFF7300C124A4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMeRequest.swift; sourceTree = "<group>"; };
+		094861CB2C06026100A36102 /* AcceptTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTripRequest.swift; sourceTree = "<group>"; };
+		094861D02C06499800A36102 /* CreateContractRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContractRequest.swift; sourceTree = "<group>"; };
+		094861D22C0649BC00A36102 /* GetAllFleetContractsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllFleetContractsRequest.swift; sourceTree = "<group>"; };
+		094861D42C0649C800A36102 /* GetAllGeneralContractsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllGeneralContractsRequest.swift; sourceTree = "<group>"; };
+		094861D62C064A0B00A36102 /* GetContractDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContractDetailsRequest.swift; sourceTree = "<group>"; };
+		094861D92C064A1B00A36102 /* GetFleetContractDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFleetContractDetailsRequest.swift; sourceTree = "<group>"; };
+		094861DB2C064A2F00A36102 /* FinalizeGeneralContractRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeGeneralContractRequest.swift; sourceTree = "<group>"; };
+		094861DD2C064A4300A36102 /* FinalizeFleetContractRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeFleetContractRequest.swift; sourceTree = "<group>"; };
+		094861E02C064ADA00A36102 /* GetOwnContractsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnContractsRequest.swift; sourceTree = "<group>"; };
+		094861E82C06514F00A36102 /* AdminGeneralContractListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGeneralContractListView.swift; sourceTree = "<group>"; };
+		094861EA2C06516300A36102 /* AdminGeneralContractCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGeneralContractCreationView.swift; sourceTree = "<group>"; };
+		094861F62C06533100A36102 /* UserSelectionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionSheetView.swift; sourceTree = "<group>"; };
+		094861F82C0653B400A36102 /* AdminContractViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContractViewModel.swift; sourceTree = "<group>"; };
+		094861FA2C06546900A36102 /* GetAllUsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllUsersRequest.swift; sourceTree = "<group>"; };
+		094861FC2C0659BA00A36102 /* AdminContractRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminContractRow.swift; sourceTree = "<group>"; };
+		094861FE2C0659C600A36102 /* AdminGeneralContractDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGeneralContractDetailView.swift; sourceTree = "<group>"; };
+		094862032C0736C600A36102 /* FleetContractListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetContractListView.swift; sourceTree = "<group>"; };
+		094862062C07372700A36102 /* FleetContractDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetContractDetailView.swift; sourceTree = "<group>"; };
+		094862082C07378A00A36102 /* FleetContractCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetContractCreationView.swift; sourceTree = "<group>"; };
+		0948620B2C0737DE00A36102 /* FleetUserSelectionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetUserSelectionSheetView.swift; sourceTree = "<group>"; };
+		0948620D2C07BE3300A36102 /* TripDriverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDriverCard.swift; sourceTree = "<group>"; };
+		0948620F2C08B18500A36102 /* GetAllActiveTripsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllActiveTripsRequest.swift; sourceTree = "<group>"; };
+		094862122C08B1EF00A36102 /* UserUpdateAdminPermissionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateAdminPermissionsRequest.swift; sourceTree = "<group>"; };
+		094862142C08B25500A36102 /* UserUpdateBalanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBalanceRequest.swift; sourceTree = "<group>"; };
 		095A0B1E2BF7B806004F36B3 /* DocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsView.swift; sourceTree = "<group>"; };
 		095A0B212BF7B87C004F36B3 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		095A0B232BF7BEBF004F36B3 /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
@@ -144,7 +351,6 @@
 		095A0B3C2BFA4BFE004F36B3 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
 		095A0B3F2BFA5206004F36B3 /* FleetDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverViewModel.swift; sourceTree = "<group>"; };
 		095A0B422BFA890D004F36B3 /* ShipmentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDetailsView.swift; sourceTree = "<group>"; };
-		095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDataCardView.swift; sourceTree = "<group>"; };
 		095A0B4B2BFA8DF2004F36B3 /* ShipmentDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentDataView.swift; sourceTree = "<group>"; };
 		095A0B4F2BFA8E04004F36B3 /* ShipmentMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipmentMapView.swift; sourceTree = "<group>"; };
 		095A0B542BFA959D004F36B3 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
@@ -152,7 +358,30 @@
 		0991C4132BDC11BD00BABE7F /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateRequest.swift; sourceTree = "<group>"; };
 		09A236E02BDC430700D54E4C /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
-		09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		09AB69BC2C053F080065E698 /* CLLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
+		09AB69C02C05DB8F0065E698 /* AcceptedTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedTripView.swift; sourceTree = "<group>"; };
+		09BA4ACA2BCE8E97004A3C4B /* TripsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsMainView.swift; sourceTree = "<group>"; };
+		09BE9F312BFE0B340073AEED /* FleetDriverShipmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverShipmentListView.swift; sourceTree = "<group>"; };
+		09BE9F342BFE0E300073AEED /* FleetDriverShipmentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverShipmentDetails.swift; sourceTree = "<group>"; };
+		09BE9F362BFE0F2C0073AEED /* FleetDriverShipmentStatusUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverShipmentStatusUpdateView.swift; sourceTree = "<group>"; };
+		09BE9F3A2BFE11080073AEED /* FleetDriverShipmentButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverShipmentButtonsView.swift; sourceTree = "<group>"; };
+		09BE9F3E2BFE2D170073AEED /* DriverFleetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFleetInfoView.swift; sourceTree = "<group>"; };
+		09BE9F412BFE2D810073AEED /* FleetDriverLocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverLocationSettingsView.swift; sourceTree = "<group>"; };
+		09BE9F432BFE33D50073AEED /* VisualEffectBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		09BE9F462BFE37190073AEED /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
+		09BE9F492BFE417A0073AEED /* TripsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsMenuView.swift; sourceTree = "<group>"; };
+		09BE9F4B2BFE5AC30073AEED /* UserUpdateLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateLocationRequest.swift; sourceTree = "<group>"; };
+		09BE9F4D2BFE62B30073AEED /* UserLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationModel.swift; sourceTree = "<group>"; };
+		09BE9F502BFF90650073AEED /* CreateTripDraftRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripDraftRequest.swift; sourceTree = "<group>"; };
+		09BE9F522BFF907D0073AEED /* CreateTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripRequest.swift; sourceTree = "<group>"; };
+		09BE9F542BFF90E00073AEED /* TripDraftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDraftModel.swift; sourceTree = "<group>"; };
+		09BE9F562BFF94160073AEED /* GetActiveTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActiveTripRequest.swift; sourceTree = "<group>"; };
+		09BE9F5A2BFF95090073AEED /* TripsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsSearchView.swift; sourceTree = "<group>"; };
+		09BE9F5D2BFF95780073AEED /* TripsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewModel.swift; sourceTree = "<group>"; };
+		09BE9F5F2BFF97F00073AEED /* CancelTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripRequest.swift; sourceTree = "<group>"; };
+		09BE9F612BFF98230073AEED /* FinishTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTripRequest.swift; sourceTree = "<group>"; };
+		09BE9F632BFF98A80073AEED /* GetDriverActiveTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDriverActiveTripRequest.swift; sourceTree = "<group>"; };
+		09BE9F692BFF9F1F0073AEED /* ActiveTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTripView.swift; sourceTree = "<group>"; };
 		09D0E3402BE0425D00C87631 /* ListSectionTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionTextItem.swift; sourceTree = "<group>"; };
 		09D0E3422BE044A400C87631 /* BalanceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailsView.swift; sourceTree = "<group>"; };
 		09D0E3442BE0456000C87631 /* MapIndicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapIndicationsView.swift; sourceTree = "<group>"; };
@@ -168,7 +397,19 @@
 		09D556C92BD91151005411D0 /* FleetDriverMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDriverMainView.swift; sourceTree = "<group>"; };
 		09D556CB2BD9126D005411D0 /* DriverMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMainView.swift; sourceTree = "<group>"; };
 		09D556D12BD921DE005411D0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		09EB70832BE1081E00D15F6A /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		09DAC5102C037D37007C0F0B /* GetShipmentLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShipmentLocationRequest.swift; sourceTree = "<group>"; };
+		09DAC5132C037E44007C0F0B /* UserUpdateDriverRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateDriverRequest.swift; sourceTree = "<group>"; };
+		09DAC5152C038327007C0F0B /* GetTripHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTripHistoryRequest.swift; sourceTree = "<group>"; };
+		09DAC5172C038332007C0F0B /* GetDriverTripHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDriverTripHistoryRequest.swift; sourceTree = "<group>"; };
+		09DAC5192C03834D007C0F0B /* GetAllTripsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllTripsRequest.swift; sourceTree = "<group>"; };
+		09DAC5212C038AD8007C0F0B /* SseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SseService.swift; sourceTree = "<group>"; };
+		09DAC5232C038F76007C0F0B /* NetworkListeners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkListeners.swift; sourceTree = "<group>"; };
+		09DAC5282C049253007C0F0B /* ChauffeurDutyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChauffeurDutyView.swift; sourceTree = "<group>"; };
+		09DAC52A2C049270007C0F0B /* ChauffeurAvailableDutyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChauffeurAvailableDutyView.swift; sourceTree = "<group>"; };
+		09DAC52D2C049285007C0F0B /* ChauffeurTripDutyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChauffeurTripDutyView.swift; sourceTree = "<group>"; };
+		09E03E582BFDF72D00CE2396 /* DriverSelectionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSelectionSheetView.swift; sourceTree = "<group>"; };
+		09E03E5A2BFDF7C100CE2396 /* ParcelCreationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelCreationSheetView.swift; sourceTree = "<group>"; };
+		09EB70832BE1081E00D15F6A /* TripRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRow.swift; sourceTree = "<group>"; };
 		09EB70852BE1083300D15F6A /* TripDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsView.swift; sourceTree = "<group>"; };
 		09EB70872BE10AD500D15F6A /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		09EFCD8C2BC9B6F600456D29 /* Frontend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +425,14 @@
 		09EFCDDA2BCA74AC00456D29 /* Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
 		09EFCDDF2BCA7AB500456D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09EFCDF82BCC669300456D29 /* EmailUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUtils.swift; sourceTree = "<group>"; };
+		09FEB09F2C08CADD0013D151 /* UserUpdateByAdminRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateByAdminRequest.swift; sourceTree = "<group>"; };
+		09FEB0A12C08CDAC0013D151 /* TripAdminList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripAdminList.swift; sourceTree = "<group>"; };
+		09FEB0A42C08CDE20013D151 /* AdminTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTripViewModel.swift; sourceTree = "<group>"; };
+		09FEB0A82C08CE020013D151 /* AdminUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserList.swift; sourceTree = "<group>"; };
+		09FEB0AA2C08CE180013D151 /* AdminUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserViewModel.swift; sourceTree = "<group>"; };
+		09FEB0AD2C08D8730013D151 /* AdminUserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserDetailsView.swift; sourceTree = "<group>"; };
+		09FEB0B02C08DF560013D151 /* AdminPermissionSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPermissionSelectionView.swift; sourceTree = "<group>"; };
+		09FEB0B52C08E4460013D151 /* BalanceModificationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModificationFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,13 +440,262 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0934BBD92BFCD6F900040C0A /* Toast in Frameworks */,
 				09EFCDEE2BCC562100456D29 /* Alamofire in Frameworks */,
+				09DAC51E2C038A21007C0F0B /* EventSource in Frameworks */,
+				093187402BFFA39E008657AA /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0902A61C2BFFA5F30063A8A1 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				0902A61E2BFFA60F0063A8A1 /* Car3D.json */,
+				0902A61F2BFFA60F0063A8A1 /* CarFamily.json */,
+				0902A6202BFFA60F0063A8A1 /* CarFast.json */,
+				0902A61D2BFFA60F0063A8A1 /* CarPacman.json */,
+				0902A6212BFFA60F0063A8A1 /* CarRotating.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		0902A6292C0238170063A8A1 /* NotVehicle */ = {
+			isa = PBXGroup;
+			children = (
+				0902A6332C023F450063A8A1 /* DriverNoVehicleView.swift */,
+			);
+			path = NotVehicle;
+			sourceTree = "<group>";
+		};
+		0902A62A2C0238270063A8A1 /* Duty */ = {
+			isa = PBXGroup;
+			children = (
+				09DAC52C2C049277007C0F0B /* Trip */,
+				09DAC5272C049226007C0F0B /* Available */,
+				09DAC5282C049253007C0F0B /* ChauffeurDutyView.swift */,
+			);
+			path = Duty;
+			sourceTree = "<group>";
+		};
+		0902A62B2C02383B0063A8A1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0902A62C2C02385F0063A8A1 /* DriverVehicleDetailsView.swift */,
+				0902A62E2C023AA40063A8A1 /* DriverVehicleModificationFormView.swift */,
+				0902A6352C02444F0063A8A1 /* DriverPersonalDetailsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0902A6302C023D5C0063A8A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0902A6312C023DB70063A8A1 /* ChauffeurDriverViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		091D33F52BFDD2B900FDE692 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				091D33F62BFDD2D100FDE692 /* ShipmentViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		091D33F82BFDD93D00FDE692 /* Drivers */ = {
+			isa = PBXGroup;
+			children = (
+				091D33F92BFDD96C00FDE692 /* List */,
+			);
+			path = Drivers;
+			sourceTree = "<group>";
+		};
+		091D33F92BFDD96C00FDE692 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				091D33FB2BFDD99100FDE692 /* AdminFleetDriverListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0934BB952BFCAA0200040C0A /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0AC2C08D83E0013D151 /* Details */,
+				09FEB0A62C08CDEF0013D151 /* Model */,
+				09FEB0A82C08CE020013D151 /* AdminUserList.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		0934BB962BFCAA0600040C0A /* Shipment */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBDC2BFCEE1400040C0A /* Model */,
+				0934BBDD2BFCEE1900040C0A /* Creation */,
+				0934BBDE2BFCEE1D00040C0A /* List */,
+			);
+			path = Shipment;
+			sourceTree = "<group>";
+		};
+		0934BB992BFCAA3500040C0A /* Vehicles */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBA52BFCAAB900040C0A /* Model */,
+				0934BBA02BFCAA6800040C0A /* Creation */,
+				0934BB9F2BFCAA6300040C0A /* List */,
+			);
+			path = Vehicles;
+			sourceTree = "<group>";
+		};
+		0934BB9F2BFCAA6300040C0A /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0934BB9A2BFCAA4900040C0A /* AdminVehicleListView.swift */,
+				0934BB9C2BFCAA5900040C0A /* AdminVehicleRow.swift */,
+				0934BBD52BFCC1C400040C0A /* AdminVehicleDetailView.swift */,
+				0934BBDA2BFCDA0800040C0A /* AdminVehicleModifyView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0934BBA02BFCAA6800040C0A /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBA12BFCAA7C00040C0A /* VehicleCreationFormView.swift */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		0934BBA52BFCAAB900040C0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBA32BFCAAB400040C0A /* AdminVehicleViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0934BBA62BFCAC6B00040C0A /* Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBA82BFCAC7E00040C0A /* GetAllVehiclesRequest.swift */,
+				0934BBAA2BFCAC9800040C0A /* CreateVehicleRequest.swift */,
+				0934BBAC2BFCACB500040C0A /* UpdateVehicleRequest.swift */,
+				0934BBAE2BFCACC300040C0A /* DeleteVehicleRequest.swift */,
+				0934BBB12BFCAD0200040C0A /* GetVehicleRentHistory.swift */,
+			);
+			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		0934BBB32BFCAD1500040C0A /* Fleet */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBB42BFCAD2500040C0A /* GetAllFleetRequest.swift */,
+				0934BBB62BFCAD4200040C0A /* GetFleetInfoRequest.swift */,
+				0934BBB82BFCAD4F00040C0A /* GetFleetDriversRequest.swift */,
+				0934BBBA2BFCAD6C00040C0A /* GetOwnFleetRequest.swift */,
+				0934BBBC2BFCAD7800040C0A /* GetAdminFleetsRequest.swift */,
+				0934BBBE2BFCAD8400040C0A /* CreateFleetRequest.swift */,
+				0934BBC12BFCAD9300040C0A /* UpdateFleetRequest.swift */,
+				0934BBC32BFCADA100040C0A /* DeleteFleetRequest.swift */,
+			);
+			path = Fleet;
+			sourceTree = "<group>";
+		};
+		0934BBC52BFCADD800040C0A /* Shipment */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBC62BFCADEE00040C0A /* GetShipmentDetailsRequest.swift */,
+				0934BBC92BFCAE3200040C0A /* GetAssignedShipmentRequest.swift */,
+				0934BBD32BFCB35500040C0A /* GetAllShipmentRequest.swift */,
+				0934BBCB2BFCAE4000040C0A /* CreateShipmentRequest.swift */,
+				0934BBCD2BFCAE7100040C0A /* UpdateShipmentStatusRequest.swift */,
+				0934BBCF2BFCAE8300040C0A /* UpdateShipmentRequest.swift */,
+				0934BBD12BFCAE9000040C0A /* DeleteShipmentRequest.swift */,
+				0934BBF42BFD00D000040C0A /* GetFleetShipmentsRequest.swift */,
+				09DAC5102C037D37007C0F0B /* GetShipmentLocationRequest.swift */,
+			);
+			path = Shipment;
+			sourceTree = "<group>";
+		};
+		0934BBDC2BFCEE1400040C0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBDF2BFCEE5700040C0A /* AdminShipmentViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0934BBDD2BFCEE1900040C0A /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				09E03E572BFDF6E700CE2396 /* Sheet */,
+				0934BBE12BFCEEFC00040C0A /* ShipmentCreationFormView.swift */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		0934BBDE2BFCEE1D00040C0A /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBE52BFCF1F200040C0A /* Details */,
+				0934BBE32BFCF09D00040C0A /* AdminShipmentListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0934BBE52BFCF1F200040C0A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBE62BFCF20200040C0A /* AdminShipmentDetailView.swift */,
+				091D33F32BFD27D200FDE692 /* AdminShipmentModificationBarView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		0934BBEA2BFCF7E800040C0A /* Fleet */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBF12BFCFC3D00040C0A /* Create */,
+				0934BBF02BFCFC2500040C0A /* Model */,
+				0934BBED2BFCF82000040C0A /* Settings */,
+				0934BBEB2BFCF7FD00040C0A /* FleetListView.swift */,
+				0934BBF62BFD038A00040C0A /* FleetRow.swift */,
+			);
+			path = Fleet;
+			sourceTree = "<group>";
+		};
+		0934BBED2BFCF82000040C0A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				094862002C07353000A36102 /* Contract */,
+				091D33F82BFDD93D00FDE692 /* Drivers */,
+				0934BB962BFCAA0600040C0A /* Shipment */,
+				0934BBEE2BFCF85600040C0A /* FleetSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0934BBF02BFCFC2500040C0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBF22BFCFCA100040C0A /* AdminFleetViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0934BBF12BFCFC3D00040C0A /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				0934BBF82BFD074000040C0A /* CreateFleetFormView.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		093DE5652BF635FF002E4272 /* Rent */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +711,7 @@
 		093DE5662BF63609002E4272 /* Ship */ = {
 			isa = PBXGroup;
 			children = (
+				091D33F52BFDD2B900FDE692 /* Model */,
 				095A0B412BFA8831004F36B3 /* Details */,
 				093DE56C2BF6364A002E4272 /* ShipmentsMainView.swift */,
 			);
@@ -296,11 +795,16 @@
 		093E472A2BDAFBB700C124A4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				09BE9F4F2BFF8FDA0073AEED /* Trip */,
+				0934BBB32BFCAD1500040C0A /* Fleet */,
+				0934BBC52BFCADD800040C0A /* Shipment */,
+				0934BBA62BFCAC6B00040C0A /* Vehicle */,
 				093DE5852BF78150002E4272 /* Rent */,
 				093E472E2BDAFF6000C124A4 /* Authentication */,
 				093E472D2BDAFF5C00C124A4 /* User */,
 				093E472B2BDAFEB900C124A4 /* NetworkConfiguration.swift */,
 				093DE5912BF79DA6002E4272 /* NetworkUtilities.swift */,
+				09DAC5232C038F76007C0F0B /* NetworkListeners.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -308,9 +812,13 @@
 		093E472D2BDAFF5C00C124A4 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				094862112C08B1B600A36102 /* Admin */,
+				094861CD2C06488A00A36102 /* Contract */,
+				09DAC5122C037E11007C0F0B /* Driver */,
 				095A0B332BF7DE31004F36B3 /* License */,
 				093E47332BDB0B8C00C124A4 /* UserMeRequest.swift */,
 				0991C4152BDC139100BABE7F /* UserUpdateRequest.swift */,
+				09BE9F4B2BFE5AC30073AEED /* UserUpdateLocationRequest.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -322,6 +830,152 @@
 				093E47312BDAFF7300C124A4 /* LoginRequest.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		094861CD2C06488A00A36102 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				094861CF2C06489300A36102 /* General */,
+				094861CE2C06488F00A36102 /* Fleet */,
+				094861D02C06499800A36102 /* CreateContractRequest.swift */,
+				094861E02C064ADA00A36102 /* GetOwnContractsRequest.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		094861CE2C06488F00A36102 /* Fleet */ = {
+			isa = PBXGroup;
+			children = (
+				094861D22C0649BC00A36102 /* GetAllFleetContractsRequest.swift */,
+				094861D92C064A1B00A36102 /* GetFleetContractDetailsRequest.swift */,
+				094861DD2C064A4300A36102 /* FinalizeFleetContractRequest.swift */,
+			);
+			path = Fleet;
+			sourceTree = "<group>";
+		};
+		094861CF2C06489300A36102 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				094861D42C0649C800A36102 /* GetAllGeneralContractsRequest.swift */,
+				094861D62C064A0B00A36102 /* GetContractDetailsRequest.swift */,
+				094861DB2C064A2F00A36102 /* FinalizeGeneralContractRequest.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		094861E22C0650AC00A36102 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				094861EE2C06516F00A36102 /* Creation */,
+				094861ED2C06516A00A36102 /* Model */,
+				094861EC2C06516600A36102 /* List */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		094861E52C0650C200A36102 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0A32C08CDCC0013D151 /* Model */,
+				09FEB0A12C08CDAC0013D151 /* TripAdminList.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		094861EC2C06516600A36102 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				094861F02C06519B00A36102 /* Details */,
+				094861E82C06514F00A36102 /* AdminGeneralContractListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		094861ED2C06516A00A36102 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				094861F82C0653B400A36102 /* AdminContractViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		094861EE2C06516F00A36102 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				094861F52C06531600A36102 /* Sheet */,
+				094861EA2C06516300A36102 /* AdminGeneralContractCreationView.swift */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		094861F02C06519B00A36102 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				094861FE2C0659C600A36102 /* AdminGeneralContractDetailView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		094861F52C06531600A36102 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				094861F62C06533100A36102 /* UserSelectionSheetView.swift */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		094862002C07353000A36102 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				094862052C07371700A36102 /* Create */,
+				094862012C0736B300A36102 /* List */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		094862012C0736B300A36102 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				094862022C0736B800A36102 /* Details */,
+				094862032C0736C600A36102 /* FleetContractListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		094862022C0736B800A36102 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				094862062C07372700A36102 /* FleetContractDetailView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		094862052C07371700A36102 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				0948620A2C07379A00A36102 /* Sheet */,
+				094862082C07378A00A36102 /* FleetContractCreationView.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		0948620A2C07379A00A36102 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				0948620B2C0737DE00A36102 /* FleetUserSelectionSheetView.swift */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		094862112C08B1B600A36102 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				094861FA2C06546900A36102 /* GetAllUsersRequest.swift */,
+				094862122C08B1EF00A36102 /* UserUpdateAdminPermissionsRequest.swift */,
+				094862142C08B25500A36102 /* UserUpdateBalanceRequest.swift */,
+				09FEB09F2C08CADD0013D151 /* UserUpdateByAdminRequest.swift */,
+			);
+			path = Admin;
 			sourceTree = "<group>";
 		};
 		095A0B1D2BF7B7FA004F36B3 /* Documents */ = {
@@ -375,6 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				095A0B392BFA4AF8004F36B3 /* LocationService.swift */,
+				09DAC5212C038AD8007C0F0B /* SseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -419,7 +1074,8 @@
 		095A0B472BFA8D57004F36B3 /* Parcel */ = {
 			isa = PBXGroup;
 			children = (
-				095A0B442BFA8D4C004F36B3 /* ShipmentDataCardView.swift */,
+				0934BB8A2BFBC2DD00040C0A /* ShipmentParcelListView.swift */,
+				0934BB932BFBC3CD00040C0A /* ParcelRowView.swift */,
 			);
 			path = Parcel;
 			sourceTree = "<group>";
@@ -427,6 +1083,7 @@
 		095A0B482BFA8D5E004F36B3 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				0934BB8C2BFBC2E900040C0A /* ShipmentHistoryListView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -434,6 +1091,7 @@
 		095A0B492BFA8D70004F36B3 /* Driver */ = {
 			isa = PBXGroup;
 			children = (
+				0934BB8F2BFBC30100040C0A /* ShipmentDriverInfoView.swift */,
 			);
 			path = Driver;
 			sourceTree = "<group>";
@@ -441,6 +1099,7 @@
 		095A0B512BFA957C004F36B3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				09AB69BB2C053EED0065E698 /* Extensions */,
 				095A0B522BFA958A004F36B3 /* Object */,
 				09D0E3462BE04DDD00C87631 /* MapUtils.swift */,
 			);
@@ -490,6 +1149,136 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		09AB69BB2C053EED0065E698 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				09AB69BC2C053F080065E698 /* CLLocationExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		09BE9F2F2BFE0A290073AEED /* List */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F332BFE0E230073AEED /* Details */,
+				09BE9F312BFE0B340073AEED /* FleetDriverShipmentListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		09BE9F332BFE0E230073AEED /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F382BFE10E10073AEED /* Update */,
+				09BE9F342BFE0E300073AEED /* FleetDriverShipmentDetails.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		09BE9F382BFE10E10073AEED /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F362BFE0F2C0073AEED /* FleetDriverShipmentStatusUpdateView.swift */,
+				09BE9F3A2BFE11080073AEED /* FleetDriverShipmentButtonsView.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		09BE9F3C2BFE2CFA0073AEED /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F412BFE2D810073AEED /* FleetDriverLocationSettingsView.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		09BE9F3D2BFE2D030073AEED /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F3E2BFE2D170073AEED /* DriverFleetInfoView.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		09BE9F452BFE36700073AEED /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F482BFE402A0073AEED /* Draft */,
+				09BE9F492BFE417A0073AEED /* TripsMenuView.swift */,
+				09BE9F462BFE37190073AEED /* MenuSheetView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		09BE9F482BFE402A0073AEED /* Draft */ = {
+			isa = PBXGroup;
+			children = (
+				0902A6272C0118430063A8A1 /* DraftSheetView.swift */,
+			);
+			path = Draft;
+			sourceTree = "<group>";
+		};
+		09BE9F4F2BFF8FDA0073AEED /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F502BFF90650073AEED /* CreateTripDraftRequest.swift */,
+				09BE9F522BFF907D0073AEED /* CreateTripRequest.swift */,
+				09BE9F562BFF94160073AEED /* GetActiveTripRequest.swift */,
+				09BE9F5F2BFF97F00073AEED /* CancelTripRequest.swift */,
+				09BE9F612BFF98230073AEED /* FinishTripRequest.swift */,
+				09BE9F632BFF98A80073AEED /* GetDriverActiveTripRequest.swift */,
+				09DAC5152C038327007C0F0B /* GetTripHistoryRequest.swift */,
+				09DAC5172C038332007C0F0B /* GetDriverTripHistoryRequest.swift */,
+				09DAC5192C03834D007C0F0B /* GetAllTripsRequest.swift */,
+				094861CB2C06026100A36102 /* AcceptTripRequest.swift */,
+				0948620F2C08B18500A36102 /* GetAllActiveTripsRequest.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		09BE9F582BFF94D90073AEED /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F452BFE36700073AEED /* Menu */,
+				09BE9F5A2BFF95090073AEED /* TripsSearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		09BE9F592BFF94E20073AEED /* ActiveTrip */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F662BFF9F040073AEED /* Acepted */,
+				09BE9F652BFF9EFA0073AEED /* Pending */,
+				09BE9F692BFF9F1F0073AEED /* ActiveTripView.swift */,
+			);
+			path = ActiveTrip;
+			sourceTree = "<group>";
+		};
+		09BE9F5C2BFF95660073AEED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09BE9F5D2BFF95780073AEED /* TripsViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09BE9F652BFF9EFA0073AEED /* Pending */ = {
+			isa = PBXGroup;
+			children = (
+				0931873C2BFFA05C008657AA /* SearchingDriverView.swift */,
+			);
+			path = Pending;
+			sourceTree = "<group>";
+		};
+		09BE9F662BFF9F040073AEED /* Acepted */ = {
+			isa = PBXGroup;
+			children = (
+				09AB69C02C05DB8F0065E698 /* AcceptedTripView.swift */,
+			);
+			path = Acepted;
+			sourceTree = "<group>";
+		};
 		09D556B42BD8EBB9005411D0 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,23 +1286,27 @@
 				093DE5652BF635FF002E4272 /* Rent */,
 				09D556C42BD910CC005411D0 /* Driver */,
 				09D556C32BD910C1005411D0 /* Admin */,
-				09D556B72BD8EC42005411D0 /* Home */,
+				09D556B72BD8EC42005411D0 /* Trips */,
 				09D556B52BD8EBE2005411D0 /* AppNavigationView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		09D556B72BD8EC42005411D0 /* Home */ = {
+		09D556B72BD8EC42005411D0 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
-				09BA4ACA2BCE8E97004A3C4B /* HomeView.swift */,
+				09BE9F5C2BFF95660073AEED /* Model */,
+				09BE9F592BFF94E20073AEED /* ActiveTrip */,
+				09BE9F582BFF94D90073AEED /* Search */,
+				09BA4ACA2BCE8E97004A3C4B /* TripsMainView.swift */,
 			);
-			path = Home;
+			path = Trips;
 			sourceTree = "<group>";
 		};
 		09D556B82BD8EC9A005411D0 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				09E03E562BFDF64F00CE2396 /* Row */,
 				09D556B92BD8ECC2005411D0 /* RequieredFieldsView.swift */,
 			);
 			path = Misc;
@@ -522,6 +1315,11 @@
 		09D556C32BD910C1005411D0 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				094861E52C0650C200A36102 /* Trip */,
+				094861E22C0650AC00A36102 /* Contract */,
+				0934BBEA2BFCF7E800040C0A /* Fleet */,
+				0934BB992BFCAA3500040C0A /* Vehicles */,
+				0934BB952BFCAA0200040C0A /* Users */,
 				09D556C52BD91125005411D0 /* AdminMainView.swift */,
 			);
 			path = Admin;
@@ -541,6 +1339,9 @@
 		09D556CE2BD9131D005411D0 /* Fleet */ = {
 			isa = PBXGroup;
 			children = (
+				09BE9F3D2BFE2D030073AEED /* Info */,
+				09BE9F3C2BFE2CFA0073AEED /* Location */,
+				09BE9F2F2BFE0A290073AEED /* List */,
 				095A0B3E2BFA51F0004F36B3 /* Model */,
 				09D556C92BD91151005411D0 /* FleetDriverMainView.swift */,
 			);
@@ -550,6 +1351,10 @@
 		09D556CF2BD91327005411D0 /* Chauffeur */ = {
 			isa = PBXGroup;
 			children = (
+				0902A6302C023D5C0063A8A1 /* Model */,
+				0902A62B2C02383B0063A8A1 /* Settings */,
+				0902A62A2C0238270063A8A1 /* Duty */,
+				0902A6292C0238170063A8A1 /* NotVehicle */,
 				09D556C72BD91147005411D0 /* ChauffeurDriverMainView.swift */,
 			);
 			path = Chauffeur;
@@ -564,12 +1369,56 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		09DAC5122C037E11007C0F0B /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				09DAC5132C037E44007C0F0B /* UserUpdateDriverRequest.swift */,
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		09DAC5272C049226007C0F0B /* Available */ = {
+			isa = PBXGroup;
+			children = (
+				09DAC52A2C049270007C0F0B /* ChauffeurAvailableDutyView.swift */,
+			);
+			path = Available;
+			sourceTree = "<group>";
+		};
+		09DAC52C2C049277007C0F0B /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				09DAC52D2C049285007C0F0B /* ChauffeurTripDutyView.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		09E03E562BFDF64F00CE2396 /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				09EB70832BE1081E00D15F6A /* TripRow.swift */,
+				094861FC2C0659BA00A36102 /* AdminContractRow.swift */,
+				0934BBE82BFCF21A00040C0A /* ShipmentRow.swift */,
+				091D33FD2BFDD99A00FDE692 /* UserRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
+		09E03E572BFDF6E700CE2396 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				09E03E582BFDF72D00CE2396 /* DriverSelectionSheetView.swift */,
+				09E03E5A2BFDF7C100CE2396 /* ParcelCreationSheetView.swift */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
 		09EB70822BE1080000D15F6A /* Trip */ = {
 			isa = PBXGroup;
 			children = (
 				09D0E3482BE04EA000C87631 /* TripListView.swift */,
-				09EB70832BE1081E00D15F6A /* TripCardView.swift */,
 				09EB70852BE1083300D15F6A /* TripDetailsView.swift */,
+				0948620D2C07BE3300A36102 /* TripDriverCard.swift */,
 			);
 			path = Trip;
 			sourceTree = "<group>";
@@ -580,6 +1429,7 @@
 				09EFCD8E2BC9B6F600456D29 /* Frontend */,
 				09D556BB2BD8F0EE005411D0 /* Localizable.xcstrings */,
 				09EFCD8D2BC9B6F600456D29 /* Products */,
+				0902A61C2BFFA5F30063A8A1 /* Animations */,
 				09EFCDDE2BCA7A5B00456D29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -617,6 +1467,8 @@
 				093DE55F2BF4D571002E4272 /* RentCarModel.swift */,
 				093DE5612BF4D5CE002E4272 /* UserRentHistoryModel.swift */,
 				093DE5632BF4DACD002E4272 /* ShipmentModel.swift */,
+				09BE9F4D2BFE62B30073AEED /* UserLocationModel.swift */,
+				09BE9F542BFF90E00073AEED /* TripDraftModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -698,6 +1550,7 @@
 				093E47242BDAE13D00C124A4 /* PreviewHelper.swift */,
 				093DE5952BF7AD14002E4272 /* ViewUtils.swift */,
 				095A0B2F2BF7D73D004F36B3 /* IconUtils.swift */,
+				09BE9F432BFE33D50073AEED /* VisualEffectBlur.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -707,6 +1560,48 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		09FEB0A32C08CDCC0013D151 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0A42C08CDE20013D151 /* AdminTripViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09FEB0A62C08CDEF0013D151 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0AA2C08CE180013D151 /* AdminUserViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09FEB0AC2C08D83E0013D151 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0B42C08E4320013D151 /* Balance */,
+				09FEB0AF2C08DF440013D151 /* Permission */,
+				09FEB0AD2C08D8730013D151 /* AdminUserDetailsView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		09FEB0AF2C08DF440013D151 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0B02C08DF560013D151 /* AdminPermissionSelectionView.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
+		09FEB0B42C08E4320013D151 /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				09FEB0B52C08E4460013D151 /* BalanceModificationFormView.swift */,
+			);
+			path = Balance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -728,6 +1623,9 @@
 			name = Frontend;
 			packageProductDependencies = (
 				09EFCDED2BCC562100456D29 /* Alamofire */,
+				0934BBD82BFCD6F900040C0A /* Toast */,
+				0931873F2BFFA39E008657AA /* Lottie */,
+				09DAC51D2C038A21007C0F0B /* EventSource */,
 			);
 			productName = Frontend;
 			productReference = 09EFCD8C2BC9B6F600456D29 /* Frontend.app */;
@@ -759,6 +1657,9 @@
 			mainGroup = 09EFCD832BC9B6F600456D29;
 			packageReferences = (
 				09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0934BBD72BFCD6F900040C0A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				0931873E2BFFA39E008657AA /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				09DAC51C2C038A21007C0F0B /* XCRemoteSwiftPackageReference "EventSource" */,
 			);
 			productRefGroup = 09EFCD8D2BC9B6F600456D29 /* Products */;
 			projectDirPath = "";
@@ -774,8 +1675,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0902A6242BFFA60F0063A8A1 /* CarFamily.json in Resources */,
+				0902A6262BFFA60F0063A8A1 /* CarRotating.json in Resources */,
 				09EFCD942BC9B6F800456D29 /* Assets.xcassets in Resources */,
+				0902A6252BFFA60F0063A8A1 /* CarFast.json in Resources */,
+				0902A6222BFFA60F0063A8A1 /* CarPacman.json in Resources */,
 				09D556BC2BD8F0EE005411D0 /* Localizable.xcstrings in Resources */,
+				0902A6232BFFA60F0063A8A1 /* Car3D.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,59 +1693,153 @@
 			buildActionMask = 2147483647;
 			files = (
 				093DE5842BF7804B002E4272 /* RentViewModel.swift in Sources */,
+				09BE9F322BFE0B340073AEED /* FleetDriverShipmentListView.swift in Sources */,
+				0934BBAF2BFCACC300040C0A /* DeleteVehicleRequest.swift in Sources */,
 				09EB70862BE1083300D15F6A /* TripDetailsView.swift in Sources */,
+				0934BBEF2BFCF85600040C0A /* FleetSettingsView.swift in Sources */,
 				093E47322BDAFF7300C124A4 /* LoginRequest.swift in Sources */,
+				09E03E5B2BFDF7C100CE2396 /* ParcelCreationSheetView.swift in Sources */,
 				09EFCDCC2BC9C1F700456D29 /* InputFieldView.swift in Sources */,
 				093DE55E2BF4D537002E4272 /* FleetModel.swift in Sources */,
 				093E472C2BDAFEB900C124A4 /* NetworkConfiguration.swift in Sources */,
 				09EFCDCF2BC9DCAD00456D29 /* MainAppView.swift in Sources */,
+				09E03E592BFDF72D00CE2396 /* DriverSelectionSheetView.swift in Sources */,
+				09FEB0A02C08CADD0013D151 /* UserUpdateByAdminRequest.swift in Sources */,
+				09DAC52B2C049270007C0F0B /* ChauffeurAvailableDutyView.swift in Sources */,
 				09EFCDC12BC9C0A500456D29 /* AuthViewModel.swift in Sources */,
+				094862132C08B1EF00A36102 /* UserUpdateAdminPermissionsRequest.swift in Sources */,
 				093DE56D2BF6364A002E4272 /* ShipmentsMainView.swift in Sources */,
 				095A0B502BFA8E04004F36B3 /* ShipmentMapView.swift in Sources */,
+				09AB69C12C05DB8F0065E698 /* AcceptedTripView.swift in Sources */,
+				094861E92C06514F00A36102 /* AdminGeneralContractListView.swift in Sources */,
+				09DAC51A2C03834D007C0F0B /* GetAllTripsRequest.swift in Sources */,
 				09EFCD922BC9B6F600456D29 /* ContentView.swift in Sources */,
 				093DE5902BF781DF002E4272 /* GetRentHistoryRequest.swift in Sources */,
-				09EB70842BE1081E00D15F6A /* TripCardView.swift in Sources */,
+				09BE9F622BFF98230073AEED /* FinishTripRequest.swift in Sources */,
+				0934BBAD2BFCACB500040C0A /* UpdateVehicleRequest.swift in Sources */,
+				0902A62F2C023AA40063A8A1 /* DriverVehicleModificationFormView.swift in Sources */,
+				09EB70842BE1081E00D15F6A /* TripRow.swift in Sources */,
+				0934BBC72BFCADEE00040C0A /* GetShipmentDetailsRequest.swift in Sources */,
 				093E47302BDAFF6B00C124A4 /* RegisterRequest.swift in Sources */,
+				09BE9F5B2BFF95090073AEED /* TripsSearchView.swift in Sources */,
+				091D33F72BFDD2D100FDE692 /* ShipmentViewModel.swift in Sources */,
+				09BE9F532BFF907D0073AEED /* CreateTripRequest.swift in Sources */,
+				0934BBA22BFCAA7C00040C0A /* VehicleCreationFormView.swift in Sources */,
+				0934BBE02BFCEE5700040C0A /* AdminShipmentViewModel.swift in Sources */,
 				09D556B62BD8EBE2005411D0 /* AppNavigationView.swift in Sources */,
+				09AB69BD2C053F080065E698 /* CLLocationExtension.swift in Sources */,
+				09BE9F602BFF97F00073AEED /* CancelTripRequest.swift in Sources */,
+				0934BB9D2BFCAA5900040C0A /* AdminVehicleRow.swift in Sources */,
+				0934BBE22BFCEEFC00040C0A /* ShipmentCreationFormView.swift in Sources */,
+				0934BBB92BFCAD4F00040C0A /* GetFleetDriversRequest.swift in Sources */,
+				094861DC2C064A2F00A36102 /* FinalizeGeneralContractRequest.swift in Sources */,
+				0934BBCE2BFCAE7100040C0A /* UpdateShipmentStatusRequest.swift in Sources */,
 				095A0B432BFA890D004F36B3 /* ShipmentDetailsView.swift in Sources */,
+				09DAC5182C038332007C0F0B /* GetDriverTripHistoryRequest.swift in Sources */,
 				093DE57E2BF77E06002E4272 /* RentAvailableCarsView.swift in Sources */,
 				09D556BA2BD8ECC2005411D0 /* RequieredFieldsView.swift in Sources */,
+				09DAC5292C049253007C0F0B /* ChauffeurDutyView.swift in Sources */,
+				0902A6282C0118430063A8A1 /* DraftSheetView.swift in Sources */,
+				0902A62D2C02385F0063A8A1 /* DriverVehicleDetailsView.swift in Sources */,
+				091D33FC2BFDD99100FDE692 /* AdminFleetDriverListView.swift in Sources */,
 				093DE5892BF7816E002E4272 /* VehicleReturnRequest.swift in Sources */,
+				09FEB0AE2C08D8730013D151 /* AdminUserDetailsView.swift in Sources */,
+				094861D72C064A0B00A36102 /* GetContractDetailsRequest.swift in Sources */,
+				09FEB0A92C08CE020013D151 /* AdminUserList.swift in Sources */,
+				094861E12C064ADA00A36102 /* GetOwnContractsRequest.swift in Sources */,
 				09D556D22BD921DE005411D0 /* MapView.swift in Sources */,
+				09DAC5112C037D37007C0F0B /* GetShipmentLocationRequest.swift in Sources */,
+				09BE9F472BFE37190073AEED /* MenuSheetView.swift in Sources */,
+				09BE9F4A2BFE417A0073AEED /* TripsMenuView.swift in Sources */,
 				093E47252BDAE13D00C124A4 /* PreviewHelper.swift in Sources */,
 				095A0B1F2BF7B806004F36B3 /* DocumentsView.swift in Sources */,
+				0934BB942BFBC3CD00040C0A /* ParcelRowView.swift in Sources */,
+				0934BBB72BFCAD4200040C0A /* GetFleetInfoRequest.swift in Sources */,
 				093DE55C2BF4D512002E4272 /* ContractModel.swift in Sources */,
 				0991C4102BDC098200BABE7F /* AppViewModel.swift in Sources */,
 				095A0B2C2BF7C065004F36B3 /* ContractsSectionView.swift in Sources */,
+				094861DA2C064A1B00A36102 /* GetFleetContractDetailsRequest.swift in Sources */,
 				09D556BE2BD8F862005411D0 /* InputDatePickerView.swift in Sources */,
 				095A0B322BF7D9FC004F36B3 /* AddDriverLicenseView.swift in Sources */,
 				09D556C62BD91125005411D0 /* AdminMainView.swift in Sources */,
+				09BE9F4E2BFE62B30073AEED /* UserLocationModel.swift in Sources */,
+				0934BB9B2BFCAA4900040C0A /* AdminVehicleListView.swift in Sources */,
+				0934BBAB2BFCAC9800040C0A /* CreateVehicleRequest.swift in Sources */,
+				0934BBA92BFCAC7E00040C0A /* GetAllVehiclesRequest.swift in Sources */,
+				094861F92C0653B400A36102 /* AdminContractViewModel.swift in Sources */,
 				095A0B242BF7BEBF004F36B3 /* PrivacyView.swift in Sources */,
+				0931873D2BFFA05C008657AA /* SearchingDriverView.swift in Sources */,
+				0934BBF52BFD00D000040C0A /* GetFleetShipmentsRequest.swift in Sources */,
+				0934BBDB2BFCDA0800040C0A /* AdminVehicleModifyView.swift in Sources */,
+				094861D32C0649BC00A36102 /* GetAllFleetContractsRequest.swift in Sources */,
 				09EFCDDB2BCA74AC00456D29 /* Callback.swift in Sources */,
 				093DE5642BF4DACD002E4272 /* ShipmentModel.swift in Sources */,
+				091D33F42BFD27D200FDE692 /* AdminShipmentModificationBarView.swift in Sources */,
+				0934BBB52BFCAD2500040C0A /* GetAllFleetRequest.swift in Sources */,
+				094862092C07378A00A36102 /* FleetContractCreationView.swift in Sources */,
+				09FEB0A52C08CDE20013D151 /* AdminTripViewModel.swift in Sources */,
+				0934BBF72BFD038A00040C0A /* FleetRow.swift in Sources */,
 				09D0E3492BE04EA000C87631 /* TripListView.swift in Sources */,
 				0991C4162BDC139100BABE7F /* UserUpdateRequest.swift in Sources */,
+				094861DE2C064A4300A36102 /* FinalizeFleetContractRequest.swift in Sources */,
+				09BE9F4C2BFE5AC30073AEED /* UserUpdateLocationRequest.swift in Sources */,
 				09D556CA2BD91151005411D0 /* FleetDriverMainView.swift in Sources */,
+				094861FF2C0659C600A36102 /* AdminGeneralContractDetailView.swift in Sources */,
+				094862042C0736C600A36102 /* FleetContractListView.swift in Sources */,
+				09BE9F5E2BFF95780073AEED /* TripsViewModel.swift in Sources */,
 				09EFCDF92BCC669300456D29 /* EmailUtils.swift in Sources */,
+				09BE9F6A2BFF9F1F0073AEED /* ActiveTripView.swift in Sources */,
+				0934BBA42BFCAAB400040C0A /* AdminVehicleViewModel.swift in Sources */,
+				09BE9F352BFE0E300073AEED /* FleetDriverShipmentDetails.swift in Sources */,
+				0934BBC22BFCAD9300040C0A /* UpdateFleetRequest.swift in Sources */,
+				094862102C08B18500A36102 /* GetAllActiveTripsRequest.swift in Sources */,
 				095A0B552BFA959D004F36B3 /* CustomMapMarker.swift in Sources */,
+				09DAC5142C037E44007C0F0B /* UserUpdateDriverRequest.swift in Sources */,
+				094862072C07372700A36102 /* FleetContractDetailView.swift in Sources */,
 				093DE5722BF636B8002E4272 /* AvaiableCarCard.swift in Sources */,
+				0934BBE72BFCF20200040C0A /* AdminShipmentDetailView.swift in Sources */,
+				09DAC5242C038F76007C0F0B /* NetworkListeners.swift in Sources */,
+				09BE9F422BFE2D810073AEED /* FleetDriverLocationSettingsView.swift in Sources */,
+				0934BBC42BFCADA100040C0A /* DeleteFleetRequest.swift in Sources */,
 				093DE56A2BF6362A002E4272 /* RentMainView.swift in Sources */,
 				093E47232BDADB9600C124A4 /* ProfileMainView.swift in Sources */,
 				093DE57B2BF77DCB002E4272 /* RentHeaderView.swift in Sources */,
 				093DE5742BF636C6002E4272 /* ActualRentCard.swift in Sources */,
+				094862152C08B25500A36102 /* UserUpdateBalanceRequest.swift in Sources */,
+				0934BBF92BFD074000040C0A /* CreateFleetFormView.swift in Sources */,
+				094861FB2C06546900A36102 /* GetAllUsersRequest.swift in Sources */,
+				09FEB0B12C08DF560013D151 /* AdminPermissionSelectionView.swift in Sources */,
+				094861D12C06499800A36102 /* CreateContractRequest.swift in Sources */,
+				09BE9F372BFE0F2C0073AEED /* FleetDriverShipmentStatusUpdateView.swift in Sources */,
+				0934BBE42BFCF09D00040C0A /* AdminShipmentListView.swift in Sources */,
+				0934BBCA2BFCAE3200040C0A /* GetAssignedShipmentRequest.swift in Sources */,
 				095A0B3D2BFA4BFE004F36B3 /* DriverViewModel.swift in Sources */,
+				09DAC52E2C049285007C0F0B /* ChauffeurTripDutyView.swift in Sources */,
 				09D556C82BD91147005411D0 /* ChauffeurDriverMainView.swift in Sources */,
 				095A0B2E2BF7C09E004F36B3 /* DriverLicenseCard.swift in Sources */,
+				09BE9F552BFF90E10073AEED /* TripDraftModel.swift in Sources */,
 				09D0E3432BE044A400C87631 /* BalanceDetailsView.swift in Sources */,
+				09FEB0A22C08CDAC0013D151 /* TripAdminList.swift in Sources */,
+				0934BBD02BFCAE8300040C0A /* UpdateShipmentRequest.swift in Sources */,
 				093DE58B2BF78181002E4272 /* GetActualRentRequest.swift in Sources */,
 				095A0B3A2BFA4AF8004F36B3 /* LocationService.swift in Sources */,
+				0902A6342C023F450063A8A1 /* DriverNoVehicleView.swift in Sources */,
 				093E47272BDAE8C300C124A4 /* ListSectionHeader.swift in Sources */,
+				094861CC2C06026100A36102 /* AcceptTripRequest.swift in Sources */,
+				09BE9F512BFF90650073AEED /* CreateTripDraftRequest.swift in Sources */,
 				093DE5622BF4D5CE002E4272 /* UserRentHistoryModel.swift in Sources */,
+				09BE9F442BFE33D50073AEED /* VisualEffectBlur.swift in Sources */,
+				09FEB0AB2C08CE180013D151 /* AdminUserViewModel.swift in Sources */,
 				0991C4142BDC11BD00BABE7F /* ProfileDetailsView.swift in Sources */,
 				093DE5872BF78160002E4272 /* VehicleRentRequest.swift in Sources */,
+				09BE9F572BFF94160073AEED /* GetActiveTripRequest.swift in Sources */,
 				09EB70882BE10AD500D15F6A /* TripModel.swift in Sources */,
+				094861EB2C06516300A36102 /* AdminGeneralContractCreationView.swift in Sources */,
+				094861F72C06533100A36102 /* UserSelectionSheetView.swift in Sources */,
 				09D0E3472BE04DDD00C87631 /* MapUtils.swift in Sources */,
+				091D33FE2BFDD99A00FDE692 /* UserRow.swift in Sources */,
 				093DE58D2BF781B6002E4272 /* GetAvailableVehiclesRequest.swift in Sources */,
+				0934BBD42BFCB35500040C0A /* GetAllShipmentRequest.swift in Sources */,
 				095A0B2A2BF7C05A004F36B3 /* LicensesSectionView.swift in Sources */,
 				09A236E12BDC430700D54E4C /* ChangePasswordView.swift in Sources */,
 				093DE5602BF4D571002E4272 /* RentCarModel.swift in Sources */,
@@ -847,22 +1847,46 @@
 				093E47342BDB0B8C00C124A4 /* UserMeRequest.swift in Sources */,
 				09EFCDC92BC9C1B700456D29 /* RegisterView.swift in Sources */,
 				09D0E3412BE0425D00C87631 /* ListSectionTextItem.swift in Sources */,
+				09DAC5222C038AD8007C0F0B /* SseService.swift in Sources */,
+				0934BBE92BFCF21A00040C0A /* ShipmentRow.swift in Sources */,
 				09EFCDC72BC9C1AB00456D29 /* LoginView.swift in Sources */,
+				0948620E2C07BE3300A36102 /* TripDriverCard.swift in Sources */,
 				09D556CC2BD9126D005411D0 /* DriverMainView.swift in Sources */,
-				09BA4ACB2BCE8E97004A3C4B /* HomeView.swift in Sources */,
+				0934BBBB2BFCAD6C00040C0A /* GetOwnFleetRequest.swift in Sources */,
+				09BA4ACB2BCE8E97004A3C4B /* TripsMainView.swift in Sources */,
 				095A0B402BFA5206004F36B3 /* FleetDriverViewModel.swift in Sources */,
+				09DAC5162C038327007C0F0B /* GetTripHistoryRequest.swift in Sources */,
 				09EFCD902BC9B6F600456D29 /* FrontendApp.swift in Sources */,
+				0934BBD62BFCC1C400040C0A /* AdminVehicleDetailView.swift in Sources */,
+				0902A6322C023DB70063A8A1 /* ChauffeurDriverViewModel.swift in Sources */,
+				0902A6362C02444F0063A8A1 /* DriverPersonalDetailsView.swift in Sources */,
+				0948620C2C0737DE00A36102 /* FleetUserSelectionSheetView.swift in Sources */,
+				0934BBCC2BFCAE4000040C0A /* CreateShipmentRequest.swift in Sources */,
 				09D0E3452BE0456000C87631 /* MapIndicationsView.swift in Sources */,
+				0934BB8B2BFBC2DD00040C0A /* ShipmentParcelListView.swift in Sources */,
+				0934BBBD2BFCAD7800040C0A /* GetAdminFleetsRequest.swift in Sources */,
 				09D556C22BD8FE90005411D0 /* DNIValidator.swift in Sources */,
+				0934BBB22BFCAD0200040C0A /* GetVehicleRentHistory.swift in Sources */,
+				09BE9F3B2BFE11080073AEED /* FleetDriverShipmentButtonsView.swift in Sources */,
+				09FEB0B62C08E4460013D151 /* BalanceModificationFormView.swift in Sources */,
 				095A0B222BF7B87C004F36B3 /* AboutAppView.swift in Sources */,
+				0934BBF32BFCFCA100040C0A /* AdminFleetViewModel.swift in Sources */,
 				093DE5922BF79DA6002E4272 /* NetworkUtilities.swift in Sources */,
+				09BE9F642BFF98A80073AEED /* GetDriverActiveTripRequest.swift in Sources */,
+				0934BBEC2BFCF7FD00040C0A /* FleetListView.swift in Sources */,
+				0934BB8D2BFBC2E900040C0A /* ShipmentHistoryListView.swift in Sources */,
+				0934BB902BFBC30100040C0A /* ShipmentDriverInfoView.swift in Sources */,
+				09BE9F3F2BFE2D170073AEED /* DriverFleetInfoView.swift in Sources */,
 				093DE5962BF7AD14002E4272 /* ViewUtils.swift in Sources */,
+				0934BBD22BFCAE9000040C0A /* DeleteShipmentRequest.swift in Sources */,
+				094861FD2C0659BA00A36102 /* AdminContractRow.swift in Sources */,
 				095A0B262BF7BF1E004F36B3 /* TermsView.swift in Sources */,
-				095A0B452BFA8D4C004F36B3 /* ShipmentDataCardView.swift in Sources */,
 				095A0B352BF7DE3A004F36B3 /* AddDriverLicenseRequest.swift in Sources */,
 				095A0B4C2BFA8DF2004F36B3 /* ShipmentDataView.swift in Sources */,
 				095A0B302BF7D73D004F36B3 /* IconUtils.swift in Sources */,
+				0934BBBF2BFCAD8400040C0A /* CreateFleetRequest.swift in Sources */,
 				09EFCDC32BC9C0D200456D29 /* UserModel.swift in Sources */,
+				094861D52C0649C800A36102 /* GetAllGeneralContractsRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,6 +2112,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0931873E2BFFA39E008657AA /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+		0934BBD72BFCD6F900040C0A /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		09DAC51C2C038A21007C0F0B /* XCRemoteSwiftPackageReference "EventSource" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/inaka/EventSource.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1099,6 +2147,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0931873F2BFFA39E008657AA /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0931873E2BFFA39E008657AA /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		0934BBD82BFCD6F900040C0A /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0934BBD72BFCD6F900040C0A /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		09DAC51D2C038A21007C0F0B /* EventSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09DAC51C2C038A21007C0F0B /* XCRemoteSwiftPackageReference "EventSource" */;
+			productName = EventSource;
+		};
 		09EFCDED2BCC562100456D29 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09EFCDEC2BCC562100456D29 /* XCRemoteSwiftPackageReference "Alamofire" */;

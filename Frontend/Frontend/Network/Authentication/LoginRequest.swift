@@ -17,7 +17,7 @@ class LoginRequest {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .cURLDescription { description in
-                debugPrint("Login request: \(description)")
+                print("Login request: \(description)")
             }.responseDecodable(of: Response.self) { response in
                 switch response.result {
                     case .success(let loginResponse):

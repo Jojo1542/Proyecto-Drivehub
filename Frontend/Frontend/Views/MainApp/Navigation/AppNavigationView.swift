@@ -15,7 +15,8 @@ struct AppNavigationView: View {
     var body: some View {
         TabView {
             // Comprobación por si las moscas
-            HomeView()
+            TripsMainView()
+                .environmentObject(TripsViewModel(appModel: appViewModel))
                 .tabItem {
                     Image(systemName: "figure.wave")
                     Text("Trayectos")
@@ -29,6 +30,7 @@ struct AppNavigationView: View {
                 }
             
             ShipmentsMainView()
+                .environmentObject(ShipmentViewModel(appViewModel: appViewModel))
                 .tabItem {
                     Image(systemName: "truck.box.badge.clock.fill")
                     Text("Envios")
@@ -52,9 +54,6 @@ struct AppNavigationView: View {
                     }
             }
         }
+        .background(.ultraThinMaterial)
     }
-}
-
-#Preview {
-    AppNavigationView()
 }

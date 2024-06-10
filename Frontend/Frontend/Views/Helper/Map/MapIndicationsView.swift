@@ -12,12 +12,15 @@ import MapKit
 struct MapIndicationsView: View {
     
     @State private var route: MKRoute?;
+    
+    // Variables que se actualizan al calcular la ruta
     @Binding var estimatedTime: TimeInterval?;
     @Binding var estimatedDistance: CLLocationDistance?;
     
     var sourceCoordinate: CLLocationCoordinate2D;
     var destinationCoordinate: CLLocationCoordinate2D;
     var customMarkers: [CustomMapMarker]? = [];
+    var overlay: AnyView? = nil;
     
     var body: some View {
         Map() {
@@ -39,6 +42,10 @@ struct MapIndicationsView: View {
         }.onAppear {
             // Calcular la ruta cuando se muestre el mapa
             getRoute();
+        }.safeAreaInset(edge: .bottom) {
+            if overlay != nil {
+                overlay
+            }
         }
     }
     

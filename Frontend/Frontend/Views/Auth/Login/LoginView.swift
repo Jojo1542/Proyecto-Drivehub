@@ -133,9 +133,8 @@ struct LoginView: View {
                         case let .failure(errorMsg):
                             // Mostramos el error lanzado por la aplicación y devuelto por el controlador. IMPORTANTE, los errores son devueltos ya traducidos.
                             showAlert(title: "Error", description: errorMsg!)
+                            loading = false;
                     }
-                 
-                    loading = false;
                  }
             } else {
                 showAlert(title: "Error", description: String(localized: "No se ha introducido un E-Mail válido, comprueba de nuevo."))

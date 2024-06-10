@@ -39,18 +39,14 @@ struct ProfileMainView: View {
                 
                 
                 Section(header: ListSectionHeader(title: "Información general", icon: "person.fill")) {
-                    NavigationLink(destination: TripListView(trips: [
-                        PreviewHelper.finishedTrip,
-                        PreviewHelper.pendingTrip,
-                        PreviewHelper.acceptedTrip,
-                    ]), label: { Label("Mis trayectos", systemImage: "car.fill") });
+                    NavigationLink(destination: TripListView(), label: { Label("Mis trayectos", systemImage: "car.fill") });
                     NavigationLink(destination: DocumentsView(), label: { Label("Mis documentos", systemImage: "person.text.rectangle.fill") });
                     NavigationLink(destination: BalanceDetailsView(), label: { Label("Mi saldo", systemImage: "creditcard.fill") });
                 }
                 
                 Section(header: ListSectionHeader(title: "Ajustes", icon: "gear")) {
                     NavigationLink(destination: ChangePasswordView(), label: { Label("Cambiar Contraseña", systemImage: "key.fill") });
-                    NavigationLink(destination: EmptyView(), label: { Label("Ajustes de notificaciones", systemImage: "bell.fill") });
+                    /*NavigationLink(destination: EmptyView(), label: { Label("Ajustes de notificaciones", systemImage: "bell.fill") });*/
                 }
                 
                 Section(header: ListSectionHeader(title: "Sobre la aplicación", icon: "info.circle.fill")) {

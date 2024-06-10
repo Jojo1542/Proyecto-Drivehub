@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RentCarModel: Hashable, Decodable, Identifiable {
+struct RentCarModel: Hashable, Decodable, Identifiable, Encodable {
     
     var id: Int
     var plate: String
@@ -18,5 +18,6 @@ struct RentCarModel: Hashable, Decodable, Identifiable {
     var fechaMatriculacion: Date
     var imageUrl: String?
     var precioHora: Double
+    var available: Bool
     
 }

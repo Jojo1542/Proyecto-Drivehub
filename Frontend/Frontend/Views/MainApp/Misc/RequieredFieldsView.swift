@@ -20,6 +20,7 @@ struct RequieredFieldsView: View {
      */
     @State private var dni = "";
     @State private var date = Date();
+    @State private var phone = "";
     
     /*
      Variables de control de alertas
@@ -61,6 +62,17 @@ struct RequieredFieldsView: View {
                     date: $date,
                     icon: "calendar",
                     name: "Fecha de nacimiento"
+                )
+                
+                Text("Numero de telefono:")
+                    .font(.title2)
+                    .padding(.horizontal, 20)
+                
+                InputFieldView(
+                    text: $phone,
+                    icon: "phone",
+                    placeholder: "655223344",
+                    keyboard: .phonePad
                 )
             })
             .padding(.vertical, 30)
@@ -107,6 +119,7 @@ struct RequieredFieldsView: View {
             if (calculateYears() >= 18) {
                 authViewModel.currentUser?.dni = dni;
                 authViewModel.currentUser?.birthDate = date;
+                authViewModel.currentUser?.phone = phone;
                 
                 appViewModel.saveAndUpdateUser(completion: { result in
                     switch result {

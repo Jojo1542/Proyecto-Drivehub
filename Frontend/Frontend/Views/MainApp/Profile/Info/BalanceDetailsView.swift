@@ -20,7 +20,7 @@ struct BalanceDetailsView: View {
                     .font(.title2)
                     .bold()
                 Spacer()
-                Text("\(appModel.getUser().saldo.formatted()) €")
+                Text("\(appModel.getUser().balance, specifier: "%.2f") €")
                     .font(.title2)
                     .bold()
             }
@@ -29,7 +29,7 @@ struct BalanceDetailsView: View {
             // Lista de movimientos
             List {
                 Section(header: Text("Últimos movimientos").font(.title3).bold()) {
-                    ForEach(appModel.getUser().balanceHistory ?? [], id: \.id) { movimiento in
+                    ForEach(appModel.getUser().balanceHistoryList, id: \.id) { movimiento in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(movimiento.type == .DEPOSIT ? "Ingreso" : "Gasto")
@@ -46,7 +46,7 @@ struct BalanceDetailsView: View {
                         }
                     }
                     
-                    if appModel.getUser().balanceHistory == nil {
+                    if appModel.getUser().balanceHistoryList.isEmpty {
                         Text("No hay movimientos")
                             .font(.subheadline)
                             .foregroundColor(.secondary)

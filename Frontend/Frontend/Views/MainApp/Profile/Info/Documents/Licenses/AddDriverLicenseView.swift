@@ -12,6 +12,8 @@ struct AddDriverLicenseView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.presentationMode) var presentationMode;
     
+    @Binding var driverLicenses: [UserModel.DriverLicense];
+    
     @State private var driverLicenseType: UserModel.DriverLicense.DriverLicenseType = .B
     @State private var driverLicenseNumber: String = ""
     @State private var driverLicenseIssuedDate: Date = Date()
@@ -77,17 +79,20 @@ struct AddDriverLicenseView: View {
     }
     
     func uploadDriverLicense() {
+        let data = UserModel.DriverLicense(
+            licenseNumber: driverLicenseNumber,
+            type: driverLicenseType,
+            expirationDate: driverLicenseExpirationDate,
+            issueDate: driverLicenseIssuedDate
+        );
+        
         appViewModel.addDriverLicense(
-            driverLicense: UserModel.DriverLicense(
-                licenseNumber: driverLicenseNumber,
-                type: driverLicenseType,
-                expirationDate: driverLicenseExpirationDate,
-                issueDate: driverLicenseIssuedDate
-            )
+            driverLicense: data
         ) { result in
             switch result {
             case .success(_):
                 showDialog(title: "Licencia de conducir añadida", description: "Se ha añadido la licencia de conducir correctamente.")
+                driverLicenses.append(data);
                 self.loading = false
                 self.presentationMode.wrappedValue.dismiss(); // Volver a la lista
             case .failure(let error):
@@ -95,8 +100,4 @@ struct AddDriverLicenseView: View {
             }
         }
     }
-}
-
-#Preview {
-    AddDriverLicenseView()
 }

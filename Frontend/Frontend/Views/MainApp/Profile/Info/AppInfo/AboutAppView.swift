@@ -49,15 +49,17 @@ struct AboutAppView: View {
                     Text("jponpin0212@iesmartinezm.es")
                 }
                 
-                HStack {
+                /*HStack {
                     Text("Backend")
                     Spacer()
                     Text("\(NetworkConfiguration.baseUrl)")
                 }.onTapGesture {
                     UIPasteboard.general.string = NetworkConfiguration.baseUrl
-                }
+                }*/
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Sobre la aplicación")
     }
     
     func getAppVersion() -> String {

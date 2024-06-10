@@ -4,22 +4,6 @@
     "" : {
 
     },
-    "¡Bienvenido %@ %@!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welcome%1$@ %2$@!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "¡Bienvenido %1$@ %2$@!"
-          }
-        }
-      }
-    },
     "¡Bienvenido a DriveHub!" : {
       "localizations" : {
         "en" : {
@@ -40,7 +24,16 @@
         }
       }
     },
+    "¿Con que aplicación deseas abrir la ruta?" : {
+
+    },
+    "¿Estás seguro de cancelar el viaje?" : {
+
+    },
     "¿Estás seguro de que deseas finalizar el alquiler?" : {
+
+    },
+    "¿Estás seguro de que quieres confirmar el viaje?" : {
 
     },
     "¿Estás seguro?" : {
@@ -72,6 +65,16 @@
     "%@" : {
 
     },
+    "%@ - %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
     "%@ %@" : {
       "localizations" : {
         "es" : {
@@ -95,6 +98,9 @@
     "%@ €" : {
 
     },
+    "%@ km" : {
+
+    },
     "%@%@ €" : {
       "localizations" : {
         "es" : {
@@ -104,6 +110,12 @@
           }
         }
       }
+    },
+    "%lld" : {
+
+    },
+    "%lld años" : {
+
     },
     "1. ¿Qué datos recopilamos?" : {
 
@@ -153,13 +165,43 @@
     "10. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet." : {
 
     },
+    "Abrir en Maps" : {
+
+    },
+    "Acción" : {
+
+    },
+    "Aceptar" : {
+
+    },
     "Acerca de" : {
+
+    },
+    "Activa el seguimiento de la localización para ver tu ubicación en el mapa." : {
+
+    },
+    "Activar seguimiento de localización" : {
+
+    },
+    "Activo" : {
+
+    },
+    "Actualizar estado" : {
 
     },
     "Administración" : {
 
     },
-    "Ajustes de notificaciones" : {
+    "Administrador" : {
+
+    },
+    "Ajustes de ubicación" : {
+
+    },
+    "Ajustes personales" : {
+
+    },
+    "Al confirmar el viaje se procederá al pago de %@ €" : {
 
     },
     "Algúno de los campos no se encuentra relleno, comprueba e intentalo de nuevo." : {
@@ -171,7 +213,13 @@
     "Añadir licencia" : {
 
     },
+    "Añadir paquete" : {
+
+    },
     "Añadir permiso de conducir" : {
+
+    },
+    "Añadir un nuevo vehiculo" : {
 
     },
     "Apellidos" : {
@@ -184,25 +232,52 @@
         }
       }
     },
+    "Apple Maps" : {
+
+    },
     "Asegurate que has entregado o dejado el vehículo en el lugar correspondiente o se te cobrará una penalización." : {
 
     },
-    "Backend" : {
+    "Asignar conductor" : {
 
     },
     "Bienvenido a la plataforma donde todo lo relacionado con la carretera se une. Para poder empezar necesitamos algunos datos para comprobar que eres humano y que eres mayor de edad." : {
 
     },
-    "Borrar cuenta" : {
+    "Buscar envio" : {
+
+    },
+    "Caducado" : {
+
+    },
+    "Cambiar conductor" : {
 
     },
     "Cambiar Contraseña" : {
 
     },
+    "Cambiar el estado" : {
+
+    },
+    "Cambiar fecha de entrega" : {
+
+    },
     "Cambio de contraseña" : {
 
     },
+    "Cancelado" : {
+
+    },
     "Cancelar" : {
+
+    },
+    "Cancelar viaje" : {
+
+    },
+    "Cantidad" : {
+
+    },
+    "Cantidad: %lld" : {
 
     },
     "Cerrar" : {
@@ -211,13 +286,52 @@
     "Cerrar sesión" : {
 
     },
+    "Chofer" : {
+
+    },
+    "Choffer" : {
+
+    },
+    "CIF" : {
+
+    },
+    "CIF de la flota" : {
+
+    },
     "Coches disponilbes" : {
+
+    },
+    "Código de envio" : {
+
+    },
+    "Color" : {
 
     },
     "Color: %@" : {
 
     },
+    "Comenzar a conducir" : {
+
+    },
     "Conductor" : {
+
+    },
+    "Conductor asignado" : {
+
+    },
+    "Conductor de flota" : {
+
+    },
+    "Conductor de Flota" : {
+
+    },
+    "Conductor no asignado" : {
+
+    },
+    "Configuración de la localización" : {
+
+    },
+    "Confirmar" : {
 
     },
     "Confirmar Cambio" : {
@@ -233,7 +347,16 @@
         }
       }
     },
+    "Confirmar y Pagar" : {
+
+    },
     "Contacto" : {
+
+    },
+    "Conteindo" : {
+
+    },
+    "Contenido" : {
 
     },
     "Contraseña" : {
@@ -245,6 +368,9 @@
           }
         }
       }
+    },
+    "Contrato con %@" : {
+
     },
     "Contratos de conductor" : {
 
@@ -259,6 +385,12 @@
         }
       }
     },
+    "Crear contrato" : {
+
+    },
+    "Crear contrato de choffer" : {
+
+    },
     "Crear cuenta" : {
       "localizations" : {
         "en" : {
@@ -268,6 +400,33 @@
           }
         }
       }
+    },
+    "Crear envio" : {
+
+    },
+    "Crear flota" : {
+
+    },
+    "Crear nuevo contrato" : {
+
+    },
+    "Crear nuevo envio" : {
+
+    },
+    "Crear una nueva flota" : {
+
+    },
+    "Crear vehiculo" : {
+
+    },
+    "Dañado" : {
+
+    },
+    "Datos" : {
+
+    },
+    "Datos del envío" : {
+
     },
     "Datos Personales" : {
       "localizations" : {
@@ -282,7 +441,46 @@
     "Desarrollador" : {
 
     },
+    "Description" : {
+
+    },
     "Destino" : {
+
+    },
+    "Detalles del envio \"%lld\"" : {
+
+    },
+    "Detalles del vehículo" : {
+
+    },
+    "Devuelto" : {
+
+    },
+    "Dirección de destino" : {
+
+    },
+    "Dirección de envio" : {
+
+    },
+    "Dirección de origen" : {
+
+    },
+    "Disponibilidad" : {
+
+    },
+    "Disponible" : {
+
+    },
+    "Distancia" : {
+
+    },
+    "Distancia del trayecto" : {
+
+    },
+    "Distancia hacia salida" : {
+
+    },
+    "Distancia preferida: %@ Km" : {
 
     },
     "DNI" : {
@@ -291,7 +489,22 @@
     "DNI:" : {
 
     },
+    "DNI: %@" : {
+
+    },
+    "Duración" : {
+
+    },
+    "Edad: %lld" : {
+
+    },
+    "Editar" : {
+
+    },
     "El correo electrónico introducido ya está registrado." : {
+
+    },
+    "El número de bastidor ya existe en el sistema." : {
 
     },
     "El usuario y/o contraseña son incorrecos." : {
@@ -315,6 +528,18 @@
     "Emitido: %@" : {
 
     },
+    "En servicio" : {
+
+    },
+    "En tránsito" : {
+
+    },
+    "Entregado" : {
+
+    },
+    "Envia un paquete" : {
+
+    },
     "Envios" : {
 
     },
@@ -324,19 +549,29 @@
     "Es recomendable que la nueva contraseña contenga al menos 8 caracteres, un numero, una letra mayuscula y una minuscula." : {
 
     },
+    "Estado" : {
+
+    },
+    "Estado: " : {
+
+    },
+    "Estado: Oculto" : {
+
+    },
+    "Estado: Visible" : {
+
+    },
+    "Este vehículo ya está alquilado, selecciona otro vehículo." : {
+
+    },
+    "Éxito" : {
+
+    },
     "Expira: %@" : {
 
     },
-    "Favoritos" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favorites"
-          }
-        }
-      }
+    "Expirado" : {
+
     },
     "Fecha de caducidad" : {
 
@@ -344,7 +579,25 @@
     "Fecha de compilación" : {
 
     },
+    "Fecha de entrega" : {
+
+    },
+    "Fecha de envio" : {
+
+    },
     "Fecha de expedición" : {
+
+    },
+    "Fecha de fin" : {
+
+    },
+    "Fecha de inicio" : {
+
+    },
+    "Fecha de llegada" : {
+
+    },
+    "Fecha de matriculación" : {
 
     },
     "Fecha de nacimiento" : {
@@ -353,16 +606,40 @@
     "Fecha de nacimiento:" : {
 
     },
+    "Fecha de salida" : {
+
+    },
+    "Fecha y hora" : {
+
+    },
     "Finalizar" : {
 
     },
     "Finalizar alquiler" : {
 
     },
+    "Finalizar contrato" : {
+
+    },
+    "Finalizar viaje" : {
+
+    },
     "Gasto" : {
 
     },
+    "Google Maps" : {
+
+    },
+    "Guardando cambios..." : {
+
+    },
+    "Guardar" : {
+
+    },
     "Guardar cambios" : {
+
+    },
+    "Ha ocurrido un error al alquilar el vehículo, inténtalo de nuevo más tarde." : {
 
     },
     "Ha ocurrido un error desconocido creando la cuenta. Contacte con un Administrador." : {
@@ -374,22 +651,64 @@
     "Ha ocurrido un error desconocido." : {
 
     },
-    "Hello, Chaffeur!" : {
+    "Ha ocurrido un error inesperado. Por favor, inténtelo de nuevo." : {
 
     },
-    "Hello, Fleet Driver!" : {
+    "Historial" : {
 
     },
-    "Hello, World!" : {
+    "Historial de trayectos" : {
+
+    },
+    "Historial del saldo" : {
+
+    },
+    "Hola" : {
 
     },
     "Hola mundo" : {
 
     },
-    "Información de desarrollador" : {
+    "Hora de fin" : {
+
+    },
+    "Hora de inicio" : {
+
+    },
+    "Id" : {
+
+    },
+    "Identificación" : {
+
+    },
+    "Identificador" : {
+
+    },
+    "Ignorar" : {
+
+    },
+    "Imagen" : {
+
+    },
+    "Información" : {
+
+    },
+    "Información de envio" : {
 
     },
     "Información de la aplicación" : {
+
+    },
+    "Información de la flota" : {
+
+    },
+    "Información del conductor" : {
+
+    },
+    "Información del paquete" : {
+
+    },
+    "Información del vehículo" : {
 
     },
     "Información personal" : {
@@ -408,16 +727,11 @@
         }
       }
     },
-    "Inicio" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home"
-          }
-        }
-      }
+    "Insertar código de envio" : {
+
+    },
+    "Introduce tu destino" : {
+
     },
     "Jose Antonio Ponce Piñero" : {
 
@@ -426,6 +740,12 @@
 
     },
     "La contraseña se ha cambiado correctamente." : {
+
+    },
+    "La distancia entre las direcciones es demasiado pequeña o grande." : {
+
+    },
+    "La matrícula ya existe en el sistema." : {
 
     },
     "La privacidad de nuestros usuarios es muy importante para nosotros. Por ello, en esta sección te explicamos cómo tratamos tus datos personales." : {
@@ -437,22 +757,62 @@
     "Las contraseñas no coinciden." : {
 
     },
+    "Lista de asignaciones" : {
+
+    },
+    "Lista de Asignaciones" : {
+
+    },
+    "Lista de conductores" : {
+
+    },
+    "Lista de Contratos" : {
+
+    },
+    "Lista de envios" : {
+
+    },
+    "Lista de Envios" : {
+
+    },
+    "Lista de flotas" : {
+
+    },
+    "Lista de Usuarios" : {
+
+    },
+    "Lista de vehiculos" : {
+
+    },
+    "Listar contratos" : {
+
+    },
+    "Listar contratos de choffer" : {
+
+    },
+    "Listar todas las flotas" : {
+
+    },
+    "Llamar" : {
+
+    },
+    "Localización" : {
+
+    },
+    "Mapa de la localización" : {
+
+    },
+    "Marca" : {
+
+    },
     "Matrícula" : {
 
     },
     "Matrícula: %@" : {
 
     },
-    "Mi Perfil" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My Profile"
-          }
-        }
-      }
+    "Mi flota" : {
+
     },
     "Mi saldo" : {
 
@@ -460,18 +820,25 @@
     "Mis documentos" : {
 
     },
-    "Mis Favoritos" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My Favourites"
-          }
-        }
-      }
+    "Mis flotas" : {
+
     },
     "Mis trayectos" : {
+
+    },
+    "Modelo" : {
+
+    },
+    "Modificar" : {
+
+    },
+    "Modificar balance" : {
+
+    },
+    "Modificar vehículo" : {
+
+    },
+    "Modo de ubicación" : {
 
     },
     "No" : {
@@ -480,10 +847,13 @@
     "No compartimos tus datos con terceros." : {
 
     },
-    "No hay contratos de conductor" : {
+    "No has especificado un vehículo" : {
 
     },
     "No hay movimientos" : {
+
+    },
+    "No puedes viajar a la misma dirección en la que te encuentras." : {
 
     },
     "No se ha introducido un E-Mail válido, comprueba de nuevo." : {
@@ -492,7 +862,22 @@
     "No se ha podido cambiar la contraseña, por favor intentalo de nuevo más tarde." : {
 
     },
+    "No se ha podido crear el viaje, inténtalo de nuevo." : {
+
+    },
+    "No se ha podido obtener tu ubicación actual, revisa los permisos de localización." : {
+
+    },
     "No tienes ningún alquiler activo." : {
+
+    },
+    "No tienes ningún contrato aún." : {
+
+    },
+    "No tienes suficiente saldo para alquilar este vehículo, recarga tu saldo para poder alquilarlo." : {
+
+    },
+    "No tienes un carnet de conducir registrado, debes registrar un carnet de conducir para poder alquilar un vehiculo." : {
 
     },
     "No tienes viajes" : {
@@ -501,13 +886,55 @@
     "Nombre" : {
 
     },
+    "Nombre completo" : {
+
+    },
+    "Nombre de la flota" : {
+
+    },
     "Nueva contraseña" : {
+
+    },
+    "Numero de Bastidor" : {
+
+    },
+    "Número de bastidor" : {
 
     },
     "Número de permiso" : {
 
     },
+    "Numero de telefono:" : {
+
+    },
+    "Oculto" : {
+
+    },
+    "Oferta de trayecto" : {
+
+    },
     "OK" : {
+
+    },
+    "Origen" : {
+
+    },
+    "Paquetes" : {
+
+    },
+    "Para comenzar a conducir, añade un vehículo a tu perfil, por favor." : {
+
+    },
+    "Pendiente de devolver" : {
+
+    },
+    "Pendiente de entregar" : {
+
+    },
+    "Pendiente de recoger" : {
+
+    },
+    "Perdido" : {
 
     },
     "Perfil" : {
@@ -520,13 +947,28 @@
         }
       }
     },
+    "Permisos de administrador" : {
+
+    },
     "Permisos de conducir" : {
+
+    },
+    "Peso: %@ kg" : {
 
     },
     "Política de privacidad" : {
 
     },
+    "Por favor, rellene todos los campos" : {
+
+    },
+    "Precio" : {
+
+    },
     "Precio estimado" : {
+
+    },
+    "Precio por hora" : {
 
     },
     "Precio/H: %.2f €" : {
@@ -544,10 +986,22 @@
     "Repetir nueva contraseña" : {
 
     },
-    "Rol" : {
+    "Retrasado" : {
 
     },
     "Roles" : {
+
+    },
+    "Ruta a la salida" : {
+
+    },
+    "Ruta al destino" : {
+
+    },
+    "Salario" : {
+
+    },
+    "Salario: %@ €" : {
 
     },
     "Saldo" : {
@@ -559,19 +1013,34 @@
     "Salida" : {
 
     },
+    "Salud de la app" : {
+
+    },
     "Se debe rellenar la contraseña y la confirmación de la contraseña." : {
+
+    },
+    "Selecciona una aplicación para iniciar la navegación" : {
+
+    },
+    "Seleccionar Usuario" : {
 
     },
     "Sí" : {
 
     },
-    "Start updating location" : {
+    "Si cancelas el viaje ahora, no se te cobrará una penalización." : {
 
     },
-    "Stop updating location" : {
+    "Sobre la aplicación" : {
 
     },
     "Teléfono" : {
+
+    },
+    "Telefono: %@" : {
+
+    },
+    "Terminos y condiciones" : {
 
     },
     "Términos y condiciones" : {
@@ -583,10 +1052,22 @@
     "Test" : {
 
     },
+    "Tiempo estimado de llegada" : {
+
+    },
     "Tiempo transcurrido" : {
 
     },
+    "Tienes %@ segundos para aceptar el trayecto" : {
+
+    },
     "Tipo de permiso" : {
+
+    },
+    "Tipo de vehículo" : {
+
+    },
+    "Tipo de vehículos" : {
 
     },
     "Tipo: %@" : {
@@ -601,64 +1082,49 @@
     "Tu cuenta ha sido registrada, vuelve al la pantalla anterior para iniciar sesión" : {
 
     },
-    "Tu DNI es %@ y tu fecha de nacimiento %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your DNI is %@ and your birthdate %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tu DNI es %1$@ y tu fecha de nacimiento %2$@"
-          }
-        }
-      }
-    },
-    "Tu email es: %@ y tu id es %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your mail is %@ and your id %2$lld"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tu email es: %1$@ y tu id es %2$lld"
-          }
-        }
-      }
-    },
     "Tus datos están protegidos mediante cifrado y medidas de seguridad." : {
 
     },
     "Últimos movimientos" : {
 
     },
+    "URL de la imagen" : {
+
+    },
+    "Usuario" : {
+
+    },
+    "Usuario no seleccionado" : {
+
+    },
     "Utilizamos tus datos para autenticarte en la aplicación y para proporcionarte un servicio personalizado." : {
 
     },
-    "Vehiculos" : {
+    "Validez" : {
+
+    },
+    "Vehículo" : {
+
+    },
+    "Vehículo creado correctamente" : {
+
+    },
+    "Ver ruta al destino" : {
+
+    },
+    "Ver ruta de recogida" : {
 
     },
     "Versión" : {
 
     },
-    "Viaje desde %@ a %@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Viaje desde %1$@ a %2$@"
-          }
-        }
-      }
-    },
     "Viajes" : {
+
+    },
+    "Waze" : {
+
+    },
+    "Ya tienes un coche alquilado, debes devolverlo para poder alquilar otro." : {
 
     }
   },

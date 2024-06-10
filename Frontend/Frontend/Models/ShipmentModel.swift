@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShipmentModel: Hashable, Decodable, Identifiable {
+struct ShipmentModel: Hashable, Decodable, Identifiable, Encodable {
     
     var id: Int
     var sourceAddress: String
@@ -18,7 +18,7 @@ struct ShipmentModel: Hashable, Decodable, Identifiable {
     var actualStatus: StatusHistory.StatusType
     var statusHistory: [StatusHistory]
     
-    struct StatusHistory: Hashable, Decodable {
+    struct StatusHistory: Hashable, Decodable, Identifiable, Encodable {
         let id: Int
         let updateDate: Date
         let status: StatusType
@@ -35,18 +35,63 @@ struct ShipmentModel: Hashable, Decodable, Identifiable {
             case DAMAGED = "DAMAGED"
             case DELAYED = "DELAYED"
             case PENDING_TO_RETURN = "PENDING_TO_RETURN"
+            
+            var userFriendlyName: String {
+                    switch self {
+                    case .HIDDEN:
+                        return String(localized: "Oculto")
+                    case .DELIVERED:
+                        return String(localized: "Entregado")
+                    case .PENDING_TO_PICK_UP:
+                        return String(localized: "Pendiente de recoger")
+                    case .IN_TRANSIT:
+                        return String(localized: "En tránsito")
+                    case .PENDING_TO_DELIVER:
+                        return String(localized: "Pendiente de entregar")
+                    case .RETURNED:
+                        return String(localized: "Devuelto")
+                    case .CANCELED:
+                        return String(localized: "Cancelado")
+                    case .LOST:
+                        return String(localized: "Perdido")
+                    case .DAMAGED:
+                        return String(localized: "Dañado")
+                    case .DELAYED:
+                        return String(localized: "Retrasado")
+                    case .PENDING_TO_RETURN:
+                        return String(localized: "Pendiente de devolver")
+                    }
+                }
         }
         
         let description: String?
     }
     
     var parcels: [Parcel]
-    struct Parcel: Hashable, Decodable {
+    struct Parcel: Hashable, Decodable, Identifiable, Encodable {
         let id: Int
         let content: String
         let quantity: Int
         let weight: Double
     }
     
-    var driver: UserModel?
+    var driver: ShipmentDriver?
+    struct ShipmentDriver: Hashable, Decodable, Identifiable, Encodable {
+        let id: Int
+        let firstName: String
+        let lastName: String
+        let birthDate: Date
+        let dni: String
+        let phone: String?
+        
+        var age: Int {
+            let calendar = Calendar.current
+            let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+            return ageComponents.year!
+        }
+        
+        var fullName: String {
+            return "\(firstName) \(lastName)"
+        }
+    }
 }

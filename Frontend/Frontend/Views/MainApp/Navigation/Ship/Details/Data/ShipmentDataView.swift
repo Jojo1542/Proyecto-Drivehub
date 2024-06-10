@@ -21,6 +21,7 @@ struct ShipmentDataView: View {
                 ShipmentMapView(shipment: shipment, currentLocation: currentLocation!)
                     .frame(height: 200)
             }
+            .listRowInsets(EdgeInsets())
         }
         
         Section(header: Text("Dirección de envio")) {
@@ -49,7 +50,17 @@ struct ShipmentDataView: View {
             .padding()
         }
         
-        Section(header: Text("Datos de fecha de salida y llegada")) {
+        Section(header: Text("Datos del envío")) {
+            HStack {
+                Text("Estado")
+                    .font(.headline)
+                Spacer()
+                Text(shipment.actualStatus.userFriendlyName)
+                    .font(.subheadline)
+                    .bold()
+                    .foregroundColor(Color.accentColor)
+            }
+            
             HStack {
                 Text("Fecha de salida")
                     .font(.headline)

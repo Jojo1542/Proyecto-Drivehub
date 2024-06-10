@@ -85,7 +85,9 @@ struct ChangePasswordView: View {
                             showAlert(title: "Error", description: String(localized: "No se ha podido cambiar la contraseña, por favor intentalo de nuevo más tarde."))
                     }
                     
-                    self.loading = false;
+                    withAnimation(.spring) {
+                        self.loading = false;
+                    }
                 }
             } else {
                 showAlert(title: "Error", description: String(localized: "Las contraseñas no coinciden."))

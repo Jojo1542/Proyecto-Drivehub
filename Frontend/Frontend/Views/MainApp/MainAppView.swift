@@ -34,9 +34,11 @@ struct MainAppView: View {
                     Image(systemName: "power")
                 })
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top, 7)
+            .padding(.bottom, 7)
             
-            if (authViewModel.currentUser?.dni == nil) {
+            if (authViewModel.currentUser?.isValidated != true) {
                 RequieredFieldsView()
                     .transition(.slide)
             } else {

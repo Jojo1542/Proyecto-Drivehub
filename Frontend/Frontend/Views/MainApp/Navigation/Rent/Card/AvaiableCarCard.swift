@@ -91,22 +91,26 @@ struct AvaiableCarCard: View {
                 case .failure(let error):
                 switch error {
                     case .USER_CANT_AFFORD_RENT:
-                        showDialog(title: "Error", description: "No tienes suficiente saldo para alquilar este vehículo, recarga tu saldo para poder alquilarlo.")
+                        showDialog(title: "Error", description: String(localized: "No tienes suficiente saldo para alquilar este vehículo, recarga tu saldo para poder alquilarlo."))
+                        break;
                     case .USER_DOES_NOT_HAVE_LICENSE:
-                        showDialog(title: "Error", description: "No tienes un carnet de conducir registrado, debes registrar un carnet de conducir para poder alquilar un vehiculo.")
+                    showDialog(title: "Error", description: String(localized: "No tienes un carnet de conducir registrado, debes registrar un carnet de conducir para poder alquilar un vehiculo."))
+                        break;
                     case .USER_ALREADY_HAS_RENT:
-                        showDialog(title: "Error", description: "Ya tienes un coche alquilado, debes devolverlo para poder alquilar otro.")
+                    showDialog(title: "Error", description: String(localized:"Ya tienes un coche alquilado, debes devolverlo para poder alquilar otro."))
+                    break;
                     case .VEHICLE_NOT_AVAILABLE:
-                        showDialog(title: "Error", description: "Este vehículo ya está alquilado, selecciona otro vehículo.")
+                    showDialog(title: "Error", description: String(localized:"Este vehículo ya está alquilado, selecciona otro vehículo."))
+                    break;
                     default:
-                        showDialog(title: "Error", description: "Ha ocurrido un error al alquilar el vehículo, inténtalo de nuevo más tarde.")
+                    showDialog(title: "Error", description: String(localized:"Ha ocurrido un error al alquilar el vehículo, inténtalo de nuevo más tarde."))
                 }
             }
         }
     }
 }
 
-#Preview {
+/*#Preview {
     Group {
         // Titulo de la vista
         Text("Vehiculos")
@@ -121,7 +125,8 @@ struct AvaiableCarCard: View {
                 color: "Rojo",
                 fechaMatriculacion: Date.now.addingTimeInterval(-120000),
                 imageUrl: "https://www.surmocion.com/wp-content/uploads/2023/04/SEAT-Ibiza-estática-frontal-1.jpg",
-                precioHora: 10.0
+                precioHora: 10.0,
+                available: true
             ))
             AvaiableCarCard(rentCar: RentCarModel(
                 id: 2,
@@ -132,8 +137,9 @@ struct AvaiableCarCard: View {
                 color: "Azul",
                 fechaMatriculacion: Date.now.addingTimeInterval(-120000),
                 imageUrl: "https://www.renaultretailgroup.es/content/new_gama_clio/galeria_modelo/R-DAM_1021889.jpg",
-                precioHora: 15.0
+                precioHora: 15.0,
+                available: true
             ))
         }
     }
-}
+}*/

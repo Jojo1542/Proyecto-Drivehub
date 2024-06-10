@@ -10,18 +10,19 @@ import CoreLocation
 
 struct ShipmentDetailsView: View {
     
-    var shipment: ShipmentModel;
+    @Binding var shipment: ShipmentModel;
     
     var body: some View {
         List {
             ShipmentDataView(shipment: shipment)
+            ShipmentParcelListView(shipment: shipment)
+            
+            if (shipment.driver != nil) {
+                ShipmentDriverInfoView(driver: shipment.driver!)
+            }
+            
+            ShipmentHistoryListView(shipment: shipment)
         }
-        .navigationTitle("Detalles del envio \(shipment.id)")
-    }
-}
-
-#Preview {
-    NavigationView {
-        ShipmentDetailsView(shipment: PreviewHelper.exampleShipment)
+        .navigationTitle("Detalles del envio \"\(shipment.id)\"")
     }
 }
