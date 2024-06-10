@@ -94,4 +94,8 @@ public class Shipment extends AbstractPersistable<Long> {
     public boolean isNew() {
         return super.isNew();
     }
+
+    public boolean isNotCompleted() {
+        return actualStatus != ShipmentStatusType.DELIVERED && actualStatus != ShipmentStatusType.RETURNED;
+    }
 }

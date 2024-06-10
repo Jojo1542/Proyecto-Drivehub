@@ -4,6 +4,16 @@
       "name": "jwt.secret",
       "type": "java.lang.String",
       "description": "Configuración de la clave secreta para la generación de tokens JWT."
+    },
+    {
+      "name": "google.api.key",
+      "type": "java.lang.String",
+      "description": "Configuración de la clave de la API de Google Maps para calcular el precio de los trayectos."
+    },
+    {
+      "name": "price.per.km",
+      "type": "java.lang.String",
+      "description": "Precio por kilómetro de los trayectos."
     }
   ]
 }

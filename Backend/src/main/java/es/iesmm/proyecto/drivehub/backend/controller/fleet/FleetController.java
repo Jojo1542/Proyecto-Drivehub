@@ -54,7 +54,7 @@ public class FleetController {
 
     @GetMapping("/own")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('DRIVER_FLEET', 'DRIVER_CHAUFFEUR')")
+    @PreAuthorize("hasRole('DRIVER_FLEET')")
     public ResponseEntity<Fleet> getFleetsThatHasAccess(@AuthenticationPrincipal UserDetails userDetails) {
         return fleetService.findByDriver((UserModel) userDetails)
                 .map(ResponseEntity::ok)

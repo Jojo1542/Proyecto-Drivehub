@@ -2,6 +2,7 @@ package es.iesmm.proyecto.drivehub.backend.controller.vehicle;
 
 import es.iesmm.proyecto.drivehub.backend.model.rent.vehicle.RentCar;
 import es.iesmm.proyecto.drivehub.backend.model.ship.Shipment;
+import es.iesmm.proyecto.drivehub.backend.model.user.location.UserLocation;
 import es.iesmm.proyecto.drivehub.backend.service.vehicle.VehicleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,8 +10,11 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/vehicles")
@@ -45,6 +49,8 @@ public class VehicleController {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage())).build();
         } catch (IllegalStateException e) {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
+        } catch (Exception e) {
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage())).build();
         }
     }
 
@@ -61,14 +67,14 @@ public class VehicleController {
     @ResponseBody
     @PreAuthorize("hasRole('ADMIN') and hasAuthority('DELETE_VEHICLE')")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
+
         try {
             vehicleService.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage())).build();
         } catch (IllegalStateException e) {
             return ResponseEntity.of(ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage())).build();
         }
     }
-
 }

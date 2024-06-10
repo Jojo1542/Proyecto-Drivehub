@@ -3,6 +3,8 @@ package es.iesmm.proyecto.drivehub.backend.model.user;
 import com.fasterxml.jackson.annotation.*;
 import es.iesmm.proyecto.drivehub.backend.model.rent.history.UserRent;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.balance.BalanceChange;
+import es.iesmm.proyecto.drivehub.backend.model.user.balance.type.BalanceChangeType;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.DriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.chauffeur.ChauffeurDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
@@ -12,7 +14,6 @@ import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.util.converter.RoleListConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -66,7 +67,10 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	COLUMNAS OPCIONALES
 	 */
 	private Date birthDate;
-	private double saldo;
+
+	@Column(name = "saldo")
+	@ColumnDefault("0")
+	private double balance;
 	private String phone;
 
 	// Validar DNI con un patrón
@@ -86,9 +90,13 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	@JoinColumn(name = "driver_data_id", referencedColumnName = "id")
 	private DriverModelData driverData;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("user")
-	private Set<DriverLicense> driverLicense = new HashSet<>();
+	private Set<DriverLicense> driverLicenses = new HashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private List<BalanceChange> balanceHistory = new LinkedList<>();
 	
 	public UserModel(String email, String password, String firstName, String lastName) {
 		this.email = email;
@@ -110,19 +118,33 @@ public class UserModel extends AbstractPersistable<Long> implements UserDetails 
 	}
 
 	public boolean hasRegisteredLicenseType(DriverLicenseType type) {
-		return driverLicense.stream().anyMatch(dl -> dl.getType().equals(type));
+		return driverLicenses.stream().anyMatch(dl -> dl.getType().equals(type));
 	}
 
 	public boolean canAfford(double amount) {
-		return saldo >= amount;
+		return balance >= amount;
 	}
 
-	public void charge(double amount) {
-		saldo += amount;
+	public void deposit(double amount) {
+		balance += amount;
+
+		balanceHistory.add(BalanceChange.builder()
+				.user(this)
+				.amount(amount)
+				.type(BalanceChangeType.DEPOSIT)
+				.registerDate(new Date())
+				.build());
 	}
 
 	public void withdraw(double amount) {
-		saldo -= amount;
+		balance -= amount;
+
+		balanceHistory.add(BalanceChange.builder()
+				.user(this)
+				.amount(amount)
+				.type(BalanceChangeType.WITHDRAW)
+				.registerDate(new Date())
+				.build());
 	}
 
 	/*

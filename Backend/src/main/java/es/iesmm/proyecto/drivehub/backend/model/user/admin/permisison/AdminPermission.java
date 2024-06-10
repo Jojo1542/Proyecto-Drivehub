@@ -12,6 +12,7 @@ public enum AdminPermission {
     CREATE_SHIPMENT,
     UPDATE_SHIPMENT,
     DELETE_SHIPMENT,
+    LIST_ALL_SHIPMENTS,
     LIST_ALL_RENTS,
     LIST_ALL_VEHICLES,
     GET_VEHICLE,
@@ -23,7 +24,9 @@ public enum AdminPermission {
     CREATE_GENERAL_CONTRACT,
     GET_GENERAL_CONTRACT,
     UPDATE_GENERAL_CONTRACT,
-    DELETE_GENERAL_CONTRACT;
+    DELETE_GENERAL_CONTRACT,
+    LIST_RENTS_BY_USER,
+    LIST_ALL_TRIPS;
 
     public String getAuthorityName() {
         return name();

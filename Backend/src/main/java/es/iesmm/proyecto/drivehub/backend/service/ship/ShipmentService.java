@@ -20,7 +20,12 @@ public interface ShipmentService {
 
     List<Shipment> findByDriver(UserModel user);
 
+    List<Shipment> findByFleet(Long fleetId);
+
     Shipment save(Shipment shipment);
 
     Shipment update(Shipment shipment, Shipment newDetails);
+
+    List<Shipment> findAll();
+
 }

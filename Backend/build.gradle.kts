@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.2.4"
+	id("org.springframework.boot") version "3.3.0"
 	id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -26,6 +26,7 @@ extra["sentryVersion"] = "7.3.0"
 dependencies {
 	// Spring Boot packs
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
     //implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -40,8 +41,9 @@ dependencies {
 	implementation("org.springframework.security:spring-security-config")
 	implementation("org.springframework.security:spring-security-web")
 
-	// Spring Actuator
+	// Spring Addons de Spring
 	//implementation("org.springframework:spring-jcl")
+	implementation("org.springframework:spring-context")
 
 	// Addons de Hibernate
 	implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
@@ -60,11 +62,12 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 
 	// Database drivers
-	runtimeOnly("com.oracle.database.jdbc:ojdbc11")
+	runtimeOnly("com.oracle.database.jdbc:ojdbc11:23.4.0.24.05")
 
 	// Librerías utiles
 	implementation("org.apache.commons:commons-lang3:3.14.0")
 	implementation("com.google.guava:guava:33.1.0-jre")
+	implementation("com.google.maps:google-maps-services:2.2.0")
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

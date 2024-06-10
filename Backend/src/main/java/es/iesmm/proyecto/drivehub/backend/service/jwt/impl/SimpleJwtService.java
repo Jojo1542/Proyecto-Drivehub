@@ -22,7 +22,8 @@ public class SimpleJwtService implements JwtService {
     private String jwtSecret;
     private SecretKey secretKey;
 
-    private final static long TIME_TO_EXPIRE = TimeUnit.HOURS.toMillis(1);
+    // Cambiar a 1h de nuevo
+    private final static long TIME_TO_EXPIRE = TimeUnit.HOURS.toMillis(24);
 
     @PostConstruct
     private void generateKey() {

@@ -1,18 +1,19 @@
 package es.iesmm.proyecto.drivehub.backend.service.user.impl;
 
+import es.iesmm.proyecto.drivehub.backend.model.http.request.user.DriverModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.http.request.user.UserModificationRequest;
 import es.iesmm.proyecto.drivehub.backend.model.user.UserModel;
 import es.iesmm.proyecto.drivehub.backend.model.user.admin.AdminModelData;
+import es.iesmm.proyecto.drivehub.backend.model.user.admin.permisison.AdminPermission;
+import es.iesmm.proyecto.drivehub.backend.model.user.balance.type.BalanceChangeType;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.fleet.FleetDriverModelData;
 import es.iesmm.proyecto.drivehub.backend.model.user.driver.license.DriverLicense;
 import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 import es.iesmm.proyecto.drivehub.backend.repository.UserRepository;
 import es.iesmm.proyecto.drivehub.backend.service.user.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -114,6 +115,51 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
+    public void updateDriverByRequest(UserModel user, DriverModificationRequest request) {
+        request.applyToUser(user);
+        save(user);
+    }
+
+    @Override
+    public void updateAdminPermissions(Long id, List<String> permissions) {
+        UserModel user = findById(id).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
+
+        // Comprobar si el usuario es administrador, si no lo es, lanzar una excepción
+        if (user.getAdminData() == null) {
+            throw new IllegalStateException("USER_IS_NOT_ADMIN");
+        }
+
+        // Obtener los datos de administrador del usuario
+        AdminModelData adminData = user.getAdminData();
+
+        // Convertir los permisos de String a AdminPermission
+        List<AdminPermission> adminPermissions = permissions.stream()
+                .map(AdminPermission::valueOf)
+                .toList();
+
+        // Establecer los permisos generales del administrador
+        adminData.setGeneralPermissions(adminPermissions);
+        save(user); // Guardar los cambios en la base de datos
+    }
+
+    @Override
+    public void updateUserBalance(Long id, double amount, BalanceChangeType type) {
+        UserModel user = findById(id).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
+
+        if (type == BalanceChangeType.DEPOSIT) {
+            user.deposit(amount);
+        } else if (type == BalanceChangeType.WITHDRAW) {
+            if (user.canAfford(amount)) {
+                user.withdraw(amount);
+            } else {
+                throw new IllegalStateException("USER_CANNOT_AFFORD_AMOUNT");
+            }
+        }
+
+        save(user);
+    }
+
+    @Override
     public void updateUserByAdmin(Long ip, UserModel request) {
         if (findById(ip).isPresent()) {
             save(request);
@@ -154,27 +200,29 @@ public class SimpleUserService implements UserService {
     public List<DriverLicense> findDriverLicensesByDriver(Long driverId) {
         UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
 
-        return user.getDriverLicense().stream().toList();
+        return user.getDriverLicenses().stream().toList();
     }
 
     @Override
     public void addDriverLicenseToDriver(Long driverId, DriverLicense license) {
-        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
+        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
-        user.getDriverLicense().add(license);
+        license.setUser(user);
+        user.getDriverLicenses().add(license);
+
         save(user);
     }
 
     @Override
     public void removeDriverLicenseFromDriver(Long driverId, String licenseId) {
-        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
+        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
-        DriverLicense license = user.getDriverLicense().stream()
+        DriverLicense license = user.getDriverLicenses().stream()
                 .filter(dl -> dl.getLicenseNumber().equals(licenseId))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("El permiso de conducción no existe"));
+                .orElseThrow(() -> new IllegalStateException("LICENSE_NOT_FOUND"));
 
-        user.getDriverLicense().remove(license);
+        user.getDriverLicenses().remove(license);
         save(user);
     }
 }
