@@ -308,7 +308,7 @@ class PreviewHelper {
     
     static var exampleDriverTrip: TripModel.DriverInfo {
         return TripModel.DriverInfo(
-            id: 1, firstName: "Nombre", lastName: "Apellidos", dni: "30280812R", birthDate: Date(timeIntervalSince1970: 1716146421)
+            id: 1, firstName: "Nombre", lastName: "Apellidos", dni: "11111111A", birthDate: Date(timeIntervalSince1970: 1716146421)
         )
     }
     
