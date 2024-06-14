@@ -61,9 +61,4 @@ public class RouteSecurityConfig {
                 .build();
     }
 
-    /*@Bean
-    public HttpExchangeRepository httpTraceRepository() {
-        return new InMemoryHttpExchangeRepository();
-    }*/
-
 }
