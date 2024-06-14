@@ -66,6 +66,7 @@ public class GoogleMapsGeoCodeService implements GeoCodeService {
         String result = null;
 
         try {
+            // Obtener los resultados de la API de Google Maps
             GeocodingResult[] geocodingResults = GeocodingApi.reverseGeocode(
                     apiContext, new LatLng(latitude, longitude)
             ).await();
@@ -86,6 +87,7 @@ public class GoogleMapsGeoCodeService implements GeoCodeService {
         LatLng result = null;
 
         try {
+            // Obtener los resultados de la API de Google Maps
             GeocodingResult[] geocodingResults = GeocodingApi.geocode(
                     apiContext, address
             ).await();

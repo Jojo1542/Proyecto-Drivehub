@@ -29,6 +29,9 @@ public class SimpleRentService implements RentService {
     private final RentRepository rentRepository;
     private final UserRepository userRepository;
 
+    /*
+     * Tipos de licencia de conducir válidos para alquilar un vehículo
+     */
     private final List<DriverLicenseType> validLicenseTypes = List.of(
             DriverLicenseType.B,
             DriverLicenseType.BE,
@@ -49,11 +52,13 @@ public class SimpleRentService implements RentService {
         Preconditions.checkState(!user.hasRentActive(), "USER_ALREADY_HAS_RENT");
         Preconditions.checkState(hasValidDriverLicense(user), "USER_DOES_NOT_HAVE_LICENSE");
 
+        // OBtener el vehículo por ID, si no se encuentra, lanzar excepción
         RentCar vehicle = vehicleService.findById(vehicleId).orElseThrow(() -> new NullPointerException("VEHICLE_NOT_FOUND"));
 
         Preconditions.checkState(vehicle.isAvailable(), "VEHICLE_NOT_AVAILABLE");
         Preconditions.checkState(user.canAfford(vehicle.getPrecioHora()), "USER_CANT_AFFORD_RENT");
 
+        // Crear el alquiler y asignarle el usuario y el vehículo
         UserRent userRent = UserRent
                 .builder()
                 .user(user)
@@ -62,12 +67,15 @@ public class SimpleRentService implements RentService {
                 .startTime(Timestamp.from(Instant.now()))
                 .build();
 
+        // Generar la clave compuesta para el alquiler
         userRent.generateKey();
 
+        // Añadir el alquiler al usuario
         user.getUserRent().add(
                 userRent
         );
 
+        // Guardar el alquiler
         rentRepository.save(userRent);
 
         return vehicle;
@@ -80,6 +88,7 @@ public class SimpleRentService implements RentService {
         Preconditions.checkNotNull(user, "User cannot be null");
         Preconditions.checkState(user.hasRentActive(), "USER_DOES_NOT_HAVE_ACTIVE_RENT");
 
+        // Obtener el vehículo por ID, si no se encuentra, lanzar excepción
         Optional<RentCar> optionalVehicle = vehicleService.findById(vehicleId);
         RentCar vehicle = optionalVehicle.orElseThrow(() -> new NullPointerException("VEHICLE_NOT_FOUND"));
 
@@ -94,7 +103,7 @@ public class SimpleRentService implements RentService {
         userRent.setEndTime(Timestamp.from(Instant.now()));
 
         // Get the hours the vehicle was rented
-        double hours = Math.ceil((userRent.getEndTime().getTime() - userRent.getStartTime().getTime()) / 3600000.0);
+        double hours = (userRent.getEndTime().getTime() - userRent.getStartTime().getTime()) / 3600000.0;
         userRent.setFinalPrice(vehicle.getPrecioHora() * hours);
 
         // Save the rent so the final price is updated
@@ -117,6 +126,7 @@ public class SimpleRentService implements RentService {
     @Override
     public Optional<UserRent> findActiveRentBy(UserModel userDetails) {
         return userDetails.getUserRent().stream()
+                // Filtrar por alquileres activos
                 .filter(UserRent::isActive)
                 .findFirst();
     }

@@ -60,6 +60,7 @@ public class SimpleVehicleService implements VehicleService {
 
         RentCar vehicleToUpdate = vehicleOptional.get();
 
+        // Actualizar los campos del vehículo
         vehicleToUpdate.setBrand(vehicle.getBrand());
         vehicleToUpdate.setModel(vehicle.getModel());
         vehicleToUpdate.setColor(vehicle.getColor());

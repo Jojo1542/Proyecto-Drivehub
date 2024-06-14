@@ -61,6 +61,7 @@ public class SimpleTripService implements TripService {
 
         String randomId = RandomString.make(10);
 
+        // Se calcula el precio del trayecto redondeado a 2 decimales
         double price = distance * PRICE_PER_KM;
         double roundedPrice = Math.round(price * 100.0) / 100.0;
 
@@ -87,10 +88,6 @@ public class SimpleTripService implements TripService {
         return Optional.ofNullable(redisRepository.opsForValue().get(KEY_PREFIX + draftId));
     }
 
-    /*
-     * TODO: Implement the following methods:
-     */
-
     @Override
     public TripModel createTrip(UserModel user, TripDraftModel tripDraftModel, boolean sendPackage) {
         Preconditions.checkArgument(tripDraftModel.getDistance() > 0, "INVALID_DISTANCE_BETWEEN");
@@ -98,7 +95,7 @@ public class SimpleTripService implements TripService {
         Preconditions.checkState(user.canAfford(tripDraftModel.getPrice()), "INSUFFICIENT_FUNDS");
         Preconditions.checkState(findActiveByPassenger(user.getId()).isEmpty(), "ACTIVE_TRIP_EXISTS");
 
-        // Convertir las coordenadas a String
+        // Convertir las coordenadas a String para guardarlas en la base de datos
         String originCoordinates = tripDraftModel.getOriginCoordinates().lat + ";" + tripDraftModel.getOriginCoordinates().lng;
         String destinationCoordinates = tripDraftModel.getDestinationCoordinates().lat + ";" + tripDraftModel.getDestinationCoordinates().lng;
 
@@ -230,6 +227,7 @@ public class SimpleTripService implements TripService {
     }
 
     private void broadcastTripStatus(TripModel tripModel) {
+        // Si existe un emisor para el trayecto, enviar un mensaje con el estado actualizado
         if (tripStatusEmitters.containsKey(tripModel.getId())) {
             SseEmitter emitter = tripStatusEmitters.get(tripModel.getId());
 
@@ -274,7 +272,7 @@ public class SimpleTripService implements TripService {
                 .filter(driver -> findActiveByDriver(driver.getId()).isEmpty())
                 // Calcula la distancia de cada conductor al origen del trayecto y los mete en un mapa <Conductor, Distancia>
                 .map(driver -> new AbstractMap.SimpleEntry<>(driver, calculateDistanceToOrigin(driver, tripModel)))
-                // Filtra los conductores que no tienen una distancia valida o que no esten dentro de su rango de preferencia
+                // Filtra los conductores que no tienen una distancia valida o que tengan MAX_VALUE, que se consideran descartados
                 .filter(entry -> entry.getValue() < Double.MAX_VALUE)
                 // Ordena por la distancia
                 .sorted(Comparator.comparingDouble(AbstractMap.SimpleEntry::getValue))
@@ -309,8 +307,10 @@ public class SimpleTripService implements TripService {
                     log.error("Error while waiting for driver to accept the trip", e);
                 }
 
+                // Se actualiza el estado del trayecto para comprobar si el conductor ha aceptado el trayecto
                 TripStatus status = tripRepository.findById(tripModel.getId()).map(TripModel::getStatus).orElse(null);
 
+                // Si el conductor ha aceptado el trayecto, se sale del bucle
                 if (status != TripStatus.PENDING) {
                     driverAssigned = true;
                 }
@@ -411,16 +411,19 @@ public class SimpleTripService implements TripService {
 
         double distance = Double.MAX_VALUE;
 
+        // Si el conductor tiene una localización, se calcula la distancia entre su localización y el origen del trayecto
         if (driverLocation.isPresent()) {
+            // Se obtiene la dirección del conductor a partir de sus coordenadas
             String driverAddress = geoCodeService.getAddressFromCoordinates(
                     driverLocation.get().latitude(),
                     driverLocation.get().longitude()
             );
 
+            // Se calcula la distancia entre la dirección del conductor y el origen del trayecto
             distance = geoCodeService.calculateDistance(driverAddress, tripModel.getOriginAddress(), DistanceUnit.KILOMETERS);
 
+            // Si la distancia es mayor a la preferida por el conductor, se descarta
             ChauffeurDriverModelData driverData = (ChauffeurDriverModelData) driver.getDriverData();
-
             if (distance > driverData.getPreferedDistance()) {
                 distance = Double.MAX_VALUE;
             }

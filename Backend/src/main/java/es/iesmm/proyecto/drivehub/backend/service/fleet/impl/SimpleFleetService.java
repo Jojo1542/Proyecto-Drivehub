@@ -40,6 +40,7 @@ public class SimpleFleetService implements FleetService {
     public Optional<Fleet> findByDriver(UserModel user) {
         Optional<Fleet> fleet = Optional.empty();
 
+        // Se obtiene el modelo de datos del conductor, si es de flota, se obtiene la flota,
         DriverModelData driver = user.getDriverData();
         if (driver instanceof FleetDriverModelData fleetModelData) {
             fleet = Optional.of(fleetModelData.getFleet());
@@ -52,10 +53,13 @@ public class SimpleFleetService implements FleetService {
     public Fleet createFleet(UserModel userDetails, FleetCreationRequest request) {
         Preconditions.checkNotNull(userDetails, "User cannot be null");
         Preconditions.checkNotNull(request, "Request cannot be null");
+        // Se comprueba que no exista una flota con el mismo CIF
         Preconditions.checkArgument(findByCIF(request.CIF()).isEmpty(), "CIF_ALREADY_EXISTS");
 
+        // Se crea la flota y se guarda
         Fleet fleet = fleetRepository.save(request.toFleet());
 
+        // Se añade el permiso de administrador a la flota
         AdminModelData admin = userDetails.getAdminData();
         admin.addFleetPermission(fleet);
 
@@ -68,8 +72,10 @@ public class SimpleFleetService implements FleetService {
         Preconditions.checkNotNull(fleetId, "Fleet ID cannot be null");
         Preconditions.checkNotNull(request, "Request cannot be null");
 
+        // Se obtiene la flota y se comprueba que exista, si no existe se lanza una excepción
         Fleet fleet = fleetRepository.findById(fleetId).orElseThrow(() -> new IllegalArgumentException("Fleet does not exist"));
 
+        // Se actualizan los datos de la flota
         fleet.setName(request.getName());
         fleet.setVehicleType(request.getVehicleType());
 

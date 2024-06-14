@@ -13,6 +13,11 @@ import java.util.Date;
 
 public class UnixTimeModule extends SimpleModule {
 
+    /*
+     * Este módulo de Jackson se encarga de serializar y deserializar fechas en formato Unix
+     * ya que Alamofire en iOS utiliza este formato para las fechas.
+     */
+
     public UnixTimeModule() {
         addSerializer(Instant.class, new InstantUnixSerializer());
         addSerializer(Date.class, new DateUnixSerializer());

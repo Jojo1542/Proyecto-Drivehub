@@ -45,15 +45,11 @@ public class RedisLocationService implements LocationService {
     }
 
     private void broadcastLocation(Long userId, UserLocation location) {
-        System.out.println("Broadcasting location for user " + userId + " to " + locationEmitters.size() + " emitters");
         locationEmitters.stream()
-                .filter(emitter -> {
-                    System.out.println("Checking emitter " + emitter.driverId() + " for user " + userId);
-                    return emitter.driverId().equals(userId);
-                })
+                // Filtrar por solo los emisores de trayectos en los que está este conductor
+                .filter(emitter -> emitter.driverId().equals(userId))
                 .forEach(emitter -> {
                     try {
-                        System.out.println("Sending location to emitter " + emitter.driverId());
                         emitter.emitter().send(location);
                     } catch (Exception e) {
                         emitter.emitter().complete();
@@ -65,12 +61,14 @@ public class RedisLocationService implements LocationService {
 
     private Optional<TripLocationEmitterRow> findEmitterByTrip(Long tripId) {
         return locationEmitters.stream()
+                // Filtrar por solo los emisores de trayectos en los que está este conductor
                 .filter(emitter -> emitter.tripId().equals(tripId))
                 .findFirst();
     }
 
     private Optional<TripLocationEmitterRow> findEmitterByDriver(Long driverId) {
         return locationEmitters.stream()
+                // Filtrar por solo los emisores de trayectos en los que está este conductor
                 .filter(emitter -> emitter.driverId().equals(driverId))
                 .findFirst();
     }
@@ -91,6 +89,7 @@ public class RedisLocationService implements LocationService {
 
     @Override
     public void removeLocationEmitter(Long tripId) {
+        // Eliminar el emisor del trayecto
         findEmitterByDriver(tripId).ifPresent(emitter -> {
             emitter.emitter().complete();
             locationEmitters.remove(emitter);

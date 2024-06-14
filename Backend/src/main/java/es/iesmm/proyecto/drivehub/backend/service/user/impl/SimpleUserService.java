@@ -146,12 +146,16 @@ public class SimpleUserService implements UserService {
     public void updateUserBalance(Long id, double amount, BalanceChangeType type) {
         UserModel user = findById(id).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
+        // Realizar el cambio de saldo
         if (type == BalanceChangeType.DEPOSIT) {
+            // Depositar el saldo
             user.deposit(amount);
         } else if (type == BalanceChangeType.WITHDRAW) {
+            // Retirar el saldo
             if (user.canAfford(amount)) {
                 user.withdraw(amount);
             } else {
+                // Si el usuario no puede pagar la cantidad, lanzar una excepción para indicar que no puede pagar
                 throw new IllegalStateException("USER_CANNOT_AFFORD_AMOUNT");
             }
         }
@@ -187,18 +191,22 @@ public class SimpleUserService implements UserService {
     @Override
     public List<UserModel> findDriversByFleet(Long fleetId) {
         return userRepository.findAll().stream()
+                // Filtrar por los conductores
                 .filter(user -> user.getDriverData() != null)
+                // Filtrar que el conductor sea de flota
                 .filter(user -> user.getDriverData() instanceof FleetDriverModelData)
+                // Filtrar por la flota
                 .filter(user -> {
                     FleetDriverModelData driverData = (FleetDriverModelData) user.getDriverData();
                     return driverData.getFleet() != null && Objects.equals(driverData.getFleet().getId(), fleetId);
                 })
+                // Meter en una lista
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<DriverLicense> findDriverLicensesByDriver(Long driverId) {
-        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe"));
+        UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
         return user.getDriverLicenses().stream().toList();
     }
@@ -218,6 +226,7 @@ public class SimpleUserService implements UserService {
         UserModel user = findById(driverId).orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
 
         DriverLicense license = user.getDriverLicenses().stream()
+                // Filtrar por la licencia de conducir
                 .filter(dl -> dl.getLicenseNumber().equals(licenseId))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("LICENSE_NOT_FOUND"));

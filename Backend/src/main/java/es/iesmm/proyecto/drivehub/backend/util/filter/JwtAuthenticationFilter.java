@@ -34,15 +34,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String token = jwtService.extractTokenFromRequest(request);
 
+        // Si el token es válido, se procesa, si no, se ignora
         if (token != null) {
             try {
+                // Extraer el ID del usuario del token
                 Long userId = jwtService.extractUserId(token);
 
+                // Si el ID del usuario es válido y no hay una autenticación ya establecida, se establece una nueva.
                 if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     userService
-                            .findById(userId)
-                            .filter(user -> jwtService.isValid(token, user))
+                            .findById(userId) // Buscar el usuario por ID
+                            .filter(user -> jwtService.isValid(token, user)) // Comprobar si el token es válido
                             .ifPresent(user -> {
+                                // Si el token es válido, se establece la autenticación
                                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                                         user,
                                         null,
@@ -68,6 +72,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
+        // Continuar con la cadena de filtros
         filterChain.doFilter(request, response);
     }
 }

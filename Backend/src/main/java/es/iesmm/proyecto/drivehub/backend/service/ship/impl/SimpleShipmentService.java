@@ -42,6 +42,7 @@ public class SimpleShipmentService implements ShipmentService {
         // Se convierte la petición en un envío y se guarda en la base de datos
         Shipment shipment = request.toShipment();
 
+        // Se asigna el conductor al envío, si no se encuentra el conductor lanza una excepción
         shipment.setDriver(
                 userService.findById(request.driverId())
                         .orElseThrow(() -> new IllegalArgumentException("DRIVER_NOT_FOUND"))
@@ -87,8 +88,10 @@ public class SimpleShipmentService implements ShipmentService {
 
     @Override
     public List<Shipment> findByFleet(Long fleetId) {
+        // Obtiene los conductores de la flota
         List<UserModel> drivers = userService.findDriversByFleet(fleetId);
 
+        // Busca los envios de cada conductor y los añade a la lista
         return drivers.stream()
                 .map(this::findByDriver)
                 .flatMap(List::stream)

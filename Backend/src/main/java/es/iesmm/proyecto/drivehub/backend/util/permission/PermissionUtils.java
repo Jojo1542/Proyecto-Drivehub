@@ -6,6 +6,10 @@ import es.iesmm.proyecto.drivehub.backend.model.user.roles.UserRoles;
 
 public class PermissionUtils {
 
+    /*
+     * Clase de utilidades para comprobar permisos de usuario y roles
+     */
+
     public static boolean hasRole(UserModel userModel, String role) {
         return hasRole(userModel, UserRoles.valueOf(role));
     }

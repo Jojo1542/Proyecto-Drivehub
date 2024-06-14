@@ -123,6 +123,8 @@ public class SimpleJwtService implements JwtService {
     public String extractTokenFromHeader(String bearerToken) {
         String result = null;
 
+        // Se obtiene el header de autorización y se separa el token del prefijo Bearer
+        // El formato del token es: Bearer <token>
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             result = bearerToken.substring(7);
         }
