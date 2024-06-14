@@ -30,8 +30,6 @@ public class RedisLocationService implements LocationService {
     public void save(UserModel user, UserLocation location) {
         Preconditions.checkNotNull(user.getId(), "User must have an id");
 
-        Date now = new Date();
-
         // Guardar en redis la localización del usuario por 4 días
         redisRepository.opsForValue().set(KEY_PREFIX + user.getId(), location, 4, TimeUnit.DAYS);
 

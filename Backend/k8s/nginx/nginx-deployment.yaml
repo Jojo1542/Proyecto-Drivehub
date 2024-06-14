@@ -12,11 +12,6 @@ spec:
       labels:
         app: nginx
     spec:
-      initContainers:
-        - name: wait-for-services
-          image: busybox
-          command: [ "/bin/sh","-c" ]
-          args: [ "until echo 'Esperando a que el backend esté disponible' && nc -vz -w 2 spring-service 8443; do echo 'Volviendo a intentar...'; sleep 2; done;" ]
       containers:
         - name: nginx
           image: nginx:latest

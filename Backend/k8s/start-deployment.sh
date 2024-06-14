@@ -1,5 +1,6 @@
 # Start Oracle Database
 kubectl apply -f oracle/oracle_volume.yaml
+kubectl apply -f oracle/oracle_priorityclass.yaml
 kubectl apply -f oracle/oracle_deployment.yaml
 kubectl apply -f oracle/oracle_service.yaml
 

@@ -19,11 +19,11 @@ spec:
           args: [ "until echo 'Esperando a que oracle este disponible.' && nc -vz -w 2 oracle-service 1521 && echo 'Esperando a que redis este disponible.' && nc -vz -w 2 redis-service 6379; do echo 'Volviendo a intentar...'; sleep 2; done;" ]
       containers:
         - name: backend
-          image: gcr.io/drivehub-iesmm/backend:main
+          image: gcr.io/drivehub-iesmm/backend:latest
           resources:
             requests:
-              memory: "6Gi"
+              memory: "2Gi"
               cpu: "4"
             limits:
-              memory: "6Gi"
+              memory: "4Gi"
               cpu: "4"
